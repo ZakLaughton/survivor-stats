@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "David",
+    "members": [
+      "Pat Cusack",
+      "Jessica Peet",
+      "Bi Nguyen",
+      "Lyrsa Torres",
+      "Elizabeth Olson",
+      "Carl Boudreaux",
+      "Gabby Pascuzzi",
+      "Christian Hubicki",
+      "Davie Rickenbacker",
+      "Nick Wilson",
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Goliath",
+    "members": [
+      "Jeremy Crawford",
+      "Natalia Azoqa",
+      "Natalie Cole",
+      "John Hennigan",
+      "Dan Rengering",
+      "Alec Merlino",
+      "Alison Raybould",
+      "Kara Kay",
+      "Angelina Keeley",
+      "Mike White"
+    ]
+  }
+]
