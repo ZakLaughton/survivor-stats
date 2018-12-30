@@ -1,4 +1,5 @@
 import React from 'react';
+import './Tribe.css'
 
 const Tribe = ({ color, name }) => {
 
