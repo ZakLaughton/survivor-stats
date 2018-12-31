@@ -14,7 +14,9 @@ class App extends Component {
         {tribes.map(tribe => (
             <Tribe
               name={tribe.name}
-              color={tribe.tribeColor} />
+              color={tribe.tribeColor}
+              tribeMembers={tribe.members}
+              players={players} />
         ))}
       </div>
     );
