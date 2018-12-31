@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerCard from '../PlayerCard/PlayerCard'
 import './Tribe.css'
 
 const Tribe = ({ color, name, tribeMembers, players }) => {
@@ -14,7 +15,7 @@ const Tribe = ({ color, name, tribeMembers, players }) => {
       <h1>{name}</h1>
       {tribeMembers.map(member => {
         const playerData = players.find(player => (player.fullName === member));
-        return playerData.fullName + ' ';
+        return <PlayerCard player={playerData}/>
       })}
     </section>
   )
