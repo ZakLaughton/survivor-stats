@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "David",
+    "tribeColor": "orange",
     "members": [
       "Pat Cusack",
       "Jessica Peet",
@@ -18,6 +19,7 @@
   {
     "id": 2,
     "name": "Goliath",
+    "tribeColor": "purple",
     "members": [
       "Jeremy Crawford",
       "Natalia Azoqa",
