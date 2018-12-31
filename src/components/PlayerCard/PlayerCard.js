@@ -6,7 +6,7 @@ const PlayerCard = ({player}) => {
       <img src="http://placekitten.com/g/600/300" class="db w-100 br2 br--top" alt="Kitten looking menacing." />
       <div class="dt w-100 mt1">
         <div class="dtc">
-          <h1 class="f4-ns mv0">{player.fullName}</h1>
+          <h2 class="f4-ns mv0">{player.fullName}</h2>
         </div>
       </div>
     </article>
