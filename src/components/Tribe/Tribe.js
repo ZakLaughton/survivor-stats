@@ -12,7 +12,7 @@ const Tribe = ({ color, name, tribeMembers, players }) => {
     <section
       className="tribe pa2 fl w-50 vh-100"
       style={sectionStyle}>
-      <h1>{name}</h1>
+      <h1 className="f1 lh-title mb1">{name}</h1>
       <div className="playerList">
         {tribeMembers.map(member => {
           const playerData = players.find(player => (player.fullName === member));
