@@ -3,10 +3,11 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const episodePlayerData = require('./controllers/episodePlayerData');
+const episodePlayerData = require('../frontend/src/database/players');
 
 app.get('/', (req, res) => {
-  res.status('200').json('this is working')
+  console.log(episodePlayerData);
+  res.status('200').json(episodePlayerData);
 })
 
 app.listen(3000, () => {

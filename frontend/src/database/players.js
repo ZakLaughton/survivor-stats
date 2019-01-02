@@ -1,4 +1,4 @@
-const players = [
+module.exports = [
   {
     "fullName": "Pat Cusack",
     "firstName": "Pat",
@@ -120,7 +120,3 @@ const players = [
     "photo": null
   }
 ]
-
-module.exports = {
-  players
-}

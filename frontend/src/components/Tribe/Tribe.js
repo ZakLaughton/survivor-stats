@@ -1,8 +1,8 @@
 import React from 'react';
-import PlayerCard from '../PlayerCard/PlayerCard'
+import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
-const Tribe = ({ color, name, tribeMembers, players }) => {
+const Tribe = ({ color, name, tribeMembers, castaways }) => {
 
   const sectionStyle = {
     backgroundColor: color
@@ -13,10 +13,14 @@ const Tribe = ({ color, name, tribeMembers, players }) => {
       className="tribe pa2 fl w-50 min-h-100"
       style={sectionStyle}>
       <h1 className="f1 lh-title mb1">{name}</h1>
-      <div className="playerList">
+      <div className="castawayList">
         {tribeMembers.map(member => {
-          const playerData = players.find(player => (player.fullName === member));
-          return <PlayerCard player={playerData}/>
+          const castawayData = castaways.find(castaway => (castaway.fullName === member));
+          if (castawayData) {
+            return <CastawayCard castaway={castawayData}/>
+          } else {
+            return `Loading image for ${member}`
+          }
         })}
       </div>
     </section>
