@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 
 const episodePlayerData = require('./controllers/episodePlayerData');
 
 app.get('/', (req, res) => {
-  res.send('this is working')
+  res.status('200').json('this is working')
 })
 
 app.listen(3000, () => {
