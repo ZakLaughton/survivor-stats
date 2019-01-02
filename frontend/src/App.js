@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Tribe from './components/Tribe/Tribe';
 
-const tribes = require('./database/tribes.json');
+// const tribes = require('./database/tribes.json');
 // const episodes = require('./database/episodes.json');
 
 class App extends Component {
@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       season: 1,
       episode: 1,
-      castaways: []
+      castaways: [],
+      tribes: []
     }
   }
 
@@ -20,9 +21,12 @@ class App extends Component {
     fetch('http://localhost:3000')
       .then(response => response.json())
       .then((res) => {
-        that.setState({castaways: res});
         console.log('res: ', res);
-        console.log('state casts: ', this.state.castaways);
+        that.setState({
+          castaways: res.castaways,
+          tribes: res.tribes});
+        console.log('state casts: ', that.state.castaways)
+       
       })
   }
 
@@ -31,7 +35,7 @@ class App extends Component {
   }
 
   render() {
-    const {castaways} = this.state;
+    const {castaways, tribes} = this.state;
     return (
       <div className="App">
         {tribes.map(tribe => (

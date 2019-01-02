@@ -15,8 +15,8 @@ const Tribe = ({ color, name, tribeMembers, castaways }) => {
       <h1 className="f1 lh-title mb1">{name}</h1>
       <div className="castawayList">
         {tribeMembers.map(member => {
-          const castawayData = castaways.find(castaway => (castaway.fullName === member));
-          if (castawayData) {
+          if(castaways) {
+            const castawayData = castaways.find(castaway => (castaway.fullName === member));
             return <CastawayCard castaway={castawayData}/>
           } else {
             return `Loading image for ${member}`
