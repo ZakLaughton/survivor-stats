@@ -2,7 +2,6 @@ import React from 'react';
 
 const CastawayCard = ({castaway}) => {
   const imageFileName = `${castaway.firstName}_${castaway.lastName}.jpg`.toLowerCase();
-  console.log(imageFileName);
   return(
     <article className="grow relative ma1 br2 ba dark-gray b--black-10 w-100 w-50-m w-25-l ma2">
       <img
