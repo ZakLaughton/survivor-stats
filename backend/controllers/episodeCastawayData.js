@@ -1,4 +1,6 @@
-const getEpisodeCastawayData = async (req, res, db, season, episode) => {
+const getEpisodeCastawayData = async (req, res, db, season) => {
+  console.log(req.params);
+  const { episode } = req.query;
   const formattedEpisode = ("0" + episode).slice(-2);
 
   let response = {

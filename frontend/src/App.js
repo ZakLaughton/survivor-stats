@@ -14,9 +14,11 @@ class App extends Component {
     }
   }
 
-  getCastaways = () => {
+  getCastaways = (episode) => {
     const that = this;
-    fetch('http://localhost:3000')
+    const url = `http://localhost:3000/?episode=${episode}`
+    console.log(url)
+    fetch(url)
       .then(response => response.json())
       .then((res) => {
         console.log(res);
@@ -24,6 +26,12 @@ class App extends Component {
           castaways: res.castaways,
           tribes: res.tribes});
       })
+  }
+
+  updateEpisode = (event) => {
+    const episode = event.target.value;
+    this.setState({episode});
+    this.getCastaways(episode);
   }
 
   componentDidMount() {
@@ -38,6 +46,7 @@ class App extends Component {
         <NavBar 
           season={season}
           episode={episode}
+          updateEpisode={this.updateEpisode}
         />
         <main>
           {tribes.length > 0 &&
