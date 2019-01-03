@@ -18,6 +18,7 @@ class App extends Component {
     fetch('http://localhost:3000')
       .then(response => response.json())
       .then((res) => {
+        console.log(res);
         that.setState({
           castaways: res.castaways,
           tribes: res.tribes});
