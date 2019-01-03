@@ -2,25 +2,25 @@ import React from 'react';
 import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
-const Tribe = ({ color, name, tribeMembers, castaways }) => {
+const Tribe = ({ tribe, castaways }) => {
 
   const sectionStyle = {
-    backgroundColor: color
+    backgroundColor: tribe.tribe_color
   }
 
   return (
     <section
       className="tribe pa2 fl w-50 min-h-100"
       style={sectionStyle}>
-      <h1 className="f1 lh-title mb1">{name}</h1>
+      <h1 className="f1 lh-title mb1">{tribe.name}</h1>
       <div className="castawayList">
-        {tribeMembers.map(member => {
-          if(castaways) {
-            const castawayData = castaways.find(castaway => (castaway.fullName === member));
-            return <CastawayCard key={castawayData.fullName} castaway={castawayData}/>
-          } else {
-            return `Loading image for ${member}`
-          }
+        {castaways.filter((castaway) => castaway.tribe === tribe.name )
+          .map(castaway => {
+            if(castaways) {
+              return <CastawayCard key={castaway.name} castaway={castaway}/>
+            } else {
+              return `Loading image for ${castaway.name}`
+            }
         })}
       </div>
     </section>

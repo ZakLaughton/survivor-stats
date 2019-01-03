@@ -9,12 +9,6 @@ app.use(cors());
 
 const castawayData = require('./controllers/episodeCastawayData');
 
-const episodePlayerData = require('./database/castaways');
-const tribeData=require('./database/tribes');
-const response = {
-  castaways: episodePlayerData,
-  tribes: tribeData
-};
 
 const db = knex({
   client: 'pg',

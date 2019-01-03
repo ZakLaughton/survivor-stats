@@ -30,16 +30,18 @@ class App extends Component {
 
   render() {
     const {castaways, tribes} = this.state;
+    console.log(castaways)
     return (
       <div className="App">
-        {tribes.map(tribe => (
+        {tribes.length > 0 &&
+          tribes.map(tribe => (
             <Tribe
               key={tribe.name}
-              name={tribe.name}
-              color={tribe.tribeColor}
-              tribeMembers={tribe.members}
+              tribe={tribe}
               castaways={castaways} />
-        ))}
+          ))
+        }
+        {tribes.length === 0 && 'loading'}
       </div>
     );
   }

@@ -22,7 +22,7 @@ const getEpisodeCastawayData = (req, res, db) => {
             castawayObj.tribe = castaway.value;
             return castawayObj
           })
-          console.log(response)
+          res.json(response);
         })
     })
   
