@@ -1,9 +1,10 @@
 import React from 'react';
+import './CastawayCard.css';
 
 const CastawayCard = ({castaway}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
   return(
-    <article className="grow relative ma1 br2 ba dark-gray b--black-10 w-100 w-50-m w-25-l ma2">
+    <article className="castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2">
       <img
         src={require(`../../img/${imageFileName}`)}
         className="db w-100 h-100 br2 br--top"
