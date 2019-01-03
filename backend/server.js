@@ -5,6 +5,8 @@ const cors = require('cors');
 const app = express();
 const knex = require('knex');
 
+const season = 37;
+const episode = 2;
 app.use(cors());
 
 const castawayData = require('./controllers/episodeCastawayData');
@@ -22,5 +24,5 @@ app.listen(3000, () => {
   console.log('app is running on port 3000');
 })
 
-app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db)})
+app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db, season, episode)})
 // app.get('/s:season/e:episode', (req, res) => {episodePlayerData.getEpisodePlayerData(req, res)})

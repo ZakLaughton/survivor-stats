@@ -6,8 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      season: 1,
-      episode: 1,
+      season: null,
+      episode: null,
       castaways: [],
       tribes: []
     }
