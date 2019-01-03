@@ -23,7 +23,9 @@ const getEpisodeCastawayData = async (req, res, db, season, episode) => {
     const castawayTribeObj = currentCastawayTribes.find((castawayTribe) => {
       return castawayTribe.castaway === castaway.full_name;
     });
-    castawayObj.tribe = castawayTribeObj.field_value;
+    if (castawayTribeObj) {
+      castawayObj.tribe = castawayTribeObj.field_value;
+    }
       
     return castawayObj;
   })
