@@ -14,28 +14,33 @@ class App extends Component {
     }
   }
 
-  getCastaways = (episode) => {
-    const that = this;
+  getCastaways = async (episode) => {
     const url = `http://localhost:3000/?episode=${episode}`
-    console.log(url)
-    fetch(url)
-      .then(response => response.json())
-      .then((res) => {
-        console.log(res);
-        that.setState({
-          castaways: res.castaways,
-          tribes: res.tribes});
-      })
+    const response = await fetch(url)
+    const jsonResponse = await response.json()
+    this.setState({
+          castaways: jsonResponse.castaways,
+          tribes: jsonResponse.tribes});
   }
 
-  updateEpisode = (event) => {
+  setTribes = () => {
+    const currentCastaways = this.state.castaways
+    const currentTribes = currentCastaways
+      .filter(castaway => castaway.tribe !== 'out')
+      .map(castaway => castaway.tribe)
+    const uniqueTribes = new Set(currentTribes);
+  }
+
+  updateEpisode = async (event) => {
     const episode = event.target.value;
     this.setState({episode});
-    this.getCastaways(episode);
+    await this.getCastaways(episode);
+    await this.setTribes();
   }
 
-  componentDidMount() {
-    this.getCastaways()
+  async componentDidMount() {
+    // await this.getCastaways()
+    // await this.setTribes()
   }
 
   render() {
