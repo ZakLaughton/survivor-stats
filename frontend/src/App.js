@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Tribe from './components/Tribe/Tribe';
+import NavBar from './components/NavBar/NavBar';
 
 class App extends Component {
   constructor() {
@@ -30,19 +31,25 @@ class App extends Component {
   }
 
   render() {
-    const {castaways, tribes} = this.state;
+    const {castaways, tribes, season, episode} = this.state;
     console.log(castaways)
     return (
       <div className="App">
-        {tribes.length > 0 &&
-          tribes.map(tribe => (
-            <Tribe
-              key={tribe.name}
-              tribe={tribe}
-              castaways={castaways} />
-          ))
-        }
-        {tribes.length === 0 && 'loading'}
+        <NavBar 
+          season={season}
+          episode={episode}
+        />
+        <main>
+          {tribes.length > 0 &&
+            tribes.map(tribe => (
+              <Tribe
+                key={tribe.name}
+                tribe={tribe}
+                castaways={castaways} />
+            ))
+          }
+          {tribes.length === 0 && 'loading'}
+        </main>
       </div>
     );
   }
