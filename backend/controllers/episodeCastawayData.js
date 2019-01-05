@@ -1,6 +1,4 @@
 const getEpisodeCastawayData = async (req, res, db, season) => {
-  console.log(req.query);
-  console.log(req.params);
   const { episode } = req.query;
   const formattedEpisode = ("0" + episode).slice(-2);
 
@@ -15,20 +13,6 @@ const getEpisodeCastawayData = async (req, res, db, season) => {
     .where('season_no', '=', season);
   const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode').from('updates')
     .where('start_episode', 'like', 's37%');
-
-  console.log('cct: ', seasonTribeChanges);
-
-      // WHERE (castaway,start_episode) IN 
-      // ( SELECT castaway, MAX(start_episode)
-      //   FROM 
-      // where start_episode like 's37%'
-      //    and where start_episode <= 's37e01'
-      //   GROUP BY castaway
-      // )
-      
-
-    // function() {
-    //   this.where('end_episode', '>', `s${season}e${formattedEpisode}`).orWhereNull('end_episode')}
     
 
   // Make castaway properties clearly titled for JSON data return
