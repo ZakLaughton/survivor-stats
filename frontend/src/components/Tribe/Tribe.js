@@ -15,7 +15,7 @@ const Tribe = ({ tribe, castaways }) => {
 
   return (
     <section
-      className="tribe pa2 fl w-50 min-h-100"
+      className="tribe pa2 fl min-h-100"
       style={sectionStyle}>
       <h1 className="f1 lh-title mb1">{tribe.name}</h1>
       <div className="castawayList">
