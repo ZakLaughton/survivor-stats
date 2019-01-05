@@ -36,11 +36,8 @@ class App extends Component {
     const currentCastawaysTribes = uniqueCastaways.map((castaway) => {
       // Find the tribe changes for a given castaway, return the most recent
       const latestCastawayRecord = currentTribeChanges
-        .filter(record => {
-          return record.castaway === castaway.name;})
-        .reduce((prev, current) => {
-          return (prev.start_episode > current.start_episode) ? prev : current
-      })
+        .filter(record => record.castaway === castaway.name)
+        .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current);
 
       return {
         name: latestCastawayRecord.castaway,
@@ -56,12 +53,6 @@ class App extends Component {
       }
       // return tribe/color object
     })
-
-    // Pull unique active tribes
-    // const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
-    // const uniqueActiveTribeNames = [...new Set(allActiveTribeNames)]
-    // const activeTribes = castawayData.tribes
-    //   .filter((tribe) => uniqueActiveTribeNames.indexOf(tribe.name) > -1);
     
     this.setState({
           castaways: currentCastawaysTribes,
