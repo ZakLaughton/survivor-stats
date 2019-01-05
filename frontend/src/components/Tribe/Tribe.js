@@ -3,9 +3,14 @@ import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
 const Tribe = ({ tribe, castaways }) => {
-
+  // Subtler tones to the default tribe colors (brightness -3000 on paletton)
+  const tribeColorMap = {
+    'orange': '#A26F0F',
+    'purple': '#4F004F',
+    'green': '#003300'
+  }
   const sectionStyle = {
-    backgroundColor: tribe.tribe_color
+    backgroundColor: tribeColorMap[tribe.tribe_color]
   }
 
   return (
