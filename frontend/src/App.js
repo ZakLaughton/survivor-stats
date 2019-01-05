@@ -10,22 +10,27 @@ class App extends Component {
       season: null,
       episode: null,
       castaways: [],
-      tribes: [],
+      allTribes: [],
       activeTribes: []
     }
   }
 
   updateCastaways = async (episode) => {
+    // Fetch data
     const url = `http://localhost:3000/?episode=${episode}`
     const response = await fetch(url)
-    const jsonResponse = await response.json()
-    // this.setActiveTribes(jsonResponse.castaways)
-    const allActiveTribes = jsonResponse.castaways.map(castaway => castaway.tribe);
-    const uniqueActiveTribes = [...new Set(allActiveTribes)]
+    const castawayData = await response.json()
+    
+    // Pull unique active tribes
+    const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
+    const uniqueActiveTribeNames = [...new Set(allActiveTribeNames)]
+    const activeTribes = castawayData.tribes
+      .filter((tribe) => uniqueActiveTribeNames.indexOf(tribe.name) > -1);
+    
     this.setState({
-          castaways: jsonResponse.castaways,
-          tribes: jsonResponse.tribes,
-          activeTribes: uniqueActiveTribes});
+          castaways: castawayData.castaways,
+          allTribes: castawayData.tribes,
+          activeTribes});
   }
 
   updateEpisode = (episode) => {
@@ -38,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const {castaways, tribes, season, episode} = this.state;
+    const {castaways, allTribes, activeTribes, season, episode} = this.state;
     return (
       <div className="App">
         <NavBar 
@@ -47,15 +52,15 @@ class App extends Component {
           updateEpisode={this.updateEpisode}
         />
         <main>
-          {tribes.length > 0 &&
-            tribes.map(tribe => (
+          {activeTribes.length > 0 &&
+            activeTribes.map(tribe => (
               <Tribe
                 key={tribe.name}
                 tribe={tribe}
                 castaways={castaways} />
             ))
           }
-          {tribes.length === 0 && 'loading'}
+          {activeTribes.length === 0 && 'loading'}
         </main>
       </div>
     );
