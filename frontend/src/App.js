@@ -17,22 +17,67 @@ class App extends Component {
 
   updateCastaways = async (episode) => {
     // Fetch data
-    console.log('Beginning fetch...')
-    const url = `http://localhost:3000/?episode=${episode}`
-    const response = await fetch(url)
-    console.log(response)
-    const castawayData = await response.json()
+    console.log('Beginning fetch...');
+    const url = `http://localhost:3000/?episode=${episode}`;
+    const response = await fetch(url);
+    console.log(response);
+    const castawayData = await response.json();
+
+    const formattedEpisode = ("0" + episode).slice(-2);
+
+
+    // Pull unique players
+    const allCastaways = castawayData.seasonTribeChanges.map(item => item.castaway);
+    const uniqueCastawayStrings = [...new Set(allCastaways)];
+    const uniqueCastaways = uniqueCastawayStrings.map(castaway => {return {'name': castaway};})
+
+    // Pull current tribes
+    // filter out changes from later episodes
+    const currentTribeChanges = castawayData.seasonTribeChanges.filter(change => change.start_episode <= `s37e${formattedEpisode}`)
+    console.log('ctt:', JSON.stringify(currentTribeChanges))
+    // find largest start_episode for each castaway most recent change for each castaway
+    const currentCastawaysTribes = uniqueCastaways.map((castaway) => {
+      // Find the tribe changes for a given castaway, return the most recent
+      console.log('castaway name: ', castaway.name)
+      const latestCastawayRecord = currentTribeChanges
+        .filter(record => {
+          console.log('rccn: ', record.castaway, castaway.name, record.castaway === castaway.name);
+          return record.castaway === castaway.name;})
+        .reduce((prev, current) => {
+          console.log('pc: ', prev, current);
+          return (prev.start_episode > current.start_episode) ? prev : current
+      })
+      console.log(`${castaway.name}: ${JSON.stringify(latestCastawayRecord)}`)
+
+      return {
+        name: latestCastawayRecord.castaway,
+        tribe: latestCastawayRecord.field_value
+      }
+    })
+
+    const activeTribes = castawayData.tribes.filter((tribe) => {
+      if (currentCastawaysTribes.some(castaway => castaway.tribe === tribe.name)) {
+        return true;
+      } else {
+        return false;
+      }
+      // return tribe/color object
+    })
+    console.log('at: ', activeTribes)
 
     // Pull unique active tribes
-    const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
-    const uniqueActiveTribeNames = [...new Set(allActiveTribeNames)]
-    const activeTribes = castawayData.tribes
-      .filter((tribe) => uniqueActiveTribeNames.indexOf(tribe.name) > -1);
+    // const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
+    // const uniqueActiveTribeNames = [...new Set(allActiveTribeNames)]
+    // const activeTribes = castawayData.tribes
+    //   .filter((tribe) => uniqueActiveTribeNames.indexOf(tribe.name) > -1);
     
     this.setState({
-          castaways: castawayData.castaways,
+          castaways: currentCastawaysTribes,
           allTribes: castawayData.tribes,
-          activeTribes});
+          activeTribes
+          });
+
+    console.log(this.state)
   }
 
   updateEpisode = (event) => {

@@ -23,5 +23,7 @@ app.listen(3000, () => {
   console.log('app is running on port 3000');
 })
 
-app.get('', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db, season)})
+app.get('/', (req, res) => {
+  console.log('request received')
+  castawayData.getEpisodeCastawayData(req, res, db, season)})
 // app.get('/s:season/e:episode', (req, res) => {episodePlayerData.getEpisodePlayerData(req, res)})

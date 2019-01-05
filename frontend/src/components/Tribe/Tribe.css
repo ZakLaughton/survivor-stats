@@ -4,7 +4,7 @@ h1 {
 }
 
 .tribe {
-  flex-grow: 1;
+  flex: 1 1;
 }
 
 .castawayList {

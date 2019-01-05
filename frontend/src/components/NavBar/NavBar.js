@@ -27,7 +27,7 @@ const NavBar = ({updateEpisode, season, episode}) => {
       <select
         onChange={updateEpisode}
       >
-        <option selected disabled>Episode</option>
+        <option selected disabled value="0">Episode</option>
         <option value="1">Episode 1</option>
         <option value="2">Episode 2</option>
         <option value="3">Episode 3</option>
@@ -41,6 +41,7 @@ const NavBar = ({updateEpisode, season, episode}) => {
         <option value="11">Episode 11</option>
         <option value="12">Episode 12</option>
         <option value="13">Episode 13</option>
+        <option value="14">Episode 14</option>
       </select>
     </header>
   )
