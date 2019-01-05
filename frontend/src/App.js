@@ -17,10 +17,8 @@ class App extends Component {
 
   updateCastaways = async (episode) => {
     // Fetch data
-    console.log('Beginning fetch...');
     const url = `http://localhost:3000/?episode=${episode}`;
     const response = await fetch(url);
-    console.log(response);
     const castawayData = await response.json();
 
     const formattedEpisode = ("0" + episode).slice(-2);
@@ -34,20 +32,15 @@ class App extends Component {
     // Pull current tribes
     // filter out changes from later episodes
     const currentTribeChanges = castawayData.seasonTribeChanges.filter(change => change.start_episode <= `s37e${formattedEpisode}`)
-    console.log('ctt:', JSON.stringify(currentTribeChanges))
     // find largest start_episode for each castaway most recent change for each castaway
     const currentCastawaysTribes = uniqueCastaways.map((castaway) => {
       // Find the tribe changes for a given castaway, return the most recent
-      console.log('castaway name: ', castaway.name)
       const latestCastawayRecord = currentTribeChanges
         .filter(record => {
-          console.log('rccn: ', record.castaway, castaway.name, record.castaway === castaway.name);
           return record.castaway === castaway.name;})
         .reduce((prev, current) => {
-          console.log('pc: ', prev, current);
           return (prev.start_episode > current.start_episode) ? prev : current
       })
-      console.log(`${castaway.name}: ${JSON.stringify(latestCastawayRecord)}`)
 
       return {
         name: latestCastawayRecord.castaway,
@@ -63,7 +56,6 @@ class App extends Component {
       }
       // return tribe/color object
     })
-    console.log('at: ', activeTribes)
 
     // Pull unique active tribes
     // const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
@@ -76,8 +68,6 @@ class App extends Component {
           allTribes: castawayData.tribes,
           activeTribes
           });
-
-    console.log(this.state)
   }
 
   updateEpisode = (event) => {
