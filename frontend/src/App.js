@@ -17,10 +17,12 @@ class App extends Component {
 
   updateCastaways = async (episode) => {
     // Fetch data
+    console.log('Beginning fetch...')
     const url = `http://localhost:3000/?episode=${episode}`
     const response = await fetch(url)
+    console.log(response)
     const castawayData = await response.json()
-    
+
     // Pull unique active tribes
     const allActiveTribeNames = castawayData.castaways.map(castaway => castaway.tribe);
     const uniqueActiveTribeNames = [...new Set(allActiveTribeNames)]
@@ -33,7 +35,8 @@ class App extends Component {
           activeTribes});
   }
 
-  updateEpisode = (episode) => {
+  updateEpisode = (event) => {
+    const episode = event.target.value;
     this.setState({episode});
     this.updateCastaways(episode);
   }
@@ -60,7 +63,7 @@ class App extends Component {
                 castaways={castaways} />
             ))
           }
-          {activeTribes.length === 0 && 'loading'}
+          {activeTribes.length === 0 && 'loading...'}
         </main>
       </div>
     );
