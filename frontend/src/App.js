@@ -10,42 +10,35 @@ class App extends Component {
       season: null,
       episode: null,
       castaways: [],
-      tribes: []
+      tribes: [],
+      activeTribes: []
     }
   }
 
-  getCastaways = async (episode) => {
+  updateCastaways = async (episode) => {
     const url = `http://localhost:3000/?episode=${episode}`
     const response = await fetch(url)
     const jsonResponse = await response.json()
+    // this.setActiveTribes(jsonResponse.castaways)
+    const allActiveTribes = jsonResponse.castaways.map(castaway => castaway.tribe);
+    const uniqueActiveTribes = [...new Set(allActiveTribes)]
     this.setState({
           castaways: jsonResponse.castaways,
-          tribes: jsonResponse.tribes});
+          tribes: jsonResponse.tribes,
+          activeTribes: uniqueActiveTribes});
   }
 
-  setTribes = () => {
-    const currentCastaways = this.state.castaways
-    const currentTribes = currentCastaways
-      .filter(castaway => castaway.tribe !== 'out')
-      .map(castaway => castaway.tribe)
-    const uniqueTribes = new Set(currentTribes);
-  }
-
-  updateEpisode = async (event) => {
-    const episode = event.target.value;
+  updateEpisode = (episode) => {
     this.setState({episode});
-    await this.getCastaways(episode);
-    await this.setTribes();
+    this.updateCastaways(episode);
   }
 
   async componentDidMount() {
-    // await this.getCastaways()
-    // await this.setTribes()
+    // await this.updateCastaways()
   }
 
   render() {
     const {castaways, tribes, season, episode} = this.state;
-    console.log(castaways)
     return (
       <div className="App">
         <NavBar 

@@ -25,7 +25,7 @@ const NavBar = ({updateEpisode, season, episode}) => {
         <option value="37">Season 37</option>>
       </select>
       <select
-        onChange={updateEpisode}
+        onChange={event => updateEpisode(event.target.value)}
       >
         <option selected disabled>Episode</option>
         <option value="1">Episode 1</option>
