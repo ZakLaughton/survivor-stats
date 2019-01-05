@@ -3,7 +3,7 @@ import './NavBar.css';
 
 const NavBar = ({updateEpisode, season, episode}) => {
   return(
-    <header class="navbar" id="myTopnav">
+    <header className="navbar" id="myTopnav">
       {/* <div class="dropdown">
         <button class="dropbtn">Season</button>
         <div class="dropdown-content">
@@ -25,7 +25,7 @@ const NavBar = ({updateEpisode, season, episode}) => {
         <option value="37">Season 37</option>>
       </select>
       <select
-        onChange={event => updateEpisode(event.target.value)}
+        onChange={updateEpisode}
       >
         <option selected disabled>Episode</option>
         <option value="1">Episode 1</option>
