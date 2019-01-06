@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Tribe from './components/Tribe/Tribe';
 import NavBar from './components/NavBar/NavBar';
+import TribeBoard from './components/TribeBoard/TribeBoard'
 
 class App extends Component {
   constructor() {
@@ -56,17 +56,7 @@ class App extends Component {
           episode={episode}
           updateEpisode={this.updateEpisode}
         />
-        <main>
-          {activeTribes.length > 0 &&
-            activeTribes.map(tribe => (
-              <Tribe
-                key={tribe.name}
-                tribe={seasonData.tribes}
-                episodes={seasonData.episodes} />
-            ))
-          }
-          {activeTribes.length === 0 && 'loading...'}
-        </main>
+        <TribeBoard activeTribes={activeTribes} castaways={castaways} />
       </div>
     );
   }
