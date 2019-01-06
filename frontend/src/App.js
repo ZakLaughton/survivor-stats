@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       season: null,
-      episode: null,
+      episode: 0,
       castaways: [],
       allTribes: [],
       activeTribes: []
@@ -55,10 +55,10 @@ class App extends Component {
     })
     
     this.setState({
-          castaways: currentCastawaysTribes,
-          allTribes: castawayData.tribes,
-          activeTribes
-          });
+      castaways: currentCastawaysTribes,
+      allTribes: castawayData.tribes,
+      activeTribes
+    });
   }
 
   updateEpisode = (event) => {
@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    // await this.updateCastaways()
+    this.updateCastaways(0)
   }
 
   render() {

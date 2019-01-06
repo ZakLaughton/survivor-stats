@@ -39,3 +39,8 @@ main {
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Survivant';
+  src: url(./fonts/survivant.ttf)
+}

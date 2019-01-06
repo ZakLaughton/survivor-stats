@@ -9,8 +9,8 @@ const CastawayCard = ({castaway}) => {
         src={require(`../../img/${imageFileName}`)}
         className="db w-100 h-100 br2 br--top"
         alt="Kitten looking menacing." />
-      <div className="w-100 absolute bottom-0 ">
-          <h2 className="bg-silver  f4-ns mv0 center tc">{castaway.name}</h2>
+      <div className="card-nameplate">
+          <h2 className="card-name br1 bg-silver  f4-ns mv0 center tc">{castaway.name}</h2>
       </div>
     </article>
   )
