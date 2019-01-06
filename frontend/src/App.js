@@ -7,52 +7,28 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      season: null,
+      season: 37,
       episode: 0,
-      castaways: [],
-      allTribes: [],
-      activeTribes: []
+      activeTribes: [],
+      seasonData: []
     }
   }
 
-  updateCastaways = async (episode) => {
-    // Fetch data
-    const url = `http://localhost:3000/?episode=${episode}`;
+  getSeasonData = async (season) => {
+    const url = `http://localhost:3000/?season=${season}`;
     const response = await fetch(url);
-    const castawayData = await response.json();
+    const seasonData = await response.json();
+    return seasonData;
+  }
 
-    const formattedEpisode = ("0" + episode).slice(-2);
+  getActiveTribes = (tribes, episodeData) => {
+    if (tribes.some(tribe => castaway.tribe === tribe.name)) {
+      return true;
+    } else {return false;}
+  }
 
-
-    // Pull unique players
-    const allCastaways = castawayData.seasonTribeChanges.map(item => item.castaway);
-    const uniqueCastawayStrings = [...new Set(allCastaways)];
-    const uniqueCastaways = uniqueCastawayStrings.map(castaway => {return {'name': castaway};})
-
-    // Pull current tribes
-    // filter out changes from later episodes
-    const currentTribeChanges = castawayData.seasonTribeChanges.filter(change => change.start_episode <= `s37e${formattedEpisode}`)
-    // find largest start_episode for each castaway most recent change for each castaway
-    const currentCastawaysTribes = uniqueCastaways.map((castaway) => {
-      // Find the tribe changes for a given castaway, return the most recent
-      const latestCastawayRecord = currentTribeChanges
-        .filter(record => record.castaway === castaway.name)
-        .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current);
-
-      return {
-        name: latestCastawayRecord.castaway,
-        tribe: latestCastawayRecord.field_value
-      }
-    })
-
-    const activeTribes = castawayData.tribes.filter((tribe) => {
-      if (currentCastawaysTribes.some(castaway => castaway.tribe === tribe.name)) {
-        return true;
-      } else {
-        return false;
-      }
-      // return tribe/color object
-    })
+  updateCastaways = async (episode) => {
+    const castawayData = await getSeasonData(this.state.season);
     
     this.setState({
       castaways: currentCastawaysTribes,
@@ -72,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    const {castaways, allTribes, activeTribes, season, episode} = this.state;
+    const {seasonData, season, episode} = this.state;
     return (
       <div className="App">
         <NavBar 
@@ -85,8 +61,8 @@ class App extends Component {
             activeTribes.map(tribe => (
               <Tribe
                 key={tribe.name}
-                tribe={tribe}
-                castaways={castaways} />
+                tribe={seasonData.tribes}
+                episodes={seasonData.episodes} />
             ))
           }
           {activeTribes.length === 0 && 'loading...'}
