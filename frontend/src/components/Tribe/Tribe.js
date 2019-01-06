@@ -4,11 +4,12 @@ import './Tribe.css'
 
 const Tribe = ({ tribe, castaways }) => {
   // Subtler tones to the default tribe colors (brightness -20 on paletton)
+  // Palleton: "brightness" "-5"x1, "-1"x5
   const tribeColorMap = {
-    'orange': '#A26F0F',
-    'purple': '#4F004F',
-    'green': '#003300',
-    'blue': '#0B0B9F'
+    'orange': '#DF940A',
+    'purple': '#740274',
+    'green': '#007100',
+    'blue': '#0909B9'
   }
   const sectionStyle = {
     backgroundColor: tribeColorMap[tribe.tribe_color]
@@ -23,7 +24,10 @@ const Tribe = ({ tribe, castaways }) => {
         {castaways.filter((castaway) => castaway.tribe === tribe.name )
           .map(castaway => {
             if(castaways) {
-              return <CastawayCard key={castaway.name} castaway={castaway}/>
+              return <CastawayCard
+                        key={castaway.name}
+                        castaway={castaway}
+                        color={tribe.tribe_color}/>
             } else {
               return `Loading image for ${castaway.name}`
             }

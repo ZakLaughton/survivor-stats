@@ -49,3 +49,5 @@ main {
   font-family: 'Survivor Font';
   src: url(./fonts/survivorfont.ttf)
 }
+
+@import url('https://fonts.googleapis.com/css?family=Acme|Oswald|Londrina+Solid');
