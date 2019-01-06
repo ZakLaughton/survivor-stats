@@ -44,3 +44,8 @@ main {
   font-family: 'Survivant';
   src: url(./fonts/survivant.ttf)
 }
+
+@font-face {
+  font-family: 'Survivor Font';
+  src: url(./fonts/survivorfont.ttf)
+}

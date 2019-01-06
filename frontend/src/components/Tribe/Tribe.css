@@ -1,7 +1,9 @@
-h1 {
+.tribe h1 {
   color: white;
   text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
   font-family: 'Survivant';
+  font-size: 4rem;
+  font-weight: 500;
 }
 
 .tribe {

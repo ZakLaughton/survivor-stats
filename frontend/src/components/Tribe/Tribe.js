@@ -18,7 +18,7 @@ const Tribe = ({ tribe, castaways }) => {
     <section
       className="tribe pa2 fl min-h-100"
       style={sectionStyle}>
-      <h1 className="f1 lh-title mb1">{tribe.name}</h1>
+      <h1 className="mb1">{tribe.name}</h1>
       <div className="castawayList">
         {castaways.filter((castaway) => castaway.tribe === tribe.name )
           .map(castaway => {
