@@ -14,49 +14,44 @@ class App extends Component {
     }
   }
 
-  getSeasonData = async (season) => {
+  setSeason = async (season) => {
     const url = `http://localhost:3000/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
-    return seasonData;
+    this.setState({season, seasonData})
   }
 
-  getActiveTribes = (tribes, episodeData) => {
-    if (tribes.some(tribe => castaway.tribe === tribe.name)) {
-      return true;
-    } else {return false;}
-  }
-
-  updateCastaways = async (episode) => {
-    const castawayData = await getSeasonData(this.state.season);
+  // updateCastaways = async (episode) => {
+  //   const castawayData = await this.setSeason(this.state.season);
     
-    this.setState({
-      castaways: currentCastawaysTribes,
-      allTribes: castawayData.tribes,
-      activeTribes
-    });
-  }
+  //   this.setState({
+  //     castaways: currentCastawaysTribes,
+  //     allTribes: castawayData.tribes,
+  //     activeTribes
+  //   });
+  // }
 
-  updateEpisode = (event) => {
+  setEpisode = (event) => {
     const episode = event.target.value;
     this.setState({episode});
     this.updateCastaways(episode);
   }
 
   async componentDidMount() {
-    this.updateCastaways(0)
+    // this.updateCastaways(0)
   }
 
   render() {
-    const {seasonData, season, episode} = this.state;
+    const {setSeason, setEpisode, episode, season, seasonData} = this.state;
     return (
       <div className="App">
         <NavBar 
           season={season}
           episode={episode}
-          updateEpisode={this.updateEpisode}
+          setSeason={setSeason}
+          setEpisode={setEpisode}
         />
-        <TribeBoard activeTribes={activeTribes} castaways={castaways} />
+        <TribeBoard seasonData={seasonData} />
       </div>
     );
   }
