@@ -8,9 +8,9 @@ class App extends Component {
     super();
     this.state = {
       season: 37,
-      episode: 0,
+      episodeId: 's37e01',
       activeTribes: [],
-      seasonData: []
+      seasonData: {}
     }
   }
 
@@ -42,16 +42,16 @@ class App extends Component {
   }
 
   render() {
-    const {setSeason, setEpisode, episode, season, seasonData} = this.state;
+    const {setSeason, setEpisode, episodeId, season, seasonData} = this.state;
     return (
       <div className="App">
         <NavBar 
-          season={season}
-          episode={episode}
+          seasonNum={season}
+          episodeId={episodeId}
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
-        <TribeBoard seasonData={seasonData} />
+        <TribeBoard seasonData={seasonData} episodeId={episodeId}/>
       </div>
     );
   }

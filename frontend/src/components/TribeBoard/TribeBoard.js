@@ -3,16 +3,14 @@ import Tribe from '../Tribe/Tribe';
 
 class TribeBoard extends React.Component {
   state = {
-    activeTribes: []
+    activeTribes: [],
+    episodeData: {}
   }
 
-
-  // const episodes = this.props.seasonData.episodes;
-  // const tribes  = this.props.seasonData.tribes;
-  setActiveTribes = (seasonData, episode) => {
+  setActiveTribes = (seasonData, episodeId) => {
     const {tribes} = seasonData;
-    const episodeData = seasonData.episodes.find((episodex) => {
-       return episodex.id === episode;
+    const episodeData = seasonData.episodes.find((episode) => {
+       return episode.id === episodeId;
     })
     const activeTribes = tribes.filter((tribe) => {
       return episodeData.castaways.some(castaway => castaway.tribe === tribe.name);
@@ -21,18 +19,21 @@ class TribeBoard extends React.Component {
     this.setState({activeTribes})
   }
 
+  setEpisodeData = (seasonData, episodeId) => {
+    const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
+    this.setState({episodeData});
+  }
+
   componentWillReceiveProps(nextProps) {
-    const {seasonData} = nextProps;
+    const { seasonData, episodeId } = nextProps;
     if (seasonData.episodes) {
-      debugger;
-      this.setActiveTribes(seasonData, 's37e01')
+      this.setActiveTribes(seasonData, episodeId)
+      this.setEpisodeData(seasonData, episodeId)
     } 
   }
 
   render() {
-    const {activeTribes} = this.state;
-    const {seasonData} = this.props;
-    
+    const {activeTribes, episodeData} = this.state;
     return(
       <main>
       {activeTribes.length > 0 &&
@@ -40,7 +41,7 @@ class TribeBoard extends React.Component {
           <Tribe
             key={tribe.name}
             tribe={tribe}
-            seasonData={seasonData} />
+            episodeData={episodeData} />
         ))
       }
       {activeTribes.length === 0 && 'loading...'}
