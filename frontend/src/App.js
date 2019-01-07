@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    // this.updateCastaways(0)
+    this.setSeason(37)
   }
 
   render() {
