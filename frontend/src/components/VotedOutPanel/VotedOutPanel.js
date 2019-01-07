@@ -1,8 +1,7 @@
 import React from 'react';
 import CastawayCard from '../CastawayCard/CastawayCard'
-import './Tribe.css'
 
-const Tribe = ({ tribe, episodeData }) => {
+const Tribe = ({ episodeData }) => {
   // Subtler tones to the default tribe colors (brightness -20 on paletton)
   // Palleton: "brightness" "-5"x1, "-1"x5
   const tribeColorMap = {
@@ -16,7 +15,6 @@ const Tribe = ({ tribe, episodeData }) => {
 
   return (
     <section>
-    <h1 className="mb1">{tribe.name}</h1>
       <div className="castawayList votedout">
         {castaways && castaways.filter((castaway) => castaway.tribe === 'out')
           .map(castaway => {
@@ -24,7 +22,7 @@ const Tribe = ({ tribe, episodeData }) => {
               return <CastawayCard
                         key={castaway.name}
                         castaway={castaway}
-                        color={tribe.tribe_color}/>
+                      />
             } else {
               return `Loading image for ${castaway.name}`
             }
