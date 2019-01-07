@@ -1,7 +1,8 @@
 import React from 'react';
-import CastawayCard from '../CastawayCard/CastawayCard'
+import CastawayCard from '../CastawayCard/CastawayCard';
+import ('./VotedOutPanel.css');
 
-const Tribe = ({ episodeData }) => {
+const VotedOutPanel = ({ episodeData }) => {
   // Subtler tones to the default tribe colors (brightness -20 on paletton)
   // Palleton: "brightness" "-5"x1, "-1"x5
   const tribeColorMap = {
@@ -14,7 +15,7 @@ const Tribe = ({ episodeData }) => {
   const {castaways} = episodeData
 
   return (
-    <section>
+    <section className="voted-out-panel">
       <div className="castawayList votedout">
         {castaways && castaways.filter((castaway) => castaway.tribe === 'out')
           .map(castaway => {
@@ -32,4 +33,4 @@ const Tribe = ({ episodeData }) => {
   )
 }
 
-export default Tribe;
+export default VotedOutPanel;
