@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      season: 37,
+      season: null,
       episodeId: 's37e01',
       activeTribes: [],
       seasonData: {}
@@ -31,10 +31,10 @@ class App extends Component {
   //   });
   // }
 
-  setEpisode = (event) => {
-    const episode = event.target.value;
-    this.setState({episode});
-    this.updateCastaways(episode);
+  setEpisode = (episodeNum) => {
+    const formattedEpisodeNum = ("0" + episodeNum).slice(-2);
+    const episodeId = `s${this.state.season}e${formattedEpisodeNum}`
+    this.setState({episodeId});
   }
 
   async componentDidMount() {
@@ -42,7 +42,8 @@ class App extends Component {
   }
 
   render() {
-    const {setSeason, setEpisode, episodeId, season, seasonData} = this.state;
+    const {episodeId, season, seasonData} = this.state;
+    const {setSeason, setEpisode} = this;
     return (
       <div className="App">
         <NavBar 
