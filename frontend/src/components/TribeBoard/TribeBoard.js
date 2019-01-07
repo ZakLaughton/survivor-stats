@@ -14,24 +14,25 @@ class TribeBoard extends React.Component {
     const episodeData = seasonData.episodes.find((episodex) => {
        return episodex.id === episode;
     })
+    const activeTribes = tribes.filter((tribe) => {
+      return episodeData.castaways.some(castaway => castaway.tribe === tribe.name);
+    })
 
-    console.log('ed: ', episodeData)
+    this.setState({activeTribes})
   }
 
-  // getActiveTribes = (tribes, episodeData) => {
-  //   if (tribes.some(tribe => castaway.tribe === tribe.name)) {
-  //     return true;
-  //   } else {return false;}
-  // }
+  componentWillReceiveProps(nextProps) {
+    const {seasonData} = nextProps;
+    if (seasonData.episodes) {
+      debugger;
+      this.setActiveTribes(seasonData, 's37e01')
+    } 
+  }
 
   render() {
     const {activeTribes} = this.state;
     const {seasonData} = this.props;
-    // debugger;
-    console.log('sd: ', seasonData);
-    if (seasonData.episode) {
-      this.setActiveTribes(seasonData, 1)
-    } 
+    
     return(
       <main>
       {activeTribes.length > 0 &&

@@ -2,7 +2,7 @@ import React from 'react';
 import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
-const Tribe = ({ tribe, castaways }) => {
+const Tribe = ({ tribe, seasonData }) => {
   // Subtler tones to the default tribe colors (brightness -20 on paletton)
   // Palleton: "brightness" "-5"x1, "-1"x5
   const tribeColorMap = {
@@ -19,7 +19,7 @@ const Tribe = ({ tribe, castaways }) => {
     <section
       className="tribe pa2 fl min-h-100"
       style={sectionStyle}>
-      <h1 className="mb1">{tribe.name}</h1>
+      {/* <h1 className="mb1">{tribe.name}</h1>
       <div className="castawayList">
         {castaways.filter((castaway) => castaway.tribe === tribe.name )
           .map(castaway => {
@@ -32,7 +32,8 @@ const Tribe = ({ tribe, castaways }) => {
               return `Loading image for ${castaway.name}`
             }
         })}
-      </div>
+      </div> */}
+      Hi
     </section>
   )
 }
