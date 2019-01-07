@@ -1,0 +1,37 @@
+import React from 'react';
+import CastawayCard from '../CastawayCard/CastawayCard'
+import './Tribe.css'
+
+const Tribe = ({ tribe, episodeData }) => {
+  // Subtler tones to the default tribe colors (brightness -20 on paletton)
+  // Palleton: "brightness" "-5"x1, "-1"x5
+  const tribeColorMap = {
+    'orange': '#DF940A',
+    'purple': '#740274',
+    'green': '#007100',
+    'blue': '#0909B9'
+  }
+
+  const {castaways} = episodeData
+
+  return (
+    <section>
+    <h1 className="mb1">{tribe.name}</h1>
+      <div className="castawayList votedout">
+        {castaways && castaways.filter((castaway) => castaway.tribe === 'out')
+          .map(castaway => {
+            if(castaways) {
+              return <CastawayCard
+                        key={castaway.name}
+                        castaway={castaway}
+                        color={tribe.tribe_color}/>
+            } else {
+              return `Loading image for ${castaway.name}`
+            }
+        })}
+      </div>
+    </section>
+  )
+}
+
+export default Tribe;

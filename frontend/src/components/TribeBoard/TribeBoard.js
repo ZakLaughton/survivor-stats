@@ -1,5 +1,6 @@
 import React from 'react';
 import Tribe from '../Tribe/Tribe';
+import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
 
 class TribeBoard extends React.Component {
   state = {
@@ -45,6 +46,7 @@ class TribeBoard extends React.Component {
         ))
       }
       {activeTribes.length === 0 && 'loading...'}
+      <VotedOutPanel />
     </main>
     )
   }
