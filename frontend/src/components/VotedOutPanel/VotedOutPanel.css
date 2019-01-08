@@ -4,9 +4,20 @@
   bottom: 0;
   width: 100%;
   z-index: 100;
-  height: 100px;
+  height: 80px;
 }
 
 .votedout {
   height: 100%;
+  justify-content: flex-start;
 }
+
+.voted-out-panel img {
+  width: 64px;
+}
+
+.voted-out-panel .card-nameplate {
+  display:none;
+}
+
+
