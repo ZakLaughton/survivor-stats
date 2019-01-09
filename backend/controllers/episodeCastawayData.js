@@ -9,11 +9,11 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
   response.tribes = await db.select('name', 'tribe_color').from('tribes').where('season', '=', 37)
   const seasonEpisodes = await db.select('*').from('episodes').where('id', 'like', `s${season}e%`);
   const seasonCastaways = await db.select('*').from('season_castaway_mapping').where('season_no', '=', '37');
-  const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode').from('updates')
+  const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order').from('updates')
     .where('start_episode', 'like', `s${season}%`);
 
   const castawayDataByEpisode = seasonEpisodes
-    .filter(episode => episode.air_date)
+    .filter(episode => episode.air_date) // filter out episode 0
     .map((episode) => {
       const episodeObj = {
         id: null,
@@ -21,28 +21,32 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
       }
       episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
       episodeObj.castaways = seasonCastaways
-        .map((castaway) => ({'name': castaway.name}))
+        .map((castaway) => ({'name': castaway.name, 'votedOutOrder': null}))
         .sort(function(a, b) {                // alphabetize
           const nameA = a.name.toUpperCase();
           const nameB = b.name.toUpperCase();
           if (nameA < nameB) {return -1;}
           if (nameA > nameB) {return 1;}
           return 0;
-        });;
+        });
 
       // Populate each tribe for the current episode
       const castawaysWithTribes = episodeObj.castaways.map((castaway) => {
         const updatedCastaway = castaway;
         const currentTribe = seasonTribeChanges
-          .filter(change => change.start_episode <= episodeObj.id)
+          .filter(change => change.start_episode <= episodeObj.id)  // filter later episode data
           .filter(currentChange => currentChange.castaway === castaway.name)
           .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current)
-    
+        
+        if (currentTribe.boot_order) {updatedCastaway.votedOutOrder = currentTribe.boot_order}
         updatedCastaway.tribe = currentTribe.field_value;
         return updatedCastaway;
       });
 
       episodeObj.castaways = castawaysWithTribes;
+
+      
+
       return episodeObj;
   })
 
