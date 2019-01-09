@@ -20,9 +20,15 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
         castaways: []
       }
       episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
-      episodeObj.castaways = seasonCastaways.map((castaway) => {
-        return {'name': castaway.name}
-      })
+      episodeObj.castaways = seasonCastaways
+        .map((castaway) => ({'name': castaway.name}))
+        .sort(function(a, b) {                // alphabetize
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA < nameB) {return -1;}
+          if (nameA > nameB) {return 1;}
+          return 0;
+        });;
 
       // Populate each tribe for the current episode
       const castawaysWithTribes = episodeObj.castaways.map((castaway) => {
