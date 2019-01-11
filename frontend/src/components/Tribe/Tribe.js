@@ -22,7 +22,7 @@ const Tribe = ({ tribe, episodeData }) => {
       style={sectionStyle}>
       <h1 className="mb1">{tribe.name}</h1>
       <div className="castawayList">
-        {castaways && castaways.filter((castaway) => castaway.tribe === tribe.name )
+        {castaways && castaways.filter((castaway) => castaway.tribe.replace(/\d| /g, '') === tribe.name )
           .map(castaway => {
             if(castaways) {
               return <CastawayCard
