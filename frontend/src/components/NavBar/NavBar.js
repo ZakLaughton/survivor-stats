@@ -32,6 +32,7 @@ const NavBar = ({allSeasons, setSeason, setEpisode, seasonNum, episodeId, season
             <option value={Number(episode.id.slice(-2))}>Episode {Number(episode.id.slice(-2))}</option>
           ))}
       </select>
+      <h1>Visual Survivor <span className="beta">BETA</span></h1>
     </header>
   )
 }
