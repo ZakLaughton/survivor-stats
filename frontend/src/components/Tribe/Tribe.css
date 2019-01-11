@@ -15,3 +15,8 @@
   flex-flow: row wrap;
   justify-content: center;
 }
+
+.tribe .castawayList {
+  max-width: 800px;
+  margin: auto;
+}
