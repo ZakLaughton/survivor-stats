@@ -6,6 +6,8 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
     episodes: []
   }
 
+  console.log(req.query);
+
   response.tribes = await db.select('name', 'tribe_color').from('tribes').where('season', '=', 37)
   const seasonEpisodes = await db.select('*').from('episodes').where('id', 'like', `s${season}e%`);
   const seasonCastaways = await db.select('*').from('season_castaway_mapping').where('season_no', '=', '37');

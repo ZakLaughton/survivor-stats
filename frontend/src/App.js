@@ -22,21 +22,14 @@ class App extends Component {
     this.setState({season, seasonData})
   }
 
-  getAllSeasons = async () => {
+  initializeSeasons = async () => {
     const response = await fetch('http://localhost:3000/seasons');
     const allSeasons = await response.json();
-    return allSeasons;
-  }
-
-  getLastSeasonNum = (allSeasons) => {
-    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no)
+    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no)    
     const lastSeasonNum = sortedSeasons[0].season_no
-    return lastSeasonNum;
-  }
-
-  setLastSeason = async () => {
-    const lastSeason = this.getLastSeasonNum(await this.getAllSeasons());
-    this.setState({season: lastSeason});
+    this.setState({allSeasons: sortedSeasons});
+    await this.setSeason(lastSeasonNum);
+    this.setState({episodeId: `s${lastSeasonNum}e00`})
   }
 
   setEpisode = (episodeNum) => {
@@ -46,21 +39,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setLastSeason();
+    this.initializeSeasons();
   }
 
   render() {
-    const {episodeId, season, seasonData} = this.state;
+    const {allSeasons, episodeId, season, seasonData} = this.state;
     const {setSeason, setEpisode} = this;
     return (
       <div className="App">
         <NavBar 
+          allSeasons={allSeasons}
+          seasonData={seasonData}
           seasonNum={season}
           episodeId={episodeId}
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
-        <TribeBoard seasonData={seasonData} episodeId={episodeId}/>
+        {seasonData.episodes && 
+          <TribeBoard seasonData={seasonData} episodeId={episodeId}/>
+        }
+        
       </div>
     );
   }
