@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "API to return survivor data",
   "repository": {
-      "type" : "git",
-      "url" : "https://github.com/zlaughton/visual-survivor.git"
+    "type": "git",
+    "url": "https://github.com/zlaughton/visual-survivor.git"
   },
   "main": "index.js",
   "scripts": {

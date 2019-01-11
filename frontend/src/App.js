@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   setSeason = async (season) => {
-    const url = `http://localhost:5000/?season=${season}`;
+    const url = `https://visual-survivor.herokuapp.com/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
     const formattedSeasonNum = ("0" + season).slice(-2);
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   initializeSeasons = async () => {
-    const response = await fetch('http://localhost:5000/seasons');
+    const response = await fetch('https://visual-survivor.herokuapp.com/seasons');
     const allSeasons = await response.json();
     const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no);
     const lastSeasonNum = sortedSeasons[0].season_no;
