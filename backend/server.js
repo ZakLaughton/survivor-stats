@@ -4,7 +4,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const knex = require('knex');
-const season = 37;
 
 app.use(cors());
 
@@ -23,7 +22,7 @@ app.listen(3000, () => {
   console.log('app is running on port 3000');
 });
 
-app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db, season)});
+app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db)});
 
 app.get('/seasons', async (req, res) => {
   const seasons = await db.select('*').from('seasons');
