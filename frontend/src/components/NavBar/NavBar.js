@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 
-const NavBar = ({setSeason, setEpisode, seasonNum}) => {
+const NavBar = ({allSeasons, setSeason, setEpisode, seasonNum}) => {
   return(
     <header className="navbar" id="myTopnav">
       {/* <div class="dropdown">
@@ -21,8 +21,9 @@ const NavBar = ({setSeason, setEpisode, seasonNum}) => {
         </div>
       </div> */}
       <select value={seasonNum}>
-        <option selected disabled>Season</option>
-        <option value="37">Season 37</option>>
+        {allSeasons.map((season) => (
+          <option value={season.season_no}>Season {season.season_no.toString()}</option>
+        ))}
       </select>
       <select
         onChange={evt => setEpisode(evt.target.value)}
