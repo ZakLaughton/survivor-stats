@@ -19,17 +19,17 @@ class App extends Component {
     const url = `http://localhost:3000/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
-    this.setState({season, seasonData})
+    const formattedSeasonNum = ("0" + season).slice(-2);
+    this.setState({season, seasonData, episodeId: `s${formattedSeasonNum}e00`})
   }
 
   initializeSeasons = async () => {
     const response = await fetch('http://localhost:3000/seasons');
     const allSeasons = await response.json();
-    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no)    
-    const lastSeasonNum = sortedSeasons[0].season_no
+    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no);
+    const lastSeasonNum = sortedSeasons[0].season_no;
     this.setState({allSeasons: sortedSeasons});
     await this.setSeason(lastSeasonNum);
-    this.setState({episodeId: `s${lastSeasonNum}e00`})
   }
 
   setEpisode = (episodeNum) => {

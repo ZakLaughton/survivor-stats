@@ -20,14 +20,12 @@ const NavBar = ({allSeasons, setSeason, setEpisode, seasonNum}) => {
           <a href="#">Link 3</a>
         </div>
       </div> */}
-      <select value={seasonNum}>
+      <select value={seasonNum} onChange={evt => setSeason(evt.target.value)}>
         {allSeasons.map((season) => (
           <option value={season.season_no}>Season {season.season_no.toString()}</option>
         ))}
       </select>
-      <select
-        onChange={evt => setEpisode(evt.target.value)}
-      >
+      <select onChange={evt => setEpisode(evt.target.value)}>
         <option selected disabled value="0">Episode</option>
         <option value="1">Episode 1</option>
         <option value="2">Episode 2</option>

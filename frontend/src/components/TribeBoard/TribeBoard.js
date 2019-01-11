@@ -25,6 +25,12 @@ class TribeBoard extends React.Component {
     this.setState({episodeData});
   }
 
+  componentDidMount() {
+    const { seasonData, episodeId } = this.props;
+    this.setActiveTribes(seasonData, episodeId)
+    this.setEpisodeData(seasonData, episodeId)
+  }
+  
   componentWillReceiveProps(nextProps) {
     const { seasonData, episodeId } = nextProps;
     if (seasonData.episodes) {

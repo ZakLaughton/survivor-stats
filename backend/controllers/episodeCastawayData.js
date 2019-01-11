@@ -33,7 +33,6 @@ const getEpisodeCastawayData = async (req, res, db) => {
 
       // Populate each tribe for the current episode
       const castawaysWithTribes = episodeObj.castaways.map((castaway) => {
-        console.log('ca: ', castaway)
         const updatedCastaway = castaway;
         const currentTribe = seasonTribeChanges
           .filter(change => change.start_episode <= episodeObj.id)  // filter later episode data
