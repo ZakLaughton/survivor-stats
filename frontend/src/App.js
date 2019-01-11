@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import TribeBoard from './components/TribeBoard/TribeBoard'
+import TribeBoard from './components/TribeBoard/TribeBoard';
+import ReactGA from 'react-ga';
+
+function initializeReactGA() {
+  ReactGA.initialize('UA-67511792-3');
+  ReactGA.pageview('/');
+}
 
 class App extends Component {
   constructor() {
@@ -39,6 +45,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    initializeReactGA();
     this.initializeSeasons();
   }
 
