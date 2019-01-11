@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const knex = require('knex');
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -18,9 +19,7 @@ const db = knex({
   }
 });
 
-app.listen(3000, () => {
-  console.log('app is running on port 3000');
-});
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db)});
 
