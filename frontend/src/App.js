@@ -7,6 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      allSeasons: [],
       season: null,
       episodeId: '',
       activeTribes: [],
@@ -21,14 +22,31 @@ class App extends Component {
     this.setState({season, seasonData})
   }
 
+  getAllSeasons = async () => {
+    const response = await fetch('http://localhost:3000/seasons');
+    const allSeasons = await response.json();
+    return allSeasons;
+  }
+
+  getLastSeasonNum = (allSeasons) => {
+    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no)
+    const lastSeasonNum = sortedSeasons[0].season_no
+    return lastSeasonNum;
+  }
+
+  setLastSeason = async () => {
+    const lastSeason = this.getLastSeasonNum(await this.getAllSeasons());
+    this.setState({season: lastSeason});
+  }
+
   setEpisode = (episodeNum) => {
     const formattedEpisodeNum = ("0" + episodeNum).slice(-2);
     const episodeId = `s${this.state.season}e${formattedEpisodeNum}`
     this.setState({episodeId});
   }
 
-  async componentDidMount() {
-    this.setSeason(37)
+  componentDidMount() {
+    this.setLastSeason();
   }
 
   render() {

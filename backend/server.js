@@ -26,7 +26,7 @@ app.listen(3000, () => {
 app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db, season)});
 
 app.get('/seasons', async (req, res) => {
-  seasons = await db.select('*').from('seasons');
+  const seasons = await db.select('*').from('seasons');
   console.log(seasons);
   res.json(seasons);
 })
