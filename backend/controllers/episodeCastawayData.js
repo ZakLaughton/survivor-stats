@@ -54,6 +54,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
           } else {
             updatedCastaway.tribe = 'out'
           }
+          updatedCastaway.bootOrder = latestChanges.find((change) => change.field_value === 'out').boot_order;
         } else {
           updatedCastaway.tribe = latestChanges[0].field_value;
         }
