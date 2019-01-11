@@ -5,8 +5,10 @@ import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
 
 function initializeReactGA() {
-  ReactGA.initialize('UA-67511792-3');
-  ReactGA.pageview('/');
+  if (document.location.hostname.search('visualsurvivor.com') !== -1) {
+    ReactGA.initialize('UA-67511792-3');
+    ReactGA.pageview('/'); 
+  }
 }
 
 class App extends Component {
