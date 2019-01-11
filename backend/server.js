@@ -4,8 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const knex = require('knex');
-
 const season = 37;
+
 app.use(cors());
 
 const castawayData = require('./controllers/episodeCastawayData');
@@ -21,8 +21,13 @@ const db = knex({
 
 app.listen(3000, () => {
   console.log('app is running on port 3000');
-})
+});
 
-app.get('/', (req, res) => {
-  castawayData.getEpisodeCastawayData(req, res, db, season)})
+app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db, season)});
+
+app.get('/seasons', async (req, res) => {
+  seasons = await db.select('*').from('seasons');
+  console.log(seasons);
+  res.json(seasons);
+})
 // app.get('/s:season/e:episode', (req, res) => {episodePlayerData.getEpisodePlayerData(req, res)})

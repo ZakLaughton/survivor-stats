@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       season: null,
-      episodeId: 's37e00',
+      episodeId: '',
       activeTribes: [],
       seasonData: {}
     }
@@ -20,16 +20,6 @@ class App extends Component {
     const seasonData = await response.json();
     this.setState({season, seasonData})
   }
-
-  // updateCastaways = async (episode) => {
-  //   const castawayData = await this.setSeason(this.state.season);
-    
-  //   this.setState({
-  //     castaways: currentCastawaysTribes,
-  //     allTribes: castawayData.tribes,
-  //     activeTribes
-  //   });
-  // }
 
   setEpisode = (episodeNum) => {
     const formattedEpisodeNum = ("0" + episodeNum).slice(-2);
