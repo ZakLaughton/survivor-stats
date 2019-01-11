@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       season: null,
-      episodeId: 's37e01',
+      episodeId: 's37e00',
       activeTribes: [],
       seasonData: {}
     }

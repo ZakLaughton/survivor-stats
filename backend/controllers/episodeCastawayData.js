@@ -13,7 +13,6 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
     .where('start_episode', 'like', `s${season}%`);
 
   const castawayDataByEpisode = seasonEpisodes
-    .filter(episode => episode.air_date) // filter out episode 0
     .map((episode) => {
       const episodeObj = {
         id: null,
