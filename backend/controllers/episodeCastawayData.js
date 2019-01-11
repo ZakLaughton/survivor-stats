@@ -21,7 +21,7 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
       }
       episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
       episodeObj.castaways = seasonCastaways
-        .map((castaway) => ({'name': castaway.name, 'votedOutOrder': null}))
+        .map((castaway) => ({'name': castaway.name, 'bootOrder': null}))
         .sort(function(a, b) {                // alphabetize
           const nameA = a.name.toUpperCase();
           const nameB = b.name.toUpperCase();
@@ -38,7 +38,7 @@ const getEpisodeCastawayData = async (req, res, db, season = 37) => {
           .filter(currentChange => currentChange.castaway === castaway.name)
           .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current)
         
-        if (currentTribe.boot_order) {updatedCastaway.votedOutOrder = currentTribe.boot_order}
+        if (currentTribe.boot_order) {updatedCastaway.bootOrder = currentTribe.boot_order}
         updatedCastaway.tribe = currentTribe.field_value;
         return updatedCastaway;
       });
