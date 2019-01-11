@@ -1,6 +1,7 @@
 import React from 'react';
 import Tribe from '../Tribe/Tribe';
 import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
+import './TribeBoard.css'
 
 class TribeBoard extends React.Component {
   state = {
@@ -43,17 +44,20 @@ class TribeBoard extends React.Component {
     const {activeTribes, episodeData} = this.state;
     return(
       <main>
-      {activeTribes.length > 0 &&
-        activeTribes.map(tribe => (
-          <Tribe
-            key={tribe.name}
-            tribe={tribe}
-            episodeData={episodeData} />
-        ))
-      }
-      {activeTribes.length === 0 && 'loading...'}
-      <VotedOutPanel episodeData={episodeData}/>
-    </main>
+        <div className="active-tribes">
+          {activeTribes.length > 0 &&
+            activeTribes.map(tribe => (
+              <Tribe
+                key={tribe.name}
+                tribe={tribe}
+                episodeData={episodeData} />
+            ))
+          }
+          {activeTribes.length === 0 && 'loading...'}
+        </div>
+        <div className="clear-footer"></div>
+        <VotedOutPanel episodeData={episodeData}/>
+      </main>
     )
   }
 }
