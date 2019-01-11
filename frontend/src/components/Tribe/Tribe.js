@@ -9,7 +9,8 @@ const Tribe = ({ tribe, episodeData }) => {
     'orange': '#DF940A',
     'purple': '#740274',
     'green': '#007100',
-    'blue': '#0909B9'
+    'blue': '#0909B9',
+    'black': '#363636'
   }
   const sectionStyle = {
     backgroundColor: tribeColorMap[tribe.tribe_color]
@@ -24,15 +25,12 @@ const Tribe = ({ tribe, episodeData }) => {
       <div className="castawayList">
         {castaways && castaways.filter((castaway) => castaway.tribe.replace(/\d| /g, '') === tribe.name )
           .map(castaway => {
-            if(castaways) {
               return <CastawayCard
                         key={castaway.name}
                         castaway={castaway}
                         color={tribe.tribe_color}/>
-            } else {
-              return `Loading image for ${castaway.name}`
             }
-        })}
+        )}
       </div>
     </section>
   )
