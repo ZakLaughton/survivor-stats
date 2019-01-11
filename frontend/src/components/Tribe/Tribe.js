@@ -3,17 +3,17 @@ import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
 const Tribe = ({ tribe, episodeData }) => {
-  // Subtler tones to the default tribe colors (brightness -20 on paletton)
-  // Palleton: "brightness" "-5"x1, "-1"x5
-  const tribeColorMap = {
-    'orange': '#DF940A',
-    'purple': '#740274',
-    'green': '#007100',
-    'blue': '#0909B9',
-    'black': '#363636'
+  //mycolor.space gradient. First color, then first color on "switch palette"
+  const backgroundGradients = {
+    'orange': 'linear-gradient(to bottom, #df940a, #be710e, #9b510e, #76340a, #511a00)',
+    'purple': 'linear-gradient(to bottom, #740274, #963595, #b85bb7, #db80db, #ffa5ff)',
+    'green': 'linear-gradient(to bottom, #007100, #328e24, #53ac41, #72ca5e, #91ea7b)',
+    'blue': 'linear-gradient(to bottom, #0055f1, #5270f6, #7a8cfa, #9ca8fd, #bcc4ff)',
+    'black': 'linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)'
   }
+
   const sectionStyle = {
-    backgroundColor: tribeColorMap[tribe.tribe_color]
+    background: backgroundGradients[tribe.tribe_color]
   }
   const {castaways} = episodeData
 
