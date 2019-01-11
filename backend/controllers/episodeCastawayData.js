@@ -22,19 +22,49 @@ const getEpisodeCastawayData = async (req, res, db) => {
       }
       episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
       episodeObj.castaways = seasonCastaways
-        .map((castaway) => ({'name': castaway.name, 'bootOrder': null}))
+        .map((castaway) => ({'name': castaway.name, 'currentBoot': false, 'bootOrder': null}))
         .sort((a, b) => (a.name < b.name ? -1 : 1))
 
       // Populate each tribe for the current episode
       const castawaysWithTribes = episodeObj.castaways.map((castaway) => {
         const updatedCastaway = castaway;
-        const currentTribe = seasonTribeChanges
+        const currentChanges = seasonTribeChanges
           .filter(change => change.start_episode <= episodeObj.id)  // filter later episode data
           .filter(currentChange => currentChange.castaway === castaway.name)
-          .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current)
         
-        if (currentTribe.boot_order) {updatedCastaway.bootOrder = currentTribe.boot_order}
-        updatedCastaway.tribe = currentTribe.field_value;
+        // find the episode(s) with the highest change.start_episode
+        const latestChangeEpisode = currentChanges
+          .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current)
+          .start_episode
+
+        // Get changes from the most recent episode
+        const latestChanges = currentChanges.filter((change) => change.start_episode === latestChangeEpisode);
+        // To retrieve last tribe for booted contestants
+        const latestNonOutChange = currentChanges
+          .filter((change) => change.field_value != 'out')
+          .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current);
+          
+        
+        // Handle booted contestants
+        if (latestChanges.some((change) => change.field_value === 'out')) {
+          // Handle contestants booted in THIS episode
+          if (latestChangeEpisode === episodeObj.id) {
+            updatedCastaway.currentBoot = true;
+            updatedCastaway.tribe = latestNonOutChange.field_value;
+          } else {
+            updatedCastaway.tribe = 'out'
+          }
+        } else {
+          updatedCastaway.tribe = latestChanges[0].field_value;
+        }
+
+        // if one change.field_value is "out"
+        //   if change.start_episode === episodeObj.id
+        //     currentBoot = true
+        //   currentBoot === true ? updatedCastaway.tribe = change.field_value : ... = 'out'
+        
+        // if (currentTribe.boot_order) {updatedCastaway.bootOrder = currentTribe.boot_order}
+        // updatedCastaway.tribe = currentTribe.field_value;
         return updatedCastaway;
       });
 
