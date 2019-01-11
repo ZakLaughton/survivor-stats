@@ -1,5 +1,8 @@
 .active-tribes {
   display: flex;
+  min-height: 100vh;
 }
 
-.clear-footer {clear: both; height: 80px;}
+.clear-footer {
+    clear: both; height: 80px;
+}
