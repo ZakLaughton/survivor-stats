@@ -18,7 +18,7 @@ const VotedOutPanel = ({ episodeData }) => {
     <section className="voted-out-panel">
       <div className="castawayList votedout">
         {castaways && castaways
-          .filter((castaway) => castaway.tribe === 'out')
+          .filter((castaway) => castaway.tribe === 'out' || castaway.currentBoot)
           .sort((a, b) => a.bootOrder - b.bootOrder)
           .map(castaway => {
             if(castaways) {
