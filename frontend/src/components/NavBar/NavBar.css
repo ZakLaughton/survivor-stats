@@ -72,3 +72,23 @@
     color: rgb(255,0,0,0.7);
     font-weight: bold;
   }
+
+@media only screen and (max-width: 500px) {
+  .navbar h1 {
+    font-size: 1rem;
+  }
+}
+
+/* Move title above selectors on small screens */
+@media only screen and (max-width: 400px) {
+  .navbar {
+    height: 51px
+  }
+  .navbar h1 {
+    position: initial;
+    right: initial;
+    float: initial;
+    display: block;
+    font-size: 1rem;
+  }
+}

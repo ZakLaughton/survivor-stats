@@ -20,6 +20,7 @@ const NavBar = ({allSeasons, setSeason, setEpisode, seasonNum, episodeId, season
           <a href="#">Link 3</a>
         </div>
       </div> */}
+      <h1>Visual Survivor <span className="beta">BETA</span></h1>
       <select value={seasonNum} onChange={evt => setSeason(evt.target.value)}>
         {allSeasons.map((season) => (
           <option value={season.season_no}>Season {season.season_no.toString()}</option>
@@ -32,7 +33,6 @@ const NavBar = ({allSeasons, setSeason, setEpisode, seasonNum, episodeId, season
             <option value={Number(episode.id.slice(-2))}>Episode {Number(episode.id.slice(-2))}</option>
           ))}
       </select>
-      <h1>Visual Survivor <span className="beta">BETA</span></h1>
     </header>
   )
 }
