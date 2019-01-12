@@ -7,6 +7,10 @@
   height: 80px;
 }
 
+.clear-footer {
+  clear: both; height: 80px;
+}
+
 .votedout {
   height: 100%;
   justify-content: flex-start;

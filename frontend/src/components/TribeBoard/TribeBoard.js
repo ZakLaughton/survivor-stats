@@ -58,7 +58,6 @@ class TribeBoard extends React.Component {
           }
           {activeTribes.length === 0 && 'loading...'}
         </div>
-        <div className="clear-footer"></div>
         <VotedOutPanel episodeData={episodeData}/>
       </main>
     )
