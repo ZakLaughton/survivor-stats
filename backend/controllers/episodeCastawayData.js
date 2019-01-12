@@ -12,7 +12,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
   const seasonEpisodes = await db.select('*').from('episodes').where('id', 'like', `s${season}e%`).catch(console.log);
   const seasonCastaways = await db.select('*').from('season_castaway_mapping').where('season_no', '=', Number(season)).catch(console.log);
   const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order').from('updates')
-    .where('start_episode', 'like', `s${season}%`).catch(console.log);
+    .where('start_episode', 'like', `s${season}%`).where('field', '=', 'tribe');
 
   const castawayDataByEpisode = seasonEpisodes
     .map((episode) => {
