@@ -59,13 +59,6 @@ const getEpisodeCastawayData = async (req, res, db) => {
           updatedCastaway.tribe = latestChanges[0].field_value;
         }
 
-        // if one change.field_value is "out"
-        //   if change.start_episode === episodeObj.id
-        //     currentBoot = true
-        //   currentBoot === true ? updatedCastaway.tribe = change.field_value : ... = 'out'
-        
-        // if (currentTribe.boot_order) {updatedCastaway.bootOrder = currentTribe.boot_order}
-        // updatedCastaway.tribe = currentTribe.field_value;
         return updatedCastaway;
       });
 
