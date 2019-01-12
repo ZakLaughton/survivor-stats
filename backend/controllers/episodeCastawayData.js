@@ -39,11 +39,13 @@ const getEpisodeCastawayData = async (req, res, db) => {
 
         // Get changes from the most recent episode
         const latestChanges = currentChanges.filter((change) => change.start_episode === latestChangeEpisode);
+        // Get previous changes for former tribes
+        const previousChanges = currentChanges.filter((change) => change.start_episode != latestChangeEpisode);
         // To retrieve last tribe for booted contestants
         const latestNonOutChange = currentChanges
           .filter((change) => change.field_value != 'out')
           .reduce((prev, current) => (prev.start_episode > current.start_episode) ? prev : current);
-          
+        updatedCastaway.formerTribes = previousChanges.map(change => change.field_value)
         
         // Handle booted contestants
         if (latestChanges.some((change) => change.field_value === 'out')) {
