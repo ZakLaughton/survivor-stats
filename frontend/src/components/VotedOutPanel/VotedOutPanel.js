@@ -14,25 +14,30 @@ const VotedOutPanel = ({ episodeData }) => {
 
   const {castaways} = episodeData
 
-  return (
-    <section className="voted-out-panel">
-      <div className="castawayList votedout">
-        {castaways && castaways
-          .filter((castaway) => castaway.tribe === 'out' || castaway.currentBoot)
-          .sort((a, b) => a.bootOrder - b.bootOrder)
-          .map(castaway => {
-            if(castaways) {
-              return <CastawayCard
-                        key={castaway.name}
-                        castaway={castaway}
-                      />
-            } else {
-              return `Loading image for ${castaway.name}`
-            }
-        })}
-      </div>
-    </section>
-  )
+
+  if(episodeData.castaways 
+  && episodeData.castaways.some((castaway) => castaway.tribe === 'out' || castaway.currentBoot)) {
+    return(
+      <section className="voted-out-panel">
+        <div className="castawayList votedout">
+          {castaways && castaways
+            .filter((castaway) => castaway.tribe === 'out' || castaway.currentBoot)
+            .sort((a, b) => a.bootOrder - b.bootOrder)
+            .map(castaway => {
+              if(castaways) {
+                return <CastawayCard
+                          key={castaway.name}
+                          castaway={castaway}
+                        />
+              } else {
+                return (`Loading image for ${castaway.name}`)
+              }
+          })}
+        </div>
+      </section>
+    )} else {
+      return null;
+    }
 }
 
 export default VotedOutPanel;
