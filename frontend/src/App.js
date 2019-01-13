@@ -68,7 +68,11 @@ class App extends Component {
           setEpisode={setEpisode}
         />
         {seasonData.episodes && 
-          <TribeBoard seasonData={seasonData} episodeId={episodeId}/>
+          <TribeBoard
+            seasonData={seasonData}
+            episodeId={episodeId}
+            tribeData={seasonData.tribes}
+          />
         }
       </div>
     );

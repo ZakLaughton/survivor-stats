@@ -15,6 +15,21 @@
     margin-right: auto;
 }
 
+.tribe-circle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tribe-circle {
+    border: solid black 1px;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+    display: inline-block;
+}
+
 .card-name {
     max-width: 90%;
     color: rgb(255,255,255,0.9);
