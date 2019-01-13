@@ -1,11 +1,14 @@
 import React from 'react';
 import './CastawayCard.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const CastawayCard = ({castaway, tribeData}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
+  const iconLibrary = {
+    'immunity idol': 'fa-shield-alt',
+    'idol nullifier': 'fa-ban'
+  }
+
   return(
     <article className="castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2">
       <div className="tribe-circle-container">
@@ -21,7 +24,7 @@ const CastawayCard = ({castaway, tribeData}) => {
       </div>
       <div className="tribe-advantage-container">
         {tribeData && castaway.advantages.map(advantage => {
-          return (<i class="fas fa-shield-alt"></i>)
+          return (<i className={`advantage fas ${iconLibrary[advantage.item]}`}></i>)
         })}
       </div>
       <img
