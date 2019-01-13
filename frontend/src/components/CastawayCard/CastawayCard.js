@@ -7,7 +7,7 @@ const CastawayCard = ({castaway, tribeData}) => {
     <article className="castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2">
       <div className="tribe-circle-container">
         {tribeData && castaway.formerTribes.map(formerTribe => {
-          const circleColor = tribeData.find(tribe => formerTribe === tribe.name).tribe_color;
+          const circleColor = tribeData.find(tribe => formerTribe.replace(/\d| /g, '') === tribe.name).tribe_color;
           return (
             <div 
               className={`tribe-circle`}
