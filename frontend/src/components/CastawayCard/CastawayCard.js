@@ -26,7 +26,7 @@ const CastawayCard = ({castaway, tribeData}) => {
       </div>
       <div className="tribe-advantage-container">
         {tribeData && castaway.advantages.map(advantage => {
-          return (<i className={`advantage fas ${iconLibrary[advantage.item]}`}></i>)
+          return (<i className={`advantage fas ${iconLibrary[advantage.item]}`} title={`${advantage.item}`}></i>)
         })}
       </div>
       <img
