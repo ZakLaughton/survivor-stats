@@ -11,7 +11,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
   response.tribes = await db.select('name', 'tribe_color').from('tribes').where('season', '=', Number(season)).catch(console.log);
   const seasonEpisodes = await db.select('*').from('episodes').where('id', 'like', `s${season}e%`).catch(console.log);
   const seasonCastaways = await db.select('*').from('season_castaway_mapping').where('season_no', '=', Number(season)).catch(console.log);
-  const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order').from('updates')
+  const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order', 'details').from('updates')
     .where('start_episode', 'like', `s${season}%`).where('field', '=', 'tribe');
   const seasonAdvantageChanges = await db.select('castaway', 'field_value', 'start_episode', 'end_episode', 'details').from('updates')
     .where('start_episode', 'like', `s${season}%`).where('field', '=', 'advantage');
@@ -26,7 +26,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
       }
       episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
       episodeObj.castaways = seasonCastaways
-        .map((castaway) => ({'name': castaway.name, 'currentBoot': false, 'bootOrder': null}))
+        .map((castaway) => ({'name': castaway.name, 'currentBoot': false, 'juryMember': false, 'bootOrder': null}))
         .sort((a, b) => (a.name < b.name ? -1 : 1))
 
       // Populate tribe data for each castaway
@@ -62,6 +62,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
           } else {
             updatedCastaway.tribe = 'out'
           }
+          if (latestChanges.some((change) => change.details === 'jury')) {updatedCastaway.juryMember = true}
           updatedCastaway.bootOrder = latestChanges.find((change) => change.field_value === 'out').boot_order;
         } else {
           updatedCastaway.tribe = latestChanges[0].field_value;
