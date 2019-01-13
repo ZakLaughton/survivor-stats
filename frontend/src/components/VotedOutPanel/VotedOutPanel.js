@@ -6,6 +6,7 @@ const VotedOutPanel = ({ episodeData }) => {
 
   const {castaways} = episodeData;
   const juryStarted = castaways && castaways.some((castaway) => castaway.juryMember) ? true : false;
+  const grayScalePrejury = juryStarted ? 'grayscale' : '';
 
   if(episodeData.castaways 
   && episodeData.castaways.some((castaway) => castaway.tribe === 'out' || castaway.currentBoot)) {
@@ -22,6 +23,7 @@ const VotedOutPanel = ({ episodeData }) => {
                     <CastawayCard
                       key={castaway.name}
                       castaway={castaway}
+                      grayScale={grayScalePrejury}
                       className={`animate fadeIn`}
                       />
                   )

@@ -2,7 +2,7 @@ import React from 'react';
 import './CastawayCard.css';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 
-const CastawayCard = ({castaway, tribeData}) => {
+const CastawayCard = ({castaway, tribeData, grayScale}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
 
   return(
@@ -21,7 +21,7 @@ const CastawayCard = ({castaway, tribeData}) => {
       <AdvantageIcons castaway={castaway}/>
       <img
         src={require(`../../img/${imageFileName}`)}
-        className="db br2 br--top"
+        className={`db br2 br--top ${grayScale}`}
         alt={castaway.name} />
       <div className="card-nameplate" >
           <h2 className="card-name br2 mv0 center tc">
