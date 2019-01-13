@@ -30,7 +30,7 @@ const CastawayCard = ({castaway, tribeData}) => {
       <img
         src={require(`../../img/${imageFileName}`)}
         className="db br2 br--top"
-        alt="Kitten looking menacing." />
+        alt={castaway.name} />
       <div className="card-nameplate" >
           <h2 className="card-name br2 mv0 center tc">
             {castaway.name}
