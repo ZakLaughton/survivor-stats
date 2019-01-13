@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.acfc5bb4.chunk.css",
-  "main.js": "/static/js/main.44d1ad46.chunk.js",
-  "main.js.map": "/static/js/main.44d1ad46.chunk.js.map",
+  "main.js": "/static/js/main.5f757252.chunk.js",
+  "main.js.map": "/static/js/main.5f757252.chunk.js.map",
   "static/css/1.731dae2d.chunk.css": "/static/css/1.731dae2d.chunk.css",
   "static/js/1.31b14c7d.chunk.js": "/static/js/1.31b14c7d.chunk.js",
   "static/js/1.31b14c7d.chunk.js.map": "/static/js/1.31b14c7d.chunk.js.map",
@@ -10,7 +10,7 @@
   "static/js/2.c7b45caa.chunk.js.map": "/static/js/2.c7b45caa.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.9e81e88b.js",
   "runtime~main.js.map": "/static/js/runtime~main.9e81e88b.js.map",
-  "static/media/App.css": "/static/media/survivant.b1dda199.ttf",
+  "static/media/App.css": "/static/media/survivorfont.9ba24af1.ttf",
   "static/media/alec_merlino.jpg": "/static/media/alec_merlino.9793c71a.jpg",
   "static/media/alison_raybould.jpg": "/static/media/alison_raybould.78e62bf8.jpg",
   "static/media/angela_perkins.jpg": "/static/media/angela_perkins.c791db95.jpg",
@@ -52,9 +52,9 @@
   "static/media/stephanie_johnson.jpg": "/static/media/stephanie_johnson.1b96b48a.jpg",
   "static/media/wendell_holland.jpg": "/static/media/wendell_holland.57987108.jpg",
   "static/css/main.acfc5bb4.chunk.css.map": "/static/css/main.acfc5bb4.chunk.css.map",
-  "static/css/1.731dae2d.chunk.css.map": "/static/css/1.731dae2d.chunk.css.map",
   "static/css/2.c7150f37.chunk.css.map": "/static/css/2.c7150f37.chunk.css.map",
+  "static/css/1.731dae2d.chunk.css.map": "/static/css/1.731dae2d.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.7b6f7d5a8360d9847c5e5563a5e6a1f0.js": "/precache-manifest.7b6f7d5a8360d9847c5e5563a5e6a1f0.js",
+  "precache-manifest.5b38fdc21b2adf05037b67624f3c7a30.js": "/precache-manifest.5b38fdc21b2adf05037b67624f3c7a30.js",
   "service-worker.js": "/service-worker.js"
 }
