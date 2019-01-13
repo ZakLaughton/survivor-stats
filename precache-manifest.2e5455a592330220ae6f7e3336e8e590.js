@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "739b579e881b64cd3fbd",
-    "url": "/static/css/main.f466719f.chunk.css"
+    "revision": "df18c87a7e6bd5419997",
+    "url": "/static/css/main.ab2ec86f.chunk.css"
   },
   {
-    "revision": "739b579e881b64cd3fbd",
-    "url": "/static/js/main.739b579e.chunk.js"
+    "revision": "df18c87a7e6bd5419997",
+    "url": "/static/js/main.df18c87a.chunk.js"
   },
   {
     "revision": "317033fc78289ba00df0",
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.eaaf32a5.js"
   },
   {
-    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
-    "url": "/static/media/survivorfont.9ba24af1.ttf"
-  },
-  {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
     "url": "/static/media/survivant.b1dda199.ttf"
+  },
+  {
+    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
+    "url": "/static/media/survivorfont.9ba24af1.ttf"
   },
   {
     "revision": "9793c71ad8ebdaf3e485702d70bf10a0",
@@ -196,7 +196,7 @@ self.__precacheManifest = [
     "url": "/static/media/wendell_holland.57987108.jpg"
   },
   {
-    "revision": "c6257e7573e6b1b2af1d555cae526a37",
+    "revision": "d19962c7b3f7b9fc125d0039c4714760",
     "url": "/index.html"
   }
 ];
