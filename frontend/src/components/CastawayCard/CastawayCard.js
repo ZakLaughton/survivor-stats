@@ -16,6 +16,11 @@ const CastawayCard = ({castaway, tribeData}) => {
           )
         })}
       </div>
+      <div className="tribe-advantage-container">
+        {tribeData && castaway.advantages.map(advantage => {
+          return (advantage.item)
+        })}
+      </div>
       <img
         src={require(`../../img/${imageFileName}`)}
         className="db br2 br--top"
