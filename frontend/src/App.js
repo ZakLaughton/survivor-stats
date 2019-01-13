@@ -4,6 +4,9 @@ import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
 
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function initializeReactGA() {
   if (document.location.hostname.search('visualsurvivor.com') !== -1) {
     ReactGA.initialize('UA-67511792-3');
@@ -59,6 +62,7 @@ class App extends Component {
     const {setSeason, setEpisode} = this;
     return (
       <div className="App">
+      <FontAwesomeIcon icon={['fas', 'fa-shield-alt']} />
         <NavBar 
           allSeasons={allSeasons}
           seasonData={seasonData}

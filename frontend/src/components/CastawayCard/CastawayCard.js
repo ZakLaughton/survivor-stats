@@ -1,5 +1,8 @@
 import React from 'react';
 import './CastawayCard.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const CastawayCard = ({castaway, tribeData}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
@@ -18,7 +21,7 @@ const CastawayCard = ({castaway, tribeData}) => {
       </div>
       <div className="tribe-advantage-container">
         {tribeData && castaway.advantages.map(advantage => {
-          return (advantage.item)
+          return (<i class="fas fa-shield-alt"></i>)
         })}
       </div>
       <img
