@@ -6,7 +6,6 @@ const VotedOutPanel = ({ episodeData }) => {
 
   const {castaways} = episodeData
 
-
   if(episodeData.castaways 
   && episodeData.castaways.some((castaway) => castaway.tribe === 'out' || castaway.currentBoot)) {
     return(
@@ -18,16 +17,31 @@ const VotedOutPanel = ({ episodeData }) => {
               .filter((castaway) => (castaway.tribe === 'out' || castaway.currentBoot) && !castaway.juryMember)
               .sort((a, b) => a.bootOrder - b.bootOrder)
               .map(castaway => {
-                if(castaways) {
-                  return <CastawayCard
-                            key={castaway.name}
-                            castaway={castaway}
-                            className='animate fadeIn'
-                          />
-                } else {
-                  return (`Loading image for ${castaway.name}`)
-                }
+                  return (
+                    <CastawayCard
+                      key={castaway.name}
+                      castaway={castaway}
+                      className='animate fadeIn'
+                      />
+                  )
             })}
+            {castaways.some((castaway) => castaway.juryMember) && 
+              <span className="jury-title">JURY</span>
+            }
+            {castaways.some((castaway) => castaway.juryMember) && 
+              castaways
+                .filter(castaway => castaway.juryMember)
+                .sort((a, b) => a.bootOrder - b.bootOrder)
+                .map(castaway => {
+                  return(
+                    <CastawayCard
+                      key={castaway.name}
+                      castaway={castaway}
+                      className='animate fadeIn'
+                    />
+                  )
+              })}
+            
           </div>
         </section>
       </div>

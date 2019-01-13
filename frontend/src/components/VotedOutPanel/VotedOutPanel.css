@@ -26,4 +26,12 @@
   display:none;
 }
 
+.jury-title {
+  writing-mode: tb-rl;
+  transform: rotate(-180deg);
+  font-family: 'Londrina Solid', sans-serif;
+  font-weight: 100;
+  color: white;
+}
+
 
