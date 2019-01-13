@@ -12,7 +12,7 @@ const VotedOutPanel = ({ episodeData }) => {
     return(
       <div>
         <div className="clear-footer"></div>
-        <section className="voted-out-panel">
+        <section className="voted-out-panel slideUp">
           <div className="castawayList votedout">
             {castaways && castaways
               .filter((castaway) => castaway.tribe === 'out' || castaway.currentBoot)
