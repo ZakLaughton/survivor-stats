@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "df18c87a7e6bd5419997",
+    "revision": "70e3c9a2f7109321b38b",
     "url": "/static/css/main.ab2ec86f.chunk.css"
   },
   {
-    "revision": "df18c87a7e6bd5419997",
-    "url": "/static/js/main.df18c87a.chunk.js"
+    "revision": "70e3c9a2f7109321b38b",
+    "url": "/static/js/main.70e3c9a2.chunk.js"
   },
   {
     "revision": "317033fc78289ba00df0",
@@ -196,7 +196,7 @@ self.__precacheManifest = [
     "url": "/static/media/wendell_holland.57987108.jpg"
   },
   {
-    "revision": "d19962c7b3f7b9fc125d0039c4714760",
+    "revision": "e26bcb756bfd813cf7e2e51604f27076",
     "url": "/index.html"
   }
 ];
