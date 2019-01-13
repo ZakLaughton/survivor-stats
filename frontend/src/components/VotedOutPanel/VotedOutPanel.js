@@ -12,7 +12,7 @@ const VotedOutPanel = ({ episodeData }) => {
     return(
       <div>
         <div className="clear-footer"></div>
-        <section className="voted-out-panel slideUp">
+        <section className="voted-out-panel animated slideInUp">
           <div className="castawayList votedout">
             {castaways && castaways
               .filter((castaway) => castaway.tribe === 'out' || castaway.currentBoot)
@@ -22,6 +22,7 @@ const VotedOutPanel = ({ episodeData }) => {
                   return <CastawayCard
                             key={castaway.name}
                             castaway={castaway}
+                            className='animate fadeIn'
                           />
                 } else {
                   return (`Loading image for ${castaway.name}`)
