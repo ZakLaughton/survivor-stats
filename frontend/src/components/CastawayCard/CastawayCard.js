@@ -18,7 +18,7 @@ const CastawayCard = ({castaway, tribeData}) => {
           )
         })}
       </div>
-      <AdvantageIcons castaway={castaway} tribeData={tribeData}/>
+      <AdvantageIcons castaway={castaway}/>
       <img
         src={require(`../../img/${imageFileName}`)}
         className="db br2 br--top"

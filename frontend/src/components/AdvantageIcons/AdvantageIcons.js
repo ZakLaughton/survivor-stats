@@ -1,7 +1,7 @@
 import React from 'react';
 import './AdvantageIcons.css';
 
-const AdvantageIcons = ({castaway, tribeData}) => {
+const AdvantageIcons = ({castaway}) => {
   const iconLibrary = {
     'immunity idol': 'fa-shield-alt',
     'idol nullifier': 'fa-ban',
@@ -11,7 +11,11 @@ const AdvantageIcons = ({castaway, tribeData}) => {
   return(
     <div className="tribe-advantage-container">
       {castaway.advantages && castaway.advantages.map(advantage => {
-        return (<i className={`advantage fas ${iconLibrary[advantage.item]}`} title={`${advantage.item}`}></i>)
+        return (
+          <i className={`tooltip advantage fas ${iconLibrary[advantage.item]}`}>
+            <span className="animate fadeIn tooltiptext">{advantage.item}</span>
+          </i>
+        )
       })}
     </div>
   )
