@@ -4,7 +4,8 @@ import ('./VotedOutPanel.css');
 
 const VotedOutPanel = ({ episodeData }) => {
 
-  const {castaways} = episodeData
+  const {castaways} = episodeData;
+  const juryStarted = castaways && castaways.some((castaway) => castaway.juryMember) ? true : false;
 
   if(episodeData.castaways 
   && episodeData.castaways.some((castaway) => castaway.tribe === 'out' || castaway.currentBoot)) {
@@ -21,14 +22,14 @@ const VotedOutPanel = ({ episodeData }) => {
                     <CastawayCard
                       key={castaway.name}
                       castaway={castaway}
-                      className='animate fadeIn'
+                      className={`animate fadeIn`}
                       />
                   )
             })}
-            {castaways.some((castaway) => castaway.juryMember) && 
+            {juryStarted && 
               <span className="jury-title">JURY</span>
             }
-            {castaways.some((castaway) => castaway.juryMember) && 
+            {juryStarted && 
               castaways
                 .filter(castaway => castaway.juryMember)
                 .sort((a, b) => a.bootOrder - b.bootOrder)
