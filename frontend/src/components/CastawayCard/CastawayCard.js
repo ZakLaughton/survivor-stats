@@ -1,15 +1,9 @@
 import React from 'react';
 import './CastawayCard.css';
-
+import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 
 const CastawayCard = ({castaway, tribeData}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
-  const iconLibrary = {
-    'immunity idol': 'fa-shield-alt',
-    'idol nullifier': 'fa-ban',
-    'vote steal': 'fa-user-minus'
-
-  }
 
   return(
     <article className="castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2">
@@ -24,11 +18,7 @@ const CastawayCard = ({castaway, tribeData}) => {
           )
         })}
       </div>
-      <div className="tribe-advantage-container">
-        {tribeData && castaway.advantages.map(advantage => {
-          return (<i className={`advantage fas ${iconLibrary[advantage.item]}`} title={`${advantage.item}`}></i>)
-        })}
-      </div>
+      <AdvantageIcons castaway={castaway} tribeData={tribeData}/>
       <img
         src={require(`../../img/${imageFileName}`)}
         className="db br2 br--top"
