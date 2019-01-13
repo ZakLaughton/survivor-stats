@@ -13,7 +13,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
   const seasonCastaways = await db.select('*').from('season_castaway_mapping').where('season_no', '=', Number(season)).catch(console.log);
   const seasonTribeChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order').from('updates')
     .where('start_episode', 'like', `s${season}%`).where('field', '=', 'tribe');
-  const seasonAdvantageChanges = await db.select('castaway', 'field_value', 'start_episode', 'boot_order').from('updates')
+  const seasonAdvantageChanges = await db.select('castaway', 'field_value', 'start_episode', 'end_episode', 'details').from('updates')
     .where('start_episode', 'like', `s${season}%`).where('field', '=', 'advantage');
 
 
@@ -71,7 +71,20 @@ const getEpisodeCastawayData = async (req, res, db) => {
       });
 
       // Populate advantage data for each castaway
+      episodeObj.castaways = episodeObj.castaways.map((castaway) => {
+        const updatedCastaway = castaway;
+        const currentChanges = seasonAdvantageChanges
+          .filter(change => change.start_episode <= episodeObj.id)  // filter later advantages
+          .filter(change => change.end_episode > episodeObj.id)  // filter past advantages
+          .filter(currentChange => currentChange.castaway === castaway.name) // get only changes for castaway
+        
+        updatedCastaway.advantages = currentChanges
+        .map((change) => {
+          return {item: change.field_value, details: change.details}
+        })
 
+        return updatedCastaway;
+      })
 
       return episodeObj;
   })
