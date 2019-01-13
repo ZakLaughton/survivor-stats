@@ -6,7 +6,9 @@ const CastawayCard = ({castaway, tribeData}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
   const iconLibrary = {
     'immunity idol': 'fa-shield-alt',
-    'idol nullifier': 'fa-ban'
+    'idol nullifier': 'fa-ban',
+    'vote steal': 'fa-user-minus'
+
   }
 
   return(
