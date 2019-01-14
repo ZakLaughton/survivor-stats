@@ -20,7 +20,8 @@ class App extends Component {
       season: null,
       episodeId: '',
       activeTribes: [],
-      seasonData: {}
+      seasonData: {},
+      infoMessage: 'Woo'
     }
   }
 
@@ -33,6 +34,8 @@ class App extends Component {
     const seasonData = await response.json();
     const formattedSeasonNum = ("0" + season).slice(-2);
     this.setState({season, seasonData, episodeId: `s${formattedSeasonNum}e00`})
+    const infoMessage = this.state.allSeasons.find((seasonData) => seasonData.season_no === season).info_message;
+    this.setState({infoMessage})
   }
 
   initializeSeasons = async () => {
@@ -56,9 +59,8 @@ class App extends Component {
   }
 
   render() {
-    const {allSeasons, episodeId, season, seasonData} = this.state;
+    const {allSeasons, episodeId, season, seasonData, infoMessage} = this.state;
     const {setSeason, setEpisode} = this;
-    const infoMessage = allSeasons.find(season => season.season_no === season)
     return (
       <div className="App">
         <NavBar 
