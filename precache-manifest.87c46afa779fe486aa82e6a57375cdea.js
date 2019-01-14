@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/elizabeth_olson.de1267df.jpg"
   },
   {
-    "revision": "a2410eb1e005de898abd",
+    "revision": "74a73a8e6990c2beab8e",
     "url": "/static/css/main.c6a0abe3.chunk.css"
   },
   {
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.03d12cec.js"
   },
   {
-    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
-    "url": "/static/media/survivorfont.9ba24af1.ttf"
-  },
-  {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
     "url": "/static/media/survivant.b1dda199.ttf"
+  },
+  {
+    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
+    "url": "/static/media/survivorfont.9ba24af1.ttf"
   },
   {
     "revision": "2e4a38df71d6719e9371d98d98f75834",
@@ -101,7 +101,7 @@ self.__precacheManifest = [
   },
   {
     "revision": "5a352e803976a38a8534bf49c50ccc8f",
-    "url": "/static/media/chrissy_hoffbeck.5a352e80.jpg"
+    "url": "/static/media/chrissy_hofbeck.5a352e80.jpg"
   },
   {
     "revision": "cad363897315a7faec33118568977bff",
@@ -120,12 +120,12 @@ self.__precacheManifest = [
     "url": "/static/media/davie_rickenbacker.6f61dd54.jpg"
   },
   {
-    "revision": "4d34d0a1e8f7e7e217e0cfd59865d6df",
-    "url": "/static/media/desiree_afuye.4d34d0a1.jpg"
+    "revision": "6cc89ed977a84f6ae5d3ba6467bad977",
+    "url": "/static/media/desi_williams.6cc89ed9.jpg"
   },
   {
-    "revision": "6cc89ed977a84f6ae5d3ba6467bad977",
-    "url": "/static/media/desiree_williams.6cc89ed9.jpg"
+    "revision": "4d34d0a1e8f7e7e217e0cfd59865d6df",
+    "url": "/static/media/desiree_afuye.4d34d0a1.jpg"
   },
   {
     "revision": "0a7f8f4e5b1af0f5a1a7af312e673eec",
@@ -140,8 +140,8 @@ self.__precacheManifest = [
     "url": "/static/media/donathan_hurley.84b3e374.jpg"
   },
   {
-    "revision": "a2410eb1e005de898abd",
-    "url": "/static/js/main.a2410eb1.chunk.js"
+    "revision": "74a73a8e6990c2beab8e",
+    "url": "/static/js/main.74a73a8e.chunk.js"
   },
   {
     "revision": "9b8d121c55cd1cf18a7181c1d8559124",
@@ -276,7 +276,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.455c2219.chunk.css"
   },
   {
-    "revision": "07cfc0ce0f5f83e8eb3a56d95bd24c3e",
+    "revision": "24cf503b68ea44661872024ce1227fc9",
     "url": "/index.html"
   }
 ];
