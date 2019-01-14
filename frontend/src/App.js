@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
+import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 
 function initializeReactGA() {
   if (document.location.hostname.search('visualsurvivor.com') !== -1) {
@@ -57,6 +58,7 @@ class App extends Component {
   render() {
     const {allSeasons, episodeId, season, seasonData} = this.state;
     const {setSeason, setEpisode} = this;
+    const infoMessage = allSeasons.find(season => season.season_no === season)
     return (
       <div className="App">
         <NavBar 
@@ -67,6 +69,7 @@ class App extends Component {
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
+        <SeasonInfoMessage message={infoMessage}/>
         {seasonData.episodes && 
           <TribeBoard
             seasonData={seasonData}
