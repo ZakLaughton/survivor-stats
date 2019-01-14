@@ -11,7 +11,7 @@ const Tribe = ({ tribe, episodeData, tribeData }) => {
     'blue': 'linear-gradient(to bottom, #0055f1, #5270f6, #7a8cfa, #9ca8fd, #bcc4ff)',
     'black': 'linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)',
     'red': 'linear-gradient(to bottom, #ff0000, #dd0003, #bd0004, #9d0003, #7e0000)',
-    'yellow': 'background-image: linear-gradient(to bottom, #ffff00, #c7cc03, #939b03, #646c02, #394000)'
+    'yellow': 'linear-gradient(to bottom, #ffff00, #c7cc03, #939b03, #646c02, #394000)'
   }
 
   const sectionStyle = {
