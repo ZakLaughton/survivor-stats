@@ -21,7 +21,7 @@ class App extends Component {
       episodeId: '',
       activeTribes: [],
       seasonData: {},
-      infoMessage: 'Woo'
+      infoMessage: 'Loading...'
     }
   }
 
