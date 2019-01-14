@@ -40,7 +40,7 @@ const VotedOutPanel = ({ episodeData }) => {
                     <CastawayCard
                       key={castaway.name}
                       castaway={castaway}
-                      className='animate fadeIn'
+                      className='animated fadeIn'
                     />
                   )
               })}

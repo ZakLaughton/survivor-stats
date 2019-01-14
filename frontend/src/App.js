@@ -34,7 +34,7 @@ class App extends Component {
     const seasonData = await response.json();
     const formattedSeasonNum = ("0" + season).slice(-2);
     this.setState({season, seasonData, episodeId: `s${formattedSeasonNum}e00`})
-    const infoMessage = this.state.allSeasons.find((seasonData) => seasonData.season_no === season).info_message;
+    const infoMessage = this.state.allSeasons.find((seasonData) => seasonData.season_no === Number(season)).info_message;
     this.setState({infoMessage})
   }
 
