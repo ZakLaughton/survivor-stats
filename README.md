@@ -34,10 +34,12 @@ _Note: The frontend can be run locally, connecting to the hosted backend on the 
 ---
 
 ## Features
-Select an episode of any season available on the database to see...
-* Current castaways and their tribe
-* Current advantages
-* Former voted out castaways and jury members
+* Responsive - usable on both desktop and mobile devices
+* Select an episode of any season available on the database to see...
+  * Current castaways and their tribe
+  * Current advantages
+  * Former tribes
+  * Former voted out castaways and jury members
 
 ## Usage
 ### Backend
