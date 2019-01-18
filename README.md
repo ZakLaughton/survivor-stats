@@ -2,7 +2,7 @@
 
 > A visual snapshot of each castaway's status at the end of each episode of [Survivor](https://en.wikipedia.org/wiki/Survivor_(U.S._TV_series)).
 
-![INSERT YOUR GRAPHIC HERE](https://i.imgur.com/R9g2zrj.gif)
+![Site demo gif](https://i.imgur.com/YdipGUo.gif)
 
 ---
 
