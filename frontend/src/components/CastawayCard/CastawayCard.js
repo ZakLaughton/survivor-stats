@@ -3,7 +3,7 @@ import './CastawayCard.css';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 
 const CastawayCard = ({castaway, tribeData, grayScale}) => {
-  const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
+const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
 
   return(
     <article className="castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2">
