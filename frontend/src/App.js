@@ -8,7 +8,7 @@ import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage'
 function initializeReactGA() {
   if (document.location.hostname.search('visualsurvivor.com') !== -1) {
     ReactGA.initialize('UA-67511792-3');
-    ReactGA.pageview('/'); 
+    ReactGA.pageview('/');
   }
 }
 
@@ -27,15 +27,15 @@ class App extends Component {
 
   fetchUrl = 'https://visual-survivor.herokuapp.com'
   // fetchUrl = 'http://localhost:5000'
-  
+
   setSeason = async (season) => {
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
     const formattedSeasonNum = ("0" + season).slice(-2);
-    this.setState({season, seasonData, episodeId: `s${formattedSeasonNum}e00`})
+    this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` })
     const infoMessage = this.state.allSeasons.find((seasonData) => seasonData.season_no === Number(season)).info_message;
-    this.setState({infoMessage})
+    this.setState({ infoMessage })
   }
 
   initializeSeasons = async () => {
@@ -43,14 +43,14 @@ class App extends Component {
     const allSeasons = await response.json();
     const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no);
     const lastSeasonNum = sortedSeasons[0].season_no;
-    this.setState({allSeasons: sortedSeasons});
+    this.setState({ allSeasons: sortedSeasons });
     await this.setSeason(lastSeasonNum);
   }
 
   setEpisode = (episodeNum) => {
     const formattedEpisodeNum = ("0" + episodeNum).slice(-2);
     const episodeId = `s${this.state.season}e${formattedEpisodeNum}`
-    this.setState({episodeId});
+    this.setState({ episodeId });
   }
 
   componentDidMount() {
@@ -58,12 +58,24 @@ class App extends Component {
     this.initializeSeasons();
   }
 
+  setFormerTribeHighlight = (formerTribe) => {
+    const classString = `former-${formerTribe.replace(/\s/g, '-').toLowerCase()}`;
+    const formerTribeMembers = document.getElementsByClassName(classString);
+    for (let tribeMemberCard of formerTribeMembers) {
+      tribeMemberCard.style.border = '10px solid black';
+    }
+  }
+
+  // removeFormerTribeHighlight(formerTribe) {
+
+  // }
+
   render() {
-    const {allSeasons, episodeId, season, seasonData, infoMessage} = this.state;
-    const {setSeason, setEpisode} = this;
+    const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
+    const { setSeason, setEpisode, setFormerTribeHighlight } = this;
     return (
       <div className="App">
-        <NavBar 
+        <NavBar
           allSeasons={allSeasons}
           seasonData={seasonData}
           seasonNum={season}
@@ -71,12 +83,13 @@ class App extends Component {
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
-        <SeasonInfoMessage message={infoMessage}/>
-        {seasonData.episodes && 
+        <SeasonInfoMessage message={infoMessage} />
+        {seasonData.episodes &&
           <TribeBoard
             seasonData={seasonData}
             episodeId={episodeId}
             tribeData={seasonData.tribes}
+            setFormerTribeHighlight={setFormerTribeHighlight}
           />
         }
       </div>

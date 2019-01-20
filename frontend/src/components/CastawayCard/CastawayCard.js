@@ -2,11 +2,13 @@ import React from 'react';
 import './CastawayCard.css';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 
-const CastawayCard = ({castaway, tribeData, grayScale}) => {
-const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
-const formerTribeClassNames = castaway.formerTribes
-  .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
-  .join(' ');
+const CastawayCard = ({castaway, tribeData, grayScale, setFormerTribeHighlight}) => {
+  const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
+  const formerTribeClassNames = castaway.formerTribes
+    .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
+    .join(' ');
+
+  if (setFormerTribeHighlight) {setFormerTribeHighlight('david');}
 
   return(
     <article className={`castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2 ${formerTribeClassNames}`}>

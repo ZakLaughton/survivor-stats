@@ -2,7 +2,7 @@ import React from 'react';
 import CastawayCard from '../CastawayCard/CastawayCard'
 import './Tribe.css'
 
-const Tribe = ({ tribe, episodeData, tribeData }) => {
+const Tribe = ({ tribe, episodeData, tribeData, setFormerTribeHighlight }) => {
   //mycolor.space gradient. First color, then first color on "switch palette"
   const backgroundGradients = {
     'orange': 'linear-gradient(to bottom, #df940a, #be710e, #9b510e, #76340a, #511a00)',
@@ -30,7 +30,9 @@ const Tribe = ({ tribe, episodeData, tribeData }) => {
               return <CastawayCard
                         key={castaway.name}
                         castaway={castaway}
-                        tribeData={tribeData}/>
+                        tribeData={tribeData}
+                        setFormerTribeHighlight={setFormerTribeHighlight}
+                        />
             }
         )}
       </div>

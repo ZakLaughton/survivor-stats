@@ -3,7 +3,7 @@ import ('./SeasonInfoMessage.css');
 
 const SeasonInfoMessage = ({ message }) => {
     if (message) {
-        return(<div className="info-message animated slideInDown"><i class="fas fa-info-circle"></i> {message}</div>);
+        return(<div className="info-message animated slideInDown"><i className="fas fa-info-circle"></i> {message}</div>);
     } else {
         return null;
     }

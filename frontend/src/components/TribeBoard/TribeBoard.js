@@ -45,7 +45,7 @@ class TribeBoard extends React.Component {
 
   render() {
     const {activeTribes, episodeData} = this.state;
-    const {tribeData} = this.props;
+    const {tribeData, setFormerTribeHighlight} = this.props;
     return(
       <main>
         <div className="active-tribes">
@@ -55,7 +55,8 @@ class TribeBoard extends React.Component {
                 key={tribe.name}
                 tribe={tribe}
                 episodeData={episodeData}
-                tribeData={tribeData}  />
+                tribeData={tribeData}
+                setFormerTribeHighlight={setFormerTribeHighlight}  />
             ))
           }
           {activeTribes.length === 0 && 'loading...'}
