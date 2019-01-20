@@ -85,7 +85,7 @@ class TribeBoard extends React.Component {
           }
           {activeTribes.length === 0 && 'loading...'}
         </div>
-        <VotedOutPanel episodeData={episodeData}/>
+        {/* <VotedOutPanel episodeData={episodeData}/> */}
       </main>
     )
   }

@@ -1,8 +1,10 @@
 import React from 'react';
 
-const FormerTribeIndicator = ({circleColor, formerTribe, setFormerTribeHighlight, removeFormerTribeHighlight}) => {
+const FormerTribeIndicator = ({circleColor, formerTribe, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight}) => {
   const handleHover = () => {
-    setFormerTribeHighlight(formerTribe);
+    if (!formerTribeHighlight.active) {
+      setFormerTribeHighlight(formerTribe);
+    }
   }
 
   return(

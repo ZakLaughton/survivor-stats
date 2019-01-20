@@ -5,13 +5,17 @@ import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 
 class CastawayCard extends React.Component {
   state = {
-    hoverFormerTribeStyle: {}
+    hoverFormerTribeStyle: {},
+    hoverFormerTribeActive: false
   }
 
-  // if (formerTribeHighlight && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)) {
-  //   console.log('former tribe: ', formerTribeHighlight.tribeName);
-  //   hoverFormerTribeStyle = {background: '1px solid black'}
-  // }
+  updateFormerTribeHover = () => {
+    if (this.props.formerTribeHighlight.active && !this.state.hoverFormerTribeActive && this.props.castaway.formerTribes.find(tribe => tribe === this.props.formerTribeHighlight.tribeName)) {
+      this.setState({hoverFormerTribeStyle: {border: '2px solid black'}, hoverFormerTribeActive: true})
+    } else if (!this.props.formerTribeHighlight.active && this.state.hoverFormerTribeActive) {
+      this.setState({hoverFormerTribeStyle: {border: 'none'}, hoverFormerTribeActive: false})      
+    }
+  }
 
   render() {
     const {castaway, tribeData, grayScale, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight} = this.props;
@@ -20,6 +24,8 @@ class CastawayCard extends React.Component {
     const formerTribeClassNames = castaway.formerTribes
       .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
       .join(' ');  
+
+    this.updateFormerTribeHover();
 
     return(
       <article
@@ -35,6 +41,7 @@ class CastawayCard extends React.Component {
                 formerTribe={formerTribe}
                 setFormerTribeHighlight={setFormerTribeHighlight}
                 removeFormerTribeHighlight={removeFormerTribeHighlight}
+                formerTribeHighlight={formerTribeHighlight}
               />
             )
           })}
