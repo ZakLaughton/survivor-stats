@@ -1,6 +1,7 @@
 import React from 'react';
 import './CastawayCard.css';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
+import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 
 const CastawayCard = ({castaway, tribeData, grayScale, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight}) => {
   const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
@@ -18,11 +19,9 @@ const CastawayCard = ({castaway, tribeData, grayScale, formerTribeHighlight, set
         {tribeData && castaway.formerTribes.map(formerTribe => {
           const circleColor = tribeData.find(tribe => formerTribe.replace(/\d| /g, '') === tribe.name).tribe_color;
           return (
-            <div 
-              className={`tribe-circle`}
-              style={{backgroundColor: circleColor}}
-              onMouseEnter={setFormerTribeHighlight.bind(this, formerTribe)}
-              onMouseLeave={removeFormerTribeHighlight}
+            <FormerTribeIndicator 
+              circleColor={circleColor}
+              formerTribe={formerTribe}
             />
           )
         })}
