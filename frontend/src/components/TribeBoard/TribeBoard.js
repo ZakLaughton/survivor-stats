@@ -34,6 +34,7 @@ class TribeBoard extends React.Component {
   }
 
   setFormerTribeHighlight = (formerTribe) => {
+    console.log('Adding ', formerTribe)
     const updatedTribeHighlight = this.state.formerTribeHighlight;
     updatedTribeHighlight.active = true;
     updatedTribeHighlight.tribeName = formerTribe;
