@@ -6,7 +6,11 @@ import './TribeBoard.css'
 class TribeBoard extends React.Component {
   state = {
     activeTribes: [],
-    episodeData: {}
+    episodeData: {},
+    formerTribeHighlight: {
+      active: false,
+      tribeName: null
+    }
   }
 
   setActiveTribes = (seasonData, episodeId) => {
@@ -29,6 +33,21 @@ class TribeBoard extends React.Component {
     this.setState({episodeData});
   }
 
+  setFormerTribeHighlight = (formerTribe) => {
+    const updatedTribeHighlight = this.state.formerTribeHighlight;
+    updatedTribeHighlight.active = true;
+    updatedTribeHighlight.tribeName = formerTribe;
+    this.setState({formerTribeHighlight: updatedTribeHighlight});
+  }
+
+  removeFormerTribeHighlight = () => {
+    console.log('removing...')
+    const updatedTribeHighlight = this.state.formerTribeHighlight;
+    updatedTribeHighlight.active = false;
+    updatedTribeHighlight.tribeName = null;
+    this.setState({formerTribeHighlight: updatedTribeHighlight});
+  }
+
   componentDidMount() {
     const { seasonData, episodeId } = this.props;
     this.setActiveTribes(seasonData, episodeId)
@@ -44,8 +63,9 @@ class TribeBoard extends React.Component {
   }
 
   render() {
-    const {activeTribes, episodeData} = this.state;
-    const {tribeData, setFormerTribeHighlight} = this.props;
+    const {activeTribes, episodeData, formerTribeHighlight} = this.state;
+    const {tribeData} = this.props;
+    const {setFormerTribeHighlight, removeFormerTribeHighlight} = this;
     return(
       <main>
         <div className="active-tribes">
@@ -56,7 +76,10 @@ class TribeBoard extends React.Component {
                 tribe={tribe}
                 episodeData={episodeData}
                 tribeData={tribeData}
-                setFormerTribeHighlight={setFormerTribeHighlight}  />
+                formerTribeHighlight={formerTribeHighlight}
+                setFormerTribeHighlight={setFormerTribeHighlight}
+                removeFormerTribeHighlight={removeFormerTribeHighlight}  
+              />
             ))
           }
           {activeTribes.length === 0 && 'loading...'}

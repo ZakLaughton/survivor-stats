@@ -58,21 +58,9 @@ class App extends Component {
     this.initializeSeasons();
   }
 
-  setFormerTribeHighlight = (formerTribe) => {
-    const classString = `former-${formerTribe.replace(/\s/g, '-').toLowerCase()}`;
-    const formerTribeMembers = document.getElementsByClassName(classString);
-    for (let tribeMemberCard of formerTribeMembers) {
-      tribeMemberCard.style.border = '10px solid black';
-    }
-  }
-
-  // removeFormerTribeHighlight(formerTribe) {
-
-  // }
-
   render() {
     const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
-    const { setSeason, setEpisode, setFormerTribeHighlight } = this;
+    const { setSeason, setEpisode } = this;
     return (
       <div className="App">
         <NavBar
@@ -89,7 +77,6 @@ class App extends Component {
             seasonData={seasonData}
             episodeId={episodeId}
             tribeData={seasonData.tribes}
-            setFormerTribeHighlight={setFormerTribeHighlight}
           />
         }
       </div>
