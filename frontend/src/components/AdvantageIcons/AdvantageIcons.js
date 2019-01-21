@@ -13,10 +13,10 @@ const AdvantageIcons = ({castaway}) => {
 
   return(
     <div className="tribe-advantage-container">
-      {castaway.advantages && castaway.advantages.map(advantage => {
+      {castaway.advantages && castaway.advantages.map((advantage, index) => {
         return (
-          <i className={`tooltip advantage ${iconLibrary[advantage.item]}`}>
-            <span className="animate fadeIn tooltiptext">{advantage.item}</span>
+          <i key={index} className={`tooltip advantage ${iconLibrary[advantage.item]}`}>
+            <span className="animated fadeIn tooltiptext">{advantage.item}</span>
           </i>
         )
       })}

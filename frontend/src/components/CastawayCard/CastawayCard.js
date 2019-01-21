@@ -41,6 +41,7 @@ class CastawayCard extends React.Component {
             const circleColor = tribeData.find(tribe => formerTribe.replace(/\d| /g, '') === tribe.name).tribe_color;
             return (
               <FormerTribeIndicator 
+                key={formerTribe}
                 circleColor={circleColor}
                 formerTribe={formerTribe}
                 setFormerTribeHighlight={setFormerTribeHighlight}
