@@ -2,7 +2,7 @@ import React from 'react';
 import CastawayCard from '../CastawayCard/CastawayCard';
 import ('./VotedOutPanel.css');
 
-const VotedOutPanel = ({ episodeData }) => {
+const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
 
   const {castaways} = episodeData;
   const juryStarted = castaways && castaways.some((castaway) => castaway.juryMember) ? true : false;
@@ -24,7 +24,9 @@ const VotedOutPanel = ({ episodeData }) => {
                       key={castaway.name}
                       castaway={castaway}
                       grayScale={grayScalePrejury}
+                      formerTribeHighlight={formerTribeHighlight}
                       className={`animate fadeIn`}
+                      tribeData={tribeData}
                       />
                   )
             })}
@@ -38,9 +40,11 @@ const VotedOutPanel = ({ episodeData }) => {
                 .map(castaway => {
                   return(
                     <CastawayCard
-                      key={castaway.name}
-                      castaway={castaway}
-                      className='animated fadeIn'
+                    key={castaway.name}
+                    castaway={castaway}
+                    formerTribeHighlight={formerTribeHighlight}
+                    className={`animate fadeIn`}
+                    tribeData={tribeData}
                     />
                   )
               })}

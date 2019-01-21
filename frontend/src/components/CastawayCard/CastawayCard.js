@@ -11,7 +11,7 @@ class CastawayCard extends React.Component {
 
   updateFormerTribeHover = () => {
     const {formerTribeHighlight, castaway, tribeData} = this.props;
-    if (formerTribeHighlight.active && !this.state.hoverFormerTribeActive && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)) {
+    if (formerTribeHighlight && formerTribeHighlight.active && !this.state.hoverFormerTribeActive && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)) {
       const activeTribeColor = tribeData.find((tribe) => tribe.name === formerTribeHighlight.tribeName.replace(/\d| /g, '')).tribe_color; 
       const highlightedStyle = {
         position: 'absolute',
@@ -22,7 +22,7 @@ class CastawayCard extends React.Component {
         left: 0
       }
       this.setState({hoverFormerTribeStyle: highlightedStyle, hoverFormerTribeActive: true})
-    } else if (!this.props.formerTribeHighlight.active && this.state.hoverFormerTribeActive) {
+    } else if (formerTribeHighlight && !formerTribeHighlight.active && this.state.hoverFormerTribeActive) {
       this.setState({hoverFormerTribeStyle: {}, hoverFormerTribeActive: false})      
     }
   }

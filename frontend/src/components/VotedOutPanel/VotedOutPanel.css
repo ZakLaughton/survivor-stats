@@ -26,6 +26,10 @@
   display:none;
 }
 
+.voted-out-panel .tribe-circle-container {
+  display: none;
+}
+
 .jury-title {
   writing-mode: tb-rl;
   transform: rotate(-180deg);
