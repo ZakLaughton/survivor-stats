@@ -10,10 +10,18 @@ class CastawayCard extends React.Component {
   }
 
   updateFormerTribeHover = () => {
+    const highlightedStyle = {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      boxShadow: 'inset 0px 0px 20px 10px rgb(255,0,0,0.7)',
+      top: 0,
+      left: 0
+    }
     if (this.props.formerTribeHighlight.active && !this.state.hoverFormerTribeActive && this.props.castaway.formerTribes.find(tribe => tribe === this.props.formerTribeHighlight.tribeName)) {
-      this.setState({hoverFormerTribeStyle: {border: '2px solid black'}, hoverFormerTribeActive: true})
+      this.setState({hoverFormerTribeStyle: highlightedStyle, hoverFormerTribeActive: true})
     } else if (!this.props.formerTribeHighlight.active && this.state.hoverFormerTribeActive) {
-      this.setState({hoverFormerTribeStyle: {border: 'none'}, hoverFormerTribeActive: false})      
+      this.setState({hoverFormerTribeStyle: {}, hoverFormerTribeActive: false})      
     }
   }
 
@@ -30,7 +38,6 @@ class CastawayCard extends React.Component {
     return(
       <article
         className={`castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2 ${formerTribeClassNames}`}
-        style={hoverFormerTribeStyle}
       >
         <div className="tribe-circle-container">
           {tribeData && castaway.formerTribes.map(formerTribe => {
@@ -51,6 +58,7 @@ class CastawayCard extends React.Component {
           src={require(`../../img/${imageFileName}`)}
           className={`db br2 br--top ${grayScale}`}
           alt={castaway.name} />
+        <div className="shadow" style={hoverFormerTribeStyle}/>
         <div className="card-nameplate" >
             <h2 className="card-name br2 mv0 center tc">
               {castaway.name}
