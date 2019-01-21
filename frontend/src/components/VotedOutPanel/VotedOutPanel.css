@@ -16,6 +16,11 @@
   justify-content: flex-start;
   flex-flow: row;
   overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.votedout .prejury img {
+  filter: grayscale(100%);
 }
 
 .voted-out-panel img {

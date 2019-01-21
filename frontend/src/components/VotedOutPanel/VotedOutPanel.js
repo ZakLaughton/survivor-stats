@@ -6,7 +6,6 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
 
   const {castaways} = episodeData;
   const juryStarted = castaways && castaways.some((castaway) => castaway.juryMember) ? true : false;
-  const grayScalePrejury = juryStarted ? 'grayscale' : '';
 
   if(episodeData.castaways 
   && episodeData.castaways.some((castaway) => castaway.tribe === 'out' || castaway.currentBoot)) {
@@ -23,9 +22,8 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
                     <CastawayCard
                       key={castaway.name}
                       castaway={castaway}
-                      grayScale={grayScalePrejury}
                       formerTribeHighlight={formerTribeHighlight}
-                      className={`animate fadeIn`}
+                      classNames={`animated fadeIn prejury`}
                       tribeData={tribeData}
                       />
                   )
@@ -43,7 +41,7 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
                     key={castaway.name}
                     castaway={castaway}
                     formerTribeHighlight={formerTribeHighlight}
-                    className={`animate fadeIn`}
+                    classNames={`animated fadeIn jury`}
                     tribeData={tribeData}
                     />
                   )

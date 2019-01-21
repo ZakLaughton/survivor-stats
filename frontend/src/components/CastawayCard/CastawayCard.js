@@ -28,7 +28,7 @@ class CastawayCard extends React.Component {
   }
 
   render() {
-    const {castaway, tribeData, grayScale, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight} = this.props;
+    const {castaway, classNames, tribeData, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight} = this.props;
     const {hoverFormerTribeStyle} = this.state;
     const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
     const formerTribeClassNames = castaway.formerTribes
@@ -39,7 +39,7 @@ class CastawayCard extends React.Component {
 
     return(
       <article
-        className={`castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2 ${formerTribeClassNames}`}
+        className={`castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
       >
         <div className="tribe-circle-container">
           {tribeData && castaway.formerTribes.map(formerTribe => {
@@ -58,7 +58,7 @@ class CastawayCard extends React.Component {
         <AdvantageIcons castaway={castaway}/>
         <img
           src={require(`../../img/${imageFileName}`)}
-          className={`db br2 br--top ${grayScale}`}
+          className={`db br2 br--top`}
           alt={castaway.name} />
         <div className="shadow" style={hoverFormerTribeStyle}/>
         <div className="card-nameplate" >
