@@ -9,6 +9,21 @@ class CastawayCard extends React.Component {
     hoverFormerTribeActive: false
   }
 
+  /**
+   * For seasons in which a tribe keeps the same name throughout multiple
+   * swaps, this takes a list of plain tribes (e.g. "Malolo", "Malolo 2", "Malolo 3")
+   * and returns their semantic names (e.g. "Original Malolo", "Malolo (1st swap)", 
+   * "Malolo (2nd Swap)')
+   */
+  getSemanticTribeNames = (formerTribeList) => {
+    const tribesNeedingRenaming = formerTribeList.filter(tribe => tribe.match(/\d$/));
+    const semanticTribes = tribesNeedingRenaming
+      .map(tribe => tribe.replace(/2$/, '(1st swap)').replace(/3$/, '(2nd swap)'))
+    return(semanticTribes)
+
+  }
+  
+
   updateFormerTribeHover = () => {
     const {formerTribeHighlight, castaway, tribeData} = this.props;
     if (formerTribeHighlight && formerTribeHighlight.active && !this.state.hoverFormerTribeActive && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)) {
@@ -29,6 +44,9 @@ class CastawayCard extends React.Component {
     const formerTribeClassNames = castaway.formerTribes
       .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
       .join(' ');  
+
+    const semanticTribes = this.getSemanticTribeNames(castaway.formerTribes);
+    console.log('semanticTribes: ', semanticTribes)
 
     this.updateFormerTribeHover();
 

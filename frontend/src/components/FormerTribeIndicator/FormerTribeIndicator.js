@@ -1,4 +1,5 @@
 import React from 'react';
+import './FormerTribeIndicator.css'
 
 const FormerTribeIndicator = ({circleColor, formerTribe, formerTribeHighlight, setFormerTribeHighlight, removeFormerTribeHighlight}) => {
   const handleHover = () => {
