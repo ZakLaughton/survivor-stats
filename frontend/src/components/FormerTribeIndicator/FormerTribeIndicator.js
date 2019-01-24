@@ -22,12 +22,12 @@ const FormerTribeIndicator = ({circleColor, formerTribe, formerTribeHighlight,
 
   return(
     <div 
-      className={`tribe-circle tooltip`}
+      className={`tribe-circle`}
       style={{backgroundColor: circleColor}}
       onMouseEnter={handleHover}
       onMouseLeave={removeFormerTribeHighlight}
     >
-      <span className="animated fadeIn tooltiptext">{semanticTribeName}</span>
+      <span className="tooltiptext">Former {semanticTribeName}</span>
     </div>
   )
 }
