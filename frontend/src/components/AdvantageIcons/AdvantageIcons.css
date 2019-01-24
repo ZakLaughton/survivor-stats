@@ -42,3 +42,9 @@
     border-style: solid;
     border-color: transparent transparent transparent black;
   }
+
+.tribe-advantage-container img {
+  height: 1.3em;
+  width: auto;
+  filter: drop-shadow(3px 3px 2px black) drop-shadow(-1px -1px 4px black);
+}

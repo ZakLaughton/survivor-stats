@@ -11,13 +11,36 @@ const AdvantageIcons = ({castaway}) => {
     'fake idol': 'fab fa-pagelines'
   };
 
+  /**
+   * Takes an advantage name and returns the HTML element to render the icon.
+   * NOTE: All icons use fontawesome EXCEPT the fake idol, which uses a .png
+   * @param {string} advantageName 
+   */
+  const getAdvantageIconElement = (advantageName) => {
+    if (advantageName === 'fake idol') {
+      return (
+        <div className="tooltip">
+          <img src={require(`../../img/fake_immunity_idol.png`)} />
+          <span className="animated fadeIn tooltiptext">{advantageName}</span>
+        </div>
+    )} else {
+      return (
+        <i className={`tooltip advantage ${iconLibrary[advantageName]}`}>
+          <span className="animated fadeIn tooltiptext">{advantageName}</span>
+        </i>
+      )
+    }
+  }
+    
+
+
   return(
     <div className="tribe-advantage-container">
       {castaway.advantages && castaway.advantages.map((advantage, index) => {
         return (
-          <i key={index} className={`tooltip advantage ${iconLibrary[advantage.item]}`}>
-            <span className="animated fadeIn tooltiptext">{advantage.item}</span>
-          </i>
+          <div key={index}>
+            {getAdvantageIconElement(advantage.item)}
+          </div>
         )
       })}
     </div>
