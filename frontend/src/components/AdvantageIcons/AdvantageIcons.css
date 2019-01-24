@@ -22,8 +22,8 @@
     z-index: 1;
     text-transform: capitalize;
     font-family: 'Londrina Solid', sans-serif;
+    size: 1.3rem;
     font-weight: 100;
-    z-index: 1;
   }
   
   /* Show the tooltip text when you mouse over the tooltip container */
@@ -43,8 +43,13 @@
     border-color: transparent transparent transparent black;
   }
 
+.advantage {
+    padding: 3px;
+    font-size: 1.3rem;
+}
+
 .tribe-advantage-container img {
-  height: 1.3em;
+  height: 1.3rem;
   width: auto;
   filter: drop-shadow(3px 3px 2px black) drop-shadow(-1px -1px 4px black);
 }

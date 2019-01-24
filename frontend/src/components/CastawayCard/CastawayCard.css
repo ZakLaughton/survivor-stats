@@ -34,11 +34,6 @@
     z-index: 1;
 }
 
-.advantage {
-    padding: 3px;
-    font-size: 1.3rem;
-}
-
 .tribe-circle {
     border: solid #333 1.2px;
     border-radius: 50%;

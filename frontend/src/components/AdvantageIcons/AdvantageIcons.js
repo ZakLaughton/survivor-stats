@@ -19,7 +19,7 @@ const AdvantageIcons = ({castaway}) => {
   const getAdvantageIconElement = (advantageName) => {
     if (advantageName === 'fake idol') {
       return (
-        <div className="tooltip">
+        <div className="tooltip advantage">
           <img src={require(`../../img/fake_immunity_idol.png`)} />
           <span className="animated fadeIn tooltiptext">{advantageName}</span>
         </div>
