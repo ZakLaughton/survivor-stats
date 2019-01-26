@@ -1,5 +1,7 @@
 import React from 'react';
 import './CastawayCard.css';
+import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
+import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 
 class CastawayCard extends React.Component {
   state = {
