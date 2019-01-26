@@ -8,6 +8,7 @@
     ],
     "rules": {
         "linebreak-style": 0,
-        "react/jsx-uses-react": 1
+        "react/jsx-uses-react": 1,
+        "no-invalid-this": "off"
     }
 }
