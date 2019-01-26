@@ -1,0 +1,13 @@
+{
+    "parser": "babel-eslint",
+    "extends": "google",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "linebreak-style": 0,
+        "react/jsx-uses-react": 1
+    }
+}
