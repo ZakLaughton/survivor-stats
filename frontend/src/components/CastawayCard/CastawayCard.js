@@ -1,41 +1,39 @@
 import React from 'react';
 import './CastawayCard.css';
-import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
-import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 
 class CastawayCard extends React.Component {
   state = {
     hoverFormerTribeStyle: {},
-    hoverFormerTribeActive: false
+    hoverFormerTribeActive: false,
   }
 
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
-   * swaps, this takes a list of plain tribes (e.g. "Malolo", "Malolo 2", "Malolo 3")
-   * and returns a dictionary of their semantic names (e.g. "Original Malolo", 
-   * "Malolo (1st swap)", "Malolo (2nd Swap)')
+   * swaps, this takes a list of plain tribes (e.g. "Malolo", "Malolo 2",
+   * "Malolo 3") and returns a dictionary of their semantic names (e.g.
+   * "Original Malolo", "Malolo (1st swap)", "Malolo (2nd Swap)')
    */
   getSemanticTribeNames = (formerTribeList) => {
-    const semanticDictionary = {}
+    const semanticDictionary = {};
 
     formerTribeList.forEach((tribe, i) => {
-        const newName = tribe.replace(/2$/, '(1st swap)').replace(/3$/, '(2nd swap)');
-        semanticDictionary[tribe] = newName
-      })
-    return(semanticDictionary)
+      const newName = tribe.replace(/2$/, '(1st swap)').replace(/3$/, '(2nd swap)');
+      semanticDictionary[tribe] = newName;
+    });
+    return (semanticDictionary);
   }
-  
+
 
   updateFormerTribeHover = () => {
     const {formerTribeHighlight, castaway, tribeData} = this.props;
-    if (formerTribeHighlight && formerTribeHighlight.active && !this.state.hoverFormerTribeActive && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)) {
-      const activeTribeColor = tribeData.find((tribe) => tribe.name === formerTribeHighlight.tribeName.replace(/\d| /g, '')).tribe_color; 
+    if (formerTribeHighlight && formerTribeHighlight.active && !this.state.hoverFormerTribeActive && castaway.formerTribes.find((tribe) => tribe === formerTribeHighlight.tribeName)) {
+      const activeTribeColor = tribeData.find((tribe) => tribe.name === formerTribeHighlight.tribeName.replace(/\d| /g, '')).tribe_color;
       const highlightedStyle = {
         boxShadow: `inset 0px 0px 20px 10px ${activeTribeColor}`,
-      }
-      this.setState({hoverFormerTribeStyle: highlightedStyle, hoverFormerTribeActive: true})
+      };
+      this.setState({hoverFormerTribeStyle: highlightedStyle, hoverFormerTribeActive: true});
     } else if (formerTribeHighlight && !formerTribeHighlight.active && this.state.hoverFormerTribeActive) {
-      this.setState({hoverFormerTribeStyle: {}, hoverFormerTribeActive: false})      
+      this.setState({hoverFormerTribeStyle: {}, hoverFormerTribeActive: false});
     }
   }
 
@@ -44,22 +42,22 @@ class CastawayCard extends React.Component {
     const {hoverFormerTribeStyle} = this.state;
     const imageFileName = castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
     const formerTribeClassNames = castaway.formerTribes
-      .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
-      .join(' ');  
+        .map((formerTribe) => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
+        .join(' ');
 
     const semanticTribes = this.getSemanticTribeNames(castaway.formerTribes);
 
     this.updateFormerTribeHover();
 
-    return(
+    return (
       <article
         className={`castaway-card grow relative ma1 br2 ba dark-gray b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
       >
         <div className="tribe-circle-container">
-          {tribeData && castaway.formerTribes.map(formerTribe => {
-            const circleColor = tribeData.find(tribe => formerTribe.replace(/\d| /g, '') === tribe.name).tribe_color;
+          {tribeData && castaway.formerTribes.map((formerTribe) => {
+            const circleColor = tribeData.find((tribe) => formerTribe.replace(/\d| /g, '') === tribe.name).tribe_color;
             return (
-              <FormerTribeIndicator 
+              <FormerTribeIndicator
                 key={formerTribe}
                 circleColor={circleColor}
                 formerTribe={formerTribe}
@@ -68,7 +66,7 @@ class CastawayCard extends React.Component {
                 formerTribeHighlight={formerTribeHighlight}
                 semanticTribes={semanticTribes}
               />
-            )
+            );
           })}
         </div>
         <AdvantageIcons castaway={castaway}/>
@@ -78,13 +76,13 @@ class CastawayCard extends React.Component {
           alt={castaway.name} />
         <div className="shadow" style={hoverFormerTribeStyle}/>
         <div className="card-nameplate" >
-            <h2 className="card-name br2 mv0 center tc">
-              {castaway.name}
-            </h2>
+          <h2 className="card-name br2 mv0 center tc">
+            {castaway.name}
+          </h2>
         </div>
       </article>
-    )
-  }   
+    );
+  }
 }
 
 export default CastawayCard;
