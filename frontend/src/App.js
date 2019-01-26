@@ -21,22 +21,24 @@ class App extends Component {
       episodeId: '',
       activeTribes: [],
       seasonData: {},
-      infoMessage: 'Loading...'
-    }
+      infoMessage: 'Loading...',
+    };
   }
 
-  fetchUrl = 'https://visual-survivor.herokuapp.com'
+  fetchUrl = 'https://visual-survivor.herokuapp.com';
   // fetchUrl = 'http://localhost:5000'
 
-  setSeason = async (season) => {
+  setSeason = async season => {
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
-    const formattedSeasonNum = ("0" + season).slice(-2);
-    this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` })
-    const infoMessage = this.state.allSeasons.find((seasonData) => seasonData.season_no === Number(season)).info_message;
-    this.setState({ infoMessage })
-  }
+    const formattedSeasonNum = ('0' + season).slice(-2);
+    this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
+    const infoMessage = this.state.allSeasons.find(
+      seasonData => seasonData.season_no === Number(season),
+    ).info_message;
+    this.setState({ infoMessage });
+  };
 
   initializeSeasons = async () => {
     const response = await fetch(`${this.fetchUrl}/seasons`);
@@ -45,13 +47,13 @@ class App extends Component {
     const lastSeasonNum = sortedSeasons[0].season_no;
     this.setState({ allSeasons: sortedSeasons });
     await this.setSeason(lastSeasonNum);
-  }
+  };
 
-  setEpisode = (episodeNum) => {
-    const formattedEpisodeNum = ("0" + episodeNum).slice(-2);
-    const episodeId = `s${this.state.season}e${formattedEpisodeNum}`
+  setEpisode = episodeNum => {
+    const formattedEpisodeNum = ('0' + episodeNum).slice(-2);
+    const episodeId = `s${this.state.season}e${formattedEpisodeNum}`;
     this.setState({ episodeId });
-  }
+  };
 
   componentDidMount() {
     initializeReactGA();
@@ -72,13 +74,9 @@ class App extends Component {
           setEpisode={setEpisode}
         />
         <SeasonInfoMessage message={infoMessage} />
-        {seasonData.episodes &&
-          <TribeBoard
-            seasonData={seasonData}
-            episodeId={episodeId}
-            tribeData={seasonData.tribes}
-          />
-        }
+        {seasonData.episodes && (
+          <TribeBoard seasonData={seasonData} episodeId={episodeId} tribeData={seasonData.tribes} />
+        )}
       </div>
     );
   }

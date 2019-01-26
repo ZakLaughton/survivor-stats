@@ -1,7 +1,7 @@
 import React from 'react';
 import Tribe from '../Tribe/Tribe';
 import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
-import './TribeBoard.css'
+import './TribeBoard.css';
 
 class TribeBoard extends React.Component {
   state = {
@@ -9,65 +9,67 @@ class TribeBoard extends React.Component {
     episodeData: {},
     formerTribeHighlight: {
       active: false,
-      tribeName: null
-    }
-  }
+      tribeName: null,
+    },
+  };
 
   setActiveTribes = (seasonData, episodeId) => {
-    const {tribes} = seasonData;
-    const episodeData = seasonData.episodes.find((episode) => {
-       return episode.id === episodeId;
-    })
-    const activeTribes = tribes.filter((tribe) => {
-      return episodeData.castaways
-        // Don't show current boots (to be removed in future)
-        .filter(castaway => castaway.currentBoot === false)
-        .some(castaway => castaway.tribe.replace(/\d| /g, '') === tribe.name);
-    })
+    const { tribes } = seasonData;
+    const episodeData = seasonData.episodes.find(episode => {
+      return episode.id === episodeId;
+    });
+    const activeTribes = tribes.filter(tribe => {
+      return (
+        episodeData.castaways
+          // Don't show current boots (to be removed in future)
+          .filter(castaway => castaway.currentBoot === false)
+          .some(castaway => castaway.tribe.replace(/\d| /g, '') === tribe.name)
+      );
+    });
 
-    this.setState({activeTribes})
-  }
+    this.setState({ activeTribes });
+  };
 
   setEpisodeData = (seasonData, episodeId) => {
     const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
-    this.setState({episodeData});
-  }
+    this.setState({ episodeData });
+  };
 
-  setFormerTribeHighlight = (formerTribe) => {
-    console.log('Adding ', formerTribe)
+  setFormerTribeHighlight = formerTribe => {
+    console.log('Adding ', formerTribe);
     const updatedTribeHighlight = this.state.formerTribeHighlight;
     updatedTribeHighlight.active = true;
     updatedTribeHighlight.tribeName = formerTribe;
-    this.setState({formerTribeHighlight: updatedTribeHighlight});
-  }
+    this.setState({ formerTribeHighlight: updatedTribeHighlight });
+  };
 
   removeFormerTribeHighlight = () => {
-    console.log('removing...')
+    console.log('removing...');
     const updatedTribeHighlight = this.state.formerTribeHighlight;
     updatedTribeHighlight.active = false;
     updatedTribeHighlight.tribeName = null;
-    this.setState({formerTribeHighlight: updatedTribeHighlight});
-  }
+    this.setState({ formerTribeHighlight: updatedTribeHighlight });
+  };
 
   componentDidMount() {
     const { seasonData, episodeId } = this.props;
-    this.setActiveTribes(seasonData, episodeId)
-    this.setEpisodeData(seasonData, episodeId)
+    this.setActiveTribes(seasonData, episodeId);
+    this.setEpisodeData(seasonData, episodeId);
   }
-  
+
   componentWillReceiveProps(nextProps) {
     const { seasonData, episodeId } = nextProps;
     if (seasonData.episodes) {
-      this.setActiveTribes(seasonData, episodeId)
-      this.setEpisodeData(seasonData, episodeId)
-    } 
+      this.setActiveTribes(seasonData, episodeId);
+      this.setEpisodeData(seasonData, episodeId);
+    }
   }
 
   render() {
-    const {activeTribes, episodeData, formerTribeHighlight} = this.state;
-    const {tribeData} = this.props;
-    const {setFormerTribeHighlight, removeFormerTribeHighlight} = this;
-    return(
+    const { activeTribes, episodeData, formerTribeHighlight } = this.state;
+    const { tribeData } = this.props;
+    const { setFormerTribeHighlight, removeFormerTribeHighlight } = this;
+    return (
       <main>
         <div className="active-tribes">
           {activeTribes.length > 0 &&
@@ -79,10 +81,9 @@ class TribeBoard extends React.Component {
                 tribeData={tribeData}
                 formerTribeHighlight={formerTribeHighlight}
                 setFormerTribeHighlight={setFormerTribeHighlight}
-                removeFormerTribeHighlight={removeFormerTribeHighlight}  
+                removeFormerTribeHighlight={removeFormerTribeHighlight}
               />
-            ))
-          }
+            ))}
           {activeTribes.length === 0 && 'loading...'}
         </div>
         <VotedOutPanel
@@ -91,7 +92,7 @@ class TribeBoard extends React.Component {
           tribeData={tribeData}
         />
       </main>
-    )
+    );
   }
 }
 

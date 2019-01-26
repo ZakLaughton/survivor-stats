@@ -1,7 +1,7 @@
 import React from 'react';
 import './AdvantageIcons.css';
 
-const AdvantageIcons = ({castaway}) => {
+const AdvantageIcons = ({ castaway }) => {
   const iconLibrary = {
     'immunity idol': 'fas fa-shield-alt',
     'idol nullifier': 'fas fa-ban',
@@ -21,28 +21,24 @@ const AdvantageIcons = ({castaway}) => {
     if (advantageName === 'fake idol') {
       return (
         <div className="tooltip advantage">
-          <img src={require(`../../img/fake_immunity_idol.png`)} />
+          <img alt="Fake Immunity Idol" src={require('../../img/fake_immunity_idol.png')} />
           <span className="animated fadeIn tooltiptext">{advantageName}</span>
         </div>
       );
-    } else {
-      return (
-        <i className={`tooltip advantage ${iconLibrary[advantageName]}`}>
-          <span className="animated fadeIn tooltiptext">{advantageName}</span>
-        </i>
-      );
     }
+    return (
+      <i className={`tooltip advantage ${iconLibrary[advantageName]}`}>
+        <span className="animated fadeIn tooltiptext">{advantageName}</span>
+      </i>
+    );
   };
 
   return (
     <div className="tribe-advantage-container">
-      {castaway.advantages && castaway.advantages.map((advantage, index) => {
-        return (
-          <div key={index}>
-            {getAdvantageIconElement(advantage.item)}
-          </div>
-        );
-      })}
+      {castaway.advantages
+        && castaway.advantages.map((advantage, index) => (
+          <div key={index}>{getAdvantageIconElement(advantage.item)}</div>
+        ))}
     </div>
   );
 };

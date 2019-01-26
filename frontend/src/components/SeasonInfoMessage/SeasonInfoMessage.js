@@ -1,12 +1,16 @@
 import React from 'react';
-import ('./SeasonInfoMessage.css');
+import('./SeasonInfoMessage.css');
 
 const SeasonInfoMessage = ({ message }) => {
-    if (message) {
-        return(<div className="info-message animated slideInDown"><i className="fas fa-info-circle"></i> {message}</div>);
-    } else {
-        return null;
-    }
-}
+  if (message) {
+    return (
+      <div className="info-message animated slideInDown">
+        <i className="fas fa-info-circle" /> {message}
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default SeasonInfoMessage;
