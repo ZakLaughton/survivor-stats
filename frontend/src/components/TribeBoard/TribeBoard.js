@@ -1,6 +1,7 @@
 import React from 'react';
 import Tribe from '../Tribe/Tribe';
 import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
+import ArrowButton from '../ArrowButton/ArrowButton';
 import './TribeBoard.css';
 
 class TribeBoard extends React.Component {
@@ -85,6 +86,7 @@ class TribeBoard extends React.Component {
               />
             ))}
           {activeTribes.length === 0 && 'loading...'}
+          <ArrowButton />
         </div>
         <VotedOutPanel
           episodeData={episodeData}
