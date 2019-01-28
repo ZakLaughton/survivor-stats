@@ -86,6 +86,8 @@ class App extends Component {
       case 39:
         this.incrementEpisode();
         break;
+      default:
+        break;
     }
   };
 
