@@ -1,9 +1,9 @@
 import React from 'react';
-import './ArrowButton.css';
+import './ArrowButtons.css';
 
-const ArrowButton = ({ direction }) => (
+const ArrowButton = ({ decrementEpisode, incrementEpisode }) => (
   <div>
-    <button className="arrow left">
+    <button className="arrow left" onClick={decrementEpisode}>
       <svg width="60px" height="80px" viewBox="0 0 50 80" xmlSpace="preserve">
         <polyline
           fill="none"
@@ -16,7 +16,7 @@ const ArrowButton = ({ direction }) => (
         />
       </svg>
     </button>
-    <button className="arrow right">
+    <button className="arrow right" onClick={incrementEpisode}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

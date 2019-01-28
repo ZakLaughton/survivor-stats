@@ -55,6 +55,19 @@ class App extends Component {
     this.setState({ episodeId });
   };
 
+  incrementEpisode = () => {
+    const numberOfEpisodes = this.state.seasonData.episodes.length;
+    const currentEpisode = Number(this.state.episodeId.slice(-2));
+    if (currentEpisode < numberOfEpisodes - 1) {
+      console.log('ce: ', currentEpisode, 'noe: ', numberOfEpisodes);
+      const formattedSeasonNum = ('0' + this.state.season).slice(-2);
+      const newEpisode = currentEpisode + 1;
+      const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
+      const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
+      this.setState({ episodeId: newEpisodeId });
+    }
+  };
+
   componentDidMount() {
     initializeReactGA();
     this.initializeSeasons();
@@ -62,7 +75,7 @@ class App extends Component {
 
   render() {
     const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
-    const { setSeason, setEpisode } = this;
+    const { setSeason, setEpisode, incrementEpisode, decrementEpisode } = this;
     return (
       <div className="App">
         <NavBar
@@ -75,7 +88,13 @@ class App extends Component {
         />
         <SeasonInfoMessage message={infoMessage} />
         {seasonData.episodes && (
-          <TribeBoard seasonData={seasonData} episodeId={episodeId} tribeData={seasonData.tribes} />
+          <TribeBoard
+            seasonData={seasonData}
+            episodeId={episodeId}
+            tribeData={seasonData.tribes}
+            incrementEpisode={incrementEpisode}
+            decrementEpisode={decrementEpisode}
+          />
         )}
       </div>
     );
