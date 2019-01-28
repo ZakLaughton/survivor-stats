@@ -78,6 +78,17 @@ class App extends Component {
     }
   };
 
+  onKeyPressed = e => {
+    switch (e.keyCode) {
+      case 37:
+        this.decrementEpisode();
+        break;
+      case 39:
+        this.incrementEpisode();
+        break;
+    }
+  };
+
   componentDidMount() {
     initializeReactGA();
     this.initializeSeasons();
@@ -87,7 +98,7 @@ class App extends Component {
     const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
     const { setSeason, setEpisode, incrementEpisode, decrementEpisode } = this;
     return (
-      <div className="App">
+      <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
         <NavBar
           allSeasons={allSeasons}
           seasonData={seasonData}
