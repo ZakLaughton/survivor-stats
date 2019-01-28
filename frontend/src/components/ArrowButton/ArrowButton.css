@@ -15,26 +15,21 @@ button {
   outline:0;
 }
 
-svg {
-  padding: 5px;
-}
-
 .arrow {
   cursor: pointer;
   position: absolute;
   top: 50%;
   margin-top: -45px;
-  margin-left: -35px;
   width: 70px;
   height: 90px;
 }
 
 .left {
-  left: 42%;
+  left: 0%;
 }
 
 .right {
-  left: 58%;
+  right: 0px;
 }
 
 .left:hover polyline,
