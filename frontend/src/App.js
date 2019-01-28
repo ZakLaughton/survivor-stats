@@ -59,9 +59,19 @@ class App extends Component {
     const numberOfEpisodes = this.state.seasonData.episodes.length;
     const currentEpisode = Number(this.state.episodeId.slice(-2));
     if (currentEpisode < numberOfEpisodes - 1) {
-      console.log('ce: ', currentEpisode, 'noe: ', numberOfEpisodes);
       const formattedSeasonNum = ('0' + this.state.season).slice(-2);
       const newEpisode = currentEpisode + 1;
+      const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
+      const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
+      this.setState({ episodeId: newEpisodeId });
+    }
+  };
+
+  decrementEpisode = () => {
+    const currentEpisode = Number(this.state.episodeId.slice(-2));
+    if (currentEpisode > 0) {
+      const formattedSeasonNum = ('0' + this.state.season).slice(-2);
+      const newEpisode = currentEpisode - 1;
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       this.setState({ episodeId: newEpisodeId });
