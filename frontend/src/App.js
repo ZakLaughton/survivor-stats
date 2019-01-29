@@ -110,16 +110,20 @@ class App extends Component {
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
-        <SeasonInfoMessage message={infoMessage} />
-        {seasonData.episodes && (
-          <TribeBoard
-            seasonData={seasonData}
-            episodeId={episodeId}
-            tribeData={seasonData.tribes}
-            incrementEpisode={incrementEpisode}
-            decrementEpisode={decrementEpisode}
-          />
-        )}
+        <Route exact path="/" render={() => (
+          <div>
+            <SeasonInfoMessage message={infoMessage} />
+            {seasonData.episodes && (
+              <TribeBoard
+                seasonData={seasonData}
+                episodeId={episodeId}
+                tribeData={seasonData.tribes}
+                incrementEpisode={incrementEpisode}
+                decrementEpisode={decrementEpisode}
+              />
+            )}
+          </div>
+        )} />
       </div>
     );
   }
