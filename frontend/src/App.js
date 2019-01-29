@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
+import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
   if (document.location.hostname.search('visualsurvivor.com') !== -1) {
