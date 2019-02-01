@@ -13,7 +13,7 @@
   "static/js/3.138e22bd.chunk.js.map": "/static/js/3.138e22bd.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.4dcefcce.js",
   "runtime~main.js.map": "/static/js/runtime~main.4dcefcce.js.map",
-  "static/media/App.css": "/static/media/survivorfont.9ba24af1.ttf",
+  "static/media/App.css": "/static/media/survivant.b1dda199.ttf",
   "static/media/alan_ball.jpg": "/static/media/alan_ball.2e4a38df.jpg",
   "static/media/alec_merlino.jpg": "/static/media/alec_merlino.9793c71a.jpg",
   "static/media/ali_elliott.jpg": "/static/media/ali_elliott.9f004bf1.jpg",
@@ -74,9 +74,9 @@
   "static/media/wendell_holland.jpg": "/static/media/wendell_holland.57987108.jpg",
   "static/css/1.2eb839da.chunk.css.map": "/static/css/1.2eb839da.chunk.css.map",
   "static/css/3.5fd31565.chunk.css.map": "/static/css/3.5fd31565.chunk.css.map",
-  "static/css/main.54704b66.chunk.css.map": "/static/css/main.54704b66.chunk.css.map",
   "static/css/2.d86c8df3.chunk.css.map": "/static/css/2.d86c8df3.chunk.css.map",
+  "static/css/main.54704b66.chunk.css.map": "/static/css/main.54704b66.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.aa8488a3a1391c2e1e54ddcc11067832.js": "/precache-manifest.aa8488a3a1391c2e1e54ddcc11067832.js",
+  "precache-manifest.fa359190f83692d0172ee475af2a1e94.js": "/precache-manifest.fa359190f83692d0172ee475af2a1e94.js",
   "service-worker.js": "/service-worker.js"
 }
