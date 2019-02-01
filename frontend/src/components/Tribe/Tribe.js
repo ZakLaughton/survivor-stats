@@ -44,6 +44,7 @@ const Tribe = ({
                 formerTribeHighlight={formerTribeHighlight}
                 setFormerTribeHighlight={setFormerTribeHighlight}
                 removeFormerTribeHighlight={removeFormerTribeHighlight}
+                episodeId={episodeData.id}
               />
             ))}
       </div>

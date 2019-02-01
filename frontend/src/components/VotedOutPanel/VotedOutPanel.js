@@ -30,6 +30,7 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
                       formerTribeHighlight={formerTribeHighlight}
                       classNames={`animated fadeIn prejury`}
                       tribeData={tribeData}
+                      episodeId={episodeData.id}
                     />
                   );
                 })}
@@ -46,6 +47,7 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
                       formerTribeHighlight={formerTribeHighlight}
                       classNames={`animated fadeIn jury`}
                       tribeData={tribeData}
+                      episodeId={episodeData.id}
                     />
                   );
                 })}
