@@ -2,7 +2,8 @@ const getEpisodeCastawayData = async (req, res, db) => {
   let response = {
     season: null,
     tribes: [],
-    episodes: []
+    episodes: [],
+    preseasonStats: []
   };
 
   const season = req.query.season;
@@ -43,7 +44,6 @@ const getEpisodeCastawayData = async (req, res, db) => {
     .from('preseason_stats')
     .where('season', '=', Number(season))
     .andWhere('display', '=', 'true');
-  console.log(preseasonStats);
 
   const castawayDataByEpisode = seasonEpisodes.map(episode => {
     const episodeObj = {
@@ -131,6 +131,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
   });
 
   response.episodes = castawayDataByEpisode;
+  response.preseasonStats = preseasonStats;
   res.json(response);
 };
 
