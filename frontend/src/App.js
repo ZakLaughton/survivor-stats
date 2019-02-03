@@ -83,7 +83,9 @@ class App extends Component {
 
   scrollToPreseasonStats = () => {
     const preseasonStats = document.querySelector('.preseason-stats');
-    preseasonStats.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (preseasonStats) {
+      preseasonStats.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   onKeyPressed = e => {
