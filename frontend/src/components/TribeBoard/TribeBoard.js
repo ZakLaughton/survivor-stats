@@ -71,7 +71,7 @@ class TribeBoard extends React.Component {
     const { tribeData, incrementEpisode, decrementEpisode } = this.props;
     const { setFormerTribeHighlight, removeFormerTribeHighlight } = this;
     return (
-      <main>
+      <article>
         <div className="active-tribes">
           {activeTribes.length > 0 &&
             activeTribes.map(tribe => (
@@ -93,7 +93,7 @@ class TribeBoard extends React.Component {
           formerTribeHighlight={formerTribeHighlight}
           tribeData={tribeData}
         />
-      </main>
+      </article>
     );
   }
 }

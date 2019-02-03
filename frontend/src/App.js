@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
+import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
@@ -110,20 +111,25 @@ class App extends Component {
           setSeason={setSeason}
           setEpisode={setEpisode}
         />
-        <Route exact path="/" render={() => (
-          <div>
-            <SeasonInfoMessage message={infoMessage} />
-            {seasonData.episodes && (
-              <TribeBoard
-                seasonData={seasonData}
-                episodeId={episodeId}
-                tribeData={seasonData.tribes}
-                incrementEpisode={incrementEpisode}
-                decrementEpisode={decrementEpisode}
-              />
-            )}
-          </div>
-        )} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div>
+              <SeasonInfoMessage message={infoMessage} />
+              {seasonData.episodes && (
+                <TribeBoard
+                  seasonData={seasonData}
+                  episodeId={episodeId}
+                  tribeData={seasonData.tribes}
+                  incrementEpisode={incrementEpisode}
+                  decrementEpisode={decrementEpisode}
+                />
+              )}
+              <PreseasonStats />
+            </div>
+          )}
+        />
       </div>
     );
   }
