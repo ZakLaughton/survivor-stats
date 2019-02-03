@@ -36,3 +36,9 @@ sup {
     margin:auto;
     padding-top: 30px;
 }
+
+@media only screen and (max-width: 430px) {
+    .preseason-stats h1 {
+        font-size: 3rem;
+    }
+}
