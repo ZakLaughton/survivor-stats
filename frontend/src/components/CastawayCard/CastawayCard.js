@@ -77,7 +77,7 @@ class CastawayCard extends React.Component {
     this.updateFormerTribeHover();
 
     return (
-      <article
+      <div
         className={`castaway-card grow relative ma1 br2 ba dark-gray
         b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
       >
@@ -112,7 +112,7 @@ class CastawayCard extends React.Component {
             {castaway.name.substr(0, castaway.name.indexOf(' '))}
           </h2>
         </div>
-      </article>
+      </div>
     );
   }
 }
