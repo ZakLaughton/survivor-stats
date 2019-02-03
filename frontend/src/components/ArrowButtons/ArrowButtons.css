@@ -8,10 +8,14 @@ button {
 .arrow {
   cursor: pointer;
   position: fixed;
-  top: 50%;
-  margin-top: -45px;
   width: 70px;
   height: 90px;
+}
+
+.left,
+.right {
+  top: 50%;
+  margin-top: -45px;
 }
 
 .left {
@@ -20,6 +24,13 @@ button {
 
 .right {
   right: 0px;
+}
+
+.down {
+  transform: rotate(90deg);
+  left: 50%;
+  margin-left: -35px;
+  margin-bottom: -10px;
 }
 
 .left:hover polyline,
@@ -40,6 +51,10 @@ button {
 .right:active polyline {
   stroke-width: 6;
   transition: all 100ms ease-in-out;
+}
+
+.down {
+  bottom: 0px;
 }
 
 polyline {

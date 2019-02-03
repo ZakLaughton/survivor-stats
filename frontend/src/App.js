@@ -81,6 +81,11 @@ class App extends Component {
     }
   };
 
+  scrollToPreseasonStats = () => {
+    const preseasonStats = document.querySelector('.preseason-stats');
+    preseasonStats.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   onKeyPressed = e => {
     switch (e.keyCode) {
       case 37:
@@ -101,7 +106,13 @@ class App extends Component {
 
   render() {
     const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
-    const { setSeason, setEpisode, incrementEpisode, decrementEpisode } = this;
+    const {
+      setSeason,
+      setEpisode,
+      incrementEpisode,
+      decrementEpisode,
+      scrollToPreseasonStats,
+    } = this;
     return (
       <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
         <NavBar
@@ -129,6 +140,7 @@ class App extends Component {
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
+                downArrowAction={scrollToPreseasonStats}
               />
             </div>
           )}
