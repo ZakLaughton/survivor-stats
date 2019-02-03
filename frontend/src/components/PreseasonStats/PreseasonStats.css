@@ -1,5 +1,28 @@
 .preseason-stats {
     background: #333333;
+    color: rgb(255,255,255,0.9);
+    font-family: 'Londrina Solid', sans-serif;
+    font-size: 2rem;
+}
+
+.stat-value-pair {
+    padding-right: 25px;
+}
+
+.stat-value {
+    font-weight: lighter;
+}
+
+sup {
+    color: yellow;
+}
+
+.quote {
+    font-size: 1.2rem;
+    font-weight: lighter;
+    font-style: italic;
+    margin: auto;
+    max-width: 65%;
 }
 
 .preseason-stats h1 {
