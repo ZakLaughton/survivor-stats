@@ -131,14 +131,16 @@ class App extends Component {
           render={() => (
             <div>
               <SeasonInfoMessage message={infoMessage} />
-              {seasonData.episodes && (
-                <TribeBoard
-                  seasonData={seasonData}
-                  episodeId={episodeId}
-                  tribeData={seasonData.tribes}
-                />
-              )}
-              {seasonData.preseasonStats && <PreseasonStats />}
+              <main>
+                {seasonData.episodes && (
+                  <TribeBoard
+                    seasonData={seasonData}
+                    episodeId={episodeId}
+                    tribeData={seasonData.tribes}
+                  />
+                )}
+                {seasonData.preseasonStats && <PreseasonStats />}
+              </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
