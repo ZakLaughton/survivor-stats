@@ -136,7 +136,7 @@ class App extends Component {
                   tribeData={seasonData.tribes}
                 />
               )}
-              <PreseasonStats />
+              {seasonData.preseasonStats && <PreseasonStats />}
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
