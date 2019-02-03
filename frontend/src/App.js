@@ -5,6 +5,7 @@ import TribeBoard from './components/TribeBoard/TribeBoard';
 import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
+import ArrowButtons from './components/ArrowButtons/ArrowButtons';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
@@ -122,11 +123,13 @@ class App extends Component {
                   seasonData={seasonData}
                   episodeId={episodeId}
                   tribeData={seasonData.tribes}
-                  incrementEpisode={incrementEpisode}
-                  decrementEpisode={decrementEpisode}
                 />
               )}
               <PreseasonStats />
+              <ArrowButtons
+                incrementEpisode={incrementEpisode}
+                decrementEpisode={decrementEpisode}
+              />
             </div>
           )}
         />
