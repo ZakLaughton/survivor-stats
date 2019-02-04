@@ -24,11 +24,13 @@ const NavBar = ({
         </div>
       </div> */}
       <h1>Survivor Stats</h1>
-      <select value={seasonNum || ''} onChange={evt => setSeason(evt.target.value)}>
+      <select value={seasonNum || ''} onChange={evt => setSeason(evt.target.value)} id="season-select">
         {allSeasons.map(season => (
           <option key={season.season_no} value={season.season_no}>
-            {'Season '}
+            {'s'}
             {season.season_no.toString()}
+            {': '}
+            {season.title}
           </option>
         ))}
       </select>
