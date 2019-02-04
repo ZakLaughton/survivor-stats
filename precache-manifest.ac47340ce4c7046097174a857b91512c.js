@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/s37_carl_boudreaux.292dcd8b.jpg"
   },
   {
-    "revision": "da5a2408a50ddf1101ed",
-    "url": "/static/css/main.2b00602f.chunk.css"
+    "revision": "3aefceefc86d28776b77",
+    "url": "/static/css/main.8b9d8204.chunk.css"
   },
   {
     "revision": "8fa7a48a9c6de3b4efa680bf2d135f9d",
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.22f236e5.js"
   },
   {
-    "revision": "b1dda1997655a57084faa604a3e83ed7",
-    "url": "/static/media/survivant.b1dda199.ttf"
-  },
-  {
     "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
     "url": "/static/media/survivorfont.9ba24af1.ttf"
+  },
+  {
+    "revision": "b1dda1997655a57084faa604a3e83ed7",
+    "url": "/static/media/survivant.b1dda199.ttf"
   },
   {
     "revision": "2e4a38df71d6719e9371d98d98f75834",
@@ -212,8 +212,8 @@ self.__precacheManifest = [
     "url": "/static/media/s37_bi_nguyen.721edd67.jpg"
   },
   {
-    "revision": "da5a2408a50ddf1101ed",
-    "url": "/static/js/main.da5a2408.chunk.js"
+    "revision": "3aefceefc86d28776b77",
+    "url": "/static/js/main.3aefceef.chunk.js"
   },
   {
     "revision": "cad363897315a7faec33118568977bff",
@@ -420,7 +420,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.d1c8ec47.chunk.css"
   },
   {
-    "revision": "1073acd574e8fa5d385e05e39c2cea24",
+    "revision": "7beea5af0c9b872f974c586458311b83",
     "url": "/index.html"
   }
 ];
