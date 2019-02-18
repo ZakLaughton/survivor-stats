@@ -1,4 +1,4 @@
-const getEpisodeData = async (req, res, db) => {
+const getSeasonData = async (req, res, db) => {
   let response = {
     season: null,
     tribes: [],
@@ -160,5 +160,5 @@ const getEpisodeData = async (req, res, db) => {
 };
 
 module.exports = {
-  getEpisodeData
+  getSeasonData
 };

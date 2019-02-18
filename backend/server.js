@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-const episodeData = require('./controllers/episodeData');
+const seasonData = require('./controllers/seasonData');
 
 const db = knex({
   client: 'pg',
@@ -21,7 +21,7 @@ const db = knex({
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 app.get('/', (req, res) => {
-  episodeData.getEpisodeData(req, res, db);
+  seasonData.getSeasonData(req, res, db);
 });
 
 app.get('/seasons', async (req, res) => {
