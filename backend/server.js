@@ -8,23 +8,24 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-const castawayData = require('./controllers/episodeCastawayData');
-
+const episodeData = require('./controllers/episodeData');
 
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString : process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: true
   }
 });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-app.get('/', (req, res) => {castawayData.getEpisodeCastawayData(req, res, db)});
+app.get('/', (req, res) => {
+  episodeData.getEpisodeData(req, res, db);
+});
 
 app.get('/seasons', async (req, res) => {
   const seasons = await db.select('*').from('seasons');
   res.json(seasons);
-})
+});
 // app.get('/s:season/e:episode', (req, res) => {episodePlayerData.getEpisodePlayerData(req, res)})

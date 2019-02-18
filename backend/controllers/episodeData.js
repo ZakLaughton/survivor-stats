@@ -1,4 +1,4 @@
-const getEpisodeCastawayData = async (req, res, db) => {
+const getEpisodeData = async (req, res, db) => {
   let response = {
     season: null,
     tribes: [],
@@ -51,6 +51,15 @@ const getEpisodeCastawayData = async (req, res, db) => {
     .where('season', '=', Number(season))
     .andWhere('display', '=', 'true');
 
+  const episodeTribalPlays = await db('tribal_plays')
+    .join(
+      'tribal_councils',
+      'tribal_plays.tribal_council',
+      '=',
+      'tribal_councils.id'
+    )
+    .where('tribal_councils.episode', 'like', `s${season}%`);
+
   const castawayDataByEpisode = seasonEpisodes.map(episode => {
     const episodeObj = {
       id: null,
@@ -66,6 +75,7 @@ const getEpisodeCastawayData = async (req, res, db) => {
       }))
       .sort((a, b) => (a.name < b.name ? -1 : 1));
 
+    console.log('etp', episodeTribalPlays);
     // Populate tribe data for each castaway
     episodeObj.castaways = episodeObj.castaways.map(castaway => {
       const updatedCastaway = castaway;
@@ -151,5 +161,5 @@ const getEpisodeCastawayData = async (req, res, db) => {
 };
 
 module.exports = {
-  getEpisodeCastawayData
+  getEpisodeData
 };
