@@ -51,7 +51,15 @@ const getSeasonData = async (req, res, db) => {
     .where('season', '=', Number(season))
     .andWhere('display', '=', 'true');
 
-  const episodeTribalPlays = await db('tribal_plays')
+  const tribalCouncils = await db('tribal_councils').where(
+    'episode',
+    'like',
+    `s${season}%`
+  );
+
+  console.log('tc', tribalCouncils);
+
+  const tribalPlays = await db('tribal_plays')
     .join(
       'tribal_councils',
       'tribal_plays.tribal_council',
@@ -61,9 +69,11 @@ const getSeasonData = async (req, res, db) => {
     .where('tribal_councils.episode', 'like', `s${season}%`);
 
   const castawayDataByEpisode = seasonEpisodes.map(episode => {
+    // set up empty skeleton for each episode object
     const episodeObj = {
       id: null,
-      castaways: []
+      castaways: [],
+      tribal_councils: []
     };
     episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
     episodeObj.castaways = seasonCastaways
@@ -150,6 +160,10 @@ const getSeasonData = async (req, res, db) => {
 
       return updatedCastaway;
     });
+
+    episodeObj.tribal_councils = tribalCouncils.filter(
+      tribalCouncil => tribalCouncil.episode === episodeObj.id
+    );
 
     return episodeObj;
   });
