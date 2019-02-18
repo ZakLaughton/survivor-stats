@@ -75,7 +75,6 @@ const getEpisodeData = async (req, res, db) => {
       }))
       .sort((a, b) => (a.name < b.name ? -1 : 1));
 
-    console.log('etp', episodeTribalPlays);
     // Populate tribe data for each castaway
     episodeObj.castaways = episodeObj.castaways.map(castaway => {
       const updatedCastaway = castaway;
