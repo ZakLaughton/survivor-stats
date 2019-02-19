@@ -57,8 +57,6 @@ const getSeasonData = async (req, res, db) => {
     `s${season}%`
   );
 
-  console.log('tc', tribalCouncils);
-
   const tribalPlays = await db('tribal_plays')
     .join(
       'tribal_councils',
@@ -161,9 +159,31 @@ const getSeasonData = async (req, res, db) => {
       return updatedCastaway;
     });
 
-    episodeObj.tribal_councils = tribalCouncils.filter(
-      tribalCouncil => tribalCouncil.episode === episodeObj.id
+    episodeObj.tribalCouncils = tribalCouncils
+      .filter(tribalCouncil => tribalCouncil.episode === episodeObj.id)
+      .map(episodeTribalCouncil => {
+        const tribalCouncilObject = {
+          tribalNumber: episodeTribalCouncil.tribal_number,
+          tribe: episodeTribalCouncil.tribe,
+          finalTribal: episodeTribalCouncil.final_tribal,
+          castawayVotedFor: episodeTribalCouncil.castaway_voted_out,
+          notes: episodeTribalCouncil.notes,
+          day: episodeTribalCouncil.day_number,
+          tribalPlays: []
+        };
+
+        return tribalCouncilObject;
+      });
+
+    episodeObj.tribalCouncils = episodeObj.tribalCouncils.map(
+      tribal_council => {
+        let updatedTribalCouncil = tribal_council;
+        console.log('utc: ', updatedTribalCouncil);
+        return updatedTribalCouncil;
+      }
     );
+
+    console.log('tp', tribalPlays);
 
     return episodeObj;
   });
