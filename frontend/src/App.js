@@ -9,7 +9,7 @@ import ArrowButtons from './components/ArrowButtons/ArrowButtons';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
-  if (document.location.hostname.search('visualsurvivor.com') !== -1) {
+  if (document.location.hostname.search('survivorstats.com') !== -1) {
     ReactGA.initialize('UA-67511792-3');
     ReactGA.pageview('/');
   }
