@@ -77,7 +77,7 @@ class CastawayCard extends React.Component {
     this.updateFormerTribeHover();
 
     return (
-      <a href={castaway.wikiUrl}>
+      <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
         <div
           className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
