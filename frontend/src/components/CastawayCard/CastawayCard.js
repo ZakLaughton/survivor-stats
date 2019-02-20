@@ -77,11 +77,11 @@ class CastawayCard extends React.Component {
     this.updateFormerTribeHover();
 
     return (
-      <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
-        <div
-          className={`castaway-card grow relative ma1 br2 ba dark-gray
+      <div
+        className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
-        >
+      >
+        <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
           <div className="tribe-circle-container">
             {tribeData &&
               castaway.formerTribes.map(formerTribe => {
@@ -113,8 +113,8 @@ class CastawayCard extends React.Component {
               {castaway.name.substr(0, castaway.name.indexOf(' '))}
             </h2>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     );
   }
 }
