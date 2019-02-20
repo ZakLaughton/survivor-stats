@@ -77,42 +77,44 @@ class CastawayCard extends React.Component {
     this.updateFormerTribeHover();
 
     return (
-      <div
-        className={`castaway-card grow relative ma1 br2 ba dark-gray
-        b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
-      >
-        <div className="tribe-circle-container">
-          {tribeData &&
-            castaway.formerTribes.map(formerTribe => {
-              const circleColor = tribeData.find(
-                tribe => formerTribe.replace(/\d| /g, '') === tribe.name,
-              ).tribe_color;
-              return (
-                <FormerTribeIndicator
-                  key={formerTribe}
-                  circleColor={circleColor}
-                  formerTribe={formerTribe}
-                  setFormerTribeHighlight={setFormerTribeHighlight}
-                  removeFormerTribeHighlight={removeFormerTribeHighlight}
-                  formerTribeHighlight={formerTribeHighlight}
-                  semanticTribes={semanticTribes}
-                />
-              );
-            })}
+      <a href={castaway.wikiUrl}>
+        <div
+          className={`castaway-card grow relative ma1 br2 ba dark-gray
+          b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
+        >
+          <div className="tribe-circle-container">
+            {tribeData &&
+              castaway.formerTribes.map(formerTribe => {
+                const circleColor = tribeData.find(
+                  tribe => formerTribe.replace(/\d| /g, '') === tribe.name,
+                ).tribe_color;
+                return (
+                  <FormerTribeIndicator
+                    key={formerTribe}
+                    circleColor={circleColor}
+                    formerTribe={formerTribe}
+                    setFormerTribeHighlight={setFormerTribeHighlight}
+                    removeFormerTribeHighlight={removeFormerTribeHighlight}
+                    formerTribeHighlight={formerTribeHighlight}
+                    semanticTribes={semanticTribes}
+                  />
+                );
+              })}
+          </div>
+          <AdvantageIcons castaway={castaway} />
+          <img
+            src={require(`../../img/${imageFileName}`)}
+            className={`db br2 br--top`}
+            alt={castaway.name}
+          />
+          <div className="shadow" style={hoverFormerTribeStyle} />
+          <div className="card-nameplate">
+            <h2 className="card-name br2 mv0 center tc">
+              {castaway.name.substr(0, castaway.name.indexOf(' '))}
+            </h2>
+          </div>
         </div>
-        <AdvantageIcons castaway={castaway} />
-        <img
-          src={require(`../../img/${imageFileName}`)}
-          className={`db br2 br--top`}
-          alt={castaway.name}
-        />
-        <div className="shadow" style={hoverFormerTribeStyle} />
-        <div className="card-nameplate">
-          <h2 className="card-name br2 mv0 center tc">
-            {castaway.name.substr(0, castaway.name.indexOf(' '))}
-          </h2>
-        </div>
-      </div>
+      </a>
     );
   }
 }
