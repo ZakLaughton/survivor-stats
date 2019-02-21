@@ -33,8 +33,7 @@ const Tribe = ({
         {castaways
           && castaways
             .filter(
-              castaway => castaway.tribe.replace(/\d| /g, '') === tribe.name
-                && castaway.currentBoot === false,
+              castaway => castaway.tribe.replace(/ \d/g, '') === tribe.name && castaway.currentBoot === false,
             )
             .map(castaway => (
               <CastawayCard
