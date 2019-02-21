@@ -123,13 +123,15 @@ const getEpisodeCastawayData = async (req, res, db) => {
       const updatedCastaway = castaway;
       const currentChanges = seasonAdvantageChanges
         .filter(change => change.start_episode <= episodeObj.id) // filter later advantages
-        .filter(change => change.end_episode > episodeObj.id) // filter past advantages
+        .filter(
+          change => !change.end_episode || change.end_episode > episodeObj.id
+        ) // filter past advantages
         .filter(currentChange => currentChange.castaway === castaway.name); // get only changes for castaway
 
       updatedCastaway.advantages = currentChanges.map(change => {
         return { item: change.field_value, details: change.details };
       });
-      
+
       if (castawayProfiles.length > 0) {
         wikiUrlPath = castawayProfiles.find(
           castawayProfile => castawayProfile.castaway === castaway.name
