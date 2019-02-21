@@ -26,9 +26,16 @@ const Tribe = ({
   };
   const { castaways } = episodeData;
 
+  const getTribeTitle = (tribeName) => {
+    if (tribeName === 'Extinction Island') {
+      return <i className="fas fa-skull-crossbones" />;
+    }
+    return tribeName;
+  };
+
   return (
     <section className="tribe pa2 fl min-h-100" style={sectionStyle}>
-      <h1 className="mb1">{tribe.name}</h1>
+      <h1 className="mb1">{getTribeTitle(tribe.name)}</h1>
       <div className="castawayList">
         {castaways
           && castaways
