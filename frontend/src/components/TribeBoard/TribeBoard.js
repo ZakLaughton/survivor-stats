@@ -23,7 +23,7 @@ class TribeBoard extends React.Component {
         episodeData.castaways
           // Don't show current boots (to be removed in future)
           .filter(castaway => castaway.currentBoot === false)
-          .some(castaway => castaway.tribe.replace(/\d| /g, '') === tribe.name)
+          .some(castaway => castaway.tribe.replace(/ \d/g, '') === tribe.name)
       );
     });
 

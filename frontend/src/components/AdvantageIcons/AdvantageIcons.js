@@ -9,6 +9,7 @@ const AdvantageIcons = ({ castaway }) => {
     'legacy advantage': 'fas fa-scroll',
     'extra vote': 'fas fa-plus-circle',
     'fake idol': 'fab fa-pagelines',
+    'multi-choice advantage': 'fas fa-arrows-alt',
   };
 
   /**

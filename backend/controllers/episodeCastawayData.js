@@ -39,6 +39,12 @@ const getEpisodeCastawayData = async (req, res, db) => {
     .from('updates')
     .where('start_episode', 'like', `s${season}%`)
     .where('field', '=', 'advantage');
+  const castawayProfiles = await db('castaway_season_profiles').where(
+    'season',
+    '=',
+    Number(season)
+  );
+
   const preseasonStats = await db
     .select('stat', 'value', 'line')
     .from('preseason_stats')
@@ -117,12 +123,21 @@ const getEpisodeCastawayData = async (req, res, db) => {
       const updatedCastaway = castaway;
       const currentChanges = seasonAdvantageChanges
         .filter(change => change.start_episode <= episodeObj.id) // filter later advantages
-        .filter(change => change.end_episode > episodeObj.id) // filter past advantages
+        .filter(
+          change => !change.end_episode || change.end_episode > episodeObj.id
+        ) // filter past advantages
         .filter(currentChange => currentChange.castaway === castaway.name); // get only changes for castaway
 
       updatedCastaway.advantages = currentChanges.map(change => {
         return { item: change.field_value, details: change.details };
       });
+
+      if (castawayProfiles.length > 0) {
+        wikiUrlPath = castawayProfiles.find(
+          castawayProfile => castawayProfile.castaway === castaway.name
+        ).wiki_url;
+        updatedCastaway.wikiUrl = `https://survivor.fandom.com/wiki/${wikiUrlPath}`;
+      }
 
       return updatedCastaway;
     });

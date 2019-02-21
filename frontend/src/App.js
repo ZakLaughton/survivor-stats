@@ -9,7 +9,7 @@ import ArrowButtons from './components/ArrowButtons/ArrowButtons';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
-  if (document.location.hostname.search('visualsurvivor.com') !== -1) {
+  if (document.location.hostname.search('survivorstats.com') !== -1) {
     ReactGA.initialize('UA-67511792-3');
     ReactGA.pageview('/');
   }
@@ -139,9 +139,11 @@ class App extends Component {
                     tribeData={seasonData.tribes}
                   />
                 )}
-                {seasonData.preseasonStats && seasonData.preseasonStats.length > 0 && (
-                  <PreseasonStats preseasonStats={seasonData.preseasonStats} />
-                )}
+                {seasonData.preseasonStats &&
+                  seasonData.preseasonStats.length > 0 &&
+                  episodeId === 's38e00' && (
+                    <PreseasonStats preseasonStats={seasonData.preseasonStats} />
+                  )}
               </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
