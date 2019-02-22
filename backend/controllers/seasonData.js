@@ -164,6 +164,7 @@ const getSeasonData = async (req, res, db) => {
       .filter(tribalCouncil => tribalCouncil.episode === episodeObj.id)
       .map(episodeTribalCouncil => {
         const tribalCouncilObject = {
+          id: episodeTribalCouncil.id,
           tribalNumber: episodeTribalCouncil.tribal_number,
           tribe: episodeTribalCouncil.tribe,
           finalTribal: episodeTribalCouncil.final_tribal,
@@ -181,15 +182,30 @@ const getSeasonData = async (req, res, db) => {
             advantages: []
           };
 
-          voteRound.votes = tribalPlays
-            .filter(
-              tribalPlay =>
-                tribalPlay.item_played === 'vote' && tribalPlay.vote_no === i
-            )
+          // get only plays from this vote round
+          currentPlays = tribalPlays.filter(
+            tribalPlay =>
+              tribalPlay.tribal_council === tribalCouncilObject.id &&
+              tribalPlay.vote_no === i
+          );
+          // add votes to round
+          voteRound.votes = currentPlays
+            .filter(tribalPlay => tribalPlay.item_played === 'vote')
             .map(vote => {
               return {
                 playedBy: vote.played_by,
                 playedOn: vote.played_on
+              };
+            });
+
+          // add advantage plays to round
+          voteRound.advantages = currentPlays
+            .filter(tribalPlay => tribalPlay.item_played !== 'vote')
+            .map(advantage => {
+              return {
+                advantage: advantage.item_played,
+                playedBy: advantage.played_by,
+                playedOn: advantage.played_on
               };
             });
 
