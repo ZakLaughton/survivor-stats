@@ -12,6 +12,11 @@
   flex: 1 1;
 }
 
+/* Make Extinction Island narrower than the rest */
+.tribe.extinction-island {
+  flex: none;
+}
+
 .castawayList {
   display: flex;
   flex-flow: row wrap;
