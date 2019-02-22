@@ -112,14 +112,13 @@ class App extends Component {
   }
 
   render() {
-    const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
+    const { allSeasons, episodeId, season, seasonData, infoMessage, showArrows } = this.state;
     const {
       setSeason,
       setEpisode,
       incrementEpisode,
       decrementEpisode,
       scrollToPreseasonStats,
-      showArrows,
     } = this;
     return (
       <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
