@@ -117,7 +117,7 @@ class App extends Component {
   }
 
   render() {
-    const { allSeasons, episodeId, season, seasonData, infoMessage, showArrows } = this.state;
+    const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
     const {
       setSeason,
       setEpisode,

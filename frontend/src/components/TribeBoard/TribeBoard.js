@@ -67,7 +67,7 @@ class TribeBoard extends React.Component {
 
   render() {
     const { activeTribes, episodeData, formerTribeHighlight } = this.state;
-    const { tribeData, incrementEpisode, decrementEpisode } = this.props;
+    const { tribeData } = this.props;
     const { setFormerTribeHighlight, removeFormerTribeHighlight } = this;
     return (
       <article>
