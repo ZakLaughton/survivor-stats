@@ -33,8 +33,10 @@ const Tribe = ({
     return tribeName;
   };
 
+  const tribeClass = tribe.name === 'Extinction Island' ? 'extinction-island' : tribe.name.toLowerCase();
+
   return (
-    <section className="tribe pa2 fl min-h-100" style={sectionStyle}>
+    <section className={`tribe pa2 fl min-h-100 ${tribeClass}`} style={sectionStyle}>
       <h1 className="mb1">{getTribeTitle(tribe.name)}</h1>
       <div className="castawayList">
         {castaways
