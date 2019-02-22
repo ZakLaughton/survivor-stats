@@ -71,7 +71,7 @@ const getSeasonData = async (req, res, db) => {
     const episodeObj = {
       id: null,
       castaways: [],
-      tribal_councils: []
+      tribalCouncils: []
     };
     episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
     episodeObj.castaways = seasonCastaways
@@ -159,6 +159,7 @@ const getSeasonData = async (req, res, db) => {
       return updatedCastaway;
     });
 
+    // Populate tribal council data for each episode
     episodeObj.tribalCouncils = tribalCouncils
       .filter(tribalCouncil => tribalCouncil.episode === episodeObj.id)
       .map(episodeTribalCouncil => {
@@ -169,21 +170,45 @@ const getSeasonData = async (req, res, db) => {
           castawayVotedFor: episodeTribalCouncil.castaway_voted_out,
           notes: episodeTribalCouncil.notes,
           day: episodeTribalCouncil.day_number,
-          tribalPlays: []
+          vote_rounds: []
         };
+
+        // populate vote rounds
+        for (let i = 1; i <= episodeTribalCouncil.vote_rounds; i++) {
+          let voteRound = {
+            round_no: i,
+            votes: [],
+            advantages: []
+          };
+
+          voteRound.votes = tribalPlays
+            .filter(
+              tribalPlay =>
+                tribalPlay.item_played === 'vote' && tribalPlay.vote_no === i
+            )
+            .map(vote => {
+              return {
+                playedBy: vote.played_by,
+                playedOn: vote.played_on
+              };
+            });
+
+          tribalCouncilObject.vote_rounds.push(voteRound);
+        }
+
+        // populate advantage plays
 
         return tribalCouncilObject;
       });
 
+    // Populate played vote and advantage data for each tribal council
+
     episodeObj.tribalCouncils = episodeObj.tribalCouncils.map(
       tribal_council => {
         let updatedTribalCouncil = tribal_council;
-        console.log('utc: ', updatedTribalCouncil);
         return updatedTribalCouncil;
       }
     );
-
-    console.log('tp', tribalPlays);
 
     return episodeObj;
   });
