@@ -25,11 +25,6 @@ class App extends Component {
       activeTribes: [],
       seasonData: {},
       infoMessage: 'Loading...',
-      showArrows: {
-        left: false,
-        right: false,
-        down: false,
-      },
     };
   }
 
@@ -63,12 +58,21 @@ class App extends Component {
     this.setState({ episodeId });
   };
 
-  incrementEpisode = () => {
+  atLatestEpisode = () => {
     const numberOfEpisodes = this.state.seasonData.episodes.length;
     const currentEpisode = Number(this.state.episodeId.slice(-2));
-    if (currentEpisode < numberOfEpisodes - 1) {
+    return currentEpisode === numberOfEpisodes - 1;
+  };
+
+  atEarliestEpisode = () => {
+    const currentEpisode = Number(this.state.episodeId.slice(-2));
+    return currentEpisode === 0;
+  };
+
+  incrementEpisode = () => {
+    if (!this.atLatestEpisode()) {
       const formattedSeasonNum = ('0' + this.state.season).slice(-2);
-      const newEpisode = currentEpisode + 1;
+      const newEpisode = Number(this.state.episodeId.slice(-2)) + 1;
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       this.setState({ episodeId: newEpisodeId });
@@ -76,10 +80,9 @@ class App extends Component {
   };
 
   decrementEpisode = () => {
-    const currentEpisode = Number(this.state.episodeId.slice(-2));
-    if (currentEpisode > 0) {
+    if (!this.atEarliestEpisode()) {
       const formattedSeasonNum = ('0' + this.state.season).slice(-2);
-      const newEpisode = currentEpisode - 1;
+      const newEpisode = Number(this.state.episodeId.slice(-2)) - 1;
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       this.setState({ episodeId: newEpisodeId });
@@ -154,7 +157,6 @@ class App extends Component {
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
                 downArrowAction={scrollToPreseasonStats}
-                showArrows={showArrows}
               />
             </div>
           )}
