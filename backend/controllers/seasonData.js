@@ -1,6 +1,6 @@
 const getSeasonData = async (req, res, db) => {
   let response = {
-    season: null,
+    season: req.query.season,
     tribes: [],
     episodes: [],
     preseasonStats: []
