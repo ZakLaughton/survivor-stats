@@ -8,6 +8,11 @@
   text-align: center
 }
 
+.castaway-card {
+  min-width: 130px;
+  min-height: 130px;
+}
+
 .tribe {
   flex: 1 1;
 }
