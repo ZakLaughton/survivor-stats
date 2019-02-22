@@ -25,6 +25,11 @@ class App extends Component {
       activeTribes: [],
       seasonData: {},
       infoMessage: 'Loading...',
+      showArrows: {
+        left: false,
+        right: false,
+        down: false,
+      },
     };
   }
 
@@ -114,6 +119,7 @@ class App extends Component {
       incrementEpisode,
       decrementEpisode,
       scrollToPreseasonStats,
+      showArrows,
     } = this;
     return (
       <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
@@ -149,6 +155,7 @@ class App extends Component {
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
                 downArrowAction={scrollToPreseasonStats}
+                showArrows={showArrows}
               />
             </div>
           )}
