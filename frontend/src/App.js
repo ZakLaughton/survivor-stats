@@ -59,9 +59,11 @@ class App extends Component {
   };
 
   atLatestEpisode = () => {
-    const numberOfEpisodes = this.state.seasonData.episodes.length;
-    const currentEpisode = Number(this.state.episodeId.slice(-2));
-    return currentEpisode === numberOfEpisodes - 1;
+    if (this.state.seasonData.episodes) {
+      const numberOfEpisodes = this.state.seasonData.episodes.length;
+      const currentEpisode = Number(this.state.episodeId.slice(-2));
+      return currentEpisode === numberOfEpisodes - 1;
+    }
   };
 
   atEarliestEpisode = () => {
@@ -122,6 +124,8 @@ class App extends Component {
       incrementEpisode,
       decrementEpisode,
       scrollToPreseasonStats,
+      atEarliestEpisode,
+      atLatestEpisode,
     } = this;
     return (
       <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
@@ -157,6 +161,9 @@ class App extends Component {
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
                 downArrowAction={scrollToPreseasonStats}
+                atEarliestEpisode={atEarliestEpisode}
+                atLatestEpisode={atLatestEpisode}
+                episodeId={episodeId}
               />
             </div>
           )}
