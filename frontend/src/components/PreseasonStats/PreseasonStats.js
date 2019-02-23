@@ -25,28 +25,27 @@ const PreseasonStats = ({ preseasonStats }) => (
           stat="Most names mentioned in a self-comparison to former castaways"
           preseasonStats={preseasonStats}
         />
-        <br />
-        <div className="quote">
-          {'"The Wardog is his own blend – I’m not Tony'}
-          <sup>1</sup>
-          {', I’m not the Specialist'}
-          <sup>2</sup>
-          {', I’m not Boston Rob'}
-          <sup>3</sup>
-          {'. Whose game did I respect the most? That’s a better question. I thought Yul'}
-          <sup>4</sup>
-          {' played great, I thought Mike'}
-          <sup>5</sup>
-          {' was a great winner, I loved Parvati’s'}
-          <sup>6</sup>
-          {' game, Earl'}
-          <sup>7</sup>
-          {' dominated, 3rd version of Tyson'}
-          <sup>8</sup>
-          {', 1st version of County Bumpkin (J.T)'}
-          <sup>9</sup>
-          {'."'}
-        </div>
+      </p>
+      <p className="quote">
+        {'"The Wardog is his own blend – I’m not Tony'}
+        <sup>1</sup>
+        {', I’m not the Specialist'}
+        <sup>2</sup>
+        {', I’m not Boston Rob'}
+        <sup>3</sup>
+        {'. Whose game did I respect the most? That’s a better question. I thought Yul'}
+        <sup>4</sup>
+        {' played great, I thought Mike'}
+        <sup>5</sup>
+        {' was a great winner, I loved Parvati’s'}
+        <sup>6</sup>
+        {' game, Earl'}
+        <sup>7</sup>
+        {' dominated, 3rd version of Tyson'}
+        <sup>8</sup>
+        {', 1st version of County Bumpkin (J.T)'}
+        <sup>9</sup>
+        {'."'}
       </p>
     </div>
   </article>
