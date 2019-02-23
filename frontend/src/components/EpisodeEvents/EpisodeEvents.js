@@ -1,11 +1,11 @@
 import React from 'react';
-import './TribalCouncil.css';
+import './EpisodeEvents.css';
 
 class TribalCouncil extends React.Component {
   state = {};
 
   render() {
-    return <article />;
+    return <article className="episode-events" />;
   }
 }
 
