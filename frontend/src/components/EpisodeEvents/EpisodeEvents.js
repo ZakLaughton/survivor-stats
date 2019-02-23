@@ -1,18 +1,18 @@
 import React from 'react';
 import './EpisodeEvents.css';
 
-class EpisodeEvents extends React.Component {
-  state = {};
-
-  render() {
-    return (
-      <article className="episode-events">
-        <section class="tribal-council">
-          <h1>Tribal Council</h1>
-        </section>
-      </article>
-    );
+const EpisodeEvents = ({ seasonData, episodeId }) => {
+  if (seasonData.episodes) {
+    const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
   }
-}
+
+  return (
+    <article className="episode-events">
+      <section className="tribal-council">
+        <h1>Tribal Council</h1>
+      </section>
+    </article>
+  );
+};
 
 export default EpisodeEvents;

@@ -156,7 +156,7 @@ class App extends Component {
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
-                <EpisodeEvents />
+                <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
               </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
