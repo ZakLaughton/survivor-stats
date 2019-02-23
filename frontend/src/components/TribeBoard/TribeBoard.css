@@ -1,7 +1,6 @@
 .active-tribes {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
 }
 
 @media only screen and (max-width: 600px) {

@@ -31,9 +31,9 @@ main {
 }
 
 article {
-  display: block;
-  overflow:auto;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes App-logo-spin {
