@@ -6,7 +6,7 @@ import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import ArrowButtons from './components/ArrowButtons/ArrowButtons';
-import TribalCouncil from './components/EpisodeEvents/EpisodeEvents';
+import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
@@ -157,7 +157,7 @@ class App extends Component {
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
-                <TribalCouncil />
+                <EpisodeEvents />
               </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}

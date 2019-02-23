@@ -1,7 +1,7 @@
 import React from 'react';
 import './EpisodeEvents.css';
 
-class TribalCouncil extends React.Component {
+class EpisodeEvents extends React.Component {
   state = {};
 
   render() {
@@ -15,4 +15,4 @@ class TribalCouncil extends React.Component {
   }
 }
 
-export default TribalCouncil;
+export default EpisodeEvents;
