@@ -6,6 +6,7 @@ import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import ArrowButtons from './components/ArrowButtons/ArrowButtons';
+import TribalCouncil from './components/TribalCouncil/TribalCouncil';
 import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
@@ -28,8 +29,8 @@ class App extends Component {
     };
   }
 
-  fetchUrl = 'https://visual-survivor.herokuapp.com';
-  // fetchUrl = 'http://localhost:5000';
+  // fetchUrl = 'https://visual-survivor.herokuapp.com';
+  fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
     const url = `${this.fetchUrl}/?season=${season}`;
@@ -156,6 +157,7 @@ class App extends Component {
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
+                <TribalCouncil />
               </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
