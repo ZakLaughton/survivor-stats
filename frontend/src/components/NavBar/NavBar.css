@@ -9,10 +9,9 @@
   clear: both;
 }
 
-.navbar,
-.clear-navbar {
+.navbar{
   height: 30px;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
 }

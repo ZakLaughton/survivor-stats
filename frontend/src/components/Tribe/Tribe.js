@@ -37,7 +37,7 @@ const Tribe = ({
 
   return (
     <section className={`tribe pa2 fl min-h-100 ${tribeClass}`} style={sectionStyle}>
-      <h1 className="mb1">{getTribeTitle(tribe.name)}</h1>
+      <h1>{getTribeTitle(tribe.name)}</h1>
       <div className="castawayList">
         {castaways
           && castaways
