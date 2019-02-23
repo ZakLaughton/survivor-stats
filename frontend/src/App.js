@@ -23,7 +23,6 @@ class App extends Component {
       allSeasons: [],
       season: null,
       episodeId: '',
-      activeTribes: [],
       seasonData: {},
       infoMessage: 'Loading...',
     };
