@@ -5,7 +5,13 @@ class TribalCouncil extends React.Component {
   state = {};
 
   render() {
-    return <article className="episode-events" />;
+    return (
+      <article className="episode-events">
+        <section class="tribal-council">
+          <h1>Tribal Council</h1>
+        </section>
+      </article>
+    );
   }
 }
 
