@@ -168,6 +168,7 @@ const getSeasonData = async (req, res, db) => {
           tribalNumber: episodeTribalCouncil.tribal_number,
           tribe: episodeTribalCouncil.tribe,
           finalTribal: episodeTribalCouncil.final_tribal,
+          fireMakingTribal: episodeTribalCouncil.fire_making_tribal,
           castawayVotedFor: episodeTribalCouncil.castaway_voted_out,
           notes: episodeTribalCouncil.notes,
           day: episodeTribalCouncil.day_number,
