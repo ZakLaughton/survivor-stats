@@ -17,8 +17,6 @@ const TribalVotes = ({
   return (
     <div className="vote-container">
       {roundNo && <h3>{`Vote ${roundNo}`}</h3>}
-      <div className="column-title">Voters</div>
-      <div className="column-title">Voted For</div>
       {votesByVotedFor.map(votesForCastaway => (
         <React.Fragment>
           <div className="voters">
@@ -26,7 +24,7 @@ const TribalVotes = ({
               <Headshot castaway={voter} seasonNumber={seasonNumber} />
             ))}
           </div>
-
+          <i className="fas fa-arrow-right" />
           <div className="votee">
             <Headshot castaway={votesForCastaway.votedFor} seasonNumber={seasonNumber} />
           </div>

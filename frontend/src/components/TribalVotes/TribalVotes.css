@@ -1,11 +1,12 @@
 .vote-container {
     display: grid;
-    grid-gap: 10px;
-    grid-template-columns: auto 70px;
+    grid-template-columns: auto auto 70px;
     margin: auto;
     max-width: 500px;
     align-items: center;
     justify-content: center;
+    grid-row-gap: 20px;
+    grid-column-gap: 5px;
 }
 
 .voters {
