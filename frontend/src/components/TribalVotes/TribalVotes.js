@@ -9,7 +9,7 @@ const TribalVotes = ({
   const votesByVotedFor = castawaysVotedFor.map((castawayVotedFor) => {
     const returnObject = { votedFor: castawayVotedFor };
     returnObject.voters = voteData.votes
-      .filter(vote => vote.playedOn === castawayVotedFor)
+      .filter(vote => vote.playedOn === castawayVotedFor && vote.playedBy)
       .map(vote => vote.playedBy);
     return returnObject;
   });
