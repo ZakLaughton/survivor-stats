@@ -2,7 +2,7 @@ import React from 'react';
 import './TribalCouncils.css';
 import TribalVotes from '../TribalVotes/TribalVotes';
 
-const TribalCouncils = ({ tribalCouncils }) => (
+const TribalCouncils = ({ tribalCouncils, seasonNumber }) => (
   <section className="tribal-councils-container">
     <h1>Tribal</h1>
     {tribalCouncils.map(tribalCouncil => (
@@ -16,6 +16,7 @@ const TribalCouncils = ({ tribalCouncils }) => (
               roundNo={roundNo}
               voteData={voteRound}
               votedFor={tribalCouncil.votedFor}
+              seasonNumber={seasonNumber}
             />
           );
         })}

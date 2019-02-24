@@ -1,7 +1,10 @@
 import React from 'react';
 import './TribalVotes.css';
+import Headshot from '../Headshot/Headshot';
 
-const TribalVotes = ({ roundNo, voteData, votedFor }) => {
+const TribalVotes = ({
+  roundNo, voteData, votedFor, seasonNumber,
+}) => {
   const castawaysVotedFor = [...new Set(voteData.votes.map(vote => vote.playedOn))];
   const votesByVotedFor = castawaysVotedFor.map((castawayVotedFor) => {
     const returnObject = { votedFor: castawayVotedFor };
@@ -18,8 +21,15 @@ const TribalVotes = ({ roundNo, voteData, votedFor }) => {
       <div className="column-title">Voted For</div>
       {votesByVotedFor.map(votesForCastaway => (
         <React.Fragment>
-          <div className="voters">{votesForCastaway.voters}</div>
-          <div className="votee">{votesForCastaway.votedFor}</div>
+          <div className="voters">
+            {votesForCastaway.voters.map(voter => (
+              <Headshot castaway={voter} seasonNumber={seasonNumber} />
+            ))}
+          </div>
+
+          <div className="votee">
+            <Headshot castaway={votesForCastaway.votedFor} seasonNumber={seasonNumber} />
+          </div>
         </React.Fragment>
       ))}
     </div>

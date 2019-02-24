@@ -11,7 +11,9 @@ const EpisodeEvents = ({ seasonData, episodeId }) => {
 
   return (
     <article className="episode-events">
-      {tribalCouncils.length > 0 && <TribalCouncils tribalCouncils={tribalCouncils} />}
+      {tribalCouncils.length > 0 && (
+        <TribalCouncils tribalCouncils={tribalCouncils} seasonNumber={seasonData.season} />
+      )}
     </article>
   );
 };
