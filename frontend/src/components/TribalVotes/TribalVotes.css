@@ -37,4 +37,11 @@
     margin: 0;
 }
 
+.tribal-notes {
+    color: white;
+    font-style: italic;
+    font-size: 1rem;
+    max-width: 400px;
+    margin: 10px auto;
+}
 

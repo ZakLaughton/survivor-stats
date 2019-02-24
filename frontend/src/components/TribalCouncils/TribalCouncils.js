@@ -12,6 +12,7 @@ const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
       {tribalCouncils.map(tribalCouncil => (
         <div className="tribal-council" key={tribalCouncil.tribalNumber}>
           <h2>{`Day ${tribalCouncil.day}`}</h2>
+          <p className="tribal-notes">{tribalCouncil.notes}</p>
           {tribalCouncil.vote_rounds.map((voteRound) => {
             const roundNo = tribalCouncil.vote_rounds.length > 1 ? voteRound.round_no : null;
             return (
