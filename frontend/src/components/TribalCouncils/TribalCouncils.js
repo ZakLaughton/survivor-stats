@@ -13,18 +13,19 @@ const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
         <div className="tribal-council" key={tribalCouncil.tribalNumber}>
           <h2>{`Day ${tribalCouncil.day}`}</h2>
           <p className="tribal-notes">{tribalCouncil.notes}</p>
-          {tribalCouncil.vote_rounds.map((voteRound) => {
-            const roundNo = tribalCouncil.vote_rounds.length > 1 ? voteRound.round_no : null;
-            return (
-              <TribalVotes
-                key={roundNo}
-                roundNo={roundNo}
-                voteData={voteRound}
-                votedFor={tribalCouncil.votedFor}
-                seasonNumber={seasonNumber}
-              />
-            );
-          })}
+          {!tribalCouncil.fireMakingTribal
+            && tribalCouncil.vote_rounds.map((voteRound) => {
+              const roundNo = tribalCouncil.vote_rounds.length > 1 ? voteRound.round_no : null;
+              return (
+                <TribalVotes
+                  key={roundNo}
+                  roundNo={roundNo}
+                  voteData={voteRound}
+                  votedFor={tribalCouncil.votedFor}
+                  seasonNumber={seasonNumber}
+                />
+              );
+            })}
         </div>
       ))}
     </section>

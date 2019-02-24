@@ -98,6 +98,14 @@ class App extends Component {
     }
   };
 
+  currentEpisodeHasTribalCouncils = () => {
+    const { episodeId, seasonData } = this.state;
+    if (seasonData.episodes) {
+      const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
+      return episodeData.tribalCouncils.length > 0;
+    }
+  };
+
   onKeyPressed = e => {
     switch (e.keyCode) {
       case 37:
@@ -156,7 +164,9 @@ class App extends Component {
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
-                <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
+                {this.currentEpisodeHasTribalCouncils() && (
+                  <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
+                )}
               </main>
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
