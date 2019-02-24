@@ -1,17 +1,17 @@
 import React from 'react';
 import './EpisodeEvents.css';
+import TribalCouncils from '../TribalCouncils/TribalCouncils';
 
 const EpisodeEvents = ({ seasonData, episodeId }) => {
+  let tribalCouncils = [];
   if (seasonData.episodes) {
     const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
-    const tribalCouncils = episodeData.tribalCouncils;
+    tribalCouncils = episodeData.tribalCouncils;
   }
 
   return (
     <article className="episode-events">
-      <section className="tribal-council">
-        <h1>Tribal Council</h1>
-      </section>
+      {tribalCouncils.length > 0 && <TribalCouncils tribalCouncils={tribalCouncils} />}
     </article>
   );
 };
