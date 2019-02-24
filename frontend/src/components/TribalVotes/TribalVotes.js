@@ -14,23 +14,30 @@ const TribalVotes = ({
     return returnObject;
   });
 
+  const voteTitle = roundNo ? `Vote ${roundNo}` : 'Votes';
+
   return (
-    <div className="vote-container">
-      {roundNo && <h3>{`Vote ${roundNo}`}</h3>}
-      {votesByVotedFor.map(votesForCastaway => (
-        <React.Fragment>
-          <div className="voters">
-            {votesForCastaway.voters.map(voter => (
-              <Headshot castaway={voter} seasonNumber={seasonNumber} />
-            ))}
-          </div>
-          <i className="fas fa-arrow-right" />
-          <div className="votee">
-            <Headshot castaway={votesForCastaway.votedFor} seasonNumber={seasonNumber} />
-          </div>
-        </React.Fragment>
-      ))}
-    </div>
+    <React.Fragment>
+      <div className="vote-container">
+        <div className="grid-title">
+          <h3>{voteTitle}</h3>
+          <hr />
+        </div>
+        {votesByVotedFor.map(votesForCastaway => (
+          <React.Fragment>
+            <div className="voters">
+              {votesForCastaway.voters.map(voter => (
+                <Headshot castaway={voter} seasonNumber={seasonNumber} />
+              ))}
+            </div>
+            <i className="fas fa-arrow-right" />
+            <div className="votee">
+              <Headshot castaway={votesForCastaway.votedFor} seasonNumber={seasonNumber} />
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </React.Fragment>
   );
 };
 

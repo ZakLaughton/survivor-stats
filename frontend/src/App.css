@@ -46,6 +46,7 @@ article h1 {
   align-content: center;
   text-align: center;
   margin: 0;
+  margin-bottom: 5px;
 }
 
 @keyframes App-logo-spin {

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto auto 70px;
     margin: auto;
-    max-width: 500px;
+    max-width: 400px;
     align-items: center;
     justify-content: center;
     grid-row-gap: 20px;
@@ -18,6 +18,23 @@
 
 .voters .headshot-container {
     margin: 2px;
+}
+
+.grid-title {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    color: white;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.grid-title h3 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.grid-title hr {
+    margin: 0;
 }
 
 
