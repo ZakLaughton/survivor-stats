@@ -1,39 +1,119 @@
 self.__precacheManifest = [
   {
-    "revision": "f50ed5a1fa4b375e1795",
-    "url": "/static/css/main.859d2485.chunk.css"
+    "revision": "0998c936d06a31b1072b",
+    "url": "/static/css/main.3e4ae3ec.chunk.css"
   },
   {
-    "revision": "f50ed5a1fa4b375e1795",
-    "url": "/static/js/main.f50ed5a1.chunk.js"
+    "revision": "0998c936d06a31b1072b",
+    "url": "/static/js/main.0998c936.chunk.js"
   },
   {
-    "revision": "beefafff90309c094271",
-    "url": "/static/css/1.ed22e952.chunk.css"
+    "revision": "311408bcb32c30d995a3",
+    "url": "/static/css/1.52148d25.chunk.css"
   },
   {
-    "revision": "beefafff90309c094271",
-    "url": "/static/js/1.beefafff.chunk.js"
+    "revision": "311408bcb32c30d995a3",
+    "url": "/static/js/1.311408bc.chunk.js"
   },
   {
-    "revision": "22851f4ce9e58c4c106b",
-    "url": "/static/css/2.947c6b45.chunk.css"
+    "revision": "6b9305f263346b89a655",
+    "url": "/static/css/2.6f475556.chunk.css"
   },
   {
-    "revision": "22851f4ce9e58c4c106b",
-    "url": "/static/js/2.22851f4c.chunk.js"
+    "revision": "6b9305f263346b89a655",
+    "url": "/static/js/2.6b9305f2.chunk.js"
   },
   {
-    "revision": "79db58db4f3195b03701",
-    "url": "/static/css/3.979e0358.chunk.css"
+    "revision": "2e60045e84f2217a0f49",
+    "url": "/static/css/3.028015d7.chunk.css"
   },
   {
-    "revision": "79db58db4f3195b03701",
-    "url": "/static/js/3.79db58db.chunk.js"
+    "revision": "2e60045e84f2217a0f49",
+    "url": "/static/js/3.2e60045e.chunk.js"
   },
   {
-    "revision": "042546a141fef8e80d76",
-    "url": "/static/js/runtime~main.042546a1.js"
+    "revision": "28bb58e0f17d40aa2f9b",
+    "url": "/static/js/runtime~main.28bb58e0.js"
+  },
+  {
+    "revision": "d74268dcba012a59bdfde2af25457b81",
+    "url": "/static/media/s37_alec_merlino_headthumb.d74268dc.png"
+  },
+  {
+    "revision": "06794e7fc9bd32bc2b2f7257ca397450",
+    "url": "/static/media/s37_alison_raybould_headthumb.06794e7f.png"
+  },
+  {
+    "revision": "6fe1d08795e02fa09129d8b4349fdc4e",
+    "url": "/static/media/s37_angelina_keeley_headthumb.6fe1d087.png"
+  },
+  {
+    "revision": "40cbb7258d8f4224ec90b233b16e571f",
+    "url": "/static/media/s37_bi_nguyen_headthumb.40cbb725.png"
+  },
+  {
+    "revision": "5e144ea45424f63a2d0a6533996d33dd",
+    "url": "/static/media/s37_carl_boudreaux_headthumb.5e144ea4.png"
+  },
+  {
+    "revision": "c88bc376a6da9624322601de80853ab7",
+    "url": "/static/media/s37_christian_hubicki_headthumb.c88bc376.png"
+  },
+  {
+    "revision": "0aba5b22abc99b4a38c5c223e5de8842",
+    "url": "/static/media/s37_dan_rengering_headthumb.0aba5b22.png"
+  },
+  {
+    "revision": "21e43fdda4b3e625992d420f1276477b",
+    "url": "/static/media/s37_davie_rickenbacker_headthumb.21e43fdd.png"
+  },
+  {
+    "revision": "d83a401a02967e91f3272d140657cf06",
+    "url": "/static/media/s37_elizabeth_olson_headthumb.d83a401a.png"
+  },
+  {
+    "revision": "5dbf6af862bd598436a879c68834e57f",
+    "url": "/static/media/s37_gabby_pascuzzi_headthumb.5dbf6af8.png"
+  },
+  {
+    "revision": "46b3f6d3da9f88b115c4745243d950f1",
+    "url": "/static/media/s37_jeremy_crawford_headthumb.46b3f6d3.png"
+  },
+  {
+    "revision": "cf7dbbca26ae819477526abf23dd0f46",
+    "url": "/static/media/s37_jessica_peet_headthumb.cf7dbbca.png"
+  },
+  {
+    "revision": "59704a901eca5f60901a87014ca9aaea",
+    "url": "/static/media/s37_john_hennigan_headthumb.59704a90.png"
+  },
+  {
+    "revision": "0952ba31e04ef408bce1a5f0f903f8de",
+    "url": "/static/media/s37_kara_kay_headthumb.0952ba31.png"
+  },
+  {
+    "revision": "eb5091c05be985475ae2dfdc5858e66d",
+    "url": "/static/media/s37_lyrsa_torres_headthumb.eb5091c0.png"
+  },
+  {
+    "revision": "4386df8238be89c65e909e800d4bf83e",
+    "url": "/static/media/s37_mike_white_headthumb.4386df82.png"
+  },
+  {
+    "revision": "099958eb4aeb4aa8a56a7891f821c44e",
+    "url": "/static/media/s37_natalia_azoqa_headthumb.099958eb.png"
+  },
+  {
+    "revision": "c622599351dc459b7b7ffb1194a5ab42",
+    "url": "/static/media/s37_natalie_cole_headthumb.c6225993.png"
+  },
+  {
+    "revision": "b5fa0388b076520aafe5cc0fa8abbf60",
+    "url": "/static/media/s37_nick_wilson_headthumb.b5fa0388.png"
+  },
+  {
+    "revision": "274640889537f1724ee3b433ccba0d85",
+    "url": "/static/media/s37_pat_cusack_headthumb.27464088.png"
   },
   {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
@@ -42,6 +122,10 @@ self.__precacheManifest = [
   {
     "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
     "url": "/static/media/survivorfont.9ba24af1.ttf"
+  },
+  {
+    "revision": "b698c1f81515ae867f1e22bc340806ba",
+    "url": "/static/media/bg-episode-events.b698c1f8.png"
   },
   {
     "revision": "2e4a38df71d6719e9371d98d98f75834",
@@ -348,86 +432,6 @@ self.__precacheManifest = [
     "url": "/static/media/s38_wendy_diaz.62aca1d6.jpg"
   },
   {
-    "revision": "d74268dcba012a59bdfde2af25457b81",
-    "url": "/static/media/s37_alec_merlino_headthumb.d74268dc.png"
-  },
-  {
-    "revision": "06794e7fc9bd32bc2b2f7257ca397450",
-    "url": "/static/media/s37_alison_raybould_headthumb.06794e7f.png"
-  },
-  {
-    "revision": "6fe1d08795e02fa09129d8b4349fdc4e",
-    "url": "/static/media/s37_angelina_keeley_headthumb.6fe1d087.png"
-  },
-  {
-    "revision": "40cbb7258d8f4224ec90b233b16e571f",
-    "url": "/static/media/s37_bi_nguyen_headthumb.40cbb725.png"
-  },
-  {
-    "revision": "5e144ea45424f63a2d0a6533996d33dd",
-    "url": "/static/media/s37_carl_boudreaux_headthumb.5e144ea4.png"
-  },
-  {
-    "revision": "c88bc376a6da9624322601de80853ab7",
-    "url": "/static/media/s37_christian_hubicki_headthumb.c88bc376.png"
-  },
-  {
-    "revision": "0aba5b22abc99b4a38c5c223e5de8842",
-    "url": "/static/media/s37_dan_rengering_headthumb.0aba5b22.png"
-  },
-  {
-    "revision": "21e43fdda4b3e625992d420f1276477b",
-    "url": "/static/media/s37_davie_rickenbacker_headthumb.21e43fdd.png"
-  },
-  {
-    "revision": "d83a401a02967e91f3272d140657cf06",
-    "url": "/static/media/s37_elizabeth_olson_headthumb.d83a401a.png"
-  },
-  {
-    "revision": "5dbf6af862bd598436a879c68834e57f",
-    "url": "/static/media/s37_gabby_pascuzzi_headthumb.5dbf6af8.png"
-  },
-  {
-    "revision": "46b3f6d3da9f88b115c4745243d950f1",
-    "url": "/static/media/s37_jeremy_crawford_headthumb.46b3f6d3.png"
-  },
-  {
-    "revision": "cf7dbbca26ae819477526abf23dd0f46",
-    "url": "/static/media/s37_jessica_peet_headthumb.cf7dbbca.png"
-  },
-  {
-    "revision": "59704a901eca5f60901a87014ca9aaea",
-    "url": "/static/media/s37_john_hennigan_headthumb.59704a90.png"
-  },
-  {
-    "revision": "0952ba31e04ef408bce1a5f0f903f8de",
-    "url": "/static/media/s37_kara_kay_headthumb.0952ba31.png"
-  },
-  {
-    "revision": "eb5091c05be985475ae2dfdc5858e66d",
-    "url": "/static/media/s37_lyrsa_torres_headthumb.eb5091c0.png"
-  },
-  {
-    "revision": "4386df8238be89c65e909e800d4bf83e",
-    "url": "/static/media/s37_mike_white_headthumb.4386df82.png"
-  },
-  {
-    "revision": "099958eb4aeb4aa8a56a7891f821c44e",
-    "url": "/static/media/s37_natalia_azoqa_headthumb.099958eb.png"
-  },
-  {
-    "revision": "c622599351dc459b7b7ffb1194a5ab42",
-    "url": "/static/media/s37_natalie_cole_headthumb.c6225993.png"
-  },
-  {
-    "revision": "b5fa0388b076520aafe5cc0fa8abbf60",
-    "url": "/static/media/s37_nick_wilson_headthumb.b5fa0388.png"
-  },
-  {
-    "revision": "274640889537f1724ee3b433ccba0d85",
-    "url": "/static/media/s37_pat_cusack_headthumb.27464088.png"
-  },
-  {
     "revision": "a4aff1b4bcf1528b8a7823c9b46ecf73",
     "url": "/static/media/s38_aubry_bracco.a4aff1b4.jpg"
   },
@@ -500,7 +504,7 @@ self.__precacheManifest = [
     "url": "/static/media/s38_wendy_diaz.8fa7a48a.jpg"
   },
   {
-    "revision": "5104e1c02028179964c052e1703dd05f",
+    "revision": "086f0d724625896fe51c2965cca544cb",
     "url": "/index.html"
   }
 ];
