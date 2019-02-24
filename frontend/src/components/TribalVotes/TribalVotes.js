@@ -10,16 +10,17 @@ const TribalVotes = ({ roundNo, voteData, votedFor }) => {
       .map(vote => vote.playedBy);
     return returnObject;
   });
-  console.log('vbvf: ', votesByVotedFor);
 
   return (
     <div className="vote-container">
       {roundNo && <h3>{`Vote ${roundNo}`}</h3>}
+      <div className="column-title">Voters</div>
+      <div className="column-title">Voted For</div>
       {votesByVotedFor.map(votesForCastaway => (
-        <div className="votesForCastaway" key={votesForCastaway.votedFor}>
+        <React.Fragment>
           <div className="voters">{votesForCastaway.voters}</div>
           <div className="votee">{votesForCastaway.votedFor}</div>
-        </div>
+        </React.Fragment>
       ))}
     </div>
   );
