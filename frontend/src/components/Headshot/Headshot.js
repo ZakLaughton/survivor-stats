@@ -6,7 +6,11 @@ const Headshot = ({ seasonNumber, castaway }) => {
     .replace(/\s/, '_')
     .toLowerCase()}_headthumb.png`);
 
-  return <img className="headshot" alt={castaway} src={headshotImage} />;
+  return (
+    <div className="headshot-container">
+      <img className="headshot" alt={castaway} src={headshotImage} />
+    </div>
+  );
 };
 
 export default Headshot;

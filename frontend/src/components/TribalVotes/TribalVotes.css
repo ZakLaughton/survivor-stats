@@ -1,0 +1,22 @@
+.vote-container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto 70px;
+    margin: auto;
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+}
+
+.voters {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    max-width: auto;
+}
+
+.voters .headshot-container {
+    margin: 2px;
+}
+
+

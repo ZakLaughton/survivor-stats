@@ -1,4 +1,4 @@
-img.headshot {
-   width: auto;
-   height: auto; 
+.headshot-container {
+   width: 70px;
+   height: 70px; 
 }
