@@ -14,6 +14,8 @@ const TribalVotes = ({
     return returnObject;
   });
 
+  const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
+
   const voteTitle = roundNo ? `Vote ${roundNo}` : 'Votes';
 
   return (
@@ -23,7 +25,7 @@ const TribalVotes = ({
           <h3>{voteTitle}</h3>
           <hr />
         </div>
-        {votesByVotedFor.map(votesForCastaway => (
+        {sortedVotesByVotedFor.map(votesForCastaway => (
           <React.Fragment>
             <div className="voters">
               {votesForCastaway.voters.map(voter => (
