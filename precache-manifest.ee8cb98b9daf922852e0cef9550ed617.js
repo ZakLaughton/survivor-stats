@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "0998c936d06a31b1072b",
+    "revision": "4d053224d98642bf4e9b",
     "url": "/static/css/main.3e4ae3ec.chunk.css"
   },
   {
-    "revision": "0998c936d06a31b1072b",
-    "url": "/static/js/main.0998c936.chunk.js"
+    "revision": "4d053224d98642bf4e9b",
+    "url": "/static/js/main.4d053224.chunk.js"
   },
   {
     "revision": "311408bcb32c30d995a3",
@@ -504,7 +504,7 @@ self.__precacheManifest = [
     "url": "/static/media/s38_wendy_diaz.8fa7a48a.jpg"
   },
   {
-    "revision": "086f0d724625896fe51c2965cca544cb",
+    "revision": "1fa02c6127fba41769c1787e325a0f21",
     "url": "/index.html"
   }
 ];
