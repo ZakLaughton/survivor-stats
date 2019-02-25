@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/s36_desiree_afuye.4d34d0a1.jpg"
   },
   {
-    "revision": "f9ef58df41f2f5cc6aa8",
+    "revision": "1b6c2d56e054b9eac160",
     "url": "/static/css/main.ba73f034.chunk.css"
   },
   {
@@ -288,8 +288,8 @@ self.__precacheManifest = [
     "url": "/static/media/s36_chris_noble.c736ff18.jpg"
   },
   {
-    "revision": "f9ef58df41f2f5cc6aa8",
-    "url": "/static/js/main.f9ef58df.chunk.js"
+    "revision": "1b6c2d56e054b9eac160",
+    "url": "/static/js/main.1b6c2d56.chunk.js"
   },
   {
     "revision": "67dc7691f88edac28b666092354d7779",
@@ -572,7 +572,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.f7911a9a.chunk.css"
   },
   {
-    "revision": "b51e55d1fce00c47b9c591fa196d51ad",
+    "revision": "2289f96b396bf8a711c3f1fda29733c4",
     "url": "/index.html"
   }
 ];
