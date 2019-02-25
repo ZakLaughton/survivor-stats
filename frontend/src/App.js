@@ -91,10 +91,15 @@ class App extends Component {
     }
   };
 
-  scrollToPreseasonStats = () => {
+  scrollToNextSection = () => {
     const preseasonStats = document.querySelector('.preseason-stats');
-    if (preseasonStats) {
-      preseasonStats.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const episodeEvents = document.querySelector('.episode-events');
+
+    const nextSection = episodeEvents ? episodeEvents : preseasonStats;
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      console.log('clicked ', nextSection)
     }
   };
 
@@ -129,9 +134,10 @@ class App extends Component {
     const {
       setSeason,
       setEpisode,
+      currentEpisodeHasTribalCouncils,
       incrementEpisode,
       decrementEpisode,
-      scrollToPreseasonStats,
+      scrollToNextSection,
       atEarliestEpisode,
       atLatestEpisode,
     } = this;
@@ -171,7 +177,8 @@ class App extends Component {
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
-                downArrowAction={scrollToPreseasonStats}
+                downArrowAction={scrollToNextSection}
+                currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
                 atEarliestEpisode={atEarliestEpisode}
                 atLatestEpisode={atLatestEpisode}
                 episodeId={episodeId}
