@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.0430a1bb.chunk.css",
-  "main.js": "/static/js/main.b08bcd39.chunk.js",
-  "main.js.map": "/static/js/main.b08bcd39.chunk.js.map",
+  "main.js": "/static/js/main.4913bf0f.chunk.js",
+  "main.js.map": "/static/js/main.4913bf0f.chunk.js.map",
   "static/css/1.f7911a9a.chunk.css": "/static/css/1.f7911a9a.chunk.css",
   "static/js/1.bb1e6c96.chunk.js": "/static/js/1.bb1e6c96.chunk.js",
   "static/js/1.bb1e6c96.chunk.js.map": "/static/js/1.bb1e6c96.chunk.js.map",
@@ -50,7 +50,7 @@
   "static/media/s38_ron_clark_headthumb.png": "/static/media/s38_ron_clark_headthumb.01827bb3.png",
   "static/media/s38_victoria_baamonde_headthumb.png": "/static/media/s38_victoria_baamonde_headthumb.c59a4ae5.png",
   "static/media/s38_wendy_diaz_headthumb.png": "/static/media/s38_wendy_diaz_headthumb.b2850392.png",
-  "static/media/App.css": "/static/media/survivorfont.9ba24af1.ttf",
+  "static/media/App.css": "/static/media/survivant.b1dda199.ttf",
   "static/media/EpisodeEvents.css": "/static/media/bg-episode-events.b698c1f8.png",
   "static/media/s35_alan_ball.jpg": "/static/media/s35_alan_ball.2e4a38df.jpg",
   "static/media/s35_ali_elliott.jpg": "/static/media/s35_ali_elliott.9f004bf1.jpg",
@@ -128,11 +128,11 @@
   "static/media/s38_ron_clark.jpg": "/static/media/s38_ron_clark.ad49eb53.jpg",
   "static/media/s38_victoria_baamonde.jpg": "/static/media/s38_victoria_baamonde.1d59801c.jpg",
   "static/media/s38_wendy_diaz.jpg": "/static/media/s38_wendy_diaz.8fa7a48a.jpg",
-  "static/css/1.f7911a9a.chunk.css.map": "/static/css/1.f7911a9a.chunk.css.map",
   "static/css/main.0430a1bb.chunk.css.map": "/static/css/main.0430a1bb.chunk.css.map",
   "static/css/2.ae9e2ef4.chunk.css.map": "/static/css/2.ae9e2ef4.chunk.css.map",
+  "static/css/1.f7911a9a.chunk.css.map": "/static/css/1.f7911a9a.chunk.css.map",
   "static/css/3.549ff2d5.chunk.css.map": "/static/css/3.549ff2d5.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.2312fdc530ca6220b7345c064f3303be.js": "/precache-manifest.2312fdc530ca6220b7345c064f3303be.js",
+  "precache-manifest.ea8572fae504a14fa205f51f842b707c.js": "/precache-manifest.ea8572fae504a14fa205f51f842b707c.js",
   "service-worker.js": "/service-worker.js"
 }
