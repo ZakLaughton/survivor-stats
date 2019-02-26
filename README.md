@@ -1,4 +1,4 @@
-# Visual Survivor
+# Survivor Stats
 
 > A visual snapshot of each castaway's status at the end of each episode of [Survivor](https://en.wikipedia.org/wiki/Survivor_(U.S._TV_series)).
 
@@ -12,7 +12,7 @@
 
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/zlaughton/visual-survivor.git`
+- Clone this repo to your local machine using `https://github.com/zlaughton/survivor-stats.git`
 
 ### Setup
 
@@ -29,7 +29,7 @@ $ npm start
 ```
 2. Access the frontend at `localhost:3001`, and backend at `localhost:5000`
 
-_Note: The frontend can be run locally, connecting to the hosted backend on the internet. The backend, however requires access to a database. Currently, there is not a public database of the Visual Survivor data available for local testing._
+_Note: The frontend can be run locally, connecting to the hosted backend on the internet. The backend, however requires access to a database. Currently, there is not a public database of the Survivor Stats data available for local testing._
 
 ---
 
