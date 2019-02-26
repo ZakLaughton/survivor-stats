@@ -8,7 +8,7 @@ const Headshot = ({ seasonNumber, castaway }) => {
 
   return (
     <div className="headshot-container">
-      <img className="headshot" alt={castaway} src={headshotImage} />
+      <img className="headshot" alt={castaway} src={headshotImage} title={castaway}/>
     </div>
   );
 };

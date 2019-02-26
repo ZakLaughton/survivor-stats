@@ -10,6 +10,7 @@ button {
   position: fixed;
   width: 70px;
   height: 90px;
+  z-index: 100;
 }
 
 .left,
