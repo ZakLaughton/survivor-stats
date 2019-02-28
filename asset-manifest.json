@@ -1,7 +1,7 @@
 {
   "main.css": "/static/css/main.0430a1bb.chunk.css",
-  "main.js": "/static/js/main.4913bf0f.chunk.js",
-  "main.js.map": "/static/js/main.4913bf0f.chunk.js.map",
+  "main.js": "/static/js/main.23a39670.chunk.js",
+  "main.js.map": "/static/js/main.23a39670.chunk.js.map",
   "static/css/1.f7911a9a.chunk.css": "/static/css/1.f7911a9a.chunk.css",
   "static/js/1.bb1e6c96.chunk.js": "/static/js/1.bb1e6c96.chunk.js",
   "static/js/1.bb1e6c96.chunk.js.map": "/static/js/1.bb1e6c96.chunk.js.map",
@@ -129,10 +129,10 @@
   "static/media/s38_victoria_baamonde.jpg": "/static/media/s38_victoria_baamonde.1d59801c.jpg",
   "static/media/s38_wendy_diaz.jpg": "/static/media/s38_wendy_diaz.8fa7a48a.jpg",
   "static/css/main.0430a1bb.chunk.css.map": "/static/css/main.0430a1bb.chunk.css.map",
-  "static/css/2.ae9e2ef4.chunk.css.map": "/static/css/2.ae9e2ef4.chunk.css.map",
   "static/css/1.f7911a9a.chunk.css.map": "/static/css/1.f7911a9a.chunk.css.map",
   "static/css/3.549ff2d5.chunk.css.map": "/static/css/3.549ff2d5.chunk.css.map",
+  "static/css/2.ae9e2ef4.chunk.css.map": "/static/css/2.ae9e2ef4.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.ea8572fae504a14fa205f51f842b707c.js": "/precache-manifest.ea8572fae504a14fa205f51f842b707c.js",
+  "precache-manifest.5d07a8ec8eb2f3a33aae39fc3b3db8b9.js": "/precache-manifest.5d07a8ec8eb2f3a33aae39fc3b3db8b9.js",
   "service-worker.js": "/service-worker.js"
 }
