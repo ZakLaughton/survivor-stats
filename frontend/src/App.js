@@ -35,6 +35,7 @@ class App extends Component {
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
+    seasonData.episodes = seasonData.episodes.filter(episode => episode.active === true);
     const formattedSeasonNum = ('0' + season).slice(-2);
     this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
     const infoMessage = this.state.allSeasons.find(
