@@ -73,6 +73,8 @@ const getSeasonData = async (req, res, db) => {
       castaways: [],
       tribalCouncils: []
     };
+
+    episodeObj.active = episode.active;
     episodeObj.id = `s${season}e${episode.id.slice(-2)}`;
     episodeObj.castaways = seasonCastaways
       .map(castaway => ({
