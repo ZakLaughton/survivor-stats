@@ -22,6 +22,7 @@ const getSeasonData = async (req, res, db) => {
     .select('*')
     .from('season_castaway_mapping')
     .where('season_no', '=', Number(season))
+    .join('castaways', 'castaways.full_name', 'season_castaway_mapping.name')
     .catch(console.log);
   const seasonTribeChanges = await db
     .select('castaway', 'field_value', 'start_episode', 'boot_order', 'details')
@@ -79,11 +80,14 @@ const getSeasonData = async (req, res, db) => {
     episodeObj.castaways = seasonCastaways
       .map(castaway => ({
         name: castaway.name,
+        nickname: castaway.nickname,
         currentBoot: false,
         juryMember: false,
         bootOrder: null
       }))
       .sort((a, b) => (a.name < b.name ? -1 : 1));
+
+    console.log(episodeObj.castaways);
 
     // Populate tribe data for each castaway
     episodeObj.castaways = episodeObj.castaways.map(castaway => {
