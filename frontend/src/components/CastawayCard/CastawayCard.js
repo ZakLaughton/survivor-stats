@@ -111,7 +111,9 @@ class CastawayCard extends React.Component {
         <div className="shadow" style={hoverFormerTribeStyle} />
         <div className="card-nameplate">
           <h2 className="card-name br2 mv0 center tc">
-            {castaway.name.substr(0, castaway.name.indexOf(' '))}
+            {castaway.nickname
+              ? castaway.nickname
+              : castaway.name.substr(0, castaway.name.indexOf(' '))}
           </h2>
         </div>
       </div>
