@@ -89,6 +89,7 @@ class App extends Component {
       const newEpisode = Number(this.state.episodeId.slice(-2)) - 1;
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
+      document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
       this.setState({ episodeId: newEpisodeId });
     }
   };
