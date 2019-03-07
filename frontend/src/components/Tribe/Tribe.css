@@ -9,7 +9,7 @@
 
 /* Make Extinction Island narrower than the rest */
 .tribe.extinction-island {
-  flex: none;
+  flex: 0.1;
 }
 
 .castawayList {
