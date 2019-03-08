@@ -14,11 +14,11 @@ const ArrowButtons = ({
     const preseasonStats = document.querySelector('.preseason-stats');
     const episodeEvents = document.querySelector('.episode-events');
 
-    const nextSection = episodeEvents ? episodeEvents : preseasonStats;
+    const nextSection = episodeEvents || preseasonStats;
     return nextSection;
-  })()
+  })();
 
-  return(
+  return (
     <div>
       {!atEarliestEpisode() && (
         <button type="button" className="arrow left" onClick={decrementEpisode}>
@@ -78,8 +78,7 @@ const ArrowButtons = ({
         </button>
       )}
     </div>
-  )
-
-}
+  );
+};
 
 export default ArrowButtons;
