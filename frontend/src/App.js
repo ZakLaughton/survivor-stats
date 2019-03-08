@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import ReactGA from 'react-ga';
+import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
-import ReactGA from 'react-ga';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import ArrowButtons from './components/ArrowButtons/ArrowButtons';
 import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
-import { Switch, Route } from 'react-router-dom';
 
 function initializeReactGA() {
   if (document.location.hostname.search('survivorstats.com') !== -1) {
