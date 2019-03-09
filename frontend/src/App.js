@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable react/sort-comp */
 import React, { Component } from 'react';
 import './App.css';
 import ReactGA from 'react-ga';
@@ -32,13 +34,14 @@ class App extends Component {
   // fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
+    const { allSeasons } = this.state;
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
     seasonData.episodes = seasonData.episodes.filter(episode => episode.active === true);
-    const formattedSeasonNum = ('0' + season).slice(-2);
+    const formattedSeasonNum = (`0${season}`).slice(-2);
     this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
-    const infoMessage = this.state.allSeasons.find(
+    const infoMessage = allSeasons.find(
       seasonData => seasonData.season_no === Number(season),
     ).info_message;
     this.setState({ infoMessage });
@@ -54,16 +57,20 @@ class App extends Component {
   };
 
   setEpisode = episodeNum => {
-    const formattedEpisodeNum = ('0' + episodeNum).slice(-2);
-    const episodeId = `s${this.state.season}e${formattedEpisodeNum}`;
+    const { season } = this.state;
+    const formattedEpisodeNum = (`0${episodeNum}`).slice(-2);
+    const episodeId = `s${season}e${formattedEpisodeNum}`;
     this.setState({ episodeId });
   };
 
   atLatestEpisode = () => {
-    if (this.state.seasonData.episodes) {
-      const numberOfEpisodes = this.state.seasonData.episodes.length;
-      const currentEpisode = Number(this.state.episodeId.slice(-2));
+    const { seasonData, episodeId } = this.state;
+    if (seasonData.episodes) {
+      const numberOfEpisodes = seasonData.episodes.length;
+      const currentEpisode = Number(episodeId.slice(-2));
       return currentEpisode === numberOfEpisodes - 1;
+    } else {
+      return;
     }
   };
 
@@ -111,6 +118,8 @@ class App extends Component {
     if (seasonData.episodes) {
       const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
       return episodeData.tribalCouncils.length > 0;
+    } else {
+      return;
     }
   };
 
@@ -168,8 +177,8 @@ class App extends Component {
                     tribeData={seasonData.tribes}
                   />
                 )}
-                {seasonData.preseasonStats &&
-                  seasonData.preseasonStats.length > 0 &&
+                {seasonData.preseasonStats
+                  && seasonData.preseasonStats.length > 0 &&
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
