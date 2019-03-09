@@ -6,6 +6,8 @@
     width: auto;
     height: auto;
     position: relative;
+    background-color: #bcbcbc;
+    background-clip: content-box;
 }
 
 .card-nameplate {
