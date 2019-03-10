@@ -79,7 +79,7 @@ class TribeBoard extends React.Component {
 
     return (
       <article>
-        <div className="active-tribes">
+        <div className={`active-tribes tribe-count-${activeTribes.length}`}>
           {activeTribes.length > 0 &&
             activeTribes.map(tribe => (
               <Tribe
