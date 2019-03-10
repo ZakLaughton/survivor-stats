@@ -69,6 +69,14 @@ class TribeBoard extends React.Component {
     const { activeTribes, episodeData, formerTribeHighlight } = this.state;
     const { tribeData } = this.props;
     const { setFormerTribeHighlight, removeFormerTribeHighlight } = this;
+
+    if (activeTribes.find(tribe => tribe.name === 'Extinction Island')) {
+      const extinctionIslandIndex = activeTribes
+        .map(tribe => tribe.name)
+        .indexOf('Extinction Island');
+      activeTribes.push(activeTribes.splice(extinctionIslandIndex, 1)[0]);
+    }
+
     return (
       <article>
         <div className="active-tribes">
