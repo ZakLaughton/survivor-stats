@@ -67,7 +67,13 @@ class CastawayCard extends React.Component {
     } = this.props;
     const { hoverFormerTribeStyle } = this.state;
     const imageFileName =
-      episodeId.substring(0, 3) + '_' + castaway.name.replace(/\s/, '_').toLowerCase() + '.jpg';
+      episodeId.substring(0, 3) +
+      '_' +
+      castaway.name
+        .replace(/,|\./g, '')
+        .replace(/\s/g, '_')
+        .toLowerCase() +
+      '.jpg';
     const formerTribeClassNames = castaway.formerTribes
       .map(formerTribe => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
       .join(' ');
@@ -85,7 +91,7 @@ class CastawayCard extends React.Component {
           {tribeData &&
             castaway.formerTribes.map(formerTribe => {
               const circleColor = tribeData.find(
-                tribe => formerTribe.replace(/\d| /g, '') === tribe.name,
+                tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
               ).tribe_color;
               return (
                 <FormerTribeIndicator

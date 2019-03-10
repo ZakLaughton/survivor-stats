@@ -53,6 +53,7 @@ class App extends Component {
     const response = await fetch(`${this.fetchUrl}/seasons`);
     const allSeasons = await response.json();
     const sortedActiveSeasons = allSeasons
+      // Comment out below line to TEST new seasons
       .filter(season => season.active === true)
       .sort((a, b) => b.season_no - a.season_no);
     const lastSeasonNum = sortedActiveSeasons[0].season_no;
