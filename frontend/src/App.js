@@ -30,8 +30,8 @@ class App extends Component {
     };
   }
 
-  // fetchUrl = 'https://visual-survivor.herokuapp.com';
-  fetchUrl = 'http://localhost:5000';
+  fetchUrl = 'https://visual-survivor.herokuapp.com';
+  // fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
     const { allSeasons } = this.state;
