@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   fetchUrl = 'https://visual-survivor.herokuapp.com';
+  // Swap line above for below TEST case
   // fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
@@ -39,6 +40,8 @@ class App extends Component {
     const response = await fetch(url);
     const seasonData = await response.json();
     seasonData.episodes = seasonData.episodes.filter(episode => episode.active === true);
+    // Swap line above for below TEST case
+    // seasonData.episodes = seasonData.episodes.filter(episode => episode);
     const formattedSeasonNum = `0${season}`.slice(-2);
     this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
     const infoMessage = allSeasons.find(seasonData => seasonData.season_no === Number(season))
