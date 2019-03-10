@@ -25,10 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/seasons', async (req, res) => {
-  const seasons = await db
-    .select('*')
-    .from('seasons')
-    .where('active', '=', true);
+  const seasons = await db.select('*').from('seasons');
   res.json(seasons);
 });
 // app.get('/s:season/e:episode', (req, res) => {episodePlayerData.getEpisodePlayerData(req, res)})

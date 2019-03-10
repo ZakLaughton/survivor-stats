@@ -30,8 +30,8 @@ class App extends Component {
     };
   }
 
-  fetchUrl = 'https://visual-survivor.herokuapp.com';
-  // fetchUrl = 'http://localhost:5000';
+  // fetchUrl = 'https://visual-survivor.herokuapp.com';
+  fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
     const { allSeasons } = this.state;
@@ -39,26 +39,27 @@ class App extends Component {
     const response = await fetch(url);
     const seasonData = await response.json();
     seasonData.episodes = seasonData.episodes.filter(episode => episode.active === true);
-    const formattedSeasonNum = (`0${season}`).slice(-2);
+    const formattedSeasonNum = `0${season}`.slice(-2);
     this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
-    const infoMessage = allSeasons.find(
-      seasonData => seasonData.season_no === Number(season),
-    ).info_message;
+    const infoMessage = allSeasons.find(seasonData => seasonData.season_no === Number(season))
+      .info_message;
     this.setState({ infoMessage });
   };
 
   initializeSeasons = async () => {
     const response = await fetch(`${this.fetchUrl}/seasons`);
     const allSeasons = await response.json();
-    const sortedSeasons = allSeasons.sort((a, b) => b.season_no - a.season_no);
-    const lastSeasonNum = sortedSeasons[0].season_no;
-    this.setState({ allSeasons: sortedSeasons });
+    const sortedActiveSeasons = allSeasons
+      .filter(season => season.active === true)
+      .sort((a, b) => b.season_no - a.season_no);
+    const lastSeasonNum = sortedActiveSeasons[0].season_no;
+    this.setState({ allSeasons: sortedActiveSeasons });
     await this.setSeason(lastSeasonNum);
   };
 
   setEpisode = episodeNum => {
     const { season } = this.state;
-    const formattedEpisodeNum = (`0${episodeNum}`).slice(-2);
+    const formattedEpisodeNum = `0${episodeNum}`.slice(-2);
     const episodeId = `s${season}e${formattedEpisodeNum}`;
     this.setState({ episodeId });
   };
@@ -177,8 +178,8 @@ class App extends Component {
                     tribeData={seasonData.tribes}
                   />
                 )}
-                {seasonData.preseasonStats
-                  && seasonData.preseasonStats.length > 0 &&
+                {seasonData.preseasonStats &&
+                  seasonData.preseasonStats.length > 0 &&
                   episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                   )}
