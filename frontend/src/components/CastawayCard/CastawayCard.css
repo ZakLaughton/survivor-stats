@@ -65,3 +65,9 @@ a img {
     transition: all 0.3s ease-in-out;
     pointer-events: none;
 }
+
+ /* One-off styles */
+ .tribe.extinction-island .castaway-card {
+    min-width: 100px;
+    min-height: 100px;
+ }
