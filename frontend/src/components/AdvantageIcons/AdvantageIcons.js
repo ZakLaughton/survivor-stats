@@ -21,12 +21,6 @@ const AdvantageIcons = ({ castaway }) => {
       alt: 'Fake Immunity Idol',
       filename: 'fake_immunity_idol.png'
     },
-    // half immunity idol deprecated, replaced with 1 & 2
-    // TODO: Remove after 1 & 2 in place
-    'half immunity idol': {
-      alt: 'Half Immunity Idol',
-      filename: 'half_immunity_idol.png'
-    },
     'half immunity idol 1': {
       alt: 'Half Immunity Idol',
       filename: 'half_immunity_idol_1.png'
@@ -47,8 +41,6 @@ const AdvantageIcons = ({ castaway }) => {
     if (
       advantageName === 'fake idol' ||
       advantageName === 'immunity idol' ||
-      // TODO: rm after half immunity idol 1 & 2 are established
-      advantageName === 'half immunity idol' ||
       advantageName === 'half immunity idol 1' ||
       advantageName === 'half immunity idol 2'
     ) {
