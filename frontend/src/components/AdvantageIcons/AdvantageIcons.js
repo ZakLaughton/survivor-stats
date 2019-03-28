@@ -37,7 +37,7 @@ const AdvantageIcons = ({ castaway }) => {
     if (
       advantageName === 'fake idol'
       || advantageName === 'immunity idol'
-      || advantageName === 'half idol'
+      || advantageName === 'half immunity idol'
     ) {
       const advantage = pngLibrary[advantageName];
       return (
