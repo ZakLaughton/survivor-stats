@@ -1,9 +1,14 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable react/sort-comp */
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import './App.css';
 import ReactGA from 'react-ga';
-import { Switch, Route } from 'react-router-dom';
+import {
+  Switch,
+  Route
+} from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import TribeBoard from './components/TribeBoard/TribeBoard';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
@@ -35,7 +40,9 @@ class App extends Component {
   // fetchUrl = 'http://localhost:5000';
 
   setSeason = async season => {
-    const { allSeasons } = this.state;
+    const {
+      allSeasons
+    } = this.state;
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
     const seasonData = await response.json();
@@ -43,10 +50,16 @@ class App extends Component {
     // Swap line above for below TEST case
     // seasonData.episodes = seasonData.episodes.filter(episode => episode);
     const formattedSeasonNum = `0${season}`.slice(-2);
-    this.setState({ season, seasonData, episodeId: `s${formattedSeasonNum}e00` });
+    this.setState({
+      season,
+      seasonData,
+      episodeId: `s${formattedSeasonNum}e00`
+    });
     const infoMessage = allSeasons.find(seasonData => seasonData.season_no === Number(season))
       .info_message;
-    this.setState({ infoMessage });
+    this.setState({
+      infoMessage
+    });
   };
 
   initializeSeasons = async () => {
@@ -57,19 +70,33 @@ class App extends Component {
       .filter(season => season.active === true)
       .sort((a, b) => b.season_no - a.season_no);
     const lastSeasonNum = sortedActiveSeasons[0].season_no;
-    this.setState({ allSeasons: sortedActiveSeasons });
+    this.setState({
+      allSeasons: sortedActiveSeasons
+    });
     await this.setSeason(lastSeasonNum);
+
+    // Set to latest episode
+    this.setState({
+      episodeId: this.state.seasonData.episodes.slice(-1)[0].id
+    })
   };
 
   setEpisode = episodeNum => {
-    const { season } = this.state;
+    const {
+      season
+    } = this.state;
     const formattedEpisodeNum = `0${episodeNum}`.slice(-2);
     const episodeId = `s${season}e${formattedEpisodeNum}`;
-    this.setState({ episodeId });
+    this.setState({
+      episodeId
+    });
   };
 
   atLatestEpisode = () => {
-    const { seasonData, episodeId } = this.state;
+    const {
+      seasonData,
+      episodeId
+    } = this.state;
     if (seasonData.episodes) {
       const numberOfEpisodes = seasonData.episodes.length;
       const currentEpisode = Number(episodeId.slice(-2));
@@ -91,7 +118,9 @@ class App extends Component {
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      this.setState({ episodeId: newEpisodeId });
+      this.setState({
+        episodeId: newEpisodeId
+      });
     }
   };
 
@@ -102,7 +131,9 @@ class App extends Component {
       const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      this.setState({ episodeId: newEpisodeId });
+      this.setState({
+        episodeId: newEpisodeId
+      });
     }
   };
 
@@ -113,13 +144,19 @@ class App extends Component {
     const nextSection = episodeEvents ? episodeEvents : preseasonStats;
 
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      nextSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
       console.log('clicked ', nextSection);
     }
   };
 
   currentEpisodeHasTribalCouncils = () => {
-    const { episodeId, seasonData } = this.state;
+    const {
+      episodeId,
+      seasonData
+    } = this.state;
     if (seasonData.episodes) {
       const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
       return episodeData.tribalCouncils.length > 0;
@@ -147,7 +184,13 @@ class App extends Component {
   }
 
   render() {
-    const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
+    const {
+      allSeasons,
+      episodeId,
+      season,
+      seasonData,
+      infoMessage
+    } = this.state;
     const {
       setSeason,
       setEpisode,
@@ -158,52 +201,102 @@ class App extends Component {
       atEarliestEpisode,
       atLatestEpisode,
     } = this;
-    return (
-      <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
-        <NavBar
-          allSeasons={allSeasons}
-          seasonData={seasonData}
-          seasonNum={season}
-          episodeId={episodeId}
-          setSeason={setSeason}
-          setEpisode={setEpisode}
-        />
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <div>
-              <SeasonInfoMessage message={infoMessage} />
-              <main>
-                {seasonData.episodes && (
-                  <TribeBoard
-                    seasonData={seasonData}
-                    episodeId={episodeId}
-                    tribeData={seasonData.tribes}
-                  />
-                )}
-                {seasonData.preseasonStats &&
-                  seasonData.preseasonStats.length > 0 &&
-                  episodeId === 's38e00' && (
-                    <PreseasonStats preseasonStats={seasonData.preseasonStats} />
-                  )}
-                {this.currentEpisodeHasTribalCouncils() && (
-                  <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
-                )}
-              </main>
-              <ArrowButtons
-                incrementEpisode={incrementEpisode}
-                decrementEpisode={decrementEpisode}
-                downArrowAction={scrollToNextSection}
-                currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
-                atEarliestEpisode={atEarliestEpisode}
-                atLatestEpisode={atLatestEpisode}
-                episodeId={episodeId}
+    return ( <
+      div className = "App"
+      onKeyDown = {
+        this.onKeyPressed
+      }
+      tabIndex = "0" >
+      <
+      NavBar allSeasons = {
+        allSeasons
+      }
+      seasonData = {
+        seasonData
+      }
+      seasonNum = {
+        season
+      }
+      episodeId = {
+        episodeId
+      }
+      setSeason = {
+        setSeason
+      }
+      setEpisode = {
+        setEpisode
+      }
+      /> <
+      Route exact path = "/"
+      render = {
+        () => ( <
+          div >
+          <
+          SeasonInfoMessage message = {
+            infoMessage
+          }
+          /> <
+          main > {
+            seasonData.episodes && ( <
+              TribeBoard seasonData = {
+                seasonData
+              }
+              episodeId = {
+                episodeId
+              }
+              tribeData = {
+                seasonData.tribes
+              }
               />
-            </div>
-          )}
-        />
-      </div>
+            )
+          } {
+            seasonData.preseasonStats &&
+              seasonData.preseasonStats.length > 0 &&
+              episodeId === 's38e00' && ( <
+                PreseasonStats preseasonStats = {
+                  seasonData.preseasonStats
+                }
+                />
+              )
+          } {
+            this.currentEpisodeHasTribalCouncils() && ( <
+              EpisodeEvents seasonData = {
+                seasonData
+              }
+              episodeId = {
+                episodeId
+              }
+              />
+            )
+          } <
+          /main> <
+          ArrowButtons incrementEpisode = {
+            incrementEpisode
+          }
+          decrementEpisode = {
+            decrementEpisode
+          }
+          downArrowAction = {
+            scrollToNextSection
+          }
+          currentEpisodeHasTribalCouncils = {
+            currentEpisodeHasTribalCouncils
+          }
+          atEarliestEpisode = {
+            atEarliestEpisode
+          }
+          atLatestEpisode = {
+            atLatestEpisode
+          }
+          episodeId = {
+            episodeId
+          }
+          /> < /
+          div >
+        )
+      }
+      /> < /
+      div >
     );
   }
 }
