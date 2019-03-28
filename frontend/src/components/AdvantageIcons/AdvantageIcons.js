@@ -38,12 +38,7 @@ const AdvantageIcons = ({ castaway }) => {
    * @return {element}
    */
   const getAdvantageIconElement = advantageName => {
-    if (
-      advantageName === 'fake idol' ||
-      advantageName === 'immunity idol' ||
-      advantageName === 'half immunity idol 1' ||
-      advantageName === 'half immunity idol 2'
-    ) {
+    if (pngLibrary[advantageName]) {
       const advantage = pngLibrary[advantageName];
       return (
         <div className='tooltip advantage'>
@@ -54,12 +49,13 @@ const AdvantageIcons = ({ castaway }) => {
           <span className='animated fadeIn tooltiptext'>{advantage.alt}</span>
         </div>
       );
+    } else {
+      return (
+        <i className={`tooltip advantage ${iconLibrary[advantageName]}`}>
+          <span className='animated fadeIn tooltiptext'>{advantageName}</span>
+        </i>
+      );
     }
-    return (
-      <i className={`tooltip advantage ${iconLibrary[advantageName]}`}>
-        <span className='animated fadeIn tooltiptext'>{advantageName}</span>
-      </i>
-    );
   };
 
   return (
