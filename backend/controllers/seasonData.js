@@ -100,12 +100,12 @@ const getSeasonData = async (req, res, db) => {
             return -1;
           } else if (
             a.start_episode === b.start_episode &&
-            a.field_value === 'Extinction Island'
+            (a.field_value === 'Extinction Island' || a.field_value === 'out')
           ) {
             return 1;
           } else if (
             a.start_episode === b.start_episode &&
-            b.field_value === 'Extinction Island'
+            (b.field_value === 'Extinction Island' || b.field_value === 'out')
           ) {
             return -1;
           }
@@ -121,7 +121,15 @@ const getSeasonData = async (req, res, db) => {
         change => change.start_episode === latestChangeEpisode
       );
       // Get previous changes for former tribes
-      const previousChanges = currentChanges.slice(0, -1);
+      const lastNonOutChangeIndex = currentChanges.findIndex(
+        change =>
+          change.field_value === 'out' ||
+          change.field_value === 'Extinction Island'
+      );
+      const previousChanges = currentChanges.slice(
+        0,
+        lastNonOutChangeIndex || currentChanges.length
+      );
 
       // To retrieve last tribe for booted contestants
       const latestNonOutChange = currentChanges
