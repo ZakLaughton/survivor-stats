@@ -26,11 +26,7 @@ class CastawayCard extends React.Component {
   };
 
   updateFormerTribeHover = () => {
-    const {
-      formerTribeHighlight,
-      castaway,
-      tribeData
-    } = this.props;
+    const { formerTribeHighlight, castaway, tribeData } = this.props;
     if (
       formerTribeHighlight &&
       formerTribeHighlight.active &&
@@ -70,16 +66,14 @@ class CastawayCard extends React.Component {
       removeFormerTribeHighlight,
       episodeId,
     } = this.props;
-    const {
-      hoverFormerTribeStyle
-    } = this.state;
+    const { hoverFormerTribeStyle } = this.state;
     const imageFileName =
       episodeId.substring(0, 3) +
       '_' +
       castaway.name
-      .replace(/,|\./g, '')
-      .replace(/\s/g, '_')
-      .toLowerCase() +
+        .replace(/,|\./g, '')
+        .replace(/\s/g, '_')
+        .toLowerCase() +
       '.jpg';
     const formerTribeClassNames = castaway.formerTribes
       .map(formerTribe => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
@@ -89,80 +83,47 @@ class CastawayCard extends React.Component {
 
     this.updateFormerTribeHover();
 
-    return ( <
-      div className = {
-        `castaway-card grow relative ma1 br2 ba dark-gray
-          b--black-10 ma2 ${formerTribeClassNames} ${classNames}`
-      } >
-      <
-      div className = "tribe-circle-container" > {
-        tribeData &&
-        castaway.formerTribes.map(formerTribe => {
-          const circleColor = tribeData.find(
-            tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
-          ).tribe_color;
-          return ( <
-            FormerTribeIndicator key = {
-              formerTribe
-            }
-            circleColor = {
-              circleColor
-            }
-            formerTribe = {
-              formerTribe
-            }
-            setFormerTribeHighlight = {
-              setFormerTribeHighlight
-            }
-            removeFormerTribeHighlight = {
-              removeFormerTribeHighlight
-            }
-            formerTribeHighlight = {
-              formerTribeHighlight
-            }
-            semanticTribes = {
-              semanticTribes
-            }
-            />
-          );
-        })
-      } <
-      /div> <
-      AdvantageIcons castaway = {
-        castaway
-      }
-      /> <
-      a href = {
-        castaway.wikiUrl
-      }
-      target = "_blank"
-      rel = "noopener noreferrer" >
-      <
-      img src = {
-        require(`../../img/${imageFileName}`)
-      }
-      className = {
-        `db br2 br--top`
-      }
-      alt = {
-        castaway.name
-      }
-      /> < /
-      a > <
-      div className = "shadow"
-      style = {
-        hoverFormerTribeStyle
-      }
-      /> <
-      div className = "card-nameplate" >
-      <
-      h2 className = "card-name br2 mv0 center tc" > {
-        castaway.nickname ?
-        castaway.nickname : castaway.name.substr(0, castaway.name.indexOf(' '))
-      } <
-      /h2> < /
-      div > <
-      /div>
+    return (
+      <div
+        className={`castaway-card grow relative ma1 br2 ba dark-gray
+          b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
+      >
+        <div className="tribe-circle-container">
+          {tribeData &&
+            castaway.formerTribes.map(formerTribe => {
+              const circleColor = tribeData.find(
+                tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
+              ).tribe_color;
+              return (
+                <FormerTribeIndicator
+                  key={formerTribe}
+                  circleColor={circleColor}
+                  formerTribe={formerTribe}
+                  setFormerTribeHighlight={setFormerTribeHighlight}
+                  removeFormerTribeHighlight={removeFormerTribeHighlight}
+                  formerTribeHighlight={formerTribeHighlight}
+                  semanticTribes={semanticTribes}
+                />
+              );
+            })}
+        </div>
+        <AdvantageIcons castaway={castaway} />
+        <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
+          <img
+            src={require(`../../img/${imageFileName}`)}
+            className={`db br2 br--top`}
+            alt={castaway.name}
+          />
+        </a>
+        <div className="shadow" style={hoverFormerTribeStyle} />
+        <div className="card-nameplate">
+          <h2 className="card-name br2 mv0 center tc">
+            {castaway.nickname
+              ? castaway.nickname
+              : castaway.name.substr(0, castaway.name.indexOf(' '))}
+          </h2>
+        </div>
+      </div>
     );
   }
 }
