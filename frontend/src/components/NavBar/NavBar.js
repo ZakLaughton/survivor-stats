@@ -36,19 +36,21 @@ const NavBar = ({
         </option>
       ))}
     </select>
-    <select value={Number(episodeId.slice(-2))} onChange={evt => setEpisode(evt.target.value)}>
-      <option value="0">Start</option>
-      {seasonData.episodes
-        && seasonData.episodes
-          .filter(episode => episode.id.slice(-2) !== '00')
-          .sort((a, b) => (a.id < b.id ? -1 : 1))
-          .map(episode => (
-            <option key={episode.id} value={Number(episode.id.slice(-2))}>
-              {'Episode '}
-              {Number(episode.id.slice(-2))}
-            </option>
-          ))}
-    </select>
+    <div className="dropdown">
+      <button className="dropbtn">{`Episode ${Number(episodeId.slice(-2))}`}</button>
+      <div className="dropdown-content">
+        {seasonData.episodes
+          && seasonData.episodes
+            .filter(episode => episode.id.slice(-2) !== '00')
+            .sort((a, b) => (a.id < b.id ? -1 : 1))
+            .map(episode => (
+              <a href="#" key={episode.id} value={Number(episode.id.slice(-2))}>
+                {'Episode '}
+                {Number(episode.id.slice(-2))}
+              </a>
+            ))}
+      </div>
+    </div>
   </header>
 );
 
