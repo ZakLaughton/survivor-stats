@@ -3,7 +3,7 @@ const getSeasonData = async (req, res, db) => {
     season: req.query.season,
     tribes: [],
     episodes: [],
-    preseasonStats: []
+    preseasonStats: [],
   };
 
   const season = req.query.season;
@@ -72,7 +72,7 @@ const getSeasonData = async (req, res, db) => {
     const episodeObj = {
       id: null,
       castaways: [],
-      tribalCouncils: []
+      tribalCouncils: [],
     };
 
     episodeObj.active = episode.active;
@@ -83,7 +83,7 @@ const getSeasonData = async (req, res, db) => {
         nickname: castaway.nickname,
         currentBoot: false,
         juryMember: false,
-        bootOrder: null
+        bootOrder: null,
       }))
       .sort((a, b) => (a.name < b.name ? -1 : 1));
 
@@ -92,7 +92,24 @@ const getSeasonData = async (req, res, db) => {
       const updatedCastaway = castaway;
       const currentChanges = seasonTribeChanges
         .filter(change => change.start_episode <= episodeObj.id) // filter later episode data
-        .filter(currentChange => currentChange.castaway === castaway.name);
+        .filter(currentChange => currentChange.castaway === castaway.name)
+        .sort((a, b) => {
+          if (a.start_episode > b.start_episode) {
+            return 1;
+          } else if (a.start_episode < b.start_episode) {
+            return -1;
+          } else if (
+            a.start_episode === b.start_episode &&
+            a.field_value === 'Extinction Island'
+          ) {
+            return 1;
+          } else if (
+            a.start_episode === b.start_episode &&
+            b.field_value === 'Extinction Island'
+          ) {
+            return -1;
+          }
+        });
 
       // find the episode(s) with the highest change.start_episode
       const latestChangeEpisode = currentChanges.reduce((prev, current) =>
@@ -104,9 +121,8 @@ const getSeasonData = async (req, res, db) => {
         change => change.start_episode === latestChangeEpisode
       );
       // Get previous changes for former tribes
-      const previousChanges = currentChanges
-        .filter(change => change.start_episode != latestChangeEpisode)
-        .sort((a, b) => (a.start_episode < b.start_episode ? -1 : 1));
+      const previousChanges = currentChanges.slice(0, -1);
+
       // To retrieve last tribe for booted contestants
       const latestNonOutChange = currentChanges
         .filter(change => change.field_value !== 'out')
@@ -133,7 +149,8 @@ const getSeasonData = async (req, res, db) => {
           change => change.field_value === 'out'
         ).boot_order;
       } else {
-        updatedCastaway.tribe = latestChanges[0].field_value;
+        updatedCastaway.tribe =
+          latestChanges[latestChanges.length - 1].field_value;
       }
 
       return updatedCastaway;
@@ -176,7 +193,7 @@ const getSeasonData = async (req, res, db) => {
           castawayVotedFor: episodeTribalCouncil.castaway_voted_out,
           notes: episodeTribalCouncil.notes,
           day: episodeTribalCouncil.day_number,
-          vote_rounds: []
+          vote_rounds: [],
         };
 
         // populate vote rounds
@@ -184,7 +201,7 @@ const getSeasonData = async (req, res, db) => {
           let voteRound = {
             round_no: i,
             votes: [],
-            advantages: []
+            advantages: [],
           };
 
           // get only plays from this vote round
@@ -199,7 +216,7 @@ const getSeasonData = async (req, res, db) => {
             .map(vote => {
               return {
                 playedBy: vote.played_by,
-                playedOn: vote.played_on
+                playedOn: vote.played_on,
               };
             });
 
@@ -210,7 +227,7 @@ const getSeasonData = async (req, res, db) => {
               return {
                 advantage: advantage.item_played,
                 playedBy: advantage.played_by,
-                playedOn: advantage.played_on
+                playedOn: advantage.played_on,
               };
             });
 
@@ -240,5 +257,5 @@ const getSeasonData = async (req, res, db) => {
 };
 
 module.exports = {
-  getSeasonData
+  getSeasonData,
 };

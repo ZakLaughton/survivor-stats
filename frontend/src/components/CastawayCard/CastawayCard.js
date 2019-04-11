@@ -90,10 +90,11 @@ class CastawayCard extends React.Component {
       >
         <div className="tribe-circle-container">
           {tribeData &&
+            castaway.formerTribes &&
             castaway.formerTribes.map(formerTribe => {
-              const circleColor = tribeData.find(
-                tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
-              ).tribe_color;
+              const circleColor = tribeData.find(tribe => {
+                return formerTribe.replace(/ \d/g, '') === tribe.name;
+              }).tribe_color;
               return (
                 <FormerTribeIndicator
                   key={formerTribe}
