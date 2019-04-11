@@ -109,7 +109,7 @@ const getSeasonData = async (req, res, db) => {
         .sort((a, b) => (a.start_episode < b.start_episode ? -1 : 1));
       // To retrieve last tribe for booted contestants
       const latestNonOutChange = currentChanges
-        .filter(change => change.field_value != 'out')
+        .filter(change => change.field_value !== 'out')
         .reduce((prev, current) =>
           prev.start_episode > current.start_episode ? prev : current
         );
