@@ -45,16 +45,12 @@ const NavBar = ({
       ))}
     </select>
     <div className="episode-selector">
-      <div className>
-        {!atEarliestEpisode() && (
-          <i className="fas fa-caret-left episode-arrow" onClick={decrementEpisode} />
-        )}
-
-        <button className="episode-text">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
-        {!atLatestEpisode() && (
-          <i className="fas fa-caret-right episode-arrow" onClick={incrementEpisode} />
-        )}
-      </div>
+      <i
+        className={`fas fa-caret-left episode-arrow ${atEarliestEpisode() && 'hidden'}`}
+        onClick={decrementEpisode}
+      />
+      <span className="episode-text">{`EPISODE ${Number(episodeId.slice(-2))}`}</span>
+      <i className={`fas fa-caret-right episode-arrow ${atLatestEpisode() && 'hidden'}`} onClick={incrementEpisode} />
     </div>
     <h1>Survivor Stats</h1>
   </header>
