@@ -50,7 +50,7 @@ const NavBar = ({
           <i className="fas fa-caret-left episode-arrow" onClick={decrementEpisode} />
         )}
 
-        <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
+        <button className="episode-text">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
         {!atLatestEpisode() && (
           <i className="fas fa-caret-right episode-arrow" onClick={incrementEpisode} />
         )}
