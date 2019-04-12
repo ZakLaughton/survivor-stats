@@ -42,21 +42,23 @@ const NavBar = ({
         </option>
       ))}
     </select>
-    <div className="episode-selector dropdown">
-      <i className="fas fa-caret-left episode-arrow" />
-      <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
-      <i className="fas fa-caret-right episode-arrow" />
-      <div className="dropdown-content">
-        {seasonData.episodes
-          && seasonData.episodes
-            .filter(episode => episode.id.slice(-2) !== '00')
-            .sort((a, b) => (a.id < b.id ? -1 : 1))
-            .map(episode => (
-              <a href="#" key={episode.id} value={Number(episode.id.slice(-2))}>
-                {'Episode '}
-                {Number(episode.id.slice(-2))}
-              </a>
-            ))}
+    <div className="episode-selector">
+      <div className="dropdown">
+        <i className="fas fa-caret-left episode-arrow" />
+        <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
+        <i className="fas fa-caret-right episode-arrow" />
+        <div className="dropdown-content">
+          {seasonData.episodes
+            && seasonData.episodes
+              .filter(episode => episode.id.slice(-2) !== '00')
+              .sort((a, b) => (a.id < b.id ? -1 : 1))
+              .map(episode => (
+                <a href="#" key={episode.id} value={Number(episode.id.slice(-2))}>
+                  {'Episode '}
+                  {Number(episode.id.slice(-2))}
+                </a>
+              ))}
+        </div>
       </div>
     </div>
     <h1>Survivor Stats</h1>
