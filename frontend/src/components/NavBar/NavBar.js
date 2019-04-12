@@ -21,7 +21,6 @@ const NavBar = ({
           <a href="#">Link 3</a>
         </div>
       </div> */}
-    <h1>Survivor Stats</h1>
     <select
       value={seasonNum || ''}
       onChange={evt => setSeason(evt.target.value)}
@@ -36,7 +35,7 @@ const NavBar = ({
         </option>
       ))}
     </select>
-    <div className="dropdown">
+    <div className="episode-selector dropdown">
       <button className="dropbtn">{`Episode ${Number(episodeId.slice(-2))}`}</button>
       <div className="dropdown-content">
         {seasonData.episodes
@@ -51,6 +50,7 @@ const NavBar = ({
             ))}
       </div>
     </div>
+    <h1>Survivor Stats</h1>
   </header>
 );
 
