@@ -43,10 +43,10 @@ const NavBar = ({
       ))}
     </select>
     <div className="episode-selector">
-      <div className="dropdown">
-        <i className="fas fa-caret-left episode-arrow" />
+      <div className>
+        <i className="fas fa-caret-left episode-arrow" onClick={decrementEpisode} />
         <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
-        <i className="fas fa-caret-right episode-arrow" />
+        <i className="fas fa-caret-right episode-arrow" onClick={incrementEpisode} />
         <div className="dropdown-content">
           {seasonData.episodes
             && seasonData.episodes
