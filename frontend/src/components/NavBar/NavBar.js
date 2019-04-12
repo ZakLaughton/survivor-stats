@@ -43,11 +43,9 @@ const NavBar = ({
       ))}
     </select>
     <div className="episode-selector dropdown">
-      <button className="dropbtn">
-        <i className="fas fa-caret-left" />
-        {`   EPISODE ${Number(episodeId.slice(-2))}   `}
-        <i className="fas fa-caret-right" />
-      </button>
+      <i className="fas fa-caret-left episode-arrow" />
+      <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
+      <i className="fas fa-caret-right episode-arrow" />
       <div className="dropdown-content">
         {seasonData.episodes
           && seasonData.episodes
