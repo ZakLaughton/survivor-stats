@@ -3,7 +3,7 @@ const getSeasonData = async (req, res, db) => {
     season: req.query.season,
     tribes: [],
     episodes: [],
-    preseasonStats: [],
+    preseasonStats: []
   };
 
   const season = req.query.season;
@@ -72,7 +72,7 @@ const getSeasonData = async (req, res, db) => {
     const episodeObj = {
       id: null,
       castaways: [],
-      tribalCouncils: [],
+      tribalCouncils: []
     };
 
     episodeObj.active = episode.active;
@@ -83,7 +83,7 @@ const getSeasonData = async (req, res, db) => {
         nickname: castaway.nickname,
         currentBoot: false,
         juryMember: false,
-        bootOrder: null,
+        bootOrder: null
       }))
       .sort((a, b) => (a.name < b.name ? -1 : 1));
 
@@ -100,12 +100,12 @@ const getSeasonData = async (req, res, db) => {
             return -1;
           } else if (
             a.start_episode === b.start_episode &&
-            a.field_value === 'Extinction Island'
+            (a.field_value === 'Extinction Island' || a.field_value === 'out')
           ) {
             return 1;
           } else if (
             a.start_episode === b.start_episode &&
-            b.field_value === 'Extinction Island'
+            (b.field_value === 'Extinction Island' || b.field_value === 'out')
           ) {
             return -1;
           }
@@ -193,7 +193,7 @@ const getSeasonData = async (req, res, db) => {
           castawayVotedFor: episodeTribalCouncil.castaway_voted_out,
           notes: episodeTribalCouncil.notes,
           day: episodeTribalCouncil.day_number,
-          vote_rounds: [],
+          vote_rounds: []
         };
 
         // populate vote rounds
@@ -201,7 +201,7 @@ const getSeasonData = async (req, res, db) => {
           let voteRound = {
             round_no: i,
             votes: [],
-            advantages: [],
+            advantages: []
           };
 
           // get only plays from this vote round
@@ -216,7 +216,7 @@ const getSeasonData = async (req, res, db) => {
             .map(vote => {
               return {
                 playedBy: vote.played_by,
-                playedOn: vote.played_on,
+                playedOn: vote.played_on
               };
             });
 
@@ -227,7 +227,7 @@ const getSeasonData = async (req, res, db) => {
               return {
                 advantage: advantage.item_played,
                 playedBy: advantage.played_by,
-                playedOn: advantage.played_on,
+                playedOn: advantage.played_on
               };
             });
 
@@ -257,5 +257,5 @@ const getSeasonData = async (req, res, db) => {
 };
 
 module.exports = {
-  getSeasonData,
+  getSeasonData
 };
