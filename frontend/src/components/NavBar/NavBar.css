@@ -9,6 +9,7 @@
     position: sticky;
     top: 0;
     width: 100%;
+    align-items: center;
   }
 
 .clear-navbar {
@@ -23,7 +24,7 @@
 .episode-selector {
   justify-self: center;
   align-self: stretch;
-  height: 60px;
+  height: 40px;
   font-family: 'Londrina Solid', sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
