@@ -8,11 +8,13 @@
     position: sticky;
     top: 0;
     width: 100%;
+    align-items: center;
   }
 
 #season-select {
   width: 200px;
   height: 25px;
+  margin-left: 3px;
 }
   
 .episode-selector {
