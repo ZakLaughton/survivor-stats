@@ -2,19 +2,13 @@
 .navbar {
     background-color: #333;
     z-index: 100;
-    padding: 2px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 40px;
     position: sticky;
     top: 0;
     width: 100%;
-    align-items: center;
   }
-
-.clear-navbar {
-  clear: both;
-}
 
 #season-select {
   width: 200px;
