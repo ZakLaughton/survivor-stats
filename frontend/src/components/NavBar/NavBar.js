@@ -10,6 +10,8 @@ const NavBar = ({
   seasonNum,
   episodeId,
   seasonData,
+  atEarliestEpisode,
+  atLatestEpisode,
 }) => (
   <header className="navbar" id="myTopnav">
     {/* <div class="dropdown">
@@ -44,9 +46,14 @@ const NavBar = ({
     </select>
     <div className="episode-selector">
       <div className>
-        <i className="fas fa-caret-left episode-arrow" onClick={decrementEpisode} />
+        {!atEarliestEpisode() && (
+          <i className="fas fa-caret-left episode-arrow" onClick={decrementEpisode} />
+        )}
+
         <button className="dropbtn">{`EPISODE ${Number(episodeId.slice(-2))}`}</button>
-        <i className="fas fa-caret-right episode-arrow" onClick={incrementEpisode} />
+        {!atLatestEpisode() && (
+          <i className="fas fa-caret-right episode-arrow" onClick={incrementEpisode} />
+        )}
       </div>
     </div>
     <h1>Survivor Stats</h1>

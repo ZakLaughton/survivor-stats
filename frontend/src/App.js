@@ -189,6 +189,8 @@ class App extends Component {
           episodeId={episodeId}
           setSeason={setSeason}
           setEpisode={setEpisode}
+          atEarliestEpisode={atEarliestEpisode}
+          atLatestEpisode={atLatestEpisode}
           incrementEpisode={incrementEpisode}
           decrementEpisode={decrementEpisode}
         />{' '}
