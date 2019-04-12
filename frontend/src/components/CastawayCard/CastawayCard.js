@@ -92,20 +92,22 @@ class CastawayCard extends React.Component {
           {tribeData &&
             castaway.formerTribes &&
             castaway.formerTribes.map(formerTribe => {
-              const circleColor = tribeData.find(tribe => {
-                return formerTribe.replace(/ \d/g, '') === tribe.name;
-              }).tribe_color;
-              return (
-                <FormerTribeIndicator
-                  key={formerTribe}
-                  circleColor={circleColor}
-                  formerTribe={formerTribe}
-                  setFormerTribeHighlight={setFormerTribeHighlight}
-                  removeFormerTribeHighlight={removeFormerTribeHighlight}
-                  formerTribeHighlight={formerTribeHighlight}
-                  semanticTribes={semanticTribes}
-                />
-              );
+              if (formerTribe !== 'out') {
+                const circleColor = tribeData.find(tribe => {
+                  return formerTribe.replace(/ \d/g, '') === tribe.name;
+                }).tribe_color;
+                return (
+                  <FormerTribeIndicator
+                    key={formerTribe}
+                    circleColor={circleColor}
+                    formerTribe={formerTribe}
+                    setFormerTribeHighlight={setFormerTribeHighlight}
+                    removeFormerTribeHighlight={removeFormerTribeHighlight}
+                    formerTribeHighlight={formerTribeHighlight}
+                    semanticTribes={semanticTribes}
+                  />
+                );
+              }
             })}
         </div>
         <AdvantageIcons castaway={castaway} />
