@@ -5,8 +5,7 @@
     padding: 2px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    height: 30px;
-    max-height: 30px;
+    height: 40px;
     position: sticky;
     top: 0;
     width: 100%;
@@ -24,14 +23,20 @@
 .episode-selector {
   justify-self: center;
   align-self: stretch;
-  max-height: 30px;
+  height: 60px;
+  font-family: 'Londrina Solid', sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.episode-selector .dropbtn {
+  
 }
 
  /* Dropdown Button */
 .dropbtn {
     background-color: #333;
     color: white;
-    font-size: 16px;
     border: none;
   }
   

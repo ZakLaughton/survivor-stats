@@ -2,7 +2,14 @@ import React from 'react';
 import './NavBar.css';
 
 const NavBar = ({
-  allSeasons, setSeason, setEpisode, seasonNum, episodeId, seasonData,
+  incrementEpisode,
+  decrementEpisode,
+  allSeasons,
+  setSeason,
+  setEpisode,
+  seasonNum,
+  episodeId,
+  seasonData,
 }) => (
   <header className="navbar" id="myTopnav">
     {/* <div class="dropdown">
@@ -36,7 +43,11 @@ const NavBar = ({
       ))}
     </select>
     <div className="episode-selector dropdown">
-      <button className="dropbtn">{`Episode ${Number(episodeId.slice(-2))}`}</button>
+      <button className="dropbtn">
+        <i className="fas fa-caret-left" />
+        {`   EPISODE ${Number(episodeId.slice(-2))}   `}
+        <i className="fas fa-caret-right" />
+      </button>
       <div className="dropdown-content">
         {seasonData.episodes
           && seasonData.episodes

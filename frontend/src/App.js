@@ -189,6 +189,8 @@ class App extends Component {
           episodeId={episodeId}
           setSeason={setSeason}
           setEpisode={setEpisode}
+          incrementEpisode={incrementEpisode}
+          decrementEpisode={decrementEpisode}
         />{' '}
         <Route
           exact
