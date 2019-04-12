@@ -22,6 +22,9 @@
 }
   
 .episode-selector {
+  display: grid;
+  grid-template-columns: 1fr 124px 1fr;
+  align-items: center;
   justify-self: center;
   align-self: stretch;
   height: 40px;
@@ -29,15 +32,29 @@
   font-weight: 400;
   font-size: 1.4rem;
   color: white;
+  user-select: none;
 }
 
-.episode-text {
-  color: white;
-  user-select: none;
+.episode-selector h2 {
+  display: inline;
+  font-weight: 400;
+  font-size: 1.8rem;
+  justify-self: center;
+  /* Override other h2 properties */
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .episode-arrow {
   padding: 0px 9px;
+}
+
+.episode-arrow.right {
+  justify-self: start;
+}
+
+.episode-arrow.left {
+  justify-self: end;
 }
 
 .hidden {

@@ -46,11 +46,14 @@ const NavBar = ({
     </select>
     <div className="episode-selector">
       <i
-        className={`fas fa-caret-left episode-arrow ${atEarliestEpisode() && 'hidden'}`}
+        className={`fas fa-caret-left episode-arrow left ${atEarliestEpisode() && 'hidden'}`}
         onClick={decrementEpisode}
       />
-      <span className="episode-text">{`EPISODE ${Number(episodeId.slice(-2))}`}</span>
-      <i className={`fas fa-caret-right episode-arrow ${atLatestEpisode() && 'hidden'}`} onClick={incrementEpisode} />
+      <h2>{`EPISODE ${Number(episodeId.slice(-2))}`}</h2>
+      <i
+        className={`fas fa-caret-right episode-arrow right ${atLatestEpisode() && 'hidden'}`}
+        onClick={incrementEpisode}
+      />
     </div>
     <h1>Survivor Stats</h1>
   </header>
