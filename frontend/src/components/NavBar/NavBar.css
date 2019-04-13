@@ -4,17 +4,18 @@
     z-index: 100;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    height: 40px;
     position: sticky;
     top: 0;
     width: 100%;
     align-items: center;
+    grid-template-areas: "season episode title";
   }
 
 #season-select {
   width: 200px;
   height: 25px;
   margin-left: 3px;
+  grid-area: season;
 }
   
 .episode-selector {
@@ -29,6 +30,7 @@
   font-size: 1.4rem;
   color: white;
   user-select: none;
+  grid-area: episode;
 }
 
 .episode-selector h2 {
@@ -66,17 +68,25 @@
   font-weight: 500;
   color: rgb(255,255,255,0.8);
   padding-right: 5px;
+  grid-area: title;
 }
 
-.beta {
-  font-family: "Arial";
-  font-size: 1rem;
-  color: rgb(255,0,0,0.7);
-  font-weight: bold;
-}
+@media only screen and (max-width: 671px) {
+  .navbar {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "title title"
+      "season episode";
+  }
 
-@media only screen and (max-width: 500px) {
   .navbar h1 {
-    font-size: 1rem;
+    justify-self: center;
+  }
+
+  #season-select {
+    justify-self: center;
+  }
+
+  .episode-selector{
   }
 }
