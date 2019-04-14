@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/s36_bradley_kleihege.23b0ca0b.jpg"
   },
   {
-    "revision": "8c794c7e14169d1e6dda",
-    "url": "/static/css/main.352556a3.chunk.css"
+    "revision": "1527086cb2d3b7c0ee0c",
+    "url": "/static/css/main.c617fb99.chunk.css"
   },
   {
     "revision": "025f5fdcad6579febf67",
@@ -184,12 +184,12 @@ self.__precacheManifest = [
     "url": "/static/media/s38_wendy_diaz_headthumb.b2850392.png"
   },
   {
-    "revision": "b1dda1997655a57084faa604a3e83ed7",
-    "url": "/static/media/survivant.b1dda199.ttf"
-  },
-  {
     "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
     "url": "/static/media/survivorfont.9ba24af1.ttf"
+  },
+  {
+    "revision": "b1dda1997655a57084faa604a3e83ed7",
+    "url": "/static/media/survivant.b1dda199.ttf"
   },
   {
     "revision": "b698c1f81515ae867f1e22bc340806ba",
@@ -276,8 +276,8 @@ self.__precacheManifest = [
     "url": "/static/media/s36_angela_perkins.c791db95.jpg"
   },
   {
-    "revision": "8c794c7e14169d1e6dda",
-    "url": "/static/js/main.358cdc70.chunk.js"
+    "revision": "1527086cb2d3b7c0ee0c",
+    "url": "/static/js/main.fa8b253e.chunk.js"
   },
   {
     "revision": "48539a7000704510a1a3958fccd42d4d",
@@ -548,7 +548,7 @@ self.__precacheManifest = [
     "url": "/static/css/2.30c0d385.chunk.css"
   },
   {
-    "revision": "df4cf288f1af890a2d18f205c22084bd",
+    "revision": "0c6ffe00a508655d2c46eaa67ad80de7",
     "url": "/index.html"
   }
 ];
