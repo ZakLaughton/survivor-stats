@@ -21,7 +21,12 @@ const NavBar = ({
     <header className="navbar" id="myTopnav">
       {
         <div className="dropdown" id="season-select">
-          {seasonTitle && <button className="dropbtn">{seasonTitle || 'Season'}</button>}
+          {seasonTitle && (
+            <button className="dropbtn">
+              {`${seasonTitle}`}
+              <i className="fas fa-caret-down" />
+            </button>
+          )}
 
           <div className="dropdown-content">
             {allSeasons.map(season => (
