@@ -14,11 +14,15 @@ const NavBar = ({
   atLatestEpisode,
 }) => {
   const episodeNumber = Number(episodeId.slice(-2));
+  const seasonTitle = seasonData && allSeasons && seasonNum
+    ? allSeasons.find(season => seasonNum === season.season_no).title
+    : 'Season';
   return (
     <header className="navbar" id="myTopnav">
       {
         <div className="dropdown" id="season-select">
-          <button className="dropbtn">Season</button>
+          {seasonTitle && <button className="dropbtn">{seasonTitle || 'Season'}</button>}
+
           <div className="dropdown-content">
             {allSeasons.map(season => (
               <a href="#" key={season.season_no} value={season.season_no}>
