@@ -115,7 +115,7 @@ button i {
 
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  /* background-color: red; */
 }
 
 /* Dropdown content (hidden by default) */
@@ -138,8 +138,13 @@ button i {
 }
 
 /* Add a grey background color to dropdown links on hover */
-.dropdown-content div.season-option:hover {
+.dropdown-content div.season-option:hover:not(.selected) {
   background-color: #ddd;
+}
+
+div.season-option.selected {
+  background-color: #333;
+  color: white;
 }
 
 /* Show the dropdown menu on hover */

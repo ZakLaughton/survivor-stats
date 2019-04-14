@@ -34,7 +34,7 @@ const NavBar = ({
                 onClick={() => setSeason(season.season_no)}
                 key={season.season_no}
                 value={season.season_no}
-                className="season-option"
+                className={`season-option ${season.season_no === seasonNum && 'selected'}`}
               >
                 {season.season_no.toString()}
                 {': '}
