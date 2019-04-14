@@ -3,7 +3,7 @@
     background-color: #333;
     z-index: 100;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr auto 1fr;
     position: sticky;
     top: 0;
     width: 100%;
@@ -85,6 +85,7 @@ div i {
 
 .season-title-icon i {
   padding-left: 8px;
+  padding-right: 8px;
 }
 
 .season-title-icon {
@@ -183,5 +184,10 @@ div.season-title {
 
   #season-select {
     justify-self: center;
+  }
+
+  .dropdown-content {
+    position: fixed;
+    left: 0; 
   }
 }
