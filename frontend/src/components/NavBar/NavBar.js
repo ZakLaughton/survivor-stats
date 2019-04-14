@@ -30,11 +30,15 @@ const NavBar = ({
 
           <div className="dropdown-content">
             {allSeasons.map(season => (
-              <a href="#" key={season.season_no} value={season.season_no}>
+              <div
+                onClick={() => setSeason(season.season_no)}
+                key={season.season_no}
+                value={season.season_no}
+              >
                 {season.season_no.toString()}
                 {': '}
                 {season.title}
-              </a>
+              </div>
             ))}
           </div>
         </div>
