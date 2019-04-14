@@ -167,7 +167,7 @@ div.season-title {
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
   display: block;
 }
 

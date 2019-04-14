@@ -17,14 +17,27 @@ const NavBar = ({
   const seasonTitle = seasonData && allSeasons && seasonNum
     ? allSeasons.find(season => seasonNum === season.season_no).title
     : 'Season';
-
   const selectSeasonOption = (seasonNum) => {
     setSeason(seasonNum);
+    closeDropdown();
   };
+  const openDropdown = () => {
+    document.querySelector('.dropdown').classList.add('active');
+  };
+  const closeDropdown = () => {
+    document.querySelector('.dropdown').classList.remove('active');
+  };
+
   return (
     <header className="navbar" id="myTopnav">
       {
-        <div className="dropdown" id="season-select">
+        <div
+          className="dropdown"
+          id="season-select"
+          onMouseEnter={openDropdown}
+          onMouseLeave={closeDropdown}
+          onTouchStart={openDropdown}
+        >
           {seasonTitle && (
             <div className="dropbtn">
               <div className="season-title">{`${seasonTitle} `}</div>
