@@ -17,6 +17,10 @@ const NavBar = ({
   const seasonTitle = seasonData && allSeasons && seasonNum
     ? allSeasons.find(season => seasonNum === season.season_no).title
     : 'Season';
+
+  const selectSeasonOption = (seasonNum) => {
+    setSeason(seasonNum);
+  };
   return (
     <header className="navbar" id="myTopnav">
       {
@@ -32,7 +36,7 @@ const NavBar = ({
           <div className="dropdown-content">
             {allSeasons.map(season => (
               <div
-                onClick={() => setSeason(season.season_no)}
+                onClick={() => selectSeasonOption(season.season_no)}
                 key={season.season_no}
                 value={season.season_no}
                 className={`season-option ${season.season_no === seasonNum && 'selected'}`}
