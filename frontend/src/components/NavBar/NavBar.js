@@ -23,7 +23,7 @@ const NavBar = ({
         <div className="dropdown" id="season-select">
           {seasonTitle && (
             <div className="dropbtn">
-              <div className="season-title">{`${seasonTitle}`}</div>
+              <div className="season-title">{`${seasonTitle} `}</div>
               <div className="season-title-icon">
                 <i className="fas fa-caret-down" />
               </div>
