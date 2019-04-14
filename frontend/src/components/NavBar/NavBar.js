@@ -22,12 +22,13 @@ const NavBar = ({
       {
         <div className="dropdown" id="season-select">
           {seasonTitle && (
-            <button className="dropbtn">
-              {`${seasonTitle}`}
-              <i className="fas fa-caret-down" />
-            </button>
+            <div className="dropbtn">
+              <div className="season-title">{`${seasonTitle}`}</div>
+              <div className="season-title-icon">
+                <i className="fas fa-caret-down" />
+              </div>
+            </div>
           )}
-
           <div className="dropdown-content">
             {allSeasons.map(season => (
               <div
