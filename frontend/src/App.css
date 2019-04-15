@@ -1,3 +1,8 @@
+body {
+  /* Show a dark background "behind" the app when scrolling past top/bottom */
+  background-color: #333;
+}
+
 html,
 body,
 .root,
