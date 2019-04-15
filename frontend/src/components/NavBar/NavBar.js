@@ -34,12 +34,11 @@ const NavBar = ({
         <div
           className="dropdown"
           id="season-select"
-          onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
           onTouchStart={openDropdown}
         >
           {seasonTitle && (
-            <div className="dropbtn">
+            <div className="dropbtn" onMouseEnter={openDropdown}>
               <div className="season-title">{`${seasonTitle} `}</div>
               <div className="season-title-icon">
                 <i className="fas fa-caret-down" />
