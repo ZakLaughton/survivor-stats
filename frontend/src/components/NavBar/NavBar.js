@@ -35,7 +35,7 @@ const NavBar = ({
           className="dropdown"
           id="season-select"
           onMouseLeave={closeDropdown}
-          onTouchStart={openDropdown}
+          onTouchEnd={openDropdown}
         >
           {seasonTitle && (
             <div className="dropbtn" onMouseEnter={openDropdown}>
