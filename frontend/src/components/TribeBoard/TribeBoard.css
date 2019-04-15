@@ -9,6 +9,14 @@
   flex: 1 1 auto;
 }
 
+.tribe .castaway-card {
+  min-width: var(--castaway-card-size);
+  min-height: var(--castaway-card-size);
+  width: var(--castaway-card-size);
+  max-width: var(--castaway-card-size);
+  max-height: var(--castaway-card-size);
+}
+
 /* Avoid single-column castaway list */
 /* w/ two tribes */
 @media only screen and (min-width:515px) and (max-width: 637px) {
