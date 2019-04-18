@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "4ed4980974198518c2cc",
+    "revision": "c2526934e3d79ce42759",
     "url": "/static/css/main.30f90466.chunk.css"
   },
   {
-    "revision": "4ed4980974198518c2cc",
-    "url": "/static/js/main.613332e6.chunk.js"
+    "revision": "c2526934e3d79ce42759",
+    "url": "/static/js/main.f02973e8.chunk.js"
   },
   {
     "revision": "e528c9a740330164c325",
@@ -548,7 +548,7 @@ self.__precacheManifest = [
     "url": "/static/media/s37_natalie_cole.91eff28c.jpg"
   },
   {
-    "revision": "064a8f58fecda3b920c0615ba2404760",
+    "revision": "bfcd1e7e5e2ba7835895d1ed2df4f0b8",
     "url": "/index.html"
   }
 ];
