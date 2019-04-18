@@ -1,9 +1,7 @@
 .info-message {
     background-color: lightblue;
-    position: fixed;
-    top: 0;
     width: 100%;
     z-index: 99;
-    padding-top: 30px;
     text-align: center;
+    position: fixed;
 }

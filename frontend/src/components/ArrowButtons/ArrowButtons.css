@@ -13,20 +13,6 @@ button {
   z-index: 100;
 }
 
-.left,
-.right {
-  top: 50%;
-  margin-top: -45px;
-}
-
-.left {
-  left: 0%;
-}
-
-.right {
-  right: 0px;
-}
-
 .down {
   transform: rotate(90deg);
   left: 50%;

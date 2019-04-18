@@ -1,3 +1,8 @@
+body {
+  /* Show a dark background "behind" the app when scrolling past top/bottom */
+  background-color: #333;
+}
+
 html,
 body,
 .root,
@@ -8,7 +13,7 @@ main {
 
 main {
   text-align: center;
-  font-family: 'Londrina Solid', sans-serif;
+  font-family: 'Survivant', 'Londrina Solid', sans-serif;
 }
 
 .App-logo {

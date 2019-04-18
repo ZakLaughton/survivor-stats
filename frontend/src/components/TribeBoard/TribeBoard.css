@@ -1,18 +1,31 @@
+:root {
+  --castaway-card-size: 130px;
+  --castaway-card-size-sm: 110px;
+}
+
 .active-tribes {
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
 }
 
+.tribe .castaway-card {
+  min-width: var(--castaway-card-size);
+  min-height: var(--castaway-card-size);
+  width: var(--castaway-card-size);
+  max-width: var(--castaway-card-size);
+  max-height: var(--castaway-card-size);
+}
+
 /* Avoid single-column castaway list */
 /* w/ two tribes */
 @media only screen and (min-width:515px) and (max-width: 637px) {
   .tribe-count-2 .tribe .castaway-card {
-    min-width: 100px;
-    min-height: 100px;
-    width: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    min-width: var(--castaway-card-size-sm);
+    min-height: var(--castaway-card-size-sm);
+    width: var(--castaway-card-size-sm);
+    max-width: var(--castaway-card-size-sm);
+    max-height: var(--castaway-card-size-sm);
   }
 
   .tribe-count-2 .tribe .castaway-card h2 {
@@ -30,11 +43,11 @@
 /* w/ three tribes */
 @media only screen and (min-width:766px) and (max-width: 957px) {
   .tribe-count-3 .tribe .castaway-card {
-    min-width: 100px;
-    min-height: 100px;
-    width: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    min-width: var(--castaway-card-size-sm);
+    min-height: var(--castaway-card-size-sm);
+    width: var(--castaway-card-size-sm);
+    max-width: var(--castaway-card-size-sm);
+    max-height: var(--castaway-card-size-sm);
   }
 
   .tribe-count-3 .tribe .castaway-card h2 {
@@ -51,11 +64,11 @@
 /* w/ 4 tribes */
 @media only screen and (min-width:761px) and (max-width: 1075px) {
   .tribe-count-4 .tribe .castaway-card {
-    min-width: 100px;
-    min-height: 100px;
-    width: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    min-width: var(--castaway-card-size-sm);
+    min-height: var(--castaway-card-size-sm);
+    width: var(--castaway-card-size-sm);
+    max-width: var(--castaway-card-size-sm);
+    max-height: var(--castaway-card-size-sm);
   }
 
   .tribe-count-4 .tribe .castaway-card h2 {
@@ -80,6 +93,18 @@
 @media only screen and (max-width: 761px) {
 .active-tribes.tribe-count-4 {
     flex-direction: column;
+  }
+
+ .tribe .castaway-card {
+    min-width: var(--castaway-card-size-sm);
+    min-height: var(--castaway-card-size-sm);
+    width: var(--castaway-card-size-sm);
+    max-width: var(--castaway-card-size-sm);
+    max-height: var(--castaway-card-size-sm);
+  }
+
+  .tribe .castaway-card h2 {
+    font-size: 1.3rem;
   }
 }
   
