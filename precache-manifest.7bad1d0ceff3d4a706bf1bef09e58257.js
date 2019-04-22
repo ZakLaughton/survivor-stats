@@ -184,12 +184,12 @@ self.__precacheManifest = [
     "url": "/static/media/s38_wendy_diaz_headthumb.b2850392.png"
   },
   {
-    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
-    "url": "/static/media/survivorfont.9ba24af1.ttf"
-  },
-  {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
     "url": "/static/media/survivant.b1dda199.ttf"
+  },
+  {
+    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
+    "url": "/static/media/survivorfont.9ba24af1.ttf"
   },
   {
     "revision": "b698c1f81515ae867f1e22bc340806ba",
@@ -548,7 +548,7 @@ self.__precacheManifest = [
     "url": "/static/media/s37_natalie_cole.91eff28c.jpg"
   },
   {
-    "revision": "bfcd1e7e5e2ba7835895d1ed2df4f0b8",
+    "revision": "665229d054cadd2c452164b3f1d9f561",
     "url": "/index.html"
   }
 ];
