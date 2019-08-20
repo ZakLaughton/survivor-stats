@@ -1,7 +1,16 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react';
-import './Headshot.css';
+import styled from 'styled-components';
+
+const HeadshotContainer = styled.div`
+  width: 70px;
+  height: 70px;
+`;
+
+const HeadshotImage = styled.img`
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+`;
 
 const Headshot = ({ seasonNumber, castaway }) => {
   const headshotImage = require(`../../img/s${seasonNumber}_${castaway
@@ -9,9 +18,9 @@ const Headshot = ({ seasonNumber, castaway }) => {
     .toLowerCase()}_headthumb.png`);
 
   return (
-    <div className="headshot-container">
-      <img className="headshot" alt={castaway} src={headshotImage} title={castaway} />
-    </div>
+    <HeadshotContainer>
+      <HeadshotImage alt={castaway} src={headshotImage} title={castaway} />
+    </HeadshotContainer>
   );
 };
 
