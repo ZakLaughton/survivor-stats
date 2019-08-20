@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import React from 'react';
 import './CastawayCard.css';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
@@ -15,10 +17,10 @@ class CastawayCard extends React.Component {
    * "Malolo 3") and returns a dictionary of their semantic names (e.g.
    * "Original Malolo", "Malolo (1st swap)", "Malolo (2nd Swap)')
    */
-  getSemanticTribeNames = formerTribeList => {
+  getSemanticTribeNames = (formerTribeList) => {
     const semanticDictionary = {};
 
-    formerTribeList.forEach((tribe, i) => {
+    formerTribeList.forEach((tribe) => {
       const newName = tribe.replace(/2$/, '(1st swap)').replace(/3$/, '(2nd swap)');
       semanticDictionary[tribe] = newName;
     });
@@ -27,12 +29,13 @@ class CastawayCard extends React.Component {
 
   updateFormerTribeHover = () => {
     const { formerTribeHighlight, castaway, tribeData } = this.props;
+    const { hoverFormerTribeActive } = this.state;
     if (
-      formerTribeHighlight &&
-      formerTribeHighlight.active &&
-      formerTribeHighlight.tribeName !== 'Extinction Island' &&
-      !this.state.hoverFormerTribeActive &&
-      castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)
+      formerTribeHighlight
+      && formerTribeHighlight.active
+      && formerTribeHighlight.tribeName !== 'Extinction Island'
+      && !hoverFormerTribeActive
+      && castaway.formerTribes.find(tribe => tribe === formerTribeHighlight.tribeName)
     ) {
       const activeTribeColor = tribeData.find(
         tribe => tribe.name === formerTribeHighlight.tribeName.replace(/\d| /g, ''),
@@ -44,11 +47,7 @@ class CastawayCard extends React.Component {
         hoverFormerTribeStyle: highlightedStyle,
         hoverFormerTribeActive: true,
       });
-    } else if (
-      formerTribeHighlight &&
-      !formerTribeHighlight.active &&
-      this.state.hoverFormerTribeActive
-    ) {
+    } else if (formerTribeHighlight && !formerTribeHighlight.active && hoverFormerTribeActive) {
       this.setState({
         hoverFormerTribeStyle: {},
         hoverFormerTribeActive: false,
@@ -67,16 +66,12 @@ class CastawayCard extends React.Component {
       episodeId,
     } = this.props;
     const { hoverFormerTribeStyle } = this.state;
-    const imageFileName =
-      episodeId.substring(0, 3) +
-      '_' +
-      castaway.name
-        .replace(/,|\./g, '')
-        .replace(/\s/g, '_')
-        .toLowerCase() +
-      '.jpg';
+    const imageFileName = `${episodeId.substring(0, 3)}_${castaway.name
+      .replace(/,|\./g, '')
+      .replace(/\s/g, '_')
+      .toLowerCase()}.jpg`;
     const formerTribeClassNames = castaway.formerTribes
-      .map(formerTribe => 'former-' + formerTribe.replace(/\s/g, '-').toLowerCase())
+      .map(formerTribe => `former-${formerTribe.replace(/\s/g, '-').toLowerCase()}`)
       .join(' ');
 
     const semanticTribes = this.getSemanticTribeNames(castaway.formerTribes);
@@ -89,12 +84,12 @@ class CastawayCard extends React.Component {
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
       >
         <div className="tribe-circle-container">
-          {tribeData &&
-            castaway.formerTribes &&
-            castaway.formerTribes.map(formerTribe => {
-              const circleColor = tribeData.find(tribe => {
-                return formerTribe.replace(/ \d/g, '') === tribe.name;
-              }).tribe_color;
+          {tribeData
+            && castaway.formerTribes
+            && castaway.formerTribes.map((formerTribe) => {
+              const circleColor = tribeData.find(
+                tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
+              ).tribe_color;
               return (
                 <FormerTribeIndicator
                   key={formerTribe}
@@ -112,7 +107,7 @@ class CastawayCard extends React.Component {
         <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={require(`../../img/${imageFileName}`)}
-            className={`db br2 br--top`}
+            className="db br2 br--top"
             alt={castaway.name}
           />
         </a>

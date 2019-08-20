@@ -2,9 +2,7 @@ import React from 'react';
 import './TribalVotes.css';
 import Headshot from '../Headshot/Headshot';
 
-const TribalVotes = ({
-  roundNo, voteData, votedFor, seasonNumber,
-}) => {
+const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
   const castawaysVotedFor = [...new Set(voteData.votes.map(vote => vote.playedOn))];
   const votesByVotedFor = castawaysVotedFor.map((castawayVotedFor) => {
     const returnObject = { votedFor: castawayVotedFor };
@@ -14,7 +12,8 @@ const TribalVotes = ({
     return returnObject;
   });
 
-  const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
+  const sortedVotesByVotedFor = votesByVotedFor
+    .sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
 
   const voteTitle = roundNo ? `Vote ${roundNo}` : 'Votes';
 

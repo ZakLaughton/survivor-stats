@@ -6,7 +6,6 @@ const NavBar = ({
   decrementEpisode,
   allSeasons,
   setSeason,
-  setEpisode,
   seasonNum,
   episodeId,
   seasonData,
@@ -17,15 +16,15 @@ const NavBar = ({
   const seasonTitle = seasonData && allSeasons && seasonNum
     ? allSeasons.find(season => seasonNum === season.season_no).title
     : 'Season';
+  const closeDropdown = () => {
+    document.querySelector('.dropdown').classList.remove('active');
+  };
   const selectSeasonOption = (seasonNum) => {
     setSeason(seasonNum);
     closeDropdown();
   };
   const openDropdown = () => {
     document.querySelector('.dropdown').classList.add('active');
-  };
-  const closeDropdown = () => {
-    document.querySelector('.dropdown').classList.remove('active');
   };
 
   return (
