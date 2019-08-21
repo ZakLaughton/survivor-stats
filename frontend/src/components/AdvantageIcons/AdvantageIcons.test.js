@@ -1,6 +1,5 @@
 /* eslint-env jest */
 import React from 'react';
-import { shallow } from 'enzyme';
 import AdvantageIcons from './AdvantageIcons';
 
 const mockProps = {
@@ -10,5 +9,5 @@ const mockProps = {
 };
 
 it('renders without crashing', () => {
-  expect(shallow(<AdvantageIcons {...mockProps} />)).toMatchSnapshot();
+  expect(<AdvantageIcons {...mockProps} />).toMatchSnapshot();
 });
