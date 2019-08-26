@@ -2,9 +2,23 @@
 /* eslint-disable import/no-dynamic-require */
 import React from 'react';
 import './CastawayCard.css';
+import styled from 'styled-components';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 
+const FormerTribeShadow = ({ activeTribeColor }) => {
+  const Wrapper = styled.div`
+    box-shadow: ${activeTribeColor ? `inset 0px 0px 20px 10px ${activeTribeColor}` : 'default'};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  `;
+  return <Wrapper />;
+};
 class CastawayCard extends React.Component {
   state = {
     hoverFormerTribeStyle: {},
@@ -40,11 +54,7 @@ class CastawayCard extends React.Component {
       const activeTribeColor = tribeData.find(
         tribe => tribe.name === formerTribeHighlight.tribeName.replace(/\d| /g, ''),
       ).tribe_color;
-      const highlightedStyle = {
-        boxShadow: `inset 0px 0px 20px 10px ${activeTribeColor}`,
-      };
       this.setState({
-        hoverFormerTribeStyle: highlightedStyle,
         hoverFormerTribeActive: true,
       });
     } else if (formerTribeHighlight && !formerTribeHighlight.active && hoverFormerTribeActive) {
@@ -65,7 +75,7 @@ class CastawayCard extends React.Component {
       removeFormerTribeHighlight,
       episodeId,
     } = this.props;
-    const { hoverFormerTribeStyle } = this.state;
+    const activeTribeColor = null;
     const imageFileName = `${episodeId.substring(0, 3)}_${castaway.name
       .replace(/,|\./g, '')
       .replace(/\s/g, '_')
@@ -111,7 +121,7 @@ class CastawayCard extends React.Component {
             alt={castaway.name}
           />
         </a>
-        <div className="shadow" style={hoverFormerTribeStyle} />
+        <FormerTribeShadow activeTribeColor={activeTribeColor} />
         <div className="card-nameplate">
           <h2 className="card-name br2 mv0 center tc">
             {castaway.nickname
