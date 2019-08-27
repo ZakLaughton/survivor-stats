@@ -12,8 +12,7 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
     return returnObject;
   });
 
-  const sortedVotesByVotedFor = votesByVotedFor
-    .sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
+  const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
 
   const voteTitle = roundNo ? `Vote ${roundNo}` : 'Votes';
 
@@ -25,10 +24,10 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
           <hr />
         </div>
         {sortedVotesByVotedFor.map(votesForCastaway => (
-          <React.Fragment>
+          <React.Fragment key={votesForCastaway.votedFor}>
             <div className="voters">
-              {votesForCastaway.voters.map(voter => (
-                <Headshot castaway={voter} seasonNumber={seasonNumber} />
+              {votesForCastaway.voters.map((voter, index) => (
+                <Headshot castaway={voter} key={voter + index} seasonNumber={seasonNumber} />
               ))}
             </div>
             <i className="fas fa-arrow-right" />

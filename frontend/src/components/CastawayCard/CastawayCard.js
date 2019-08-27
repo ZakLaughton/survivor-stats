@@ -8,13 +8,7 @@ import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 import { FormerTribeShadow } from './FormerTribeShadow';
 
 const CastawayCard = ({
-  castaway,
-  classNames,
-  tribeData,
-  formerTribeHighlight,
-  setFormerTribeHighlight,
-  removeFormerTribeHighlight,
-  episodeId,
+  castaway, classNames, tribeData, episodeId,
 }) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
@@ -93,6 +87,8 @@ const CastawayCard = ({
         {tribeData
           && castaway.formerTribes
           && castaway.formerTribes.map((formerTribe) => {
+            console.log('TD>>>', tribeData);
+            console.log('FT>>>', formerTribe);
             const circleColor = tribeData.find(
               tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
             ).tribe_color;
@@ -101,9 +97,6 @@ const CastawayCard = ({
                 key={formerTribe}
                 circleColor={circleColor}
                 formerTribe={formerTribe}
-                setFormerTribeHighlight={setFormerTribeHighlight}
-                removeFormerTribeHighlight={removeFormerTribeHighlight}
-                formerTribeHighlight={formerTribeHighlight}
                 semanticTribes={semanticTribes}
               />
             );
