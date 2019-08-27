@@ -1,34 +1,11 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-import React, { useContext } from 'react';
+import React from 'react';
 import './CastawayCard.css';
 import styled from 'styled-components';
 import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
-import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
-
-const FormerTribeShadow = ({ formerTribes }) => {
-  const { highlightedFormerTribe } = useContext(FormerTribeHighlightContext);
-
-  let shadowColor = '';
-
-  if (formerTribes.some(tribe => tribe === highlightedFormerTribe.tribeName)) {
-    shadowColor = highlightedFormerTribe.color;
-  }
-
-  const Wrapper = styled.div`
-    display: ${shadowColor ? 'block' : 'none'}
-    box-shadow: inset 0px 0px 20px 10px ${shadowColor}
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
-  `;
-  return <Wrapper />;
-};
+import { FormerTribeShadow } from './FormerTribeShadow';
 
 const CastawayCard = ({
   castaway,
@@ -65,12 +42,54 @@ const CastawayCard = ({
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
 
+  const Wrapper = styled.div`
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    position: relative;
+    background-color: #bcbcbc;
+    background-clip: content-box;
+  `;
+
+  const CardNameplate = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: none;
+    overflow: hidden;
+  `;
+
+  const CardNameplateText = styled.h2`
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 90%;
+    color: rgb(255, 255, 255, 0.9);
+    font-family: 'Londrina Solid', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-shadow: 3px 3px 5px black, -1px -1px 8px black;
+    border-radius: 0.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  `;
+
+  const TribeCircleContainer = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  `;
+
   return (
-    <div
+    <Wrapper
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
-      <div className="tribe-circle-container">
+      <TribeCircleContainer className="tribe-circle-container">
         {tribeData
           && castaway.formerTribes
           && castaway.formerTribes.map((formerTribe) => {
@@ -89,7 +108,7 @@ const CastawayCard = ({
               />
             );
           })}
-      </div>
+      </TribeCircleContainer>
       <AdvantageIcons castaway={castaway} />
       <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
         <img
@@ -99,14 +118,14 @@ const CastawayCard = ({
         />
       </a>
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
-      <div className="card-nameplate">
-        <h2 className="card-name br2 mv0 center tc">
+      <CardNameplate className="card-nameplate">
+        <CardNameplateText>
           {castaway.nickname
             ? castaway.nickname
             : castaway.name.substr(0, castaway.name.indexOf(' '))}
-        </h2>
-      </div>
-    </div>
+        </CardNameplateText>
+      </CardNameplate>
+    </Wrapper>
   );
 };
 

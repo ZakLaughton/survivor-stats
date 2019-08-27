@@ -1,10 +1,4 @@
-/* Tooltip container */
-.tribe-circle {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Tooltip text */
+/* Tooltip text */
   .tribe-circle .tooltiptext {
     visibility: hidden;
     width: 120px;
