@@ -19,8 +19,8 @@ const NavBar = ({
   const closeDropdown = () => {
     document.querySelector('.dropdown').classList.remove('active');
   };
-  const selectSeasonOption = (seasonNum) => {
-    setSeason(seasonNum);
+  const selectSeasonOption = (season) => {
+    setSeason(season);
     closeDropdown();
   };
   const openDropdown = () => {

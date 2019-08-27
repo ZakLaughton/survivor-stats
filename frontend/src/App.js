@@ -89,8 +89,6 @@ class App extends Component {
       const numberOfEpisodes = seasonData.episodes.length;
       const currentEpisode = Number(episodeId.slice(-2));
       return currentEpisode === numberOfEpisodes - 1;
-    } else {
-      return;
     }
   };
 
@@ -101,9 +99,9 @@ class App extends Component {
 
   incrementEpisode = () => {
     if (!this.atLatestEpisode()) {
-      const formattedSeasonNum = ('0' + this.state.season).slice(-2);
+      const formattedSeasonNum = `0${this.state.season}`.slice(-2);
       const newEpisode = Number(this.state.episodeId.slice(-2)) + 1;
-      const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
+      const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
       this.setState({
@@ -114,9 +112,9 @@ class App extends Component {
 
   decrementEpisode = () => {
     if (!this.atEarliestEpisode()) {
-      const formattedSeasonNum = ('0' + this.state.season).slice(-2);
+      const formattedSeasonNum = `0${this.state.season}`.slice(-2);
       const newEpisode = Number(this.state.episodeId.slice(-2)) - 1;
-      const formattedEpisodeNum = ('0' + newEpisode).slice(-2);
+      const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
       this.setState({
@@ -129,14 +127,13 @@ class App extends Component {
     const preseasonStats = document.querySelector('.preseason-stats');
     const episodeEvents = document.querySelector('.episode-events');
 
-    const nextSection = episodeEvents ? episodeEvents : preseasonStats;
+    const nextSection = episodeEvents || preseasonStats;
 
     if (nextSection) {
       nextSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      console.log('clicked ', nextSection);
     }
   };
 
@@ -145,8 +142,6 @@ class App extends Component {
     if (seasonData.episodes) {
       const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
       return episodeData.tribalCouncils.length > 0;
-    } else {
-      return;
     }
   };
 
@@ -169,7 +164,9 @@ class App extends Component {
   }
 
   render() {
-    const { allSeasons, episodeId, season, seasonData, infoMessage } = this.state;
+    const {
+      allSeasons, episodeId, season, seasonData, infoMessage,
+    } = this.state;
     const {
       setSeason,
       setEpisode,
@@ -193,13 +190,15 @@ class App extends Component {
           atLatestEpisode={atLatestEpisode}
           incrementEpisode={incrementEpisode}
           decrementEpisode={decrementEpisode}
-        />{' '}
+        />
+        {' '}
         <Route
           exact
           path="/"
           render={() => (
             <div>
-              <SeasonInfoMessage message={infoMessage} />{' '}
+              <SeasonInfoMessage message={infoMessage} />
+              {' '}
               <main>
                 {' '}
                 {seasonData.episodes && (
@@ -208,16 +207,20 @@ class App extends Component {
                     episodeId={episodeId}
                     tribeData={seasonData.tribes}
                   />
-                )}{' '}
-                {seasonData.preseasonStats &&
-                  seasonData.preseasonStats.length > 0 &&
-                  episodeId === 's38e00' && (
+                )}
+                {' '}
+                {seasonData.preseasonStats
+                  && seasonData.preseasonStats.length > 0
+                  && episodeId === 's38e00' && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
-                  )}{' '}
+                )}
+                {' '}
                 {this.currentEpisodeHasTribalCouncils() && (
                   <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
-                )}{' '}
-              </main>{' '}
+                )}
+                {' '}
+              </main>
+              {' '}
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
@@ -226,10 +229,12 @@ class App extends Component {
                 atEarliestEpisode={atEarliestEpisode}
                 atLatestEpisode={atLatestEpisode}
                 episodeId={episodeId}
-              />{' '}
+              />
+              {' '}
             </div>
           )}
-        />{' '}
+        />
+        {' '}
       </div>
     );
   }
