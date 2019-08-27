@@ -78,28 +78,35 @@ const CastawayCard = ({
     z-index: 1;
   `;
 
+  try {
+  } catch (error) {
+    console.log(error);
+  }
+
   return (
     <Wrapper
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
       <TribeCircleContainer className="tribe-circle-container">
+        {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error. Fix it */}
         {tribeData
           && castaway.formerTribes
           && castaway.formerTribes.map((formerTribe) => {
-            console.log('TD>>>', tribeData);
-            console.log('FT>>>', formerTribe);
             const circleColor = tribeData.find(
               tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
-            ).tribe_color;
-            return (
-              <FormerTribeIndicator
-                key={formerTribe}
-                circleColor={circleColor}
-                formerTribe={formerTribe}
-                semanticTribes={semanticTribes}
-              />
             );
+            if (circleColor) {
+              return (
+                <FormerTribeIndicator
+                  key={formerTribe}
+                  circleColor={circleColor.tribe_color}
+                  formerTribe={formerTribe}
+                  semanticTribes={semanticTribes}
+                />
+              );
+            }
+            return null;
           })}
       </TribeCircleContainer>
       <AdvantageIcons castaway={castaway} />
