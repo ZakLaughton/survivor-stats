@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
 import './FormerTribeIndicator.css';
 
-const FormerTribeIndicator = ({
-  circleColor,
-  formerTribe,
-  formerTribeHighlight,
-  setFormerTribeHighlight,
-  removeFormerTribeHighlight,
-  semanticTribes,
-}) => {
-  const handleHover = () => {
-    if (!formerTribeHighlight.active) {
-      setFormerTribeHighlight(formerTribe);
-    }
+const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
+  const { updateTribeHighlight } = useContext(FormerTribeHighlightContext);
+
+  const handleHoverOn = () => {
+    updateTribeHighlight({ tribeName: formerTribe, color: circleColor });
+  };
+
+  const handleHoverOff = () => {
+    updateTribeHighlight({ tribeName: '', color: '' });
   };
 
   const getSemanticTribeName = (tribeName) => {
@@ -28,8 +26,8 @@ const FormerTribeIndicator = ({
     <div
       className="tribe-circle"
       style={{ backgroundColor: circleColor }}
-      onMouseEnter={handleHover}
-      onMouseLeave={removeFormerTribeHighlight}
+      onMouseEnter={handleHoverOn}
+      onMouseLeave={handleHoverOff}
     >
       <span className="tooltiptext">{`Former ${semanticTribeName}`}</span>
     </div>

@@ -1,114 +1,194 @@
-import React from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import Tribe from '../Tribe/Tribe';
 import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
-import './TribeBoard.css';
+import { FormerTribeHighlightContext } from './FormerTribeHighlightContext';
 
-class TribeBoard extends React.Component {
-  state = {
-    activeTribes: [],
-    episodeData: {},
-    formerTribeHighlight: {
-      active: false,
-      tribeName: null,
-    },
-  };
+const castawayCardSize = '130px';
+const castawayCardSizeSm = '110px';
 
-  setActiveTribes = (seasonData, episodeId) => {
-    const { tribes } = seasonData;
-    const episodeData = seasonData.episodes.find(episode => {
-      return episode.id === episodeId;
+const GlobalStyle = createGlobalStyle`
+  .tribe .castaway-card {
+    min-width: ${castawayCardSize};
+    min-height: ${castawayCardSize};
+    width: ${castawayCardSize};
+    max-width: ${castawayCardSize};
+    max-height: ${castawayCardSize};
+  }
+
+  .extinction-island .castaway-card {
+    max-width: 100px
+  }
+
+  /* Avoid single-column castaway list */
+  /* w/ two tribes */
+  @media only screen and (min-width: 515px) and (max-width: 637px) {
+    .tribe-count-2 .tribe .castaway-card {
+      min-width: ${castawayCardSizeSm};
+      min-height: ${castawayCardSizeSm};
+      width: ${castawayCardSizeSm};
+      max-width: ${castawayCardSizeSm};
+      max-height: ${castawayCardSizeSm};
+    }
+
+    .tribe-count-2 .tribe .castaway-card h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* w/ three tribes */
+  @media only screen and (min-width: 766px) and (max-width: 957px) {
+    .tribe-count-3 .tribe .castaway-card {
+      min-width: ${castawayCardSizeSm};
+      min-height: ${castawayCardSizeSm};
+      width: ${castawayCardSizeSm};
+      max-width: ${castawayCardSizeSm};
+      max-height: ${castawayCardSizeSm};
+    }
+
+    .tribe-count-3 .tribe .castaway-card h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* w/ 4 tribes */
+  @media only screen and (min-width: 761px) and (max-width: 1075px) {
+    .tribe-count-4 .tribe .castaway-card {
+      min-width: ${castawayCardSizeSm};
+      min-height: ${castawayCardSizeSm};
+      width: ${castawayCardSizeSm};
+      max-width: ${castawayCardSizeSm};
+      max-height: ${castawayCardSizeSm};
+    }
+
+    .tribe-count-4 .tribe .castaway-card h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media only screen and (min-width: 761px) and (max-width: 900px) {
+    .tribe-count-4.active-tribes {
+      flex-flow: row wrap !important;
+    }
+
+    .tribe-count-4 .extinction-island {
+      flex: 0 1 100% !important;
+    }
+
+    .tribe-count-4 .extinction-island h1 {
+      margin-bottom: 0;
+    }
+  }
+
+  @media only screen and (max-width: 761px) {
+    .tribe .castaway-card {
+      min-width: ${castawayCardSizeSm};
+      min-height: ${castawayCardSizeSm};
+      width: ${castawayCardSizeSm};
+      max-width: ${castawayCardSizeSm};
+      max-height: ${castawayCardSizeSm};
+    }
+
+    .tribe .castaway-card h2 {
+      font-size: 1.3rem;
+    }
+  }
+`;
+
+export const FormerTribeHighlightProvider = ({ children }) => {
+  const [highlightedFormerTribe, setFormerTribeHighlight] = useState({
+    tribeName: '',
+    color: 'blue',
+  });
+  return (
+    <FormerTribeHighlightContext.Provider
+      value={{
+        highlightedFormerTribe,
+        updateTribeHighlight: tribeName => setFormerTribeHighlight(tribeName),
+      }}
+    >
+      {children}
+    </FormerTribeHighlightContext.Provider>
+  );
+};
+
+const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
+  const [episodeData, setEpisodeData] = useState({});
+  const [activeTribes, setActiveTribes] = useState([]);
+
+  const ActiveTribes = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+
+    ${() => {
+    if (activeTribes.length === 2) {
+      return '@media only screen and (max-width: 515px) {flex-direction: column;}';
+    }
+    if (activeTribes.length === 3) {
+      return '@media only screen and (max-width: 766px) {flex-direction: column;}';
+    }
+    if (activeTribes.length === 4) {
+      return '@media only screen and (max-width: 761px) {flex-direction: column;}';
+    }
+    return '';
+  }}
+  `;
+
+  useEffect(() => {
+    setEpisodeData(() => {
+      if (seasonData && seasonData.episodes) {
+        return seasonData.episodes.find(episode => episode.id === episodeId);
+      }
+      return {};
     });
-    const activeTribes = tribes.filter(tribe => {
-      return (
-        episodeData.castaways
-          // Don't show current boots (to be removed in future)
+  }, [seasonData, episodeId]);
+
+  useEffect(() => {
+    setActiveTribes(() => {
+      if (seasonData && seasonData.tribes && episodeData && episodeData.castaways) {
+        return seasonData.tribes.filter(tribe => episodeData.castaways
+        // Don't show current boots (to be removed in future)
           .filter(castaway => castaway.currentBoot === false)
-          .some(castaway => castaway.tribe.replace(/ \d/g, '') === tribe.name)
-      );
+          .some(castaway => castaway.tribe.replace(/ \d/g, '') === tribe.name));
+      }
+      return [];
     });
+  }, [seasonData, episodeData]);
 
-    this.setState({
-      activeTribes,
-    });
-  };
-
-  setEpisodeData = (seasonData, episodeId) => {
-    const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
-    this.setState({
-      episodeData,
-    });
-  };
-
-  setFormerTribeHighlight = formerTribe => {
-    const updatedTribeHighlight = this.state.formerTribeHighlight;
-    updatedTribeHighlight.active = true;
-    updatedTribeHighlight.tribeName = formerTribe;
-    this.setState({
-      formerTribeHighlight: updatedTribeHighlight,
-    });
-  };
-
-  removeFormerTribeHighlight = () => {
-    console.log('removing...');
-    const updatedTribeHighlight = this.state.formerTribeHighlight;
-    updatedTribeHighlight.active = false;
-    updatedTribeHighlight.tribeName = null;
-    this.setState({
-      formerTribeHighlight: updatedTribeHighlight,
-    });
-  };
-
-  componentDidMount() {
-    const { seasonData, episodeId } = this.props;
-    this.setActiveTribes(seasonData, episodeId);
-    this.setEpisodeData(seasonData, episodeId);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { seasonData, episodeId } = nextProps;
-    if (seasonData.episodes) {
-      this.setActiveTribes(seasonData, episodeId);
-      this.setEpisodeData(seasonData, episodeId);
-    }
-  }
-
-  render() {
-    const { activeTribes, episodeData, formerTribeHighlight } = this.state;
-    const { tribeData } = this.props;
-    const { setFormerTribeHighlight, removeFormerTribeHighlight } = this;
-
-    if (activeTribes.find(tribe => tribe.name === 'Extinction Island')) {
-      const extinctionIslandIndex = activeTribes
-        .map(tribe => tribe.name)
-        .indexOf('Extinction Island');
-      activeTribes.push(activeTribes.splice(extinctionIslandIndex, 1)[0]);
-    }
-
-    return (
+  return (
+    <FormerTribeHighlightProvider>
       <article>
-        <div className={`active-tribes tribe-count-${activeTribes.length}`}>
-          {activeTribes.length > 0 &&
-            activeTribes.map(tribe => (
-              <Tribe
-                key={tribe.name}
-                tribe={tribe}
-                episodeData={episodeData}
-                tribeData={tribeData}
-                formerTribeHighlight={formerTribeHighlight}
-                setFormerTribeHighlight={setFormerTribeHighlight}
-                removeFormerTribeHighlight={removeFormerTribeHighlight}
-              />
-            ))}
+        <GlobalStyle />
+        <ActiveTribes className={`tribe-count-${activeTribes.length}`}>
+          {activeTribes.length > 0
+            && activeTribes
+              .filter(tribe => tribe.name !== 'Extinction Island')
+              .map(tribe => (
+                <Tribe
+                  key={tribe.name}
+                  tribe={tribe}
+                  episodeData={episodeData}
+                  tribeData={tribeData}
+                />
+              ))}
+          {activeTribes.length > 0
+            && activeTribes
+              .filter(tribe => tribe.name === 'Extinction Island')
+              .map(tribe => (
+                <Tribe
+                  key={tribe.name}
+                  tribe={tribe}
+                  episodeData={episodeData}
+                  tribeData={tribeData}
+                />
+              ))}
           {activeTribes.length === 0 && 'loading...'}
-        </div>
-        <VotedOutPanel
-          episodeData={episodeData}
-          formerTribeHighlight={formerTribeHighlight}
-          tribeData={tribeData}
-        />
+        </ActiveTribes>
+        <VotedOutPanel episodeData={episodeData} tribeData={tribeData} />
       </article>
-    );
-  }
-}
+    </FormerTribeHighlightProvider>
+  );
+};
 
 export default TribeBoard;
