@@ -36,6 +36,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/react": "^9.1.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint-config-airbnb": "^17.1.1",
