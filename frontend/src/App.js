@@ -12,9 +12,9 @@ import ArrowButtons from './components/ArrowButtons/ArrowButtons';
 import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
 
 function initializeReactGA() {
-  if (document.location.hostname.search('survivorstats.com') !== -1) {
-    ReactGA.initialize('UA-67511792-3');
-    ReactGA.pageview('/');
+  if (document.location.hostname.search(`survivorstats.com`) !== -1) {
+    ReactGA.initialize(`UA-67511792-3`);
+    ReactGA.pageview(`/`);
   }
 }
 
@@ -24,13 +24,13 @@ class App extends Component {
     this.state = {
       allSeasons: [],
       season: null,
-      episodeId: '',
+      episodeId: ``,
       seasonData: {},
-      infoMessage: 'Loading...',
+      infoMessage: `Loading...`,
     };
   }
 
-  fetchUrl = 'https://visual-survivor.herokuapp.com';
+  fetchUrl = `https://visual-survivor.herokuapp.com`;
   // Swap line above for below TEST case
   // fetchUrl = 'http://localhost:5000';
 
@@ -124,15 +124,15 @@ class App extends Component {
   };
 
   scrollToNextSection = () => {
-    const preseasonStats = document.querySelector('.preseason-stats');
-    const episodeEvents = document.querySelector('.episode-events');
+    const preseasonStats = document.querySelector(`.preseason-stats`);
+    const episodeEvents = document.querySelector(`.episode-events`);
 
     const nextSection = episodeEvents || preseasonStats;
 
     if (nextSection) {
       nextSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+        behavior: `smooth`,
+        block: `start`,
       });
     }
   };
@@ -191,16 +191,13 @@ class App extends Component {
           incrementEpisode={incrementEpisode}
           decrementEpisode={decrementEpisode}
         />
-        {' '}
         <Route
           exact
           path="/"
           render={() => (
             <div>
               <SeasonInfoMessage message={infoMessage} />
-              {' '}
               <main>
-                {' '}
                 {seasonData.episodes && (
                   <TribeBoard
                     seasonData={seasonData}
@@ -208,19 +205,15 @@ class App extends Component {
                     tribeData={seasonData.tribes}
                   />
                 )}
-                {' '}
                 {seasonData.preseasonStats
                   && seasonData.preseasonStats.length > 0
-                  && episodeId === 's38e00' && (
+                  && episodeId === `s38e00` && (
                     <PreseasonStats preseasonStats={seasonData.preseasonStats} />
                 )}
-                {' '}
                 {this.currentEpisodeHasTribalCouncils() && (
                   <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
                 )}
-                {' '}
               </main>
-              {' '}
               <ArrowButtons
                 incrementEpisode={incrementEpisode}
                 decrementEpisode={decrementEpisode}
@@ -230,11 +223,9 @@ class App extends Component {
                 atLatestEpisode={atLatestEpisode}
                 episodeId={episodeId}
               />
-              {' '}
             </div>
           )}
         />
-        {' '}
       </div>
     );
   }
