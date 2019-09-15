@@ -1,11 +1,11 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import React, { useState, useEffect } from 'react';
-import Tribe from '../Tribe/Tribe';
-import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
-import { FormerTribeHighlightContext } from './FormerTribeHighlightContext';
+import styled, { createGlobalStyle } from "styled-components";
+import React, { useState, useEffect } from "react";
+import Tribe from "../Tribe/Tribe";
+import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
+import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
 
-const castawayCardSize = '130px';
-const castawayCardSizeSm = '110px';
+const castawayCardSize = `130px`;
+const castawayCardSizeSm = `110px`;
 
 const GlobalStyle = createGlobalStyle`
   .tribe .castaway-card {
@@ -97,8 +97,8 @@ const GlobalStyle = createGlobalStyle`
 
 export const FormerTribeHighlightProvider = ({ children }) => {
   const [highlightedFormerTribe, setFormerTribeHighlight] = useState({
-    tribeName: '',
-    color: 'blue',
+    tribeName: ``,
+    color: `blue`,
   });
   return (
     <FormerTribeHighlightContext.Provider
@@ -123,15 +123,15 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
 
     ${() => {
     if (activeTribes.length === 2) {
-      return '@media only screen and (max-width: 515px) {flex-direction: column;}';
+      return `@media only screen and (max-width: 515px) {flex-direction: column;}`;
     }
     if (activeTribes.length === 3) {
-      return '@media only screen and (max-width: 766px) {flex-direction: column;}';
+      return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
     }
     if (activeTribes.length === 4) {
-      return '@media only screen and (max-width: 761px) {flex-direction: column;}';
+      return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
     }
-    return '';
+    return ``;
   }}
   `;
 
@@ -150,7 +150,7 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
         return seasonData.tribes.filter(tribe => episodeData.castaways
         // Don't show current boots (to be removed in future)
           .filter(castaway => castaway.currentBoot === false)
-          .some(castaway => castaway.tribe.replace(/ \d/g, '') === tribe.name));
+          .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name));
       }
       return [];
     });
@@ -163,7 +163,7 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
         <ActiveTribes className={`tribe-count-${activeTribes.length}`}>
           {activeTribes.length > 0
             && activeTribes
-              .filter(tribe => tribe.name !== 'Extinction Island')
+              .filter(tribe => tribe.name !== `Extinction Island`)
               .map(tribe => (
                 <Tribe
                   key={tribe.name}
@@ -174,7 +174,7 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
               ))}
           {activeTribes.length > 0
             && activeTribes
-              .filter(tribe => tribe.name === 'Extinction Island')
+              .filter(tribe => tribe.name === `Extinction Island`)
               .map(tribe => (
                 <Tribe
                   key={tribe.name}
@@ -183,7 +183,7 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
                   tribeData={tribeData}
                 />
               ))}
-          {activeTribes.length === 0 && 'loading...'}
+          {activeTribes.length === 0 && `loading...`}
         </ActiveTribes>
         <VotedOutPanel episodeData={episodeData} tribeData={tribeData} />
       </article>

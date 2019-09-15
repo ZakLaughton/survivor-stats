@@ -31,13 +31,11 @@ ShallowWrapper {
           setEpisode={[Function]}
           setSeason={[Function]}
         />,
-        " ",
         <Route
           exact={true}
           path="/"
           render={[Function]}
         />,
-        " ",
       ],
       "className": "App",
       "onKeyDown": [Function],
@@ -65,7 +63,6 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      " ",
       Object {
         "instance": null,
         "key": undefined,
@@ -79,7 +76,6 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      " ",
     ],
     "type": "div",
   },
@@ -102,13 +98,11 @@ ShallowWrapper {
             setEpisode={[Function]}
             setSeason={[Function]}
           />,
-          " ",
           <Route
             exact={true}
             path="/"
             render={[Function]}
           />,
-          " ",
         ],
         "className": "App",
         "onKeyDown": [Function],
@@ -136,7 +130,6 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        " ",
         Object {
           "instance": null,
           "key": undefined,
@@ -150,7 +143,6 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        " ",
       ],
       "type": "div",
     },
