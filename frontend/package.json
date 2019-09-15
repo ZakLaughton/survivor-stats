@@ -5,6 +5,7 @@
   "homepage": "https://survivorstats.com",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "cloudinary-react": "^1.1.4",
     "es6-shim": "^0.35.4",
     "gh-pages": "^2.0.1",
     "i": "^0.3.6",
