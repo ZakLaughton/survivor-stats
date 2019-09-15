@@ -1,11 +1,11 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-import React from 'react';
-import './CastawayCard.css';
-import styled from 'styled-components';
-import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
-import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
-import { FormerTribeShadow } from './FormerTribeShadow';
+import React from "react";
+import "./CastawayCard.css";
+import styled from "styled-components";
+import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
+import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
+import { FormerTribeShadow } from "./FormerTribeShadow";
 
 const CastawayCard = ({
   castaway, classNames, tribeData, episodeId,
@@ -20,19 +20,19 @@ const CastawayCard = ({
     const semanticDictionary = {};
 
     formerTribeList.forEach((tribe) => {
-      const newName = tribe.replace(/2$/, '(1st swap)').replace(/3$/, '(2nd swap)');
+      const newName = tribe.replace(/2$/, `(1st swap)`).replace(/3$/, `(2nd swap)`);
       semanticDictionary[tribe] = newName;
     });
     return semanticDictionary;
   };
 
   const imageFileName = `${episodeId.substring(0, 3)}_${castaway.name
-    .replace(/,|\./g, '')
-    .replace(/\s/g, '_')
+    .replace(/,|\./g, ``)
+    .replace(/\s/g, `_`)
     .toLowerCase()}.jpg`;
   const formerTribeClassNames = castaway.formerTribes
-    .map(formerTribe => `former-${formerTribe.replace(/\s/g, '-').toLowerCase()}`)
-    .join(' ');
+    .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
+    .join(` `);
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
 
@@ -59,7 +59,7 @@ const CastawayCard = ({
     overflow: hidden;
     max-width: 90%;
     color: rgb(255, 255, 255, 0.9);
-    font-family: 'Londrina Solid', sans-serif;
+    font-family: "Londrina Solid", sans-serif;
     font-size: 1.7rem;
     font-weight: 500;
     text-shadow: 3px 3px 5px black, -1px -1px 8px black;
@@ -78,23 +78,19 @@ const CastawayCard = ({
     z-index: 1;
   `;
 
-  try {
-  } catch (error) {
-    console.log(error);
-  }
-
   return (
     <Wrapper
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
       <TribeCircleContainer className="tribe-circle-container">
-        {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error. Fix it */}
+        {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
+            Fix it */}
         {tribeData
           && castaway.formerTribes
           && castaway.formerTribes.map((formerTribe) => {
             const circleColor = tribeData.find(
-              tribe => formerTribe.replace(/ \d/g, '') === tribe.name,
+              tribe => formerTribe.replace(/ \d/g, ``) === tribe.name,
             );
             if (circleColor) {
               return (
@@ -122,7 +118,7 @@ const CastawayCard = ({
         <CardNameplateText>
           {castaway.nickname
             ? castaway.nickname
-            : castaway.name.substr(0, castaway.name.indexOf(' '))}
+            : castaway.name.substr(0, castaway.name.indexOf(` `))}
         </CardNameplateText>
       </CardNameplate>
     </Wrapper>
