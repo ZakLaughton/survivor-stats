@@ -36,29 +36,15 @@ const CastawayCard = ({
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
 
-  // TODO: Use just the <Image> component once all photos are moved to Cloudinary
-  let castawayImage;
-  try {
-    const imageSrc = require(`../../img/${imageFileName}.jpg`);
-    castawayImage = <img src={imageSrc} className="db br2 br--top" alt={castaway.name} />;
-  } catch {
-    castawayImage = (
-      <Image publicId={`castaways/${imageFileName}`}>
-        <Transformation gravity="face" height="128" width="128" crop="thumb" />
-      </Image>
-    );
-  }
-
   return (
     <StyledCastawayCard
-      className={`castaway-card grow relative ma1 br2 ba dark-gray
-          b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
+      className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
       tribe={castaway.tribe}
     >
-      <HeadshotContainer>
-        <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
-          {castawayImage}
-        </a>
+      <HeadshotContainer href={castaway.wikiUrl}>
+        <Image publicId={`castaways/${imageFileName}`}>
+          <Transformation gravity="face" height="128" width="128" crop="thumb" />
+        </Image>
       </HeadshotContainer>
       <CardNameplate className="card-nameplate">
         {castaway.nickname
@@ -68,6 +54,7 @@ const CastawayCard = ({
       <TribeCircleContainer className="tribe-circle-container">
         {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
+        {tribeData && castaway.formerTribes.length > 0 && <i className="fas fa-history" />}
         {tribeData
           && castaway.formerTribes
           && castaway.formerTribes.map((formerTribe) => {
@@ -98,12 +85,14 @@ const StyledCastawayCard = styled.div`
   display: grid;
   grid-template-areas:
     "headshot nameplate"
-    "headshot data"
-    "headshot former-tribes";
-  grid-template-columns: auto 1fr;
+    "headshot former-tribes"
+    "headshot .";
+  grid-template-columns: 30% 1fr;
   grid-template-rows: repeat(3, auto);
-  width: 200px;
+  grid-column-gap: 3px;
+  width: 170px;
   height: 70px;
+  margin: 5px;
 
   ${(props) => {
     if (props.tribe === `Extinction Island`) {
@@ -117,18 +106,17 @@ const StyledCastawayCard = styled.div`
   }};
 `;
 
-const HeadshotContainer = styled.div`
+const HeadshotContainer = styled.a`
   grid-area: headshot;
-  object-fit: cover;
-  object-position: 50% 0;
-  width: 100%;
-  height: 100%;
+  display: block;
 
-  > a img {
+  > img {
     cursor: pointer;
+    max-height: 100%;
     object-fit: cover;
     object-position: 50% 0;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -145,10 +133,9 @@ const CardNameplate = styled.div`
 `;
 
 const TribeCircleContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  grid-area: former-tribes;
+  text-align: left;
+  color: rgba(41, 41, 41, 0.9);
 `;
 
 export default CastawayCard;
