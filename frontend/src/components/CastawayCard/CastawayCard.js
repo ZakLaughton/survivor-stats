@@ -3,6 +3,7 @@
 import React from "react";
 import "./CastawayCard.css";
 import styled from "styled-components";
+import { Image, Transformation } from "cloudinary-react";
 import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
 import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
 import { FormerTribeShadow } from "./FormerTribeShadow";
@@ -29,7 +30,7 @@ const CastawayCard = ({
   const imageFileName = `${episodeId.substring(0, 3)}_${castaway.name
     .replace(/,|\./g, ``)
     .replace(/\s/g, `_`)
-    .toLowerCase()}.jpg`;
+    .toLowerCase()}`;
   const formerTribeClassNames = castaway.formerTribes
     .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
     .join(` `);
@@ -78,11 +79,20 @@ const CastawayCard = ({
     z-index: 1;
   `;
 
+  const imageSrc = require(`../../img/${imageFileName}.jpg`) || (
+    <Image publicId={`castaways/${imageFileName}`}>
+      <Transformation gravity="face" height="128" width="128" crop="thumb" />
+    </Image>
+  );
+
   return (
     <Wrapper
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
+    <Image publicId={`castaways/39_noura_salman`}>
+      <Transformation gravity="face" height="128" width="128" crop="thumb" />
+    </Image>
       <TribeCircleContainer className="tribe-circle-container">
         {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
@@ -107,11 +117,7 @@ const CastawayCard = ({
       </TribeCircleContainer>
       <AdvantageIcons castaway={castaway} />
       <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
-        <img
-          src={require(`../../img/${imageFileName}`)}
-          className="db br2 br--top"
-          alt={castaway.name}
-        />
+        <img src={imageSrc} className="db br2 br--top" alt={castaway.name} />
       </a>
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
       <CardNameplate className="card-nameplate">

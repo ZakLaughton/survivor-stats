@@ -1,15 +1,16 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable react/sort-comp */
-import React, { Component } from 'react';
-import './App.css';
-import ReactGA from 'react-ga';
-import { Switch, Route } from 'react-router-dom';
-import NavBar from './components/NavBar/NavBar';
-import TribeBoard from './components/TribeBoard/TribeBoard';
-import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
-import PreseasonStats from './components/PreseasonStats/PreseasonStats';
-import ArrowButtons from './components/ArrowButtons/ArrowButtons';
-import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
+import React, { Component } from "react";
+import "./App.css";
+import ReactGA from "react-ga";
+import { Switch, Route } from "react-router-dom";
+import { CloudinaryContext } from "cloudinary-react";
+import NavBar from "./components/NavBar/NavBar";
+import TribeBoard from "./components/TribeBoard/TribeBoard";
+import SeasonInfoMessage from "./components/SeasonInfoMessage/SeasonInfoMessage";
+import PreseasonStats from "./components/PreseasonStats/PreseasonStats";
+import ArrowButtons from "./components/ArrowButtons/ArrowButtons";
+import EpisodeEvents from "./components/EpisodeEvents/EpisodeEvents";
 
 function initializeReactGA() {
   if (document.location.hostname.search(`survivorstats.com`) !== -1) {
@@ -178,55 +179,57 @@ class App extends Component {
       atLatestEpisode,
     } = this;
     return (
-      <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
-        <NavBar
-          allSeasons={allSeasons}
-          seasonData={seasonData}
-          seasonNum={season}
-          episodeId={episodeId}
-          setSeason={setSeason}
-          setEpisode={setEpisode}
-          atEarliestEpisode={atEarliestEpisode}
-          atLatestEpisode={atLatestEpisode}
-          incrementEpisode={incrementEpisode}
-          decrementEpisode={decrementEpisode}
-        />
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <div>
-              <SeasonInfoMessage message={infoMessage} />
-              <main>
-                {seasonData.episodes && (
-                  <TribeBoard
-                    seasonData={seasonData}
-                    episodeId={episodeId}
-                    tribeData={seasonData.tribes}
-                  />
-                )}
-                {seasonData.preseasonStats
-                  && seasonData.preseasonStats.length > 0
-                  && episodeId === `s38e00` && (
-                    <PreseasonStats preseasonStats={seasonData.preseasonStats} />
-                )}
-                {this.currentEpisodeHasTribalCouncils() && (
-                  <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
-                )}
-              </main>
-              <ArrowButtons
-                incrementEpisode={incrementEpisode}
-                decrementEpisode={decrementEpisode}
-                downArrowAction={scrollToNextSection}
-                currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
-                atEarliestEpisode={atEarliestEpisode}
-                atLatestEpisode={atLatestEpisode}
-                episodeId={episodeId}
-              />
-            </div>
-          )}
-        />
-      </div>
+      <CloudinaryContext cloudName="survivorstats">
+        <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
+          <NavBar
+            allSeasons={allSeasons}
+            seasonData={seasonData}
+            seasonNum={season}
+            episodeId={episodeId}
+            setSeason={setSeason}
+            setEpisode={setEpisode}
+            atEarliestEpisode={atEarliestEpisode}
+            atLatestEpisode={atLatestEpisode}
+            incrementEpisode={incrementEpisode}
+            decrementEpisode={decrementEpisode}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <div>
+                <SeasonInfoMessage message={infoMessage} />
+                <main>
+                  {seasonData.episodes && (
+                    <TribeBoard
+                      seasonData={seasonData}
+                      episodeId={episodeId}
+                      tribeData={seasonData.tribes}
+                    />
+                  )}
+                  {seasonData.preseasonStats
+                    && seasonData.preseasonStats.length > 0
+                    && episodeId === `s38e00` && (
+                      <PreseasonStats preseasonStats={seasonData.preseasonStats} />
+                  )}
+                  {this.currentEpisodeHasTribalCouncils() && (
+                    <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
+                  )}
+                </main>
+                <ArrowButtons
+                  incrementEpisode={incrementEpisode}
+                  decrementEpisode={decrementEpisode}
+                  downArrowAction={scrollToNextSection}
+                  currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
+                  atEarliestEpisode={atEarliestEpisode}
+                  atLatestEpisode={atLatestEpisode}
+                  episodeId={episodeId}
+                />
+              </div>
+            )}
+          />
+        </div>
+      </CloudinaryContext>
     );
   }
 }
