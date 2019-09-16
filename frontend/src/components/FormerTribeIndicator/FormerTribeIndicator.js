@@ -38,11 +38,11 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
 const TribeCircle = styled.div`
   border: solid #333 1.2px;
   border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  margin: 2px;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 2px;
   display: inline-block;
-  position: relative;
+  vertical-align: middle;
 `;
 
 export default FormerTribeIndicator;
