@@ -48,7 +48,7 @@ const CastawayCard = ({
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 5px;
+    bottom: 0px;
     margin-left: auto;
     margin-right: auto;
     pointer-events: none;
@@ -79,20 +79,25 @@ const CastawayCard = ({
     z-index: 1;
   `;
 
-  const imageSrc = require(`../../img/${imageFileName}.jpg`) || (
-    <Image publicId={`castaways/${imageFileName}`}>
-      <Transformation gravity="face" height="128" width="128" crop="thumb" />
-    </Image>
-  );
+  // TODO: Use just the <Image> component once all photos are moved to Cloudinary
+  let castawayImage;
+  try {
+    const imageSrc = require(`../../img/${imageFileName}.jpg`);
+    castawayImage = <img src={imageSrc} className="db br2 br--top" alt={castaway.name} />;
+  } catch {
+    console.log(`IFN>>>`, imageFileName);
+    castawayImage = (
+      <Image publicId={`castaways/${imageFileName}`}>
+        <Transformation gravity="face" height="128" width="128" crop="thumb" />
+      </Image>
+    );
+  }
 
   return (
     <Wrapper
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
-    <Image publicId={`castaways/39_noura_salman`}>
-      <Transformation gravity="face" height="128" width="128" crop="thumb" />
-    </Image>
       <TribeCircleContainer className="tribe-circle-container">
         {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
@@ -117,7 +122,7 @@ const CastawayCard = ({
       </TribeCircleContainer>
       <AdvantageIcons castaway={castaway} />
       <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
-        <img src={imageSrc} className="db br2 br--top" alt={castaway.name} />
+        {castawayImage}
       </a>
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
       <CardNameplate className="card-nameplate">
