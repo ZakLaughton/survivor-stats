@@ -54,6 +54,7 @@ const CastawayCard = ({
     <StyledCastawayCard
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
+      tribe={castaway.tribe}
     >
       <TribeCircleContainer className="tribe-circle-container">
         {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
@@ -94,10 +95,16 @@ const CastawayCard = ({
 };
 
 const StyledCastawayCard = styled.div`
-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
-position: relative;
-background-color: #bcbcbc;
-background-clip: content-box;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  position: relative;
+  background-color: #bcbcbc;
+  background-clip: content-box;
+
+  ${props => (props.tribe === `Extinction Island` ? `min-width: 100px; min-height: 100px;` : null)}
+
+  > a img {
+    cursor: pointer;
+  }
 `;
 
 const CardNameplate = styled.div`
