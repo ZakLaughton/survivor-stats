@@ -116,25 +116,6 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
   const [episodeData, setEpisodeData] = useState({});
   const [activeTribes, setActiveTribes] = useState([]);
 
-  const ActiveTribes = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
-
-    ${() => {
-    if (activeTribes.length === 2) {
-      return `@media only screen and (max-width: 515px) {flex-direction: column;}`;
-    }
-    if (activeTribes.length === 3) {
-      return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
-    }
-    if (activeTribes.length === 4) {
-      return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
-    }
-    return ``;
-  }}
-  `;
-
   useEffect(() => {
     setEpisodeData(() => {
       if (seasonData && seasonData.episodes) {
@@ -160,7 +141,7 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
     <FormerTribeHighlightProvider>
       <article>
         <GlobalStyle />
-        <ActiveTribes className={`tribe-count-${activeTribes.length}`}>
+        <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
           {activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name !== `Extinction Island`)
@@ -190,5 +171,24 @@ const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
     </FormerTribeHighlightProvider>
   );
 };
+
+const ActiveTribes = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+
+  ${(props) => {
+    if (props.activeTribes.length === 2) {
+      return `@media only screen and (max-width: 515px) {flex-direction: column;}`;
+    }
+    if (props.activeTribes.length === 3) {
+      return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
+    }
+    if (props.activeTribes.length === 4) {
+      return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
+    }
+    return ``;
+  }}
+`;
 
 export default TribeBoard;

@@ -37,13 +37,6 @@ const CastawayCard = ({
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
 
-  const Wrapper = styled.div`
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
-    position: relative;
-    background-color: #bcbcbc;
-    background-clip: content-box;
-  `;
-
   // TODO: Use just the <Image> component once all photos are moved to Cloudinary
   let castawayImage;
   try {
@@ -58,7 +51,7 @@ const CastawayCard = ({
   }
 
   return (
-    <Wrapper
+    <StyledCastawayCard
       className={`castaway-card grow relative ma1 br2 ba dark-gray
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
     >
@@ -96,9 +89,16 @@ const CastawayCard = ({
             : castaway.name.substr(0, castaway.name.indexOf(` `))}
         </CardNameplateText>
       </CardNameplate>
-    </Wrapper>
+    </StyledCastawayCard>
   );
 };
+
+const StyledCastawayCard = styled.div`
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+position: relative;
+background-color: #bcbcbc;
+background-clip: content-box;
+`;
 
 const CardNameplate = styled.div`
   position: absolute;

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
-import './FormerTribeIndicator.css';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { FormerTribeHighlightContext } from "../TribeBoard/FormerTribeHighlightContext";
+import "./FormerTribeIndicator.css";
 
 const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
   const { updateTribeHighlight } = useContext(FormerTribeHighlightContext);
@@ -11,7 +11,7 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
   };
 
   const handleHoverOff = () => {
-    updateTribeHighlight({ tribeName: '', color: '' });
+    updateTribeHighlight({ tribeName: ``, color: `` });
   };
 
   const getSemanticTribeName = (tribeName) => {
@@ -22,16 +22,6 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
   };
 
   const semanticTribeName = getSemanticTribeName(formerTribe);
-
-  const TribeCircle = styled.div`
-    border: solid #333 1.2px;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin: 2px;
-    display: inline-block;
-    position: relative;
-  `;
 
   return (
     <TribeCircle
@@ -44,5 +34,15 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
     </TribeCircle>
   );
 };
+
+const TribeCircle = styled.div`
+  border: solid #333 1.2px;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  display: inline-block;
+  position: relative;
+`;
 
 export default FormerTribeIndicator;
