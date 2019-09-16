@@ -44,48 +44,12 @@ const CastawayCard = ({
     background-clip: content-box;
   `;
 
-  const CardNameplate = styled.div`
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    pointer-events: none;
-    overflow: hidden;
-  `;
-
-  const CardNameplateText = styled.h2`
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 90%;
-    color: rgb(255, 255, 255, 0.9);
-    font-family: "Londrina Solid", sans-serif;
-    font-size: 1.7rem;
-    font-weight: 500;
-    text-shadow: 3px 3px 5px black, -1px -1px 8px black;
-    border-radius: 0.25rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-  `;
-
-  const TribeCircleContainer = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  `;
-
   // TODO: Use just the <Image> component once all photos are moved to Cloudinary
   let castawayImage;
   try {
     const imageSrc = require(`../../img/${imageFileName}.jpg`);
     castawayImage = <img src={imageSrc} className="db br2 br--top" alt={castaway.name} />;
   } catch {
-    console.log(`IFN>>>`, imageFileName);
     castawayImage = (
       <Image publicId={`castaways/${imageFileName}`}>
         <Transformation gravity="face" height="128" width="128" crop="thumb" />
@@ -135,5 +99,40 @@ const CastawayCard = ({
     </Wrapper>
   );
 };
+
+const CardNameplate = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+  overflow: hidden;
+`;
+
+const CardNameplateText = styled.h2`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 90%;
+  color: rgb(255, 255, 255, 0.9);
+  font-family: "Londrina Solid", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 500;
+  text-shadow: 3px 3px 5px black, -1px -1px 8px black;
+  border-radius: 0.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+`;
+
+const TribeCircleContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`;
 
 export default CastawayCard;
