@@ -4,7 +4,6 @@ import Tribe from "../Tribe/Tribe";
 import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
 import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
 
-const castawayCardSize = `130px`;
 const castawayCardSizeSm = `110px`;
 
 const GlobalStyle = createGlobalStyle`

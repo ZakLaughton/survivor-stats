@@ -11,15 +11,16 @@ const Headshot = ({ seasonNumber, castaway }) => {
     .toLowerCase()}`;
 
   return (
-    <HeadshotContainer>
+    <StyledHeadshot>
       <Image publicId={`castaways/${imageFileName}`}>
         <Transformation gravity="face" height="70" width="70" crop="thumb" />
       </Image>
-    </HeadshotContainer>
+    </StyledHeadshot>
   );
 };
 
-const HeadshotContainer = styled.div`
+const StyledHeadshot = styled.div`
+  max-width: 70px;
   width: 70px;
   height: 70px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;

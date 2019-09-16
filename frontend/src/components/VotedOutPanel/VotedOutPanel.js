@@ -7,10 +7,6 @@ const GlobalStyle = createGlobalStyle`
     filter: grayscale(100%);
   }
 
-  .voted-out-panel img {
-    width: 64px;
-  }
-
   .voted-out-panel .card-nameplate {
     display:none;
   }
@@ -79,11 +75,17 @@ const StyledVotedOutPanel = styled.section`
 `;
 
 const VotedOutList = styled.div`
+  display: flex;
   height: 100%;
   justify-content: flex-start;
   flex-flow: row;
   overflow-x: auto;
   overflow-y: hidden;
+
+  > .castaway-card {
+    max-width: 64px;
+    max-height: 64px;
+  }
 `;
 
 const JuryTitle = styled.span`

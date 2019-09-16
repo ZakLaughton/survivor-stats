@@ -99,7 +99,16 @@ const StyledCastawayCard = styled.div`
   background-color: #bcbcbc;
   background-clip: content-box;
 
-  ${props => (props.tribe === `Extinction Island` ? `max-width: 100px; max-height: 100px; ` : null)}
+  ${(props) => {
+    if (props.tribe === `Extinction Island`) {
+      return `max-width: 100px; max-height: 100px;`;
+    }
+    if (props.tribe === `out`) {
+      return `max-width: 64px; max-height: 64px;`;
+    }
+
+    return null;
+  }}
 
   > a img {
     cursor: pointer;
