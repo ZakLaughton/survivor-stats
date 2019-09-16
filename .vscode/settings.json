@@ -1,4 +1,12 @@
 {
-    "prettier.eslintIntegration": true,
-    "eslint.enable": true
+    "eslint.enable": true,
+    "cSpell.words": [
+      "cloudinary",
+      "survivorstats"
+    ],
+    "cSpell.ignoreWords": [
+      "noninteractive",
+      "pageview",
+      "tabindex"
+    ]
 }
