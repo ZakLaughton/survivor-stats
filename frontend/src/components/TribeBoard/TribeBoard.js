@@ -8,17 +8,6 @@ const castawayCardSize = `130px`;
 const castawayCardSizeSm = `110px`;
 
 const GlobalStyle = createGlobalStyle`
-  .tribe .castaway-card {
-    min-width: ${castawayCardSize};
-    min-height: ${castawayCardSize};
-    width: ${castawayCardSize};
-    max-width: ${castawayCardSize};
-    max-height: ${castawayCardSize};
-  }
-
-  .extinction-island .castaway-card {
-    max-width: 100px
-  }
 
   /* Avoid single-column castaway list */
   /* w/ two tribes */

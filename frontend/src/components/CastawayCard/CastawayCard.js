@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import React from "react";
-import "./CastawayCard.css";
 import styled from "styled-components";
 import { Image, Transformation } from "cloudinary-react";
 import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
@@ -100,7 +99,7 @@ const StyledCastawayCard = styled.div`
   background-color: #bcbcbc;
   background-clip: content-box;
 
-  ${props => (props.tribe === `Extinction Island` ? `min-width: 100px; min-height: 100px;` : null)}
+  ${props => (props.tribe === `Extinction Island` ? `max-width: 100px; max-height: 100px; ` : null)}
 
   > a img {
     cursor: pointer;

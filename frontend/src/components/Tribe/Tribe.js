@@ -1,6 +1,6 @@
 import React from "react";
+import styled from "styled-components";
 import CastawayCard from "../CastawayCard/CastawayCard";
-import "./Tribe.css";
 
 const Tribe = ({
   tribe,
@@ -36,9 +36,9 @@ const Tribe = ({
   const tribeClass = tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
 
   return (
-    <section className={`tribe pa2 fl ${tribeClass}`} style={sectionStyle}>
+    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`} style={sectionStyle}>
       <h1>{getTribeTitle(tribe.name)}</h1>
-      <div className="castawayList">
+      <CastawayList tribe={tribe.name}>
         {castaways
           && castaways
             .filter(
@@ -55,9 +55,31 @@ const Tribe = ({
                 episodeId={episodeData.id}
               />
             ))}
-      </div>
-    </section>
+      </CastawayList>
+    </StyledTribe>
   );
 };
+
+const StyledTribe = styled.section`
+  flex: ${props => (props.tribe === `Extinction Island` ? `0.1` : `1 1`)};
+`;
+
+const CastawayList = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: auto;
+
+  > .castaway-card {
+    --castawayCardSize: ${props => (props.tribe === `Extinction Island` ? `100px` : `130px`)}
+      min-width: var(--castawayCardSize);
+      min-height: var(--castawayCardSize);
+      width: var(--castawayCardSize);
+      max-width: var(--castawayCardSize);
+      max-height: var(--castawayCardSize);
+ 
+  }
+`;
 
 export default Tribe;
