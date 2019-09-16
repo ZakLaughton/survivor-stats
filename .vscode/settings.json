@@ -1,11 +1,13 @@
 {
     "eslint.enable": true,
     "cSpell.words": [
+      "Malolo",
       "cloudinary",
       "survivorstats"
     ],
     "cSpell.ignoreWords": [
       "noninteractive",
+      "noreferrer",
       "pageview",
       "tabindex"
     ]
