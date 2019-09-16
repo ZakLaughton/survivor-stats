@@ -112,13 +112,13 @@ export const FormerTribeHighlightProvider = ({ children }) => {
   );
 };
 
-const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
-  const episodeData = seasonData && seasonData.episodes
-    ? seasonData.episodes.find(episode => episode.id === episodeId)
+const TribeBoard = ({ tribeData, activeSeasonData, episodeId }) => {
+  const episodeData = activeSeasonData && activeSeasonData.episodes
+    ? activeSeasonData.episodes.find(episode => episode.id === episodeId)
     : {};
 
-  const activeTribes = seasonData && seasonData.tribes && episodeData && episodeData.castaways
-    ? seasonData.tribes.filter(tribe => episodeData.castaways
+  const activeTribes = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
+    ? activeSeasonData.tribes.filter(tribe => episodeData.castaways
     // Don't show current boots (to be removed in future)
       .filter(castaway => castaway.currentBoot === false)
       .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name))

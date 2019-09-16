@@ -1,9 +1,10 @@
-/* eslint-disable arrow-parens */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/sort-comp */
 import React, { Component } from "react";
 import "./App.css";
 import ReactGA from "react-ga";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { CloudinaryContext } from "cloudinary-react";
 import NavBar from "./components/NavBar/NavBar";
 import TribeBoard from "./components/TribeBoard/TribeBoard";
@@ -23,10 +24,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      allSeasons: [],
+      seasonDirectory: [],
       season: null,
       episodeId: ``,
-      seasonData: {},
+      activeSeasonData: {},
       infoMessage: `Loading...`,
     };
   }
@@ -35,21 +36,23 @@ class App extends Component {
   // Swap line above for below TEST case
   // fetchUrl = 'http://localhost:5000';
 
-  setSeason = async season => {
-    const { allSeasons } = this.state;
+  setSeason = async (season) => {
+    const { seasonDirectory } = this.state;
     const url = `${this.fetchUrl}/?season=${season}`;
     const response = await fetch(url);
-    const seasonData = await response.json();
-    seasonData.episodes = seasonData.episodes.filter(episode => episode.active === true);
+    const activeSeasonData = await response.json();
+    activeSeasonData.episodes = activeSeasonData.episodes.filter(
+      episode => episode.active === true,
+    );
     // Swap line above for below TEST case
-    // seasonData.episodes = seasonData.episodes.filter(episode => episode);
+    // activeSeasonData.episodes = activeSeasonData.episodes.filter(episode => episode);
     const formattedSeasonNum = `0${season}`.slice(-2);
     this.setState({
       season,
-      seasonData,
+      activeSeasonData,
       episodeId: `s${formattedSeasonNum}e00`,
     });
-    const infoMessage = allSeasons.find(seasonData => seasonData.season_no === Number(season))
+    const infoMessage = seasonDirectory.find(seasonData => seasonData.season_no === Number(season))
       .info_message;
     this.setState({
       infoMessage,
@@ -58,24 +61,24 @@ class App extends Component {
 
   initializeSeasons = async () => {
     const response = await fetch(`${this.fetchUrl}/seasons`);
-    const allSeasons = await response.json();
-    const sortedActiveSeasons = allSeasons
+    const seasonDirectory = await response.json();
+    const sortedActiveSeasons = seasonDirectory
       // Comment out below line to TEST new seasons
       .filter(season => season.active === true)
       .sort((a, b) => b.season_no - a.season_no);
     const lastSeasonNum = sortedActiveSeasons[0].season_no;
     this.setState({
-      allSeasons: sortedActiveSeasons,
+      seasonDirectory: sortedActiveSeasons,
     });
     await this.setSeason(lastSeasonNum);
 
     // Set to latest episode
     this.setState({
-      episodeId: this.state.seasonData.episodes.slice(-1)[0].id,
+      episodeId: this.state.activeSeasonData.episodes.slice(-1)[0].id,
     });
   };
 
-  setEpisode = episodeNum => {
+  setEpisode = (episodeNum) => {
     const { season } = this.state;
     const formattedEpisodeNum = `0${episodeNum}`.slice(-2);
     const episodeId = `s${season}e${formattedEpisodeNum}`;
@@ -85,23 +88,27 @@ class App extends Component {
   };
 
   atLatestEpisode = () => {
-    const { seasonData, episodeId } = this.state;
-    if (seasonData.episodes) {
-      const numberOfEpisodes = seasonData.episodes.length;
+    const { activeSeasonData, episodeId } = this.state;
+    if (activeSeasonData.episodes) {
+      const numberOfEpisodes = activeSeasonData.episodes.length;
       const currentEpisode = Number(episodeId.slice(-2));
       return currentEpisode === numberOfEpisodes - 1;
     }
+
+    return false;
   };
 
   atEarliestEpisode = () => {
-    const currentEpisode = Number(this.state.episodeId.slice(-2));
+    const { episodeId } = this.state;
+    const currentEpisode = Number(episodeId.slice(-2));
     return currentEpisode === 0;
   };
 
   incrementEpisode = () => {
+    const { season, episodeId } = this.state;
     if (!this.atLatestEpisode()) {
-      const formattedSeasonNum = `0${this.state.season}`.slice(-2);
-      const newEpisode = Number(this.state.episodeId.slice(-2)) + 1;
+      const formattedSeasonNum = `0${season}`.slice(-2);
+      const newEpisode = Number(episodeId.slice(-2)) + 1;
       const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
@@ -112,9 +119,10 @@ class App extends Component {
   };
 
   decrementEpisode = () => {
+    const { season, episodeId } = this.state;
     if (!this.atEarliestEpisode()) {
-      const formattedSeasonNum = `0${this.state.season}`.slice(-2);
-      const newEpisode = Number(this.state.episodeId.slice(-2)) - 1;
+      const formattedSeasonNum = `0${season}`.slice(-2);
+      const newEpisode = Number(episodeId.slice(-2)) - 1;
       const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
       document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
@@ -139,14 +147,16 @@ class App extends Component {
   };
 
   currentEpisodeHasTribalCouncils = () => {
-    const { episodeId, seasonData } = this.state;
-    if (seasonData.episodes) {
-      const episodeData = seasonData.episodes.find(episode => episode.id === episodeId);
+    const { episodeId, activeSeasonData } = this.state;
+    if (activeSeasonData.episodes) {
+      const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
       return episodeData.tribalCouncils.length > 0;
     }
+
+    return false;
   };
 
-  onKeyPressed = e => {
+  onKeyPressed = (e) => {
     switch (e.keyCode) {
       case 37:
         this.decrementEpisode();
@@ -166,7 +176,7 @@ class App extends Component {
 
   render() {
     const {
-      allSeasons, episodeId, season, seasonData, infoMessage,
+      seasonDirectory, episodeId, season, activeSeasonData, infoMessage,
     } = this.state;
     const {
       setSeason,
@@ -182,8 +192,8 @@ class App extends Component {
       <CloudinaryContext cloudName="survivorstats">
         <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
           <NavBar
-            allSeasons={allSeasons}
-            seasonData={seasonData}
+            seasonDirectory={seasonDirectory}
+            activeSeasonData={activeSeasonData}
             seasonNum={season}
             episodeId={episodeId}
             setSeason={setSeason}
@@ -200,20 +210,20 @@ class App extends Component {
               <div>
                 <SeasonInfoMessage message={infoMessage} />
                 <main>
-                  {seasonData.episodes && (
+                  {activeSeasonData.episodes && (
                     <TribeBoard
-                      seasonData={seasonData}
+                      activeSeasonData={activeSeasonData}
                       episodeId={episodeId}
-                      tribeData={seasonData.tribes}
+                      tribeData={activeSeasonData.tribes}
                     />
                   )}
-                  {seasonData.preseasonStats
-                    && seasonData.preseasonStats.length > 0
+                  {activeSeasonData.preseasonStats
+                    && activeSeasonData.preseasonStats.length > 0
                     && episodeId === `s38e00` && (
-                      <PreseasonStats preseasonStats={seasonData.preseasonStats} />
+                      <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
                   )}
                   {this.currentEpisodeHasTribalCouncils() && (
-                    <EpisodeEvents seasonData={seasonData} episodeId={episodeId} />
+                    <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
                   )}
                 </main>
                 <ArrowButtons

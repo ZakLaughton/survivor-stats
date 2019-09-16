@@ -1,30 +1,30 @@
-import React from 'react';
-import './NavBar.css';
+import React from "react";
+import "./NavBar.css";
 
 const NavBar = ({
   incrementEpisode,
   decrementEpisode,
-  allSeasons,
+  seasonDirectory,
   setSeason,
   seasonNum,
   episodeId,
-  seasonData,
+  activeSeasonData,
   atEarliestEpisode,
   atLatestEpisode,
 }) => {
   const episodeNumber = Number(episodeId.slice(-2));
-  const seasonTitle = seasonData && allSeasons && seasonNum
-    ? allSeasons.find(season => seasonNum === season.season_no).title
-    : 'Season';
+  const seasonTitle = activeSeasonData && seasonDirectory && seasonNum
+    ? seasonDirectory.find(season => seasonNum === season.season_no).title
+    : `Season`;
   const closeDropdown = () => {
-    document.querySelector('.dropdown').classList.remove('active');
+    document.querySelector(`.dropdown`).classList.remove(`active`);
   };
   const selectSeasonOption = (season) => {
     setSeason(season);
     closeDropdown();
   };
   const openDropdown = () => {
-    document.querySelector('.dropdown').classList.add('active');
+    document.querySelector(`.dropdown`).classList.add(`active`);
   };
 
   return (
@@ -45,15 +45,15 @@ const NavBar = ({
             </div>
           )}
           <div className="dropdown-content">
-            {allSeasons.map(season => (
+            {seasonDirectory.map(season => (
               <div
                 onClick={() => selectSeasonOption(season.season_no)}
                 key={season.season_no}
                 value={season.season_no}
-                className={`season-option ${season.season_no === seasonNum && 'selected'}`}
+                className={`season-option ${season.season_no === seasonNum && `selected`}`}
               >
                 {season.season_no.toString()}
-                {': '}
+                {`: `}
                 {season.title}
               </div>
             ))}
@@ -63,12 +63,12 @@ const NavBar = ({
 
       <div className="episode-selector">
         <i
-          className={`fas fa-caret-left episode-arrow left ${atEarliestEpisode() && 'hidden'}`}
+          className={`fas fa-caret-left episode-arrow left ${atEarliestEpisode() && `hidden`}`}
           onClick={decrementEpisode}
         />
-        <h2>{episodeNumber === 0 ? 'START' : `EPISODE ${episodeNumber}`}</h2>
+        <h2>{episodeNumber === 0 ? `START` : `EPISODE ${episodeNumber}`}</h2>
         <i
-          className={`fas fa-caret-right episode-arrow right ${atLatestEpisode() && 'hidden'}`}
+          className={`fas fa-caret-right episode-arrow right ${atLatestEpisode() && `hidden`}`}
           onClick={incrementEpisode}
         />
       </div>
