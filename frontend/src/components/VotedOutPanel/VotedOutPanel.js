@@ -85,6 +85,13 @@ const VotedOutList = styled.div`
   > .castaway-card {
     max-width: 64px;
     max-height: 64px;
+
+    > a img {
+      object-fit: cover;
+      object-position: 50% 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 
