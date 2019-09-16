@@ -55,6 +55,16 @@ const CastawayCard = ({
           b--black-10 ma2 ${formerTribeClassNames} ${classNames}`}
       tribe={castaway.tribe}
     >
+      <HeadshotContainer>
+        <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
+          {castawayImage}
+        </a>
+      </HeadshotContainer>
+      <CardNameplate className="card-nameplate">
+        {castaway.nickname
+          ? castaway.nickname
+          : castaway.name.substr(0, castaway.name.indexOf(` `))}
+      </CardNameplate>
       <TribeCircleContainer className="tribe-circle-container">
         {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
@@ -78,26 +88,22 @@ const CastawayCard = ({
           })}
       </TribeCircleContainer>
       <AdvantageIcons castaway={castaway} />
-      <a href={castaway.wikiUrl} target="_blank" rel="noopener noreferrer">
-        {castawayImage}
-      </a>
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
-      <CardNameplate className="card-nameplate">
-        <CardNameplateText>
-          {castaway.nickname
-            ? castaway.nickname
-            : castaway.name.substr(0, castaway.name.indexOf(` `))}
-        </CardNameplateText>
-      </CardNameplate>
     </StyledCastawayCard>
   );
 };
 
 const StyledCastawayCard = styled.div`
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
-  position: relative;
-  background-color: #bcbcbc;
-  background-clip: content-box;
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important; */
+  display: grid;
+  grid-template-areas:
+    "headshot nameplate"
+    "headshot data"
+    "headshot former-tribes";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(3, auto);
+  width: 200px;
+  height: 70px;
 
   ${(props) => {
     if (props.tribe === `Extinction Island`) {
@@ -108,39 +114,34 @@ const StyledCastawayCard = styled.div`
     }
 
     return null;
-  }}
+  }};
+`;
+
+const HeadshotContainer = styled.div`
+  grid-area: headshot;
+  object-fit: cover;
+  object-position: 50% 0;
+  width: 100%;
+  height: 100%;
 
   > a img {
     cursor: pointer;
+    object-fit: cover;
+    object-position: 50% 0;
+    max-height: 100%;
   }
 `;
 
 const CardNameplate = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  pointer-events: none;
-  overflow: hidden;
-`;
-
-const CardNameplateText = styled.h2`
+  grid-area: nameplate;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 90%;
   color: rgb(255, 255, 255, 0.9);
   font-family: "Londrina Solid", sans-serif;
-  font-size: 1.7rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 300;
   text-shadow: 3px 3px 5px black, -1px -1px 8px black;
-  border-radius: 0.25rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
+  text-align: left;
 `;
 
 const TribeCircleContainer = styled.div`

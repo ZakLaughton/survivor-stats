@@ -70,16 +70,6 @@ const CastawayList = styled.div`
   justify-content: center;
   max-width: 800px;
   margin: auto;
-
-  > .castaway-card {
-    --castawayCardSize: ${props => (props.tribe === `Extinction Island` ? `100px` : `130px`)}
-      min-width: var(--castawayCardSize);
-      min-height: var(--castawayCardSize);
-      width: var(--castawayCardSize);
-      max-width: var(--castawayCardSize);
-      max-height: var(--castawayCardSize);
- 
-  }
 `;
 
 export default Tribe;
