@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Tribe from "../Tribe/Tribe";
 import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
 import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
@@ -113,29 +113,16 @@ export const FormerTribeHighlightProvider = ({ children }) => {
 };
 
 const TribeBoard = ({ tribeData, seasonData, episodeId }) => {
-  const [episodeData, setEpisodeData] = useState({});
-  const [activeTribes, setActiveTribes] = useState([]);
+  const episodeData = seasonData && seasonData.episodes
+    ? seasonData.episodes.find(episode => episode.id === episodeId)
+    : {};
 
-  useEffect(() => {
-    setEpisodeData(() => {
-      if (seasonData && seasonData.episodes) {
-        return seasonData.episodes.find(episode => episode.id === episodeId);
-      }
-      return {};
-    });
-  }, [seasonData, episodeId]);
-
-  useEffect(() => {
-    setActiveTribes(() => {
-      if (seasonData && seasonData.tribes && episodeData && episodeData.castaways) {
-        return seasonData.tribes.filter(tribe => episodeData.castaways
-        // Don't show current boots (to be removed in future)
-          .filter(castaway => castaway.currentBoot === false)
-          .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name));
-      }
-      return [];
-    });
-  }, [seasonData, episodeData]);
+  const activeTribes = seasonData && seasonData.tribes && episodeData && episodeData.castaways
+    ? seasonData.tribes.filter(tribe => episodeData.castaways
+    // Don't show current boots (to be removed in future)
+      .filter(castaway => castaway.currentBoot === false)
+      .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name))
+    : [];
 
   return (
     <FormerTribeHighlightProvider>
