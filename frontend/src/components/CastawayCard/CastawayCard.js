@@ -6,6 +6,7 @@ import { Image, Transformation } from "cloudinary-react";
 import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
 import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
 import { FormerTribeShadow } from "./FormerTribeShadow";
+import Headshot from "../Headshot/Headshot";
 
 const CastawayCard = ({
   castaway, classNames, tribeData, episodeId,
@@ -26,16 +27,13 @@ const CastawayCard = ({
     return semanticDictionary;
   };
 
-  const imageFileName = `${episodeId.substring(0, 3)}_${castaway.name
-    .replace(/,|\./g, ``)
-    .replace(/\s/g, `_`)
-    .toLowerCase()}`;
+  const seasonNo = `${episodeId.substring(1, 3)}`;
   const formerTribeClassNames = castaway.formerTribes
     .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
     .join(` `);
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
-
+  console.log(castaway);
   return (
     <StyledCastawayCard
       className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
@@ -43,9 +41,7 @@ const CastawayCard = ({
       tribeData={tribeData}
     >
       <HeadshotContainer href={castaway.wikiUrl}>
-        <StyledImage publicId={`castaways/${imageFileName}`}>
-          <Transformation gravity="face" height="128" width="128" crop="thumb" />
-        </StyledImage>
+        <Headshot seasonNumber={seasonNo} castaway={castaway.name} imageSize={90} />
       </HeadshotContainer>
       <CardNameplate className="card-nameplate">
         {castaway.nickname
