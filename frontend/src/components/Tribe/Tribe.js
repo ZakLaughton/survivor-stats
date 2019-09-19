@@ -21,9 +21,9 @@ const Tribe = ({
     yellow: `linear-gradient(to bottom, #ffff00, #c7cc03, #939b03, #646c02, #394000)`,
   };
 
-  const sectionStyle = {
-    background: backgroundGradients[tribe.tribe_color],
-  };
+  // const sectionStyle = {
+  //   background: backgroundGradients[tribe.tribe_color],
+  // };
   const { castaways } = episodeData;
 
   const getTribeTitle = (tribeName) => {
@@ -36,7 +36,7 @@ const Tribe = ({
   const tribeClass = tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
 
   return (
-    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`} style={sectionStyle}>
+    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`}>
       <h1>{getTribeTitle(tribe.name)}</h1>
       <CastawayList tribe={tribe.name}>
         {castaways
