@@ -84,10 +84,10 @@ const backgroundGradients = {
   orange: `linear-gradient(to bottom, #df940a, #a36f12)`,
   purple: `linear-gradient(to right bottom, #740274, #850385, #960396, #a704a7, #b905b9);`,
   green: `linear-gradient(to bottom, #007100, #328e24, #53ac41, #72ca5e, #91ea7b)`,
-  blue: `linear-gradient(to bottom, #0055f1, #5270f6, #7a8cfa, #9ca8fd, #bcc4ff)`,
+  blue: `linear-gradient(to bottom, #0055f1, #004dce, #0044ab, #003a88, #0c3066);`,
   black: `linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)`,
   red: `linear-gradient(to bottom, #ff0000, #dd0003, #bd0004, #9d0003, #7e0000)`,
-  yellow: `linear-gradient(to bottom, #ffff00, #c7cc03, #939b03, #646c02, #394000)`,
+  yellow: `linear-gradient(to bottom, #ffff00, #e2e201, #c6c601, #abab01, #909001);`,
 };
 
 const StyledCastawayCard = styled.div`
