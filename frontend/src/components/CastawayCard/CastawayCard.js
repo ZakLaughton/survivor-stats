@@ -40,11 +40,12 @@ const CastawayCard = ({
     <StyledCastawayCard
       className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
       tribe={castaway.tribe}
+      tribeData={tribeData}
     >
       <HeadshotContainer href={castaway.wikiUrl}>
-        <Image publicId={`castaways/${imageFileName}`}>
+        <StyledImage publicId={`castaways/${imageFileName}`}>
           <Transformation gravity="face" height="128" width="128" crop="thumb" />
-        </Image>
+        </StyledImage>
       </HeadshotContainer>
       <CardNameplate className="card-nameplate">
         {castaway.nickname
@@ -79,22 +80,37 @@ const CastawayCard = ({
     </StyledCastawayCard>
   );
 };
+const backgroundGradients = {
+  orange: `linear-gradient(to bottom, #df940a, #a36f12)`,
+  purple: `linear-gradient(to right bottom, #740274, #850385, #960396, #a704a7, #b905b9);`,
+  green: `linear-gradient(to bottom, #007100, #328e24, #53ac41, #72ca5e, #91ea7b)`,
+  blue: `linear-gradient(to bottom, #0055f1, #5270f6, #7a8cfa, #9ca8fd, #bcc4ff)`,
+  black: `linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)`,
+  red: `linear-gradient(to bottom, #ff0000, #dd0003, #bd0004, #9d0003, #7e0000)`,
+  yellow: `linear-gradient(to bottom, #ffff00, #c7cc03, #939b03, #646c02, #394000)`,
+};
 
 const StyledCastawayCard = styled.div`
-  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important; */
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  border-radius: 20px;
   display: grid;
   grid-template-areas:
     "headshot nameplate"
     "headshot former-tribes"
     "headshot .";
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 3px;
-  width: 170px;
-  height: 70px;
+  width: 200px;
+  height: 90px;
   margin: 5px;
-
-  ${(props) => {
+  background: ${(props) => {
+    const tribeName = props.tribe;
+    const tribeColor = props.tribeData.find(tribe => tribe.name === tribeName).tribe_color;
+    return backgroundGradients[tribeColor];
+  }}
+    ${(props) => {
     if (props.tribe === `Extinction Island`) {
       return `max-width: 100px; max-height: 100px;`;
     }
@@ -109,15 +125,14 @@ const StyledCastawayCard = styled.div`
 const HeadshotContainer = styled.a`
   grid-area: headshot;
   display: block;
+`;
 
-  > img {
-    cursor: pointer;
-    max-height: 100%;
-    object-fit: cover;
-    object-position: 50% 0;
-    width: 100%;
-    height: 100%;
-  }
+const StyledImage = styled(Image)`
+  cursor: pointer;
+  max-height: 100%;
+  object-position: 50% 0;
+  width: 90px;
+  height: 100%;
 `;
 
 const CardNameplate = styled.div`

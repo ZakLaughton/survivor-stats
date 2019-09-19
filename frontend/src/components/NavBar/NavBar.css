@@ -1,6 +1,6 @@
 /* Add a black background color to the top navigation */
 .navbar {
-    background-color: #333;
+    background-color: #111;
     z-index: 100;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -75,7 +75,6 @@
 
 /* Navbar container */
 .navbar {
-  background-color: #333;
   font-family: Arial;
 }
 
@@ -155,7 +154,7 @@ div i {
 }
 
 div.season-option.selected {
-  background-color: #333;
+  background-color: #111;
   color: white;
 }
 
