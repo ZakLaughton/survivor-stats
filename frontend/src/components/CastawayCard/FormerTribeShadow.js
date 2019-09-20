@@ -9,7 +9,11 @@ export const FormerTribeShadow = ({ formerTribes }) => {
     shadowColor = highlightedFormerTribe.color;
   }
 
-  return <StyledFormerTribeShadow shadowColor={shadowColor} />;
+  if (shadowColor) {
+    return <StyledFormerTribeShadow shadowColor={shadowColor} />;
+  }
+
+  return null;
 };
 
 const StyledFormerTribeShadow = styled.div`

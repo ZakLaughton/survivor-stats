@@ -2,14 +2,13 @@
 /* eslint-disable import/no-dynamic-require */
 import React from "react";
 import styled from "styled-components";
-import { Image, Transformation } from "cloudinary-react";
 import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
 import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
 import { FormerTribeShadow } from "./FormerTribeShadow";
 import Headshot from "../Headshot/Headshot";
 
 const CastawayCard = ({
-  castaway, classNames, tribeData, episodeId,
+  castaway, classNames, tribeData, episodeId, tribeName, tribeColor,
 }) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
@@ -33,15 +32,18 @@ const CastawayCard = ({
     .join(` `);
 
   const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
-  console.log(castaway);
+
   return (
     <StyledCastawayCard
       className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
-      tribe={castaway.tribe}
+      tribeName={castaway.tribe}
       tribeData={tribeData}
+      tribeColor={tribeColor}
     >
       <HeadshotContainer href={castaway.wikiUrl}>
         <Headshot seasonNumber={seasonNo} castaway={castaway.name} imageSize={90} />
+        {/* TODO: Set up blurred edge between face and castaway cards */}
+        {/* <BlurredImageEdge /> */}
       </HeadshotContainer>
       <CardNameplate className="card-nameplate">
         {castaway.nickname
@@ -101,16 +103,13 @@ const StyledCastawayCard = styled.div`
   width: 200px;
   height: 90px;
   margin: 5px;
-  background: ${(props) => {
-    const tribeName = props.tribe;
-    const tribeColor = props.tribeData.find(tribe => tribe.name === tribeName).tribe_color;
-    return backgroundGradients[tribeColor];
-  }}
-    ${(props) => {
-    if (props.tribe === `Extinction Island`) {
+  background: ${props => backgroundGradients[props.tribeColor]};
+  ${(props) => {
+    const { tribeName } = props;
+    if (tribeName === `Extinction Island`) {
       return `max-width: 100px; max-height: 100px;`;
     }
-    if (props.tribe === `out`) {
+    if (tribeName === `out`) {
       return `max-width: 64px; max-height: 64px;`;
     }
 
@@ -121,14 +120,6 @@ const StyledCastawayCard = styled.div`
 const HeadshotContainer = styled.a`
   grid-area: headshot;
   display: block;
-`;
-
-const StyledImage = styled(Image)`
-  cursor: pointer;
-  max-height: 100%;
-  object-position: 50% 0;
-  width: 90px;
-  height: 100%;
 `;
 
 const CardNameplate = styled.div`
@@ -147,6 +138,16 @@ const TribeCircleContainer = styled.div`
   grid-area: former-tribes;
   text-align: left;
   color: rgba(41, 41, 41, 0.9);
+`;
+
+const BlurredImageEdge = styled.div`
+  grid-area: headshot;
+  box-shadow: 0 0 8px 8px white inset;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 `;
 
 export default CastawayCard;

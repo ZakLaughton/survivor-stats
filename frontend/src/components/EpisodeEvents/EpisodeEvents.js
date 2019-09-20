@@ -6,6 +6,7 @@ const EpisodeEvents = ({ activeSeasonData, episodeId }) => {
   let tribalCouncils = [];
   if (activeSeasonData.episodes) {
     const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
+    // eslint-disable-next-line prefer-destructuring
     tribalCouncils = episodeData.tribalCouncils;
   }
 

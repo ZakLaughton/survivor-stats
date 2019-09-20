@@ -24,7 +24,7 @@ const Tribe = ({
   return (
     <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`}>
       <h1>{getTribeTitle(tribe.name)}</h1>
-      <CastawayList tribe={tribe.name}>
+      <CastawayList tribeName={tribe.name}>
         {castaways
           && castaways
             .filter(
@@ -32,6 +32,8 @@ const Tribe = ({
             )
             .map(castaway => (
               <CastawayCard
+                tribeName={tribe.name}
+                tribeColor={tribe.tribe_color}
                 key={castaway.name}
                 castaway={castaway}
                 tribeData={tribeData}
