@@ -1,6 +1,6 @@
-import React from 'react';
-import './TribalVotes.css';
-import Headshot from '../Headshot/Headshot';
+import React from "react";
+import "./TribalVotes.css";
+import Headshot from "../Headshot/Headshot";
 
 const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
   const castawaysVotedFor = [...new Set(voteData.votes.map(vote => vote.playedOn))];
@@ -14,10 +14,10 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
 
   const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
 
-  const voteTitle = roundNo ? `Vote ${roundNo}` : 'Votes';
+  const voteTitle = roundNo ? `Vote ${roundNo}` : `Votes`;
 
   return (
-    <React.Fragment>
+    <>
       <div className="vote-container">
         <div className="grid-title">
           <h3>{voteTitle}</h3>
@@ -27,17 +27,26 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
           <React.Fragment key={votesForCastaway.votedFor}>
             <div className="voters">
               {votesForCastaway.voters.map((voter, index) => (
-                <Headshot castaway={voter} key={voter + index} seasonNumber={seasonNumber} />
+                <Headshot
+                  castaway={voter}
+                  key={voter + index}
+                  seasonNumber={seasonNumber}
+                  size={70}
+                />
               ))}
             </div>
             <i className="fas fa-arrow-right" />
             <div className="votee">
-              <Headshot castaway={votesForCastaway.votedFor} seasonNumber={seasonNumber} />
+              <Headshot
+                castaway={votesForCastaway.votedFor}
+                seasonNumber={seasonNumber}
+                size={70}
+              />
             </div>
           </React.Fragment>
         ))}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -145,7 +145,7 @@ const TribeBoard = ({
               ))}
           {activeTribes.length === 0 && `loading...`}
         </ActiveTribes>
-        <VotedOutPanel episodeData={episodeData} tribeData={tribeData} />
+        <VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={seasonNum} />
       </article>
     </FormerTribeHighlightProvider>
   );

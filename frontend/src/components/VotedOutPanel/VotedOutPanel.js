@@ -1,22 +1,11 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import CastawayCard from "../CastawayCard/CastawayCard";
+import Headshot from "../Headshot/Headshot";
 
-const GlobalStyle = createGlobalStyle`
-  .votedout .prejury img {
-    filter: grayscale(100%);
-  }
-
-  .voted-out-panel .card-nameplate {
-    display:none;
-  }
-
-  .voted-out-panel .tribe-circle-container {
-    display: none;
-  }
-`;
-
-const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
+const VotedOutPanel = ({
+  episodeData, formerTribeHighlight, tribeData, seasonNum,
+}) => {
   const { castaways } = episodeData;
   const juryStarted = !!(castaways && castaways.some(castaway => castaway.juryMember));
 
@@ -26,7 +15,6 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
   ) {
     return (
       <StyledVotedOutPanel className="voted-out-panel animated slideInUp">
-        <GlobalStyle />
         <VotedOutList className="castawayList votedout">
           {castaways
             && castaways
@@ -35,12 +23,13 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
               )
               .sort((a, b) => a.bootOrder - b.bootOrder)
               .map(castaway => (
-                <CastawayCard
+                <Headshot
+                  seasonNumber={seasonNum}
+                  castaway={castaway.name}
                   key={castaway.name}
-                  castaway={castaway}
-                  classNames="animated fadeIn prejury"
-                  tribeData={tribeData}
-                  episodeId={episodeData.id}
+                  size={64}
+                  padding={5}
+                  grayScale
                 />
               ))}
           {juryStarted && <JuryTitle>JURY</JuryTitle>}
@@ -49,13 +38,12 @@ const VotedOutPanel = ({ episodeData, formerTribeHighlight, tribeData }) => {
               .filter(castaway => castaway.juryMember)
               .sort((a, b) => a.bootOrder - b.bootOrder)
               .map(castaway => (
-                <CastawayCard
+                <Headshot
+                  seasonNumber={seasonNum}
+                  castaway={castaway.name}
                   key={castaway.name}
-                  castaway={castaway}
-                  formerTribeHighlight={formerTribeHighlight}
-                  classNames="animated fadeIn jury"
-                  tribeData={tribeData}
-                  episodeId={episodeData.id}
+                  size={64}
+                  padding={5}
                 />
               ))}
         </VotedOutList>
@@ -81,18 +69,7 @@ const VotedOutList = styled.div`
   flex-flow: row;
   overflow-x: auto;
   overflow-y: hidden;
-
-  > .castaway-card {
-    max-width: 64px;
-    max-height: 64px;
-
-    > a img {
-      object-fit: cover;
-      object-position: 50% 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
+  margin: 5px;
 `;
 
 const JuryTitle = styled.span`

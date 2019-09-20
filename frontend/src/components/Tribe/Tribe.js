@@ -53,7 +53,13 @@ const Tribe = ({
               castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
             )
             .map(castaway => (
-              <Headshot key={castaway.name} castaway={castaway.name} seasonNumber={seasonNum} />
+              <Headshot
+                key={castaway.name}
+                castaway={castaway.name}
+                seasonNumber={seasonNum}
+                size={90}
+                padding={5}
+              />
             ))}
       </CastawayList>
     </StyledTribe>
@@ -69,7 +75,8 @@ const CastawayList = styled.div`
   flex-flow: row wrap;
   justify-content: center;
   max-width: 800px;
-  margin: auto;
+  /* Give padding to Extinction Island, center single tribes */
+  margin: ${props => (props.tribeName === `Extinction Island` ? `5px` : `auto`)};
 `;
 
 export default Tribe;

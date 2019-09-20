@@ -8,7 +8,7 @@ import { FormerTribeShadow } from "./FormerTribeShadow";
 import Headshot from "../Headshot/Headshot";
 
 const CastawayCard = ({
-  castaway, classNames, tribeData, episodeId, tribeName, tribeColor,
+  castaway, classNames, tribeData, episodeId, tribeColor, size,
 }) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
@@ -41,7 +41,7 @@ const CastawayCard = ({
       tribeColor={tribeColor}
     >
       <HeadshotContainer href={castaway.wikiUrl}>
-        <Headshot seasonNumber={seasonNo} castaway={castaway.name} imageSize={90} />
+        <Headshot seasonNumber={seasonNo} castaway={castaway.name} size={90} borderRadius={0} />
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}
       </HeadshotContainer>
@@ -120,6 +120,8 @@ const StyledCastawayCard = styled.div`
 const HeadshotContainer = styled.a`
   grid-area: headshot;
   display: block;
+  max-height: 100%;
+  max-width: 100%;
 `;
 
 const CardNameplate = styled.div`
