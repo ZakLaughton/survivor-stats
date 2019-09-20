@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CastawayCard from "../CastawayCard/CastawayCard";
+import Headshot from "../Headshot/Headshot";
 
 const Tribe = ({
   tribe,
@@ -9,6 +10,7 @@ const Tribe = ({
   formerTribeHighlight,
   setFormerTribeHighlight,
   removeFormerTribeHighlight,
+  seasonNum,
 }) => {
   const { castaways } = episodeData;
 
@@ -26,6 +28,7 @@ const Tribe = ({
       <h1>{getTribeTitle(tribe.name)}</h1>
       <CastawayList tribeName={tribe.name}>
         {castaways
+          && tribe.name !== `Extinction Island`
           && castaways
             .filter(
               castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
@@ -42,6 +45,15 @@ const Tribe = ({
                 removeFormerTribeHighlight={removeFormerTribeHighlight}
                 episodeId={episodeData.id}
               />
+            ))}
+        {castaways
+          && tribe.name === `Extinction Island`
+          && castaways
+            .filter(
+              castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
+            )
+            .map(castaway => (
+              <Headshot key={castaway.name} castaway={castaway.name} seasonNumber={seasonNum} />
             ))}
       </CastawayList>
     </StyledTribe>

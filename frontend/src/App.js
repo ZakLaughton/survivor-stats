@@ -215,6 +215,7 @@ class App extends Component {
                       activeSeasonData={activeSeasonData}
                       episodeId={episodeId}
                       tribeData={activeSeasonData.tribes}
+                      seasonNum={season}
                     />
                   )}
                   {activeSeasonData.preseasonStats

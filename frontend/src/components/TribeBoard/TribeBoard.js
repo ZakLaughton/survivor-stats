@@ -100,7 +100,9 @@ export const FormerTribeHighlightProvider = ({ children }) => {
   );
 };
 
-const TribeBoard = ({ tribeData, activeSeasonData, episodeId }) => {
+const TribeBoard = ({
+  tribeData, activeSeasonData, episodeId, seasonNum,
+}) => {
   const episodeData = activeSeasonData && activeSeasonData.episodes
     ? activeSeasonData.episodes.find(episode => episode.id === episodeId)
     : {};
@@ -126,6 +128,7 @@ const TribeBoard = ({ tribeData, activeSeasonData, episodeId }) => {
                   tribe={tribe}
                   episodeData={episodeData}
                   tribeData={tribeData}
+                  seasonNum={seasonNum}
                 />
               ))}
           {activeTribes.length > 0
@@ -137,6 +140,7 @@ const TribeBoard = ({ tribeData, activeSeasonData, episodeId }) => {
                   tribe={tribe}
                   episodeData={episodeData}
                   tribeData={tribeData}
+                  seasonNum={seasonNum}
                 />
               ))}
           {activeTribes.length === 0 && `loading...`}
