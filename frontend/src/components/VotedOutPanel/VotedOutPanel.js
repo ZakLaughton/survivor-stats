@@ -1,11 +1,8 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import CastawayCard from "../CastawayCard/CastawayCard";
+import styled from "styled-components";
 import Headshot from "../Headshot/Headshot";
 
-const VotedOutPanel = ({
-  episodeData, formerTribeHighlight, tribeData, seasonNum,
-}) => {
+const VotedOutPanel = ({ episodeData, seasonNum }) => {
   const { castaways } = episodeData;
   const juryStarted = !!(castaways && castaways.some(castaway => castaway.juryMember));
 

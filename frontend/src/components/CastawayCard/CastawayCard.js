@@ -2,13 +2,13 @@
 /* eslint-disable import/no-dynamic-require */
 import React from "react";
 import styled from "styled-components";
+import { FormerTribeShadow } from "./FormerTribeShadow";
 import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
 import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
-import { FormerTribeShadow } from "./FormerTribeShadow";
 import Headshot from "../Headshot/Headshot";
 
 const CastawayCard = ({
-  castaway, classNames, tribeData, episodeId, tribeColor, size,
+  castaway, classNames, tribeData, episodeId, tribeColor,
 }) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
@@ -142,14 +142,14 @@ const TribeCircleContainer = styled.div`
   color: rgba(41, 41, 41, 0.9);
 `;
 
-const BlurredImageEdge = styled.div`
-  grid-area: headshot;
-  box-shadow: 0 0 8px 8px white inset;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-`;
+// const BlurredImageEdge = styled.div`
+//   grid-area: headshot;
+//   box-shadow: 0 0 8px 8px white inset;
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+// `;
 
 export default CastawayCard;
