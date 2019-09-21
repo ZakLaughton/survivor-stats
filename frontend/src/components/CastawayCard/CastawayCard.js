@@ -110,6 +110,7 @@ const StyledCastawayCard = styled.div`
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 3px;
   max-width: 200px;
+  min-width: 193px;
   width: 47%;
   height: 90px;
   margin: 5px;

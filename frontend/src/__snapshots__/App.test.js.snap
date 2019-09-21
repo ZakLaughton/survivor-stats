@@ -24,13 +24,13 @@ ShallowWrapper {
         tabIndex="0"
       >
         <NavBar
-          allSeasons={Array []}
+          activeSeasonData={Object {}}
           atEarliestEpisode={[Function]}
           atLatestEpisode={[Function]}
           decrementEpisode={[Function]}
           episodeId=""
           incrementEpisode={[Function]}
-          seasonData={Object {}}
+          seasonDirectory={Array []}
           seasonNum={null}
           setEpisode={[Function]}
           setSeason={[Function]}
@@ -52,13 +52,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <NavBar
-            allSeasons={Array []}
+            activeSeasonData={Object {}}
             atEarliestEpisode={[Function]}
             atLatestEpisode={[Function]}
             decrementEpisode={[Function]}
             episodeId=""
             incrementEpisode={[Function]}
-            seasonData={Object {}}
+            seasonDirectory={Array []}
             seasonNum={null}
             setEpisode={[Function]}
             setSeason={[Function]}
@@ -80,13 +80,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "allSeasons": Array [],
+            "activeSeasonData": Object {},
             "atEarliestEpisode": [Function],
             "atLatestEpisode": [Function],
             "decrementEpisode": [Function],
             "episodeId": "",
             "incrementEpisode": [Function],
-            "seasonData": Object {},
+            "seasonDirectory": Array [],
             "seasonNum": null,
             "setEpisode": [Function],
             "setSeason": [Function],
@@ -125,13 +125,13 @@ ShallowWrapper {
           tabIndex="0"
         >
           <NavBar
-            allSeasons={Array []}
+            activeSeasonData={Object {}}
             atEarliestEpisode={[Function]}
             atLatestEpisode={[Function]}
             decrementEpisode={[Function]}
             episodeId=""
             incrementEpisode={[Function]}
-            seasonData={Object {}}
+            seasonDirectory={Array []}
             seasonNum={null}
             setEpisode={[Function]}
             setSeason={[Function]}
@@ -153,13 +153,13 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <NavBar
-              allSeasons={Array []}
+              activeSeasonData={Object {}}
               atEarliestEpisode={[Function]}
               atLatestEpisode={[Function]}
               decrementEpisode={[Function]}
               episodeId=""
               incrementEpisode={[Function]}
-              seasonData={Object {}}
+              seasonDirectory={Array []}
               seasonNum={null}
               setEpisode={[Function]}
               setSeason={[Function]}
@@ -181,13 +181,13 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "allSeasons": Array [],
+              "activeSeasonData": Object {},
               "atEarliestEpisode": [Function],
               "atLatestEpisode": [Function],
               "decrementEpisode": [Function],
               "episodeId": "",
               "incrementEpisode": [Function],
-              "seasonData": Object {},
+              "seasonDirectory": Array [],
               "seasonNum": null,
               "setEpisode": [Function],
               "setSeason": [Function],
