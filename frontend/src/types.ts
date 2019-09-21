@@ -33,6 +33,8 @@ export interface Castaway {
   nickname: string | null;
   tribe: string;
   wikiUrl: string;
+  age: number;
+  currentResidence: string;
 }
 
 export interface TribalCouncil {

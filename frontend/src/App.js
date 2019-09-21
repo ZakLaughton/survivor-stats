@@ -34,7 +34,7 @@ class App extends Component {
 
   fetchUrl = `https://visual-survivor.herokuapp.com`;
   // Swap line above for below TEST case
-  // fetchUrl = 'http://localhost:5000';
+  // fetchUrl = `http://localhost:5000`;
 
   setSeason = async (season) => {
     const { seasonDirectory } = this.state;

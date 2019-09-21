@@ -27,6 +27,7 @@ const CastawayCard = ({
   };
 
   const seasonNo = `${episodeId.substring(1, 3)}`;
+  const episodeNo = Number(episodeId.slice(-2));
   const formerTribeClassNames = castaway.formerTribes
     .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
     .join(` `);
@@ -50,29 +51,37 @@ const CastawayCard = ({
           ? castaway.nickname
           : castaway.name.substr(0, castaway.name.indexOf(` `))}
       </CardNameplate>
-      <TribeCircleContainer className="tribe-circle-container">
-        {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
+      {episodeNo === 0 && castaway.age ? (
+        <Bio>
+          {`Age: ${castaway.age}`}
+          <br />
+          {castaway.currentResidence}
+        </Bio>
+      ) : (
+        <TribeCircleContainer className="tribe-circle-container">
+          {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
-        {tribeData && castaway.formerTribes.length > 0 && <i className="fas fa-history" />}
-        {tribeData
-          && castaway.formerTribes
-          && castaway.formerTribes.map((formerTribe) => {
-            const circleColor = tribeData.find(
-              tribe => formerTribe.replace(/ \d/g, ``) === tribe.name,
-            );
-            if (circleColor) {
-              return (
-                <FormerTribeIndicator
-                  key={formerTribe}
-                  circleColor={circleColor.tribe_color}
-                  formerTribe={formerTribe}
-                  semanticTribes={semanticTribes}
-                />
+          {tribeData && castaway.formerTribes.length > 0 && <i className="fas fa-history" />}
+          {tribeData
+            && castaway.formerTribes
+            && castaway.formerTribes.map((formerTribe) => {
+              const circleColor = tribeData.find(
+                tribe => formerTribe.replace(/ \d/g, ``) === tribe.name,
               );
-            }
-            return null;
-          })}
-      </TribeCircleContainer>
+              if (circleColor) {
+                return (
+                  <FormerTribeIndicator
+                    key={formerTribe}
+                    circleColor={circleColor.tribe_color}
+                    formerTribe={formerTribe}
+                    semanticTribes={semanticTribes}
+                  />
+                );
+              }
+              return null;
+            })}
+        </TribeCircleContainer>
+      )}
       <AdvantageIcons castaway={castaway} />
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
     </StyledCastawayCard>
@@ -95,8 +104,8 @@ const StyledCastawayCard = styled.div`
   display: grid;
   grid-template-areas:
     "headshot nameplate"
-    "headshot former-tribes"
-    "headshot .";
+    "headshot data-line-2"
+    "headshot data-line-3";
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 3px;
@@ -138,9 +147,21 @@ const CardNameplate = styled.div`
 `;
 
 const TribeCircleContainer = styled.div`
-  grid-area: former-tribes;
+  grid-area: data-line-2;
   text-align: left;
   color: rgba(41, 41, 41, 0.9);
+`;
+
+const Bio = styled.div`
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+  align-self: start;
+  text-align: left;
+  font-family: "Londrina Solid", sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  overflow: hidden;
 `;
 
 // const BlurredImageEdge = styled.div`

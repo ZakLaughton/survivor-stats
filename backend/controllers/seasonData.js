@@ -179,10 +179,12 @@ const getSeasonData = async (req, res, db) => {
       });
 
       if (castawayProfiles.length > 0) {
-        wikiUrlPath = castawayProfiles.find(
+        const { wiki_url, age, current_residence } = castawayProfiles.find(
           castawayProfile => castawayProfile.castaway === castaway.name
-        ).wiki_url;
-        updatedCastaway.wikiUrl = `https://survivor.fandom.com/wiki/${wikiUrlPath}`;
+        );
+        updatedCastaway.wikiUrl = `https://survivor.fandom.com/wiki/${wiki_url}`;
+        updatedCastaway.age = age;
+        updatedCastaway.currentResidence = current_residence;
       }
 
       return updatedCastaway;

@@ -114,7 +114,7 @@ const ActiveTribes = styled.div`
   ${(props) => {
     // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 2) {
-      return `@media only screen and (max-width: 700px) {flex-direction: column;}`;
+      return `@media only screen and (max-width: 750px) {flex-direction: column;}`;
     }
     // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 3) {
