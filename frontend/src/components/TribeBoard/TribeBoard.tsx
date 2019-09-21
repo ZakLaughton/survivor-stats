@@ -1,8 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
 import React, { useState } from "react";
-import Tribe from "../Tribe/Tribe";
 import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
 import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
+import {ActiveSeasonData, Tribe as TribeType, Episode} from "../../types";
+import Tribe from "../Tribe/Tribe"
 
 const castawayCardSizeSm = `110px`;
 
@@ -22,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// @ts-ignore
 export const FormerTribeHighlightProvider = ({ children }) => {
   const [highlightedFormerTribe, setFormerTribeHighlight] = useState({
     tribeName: ``,
@@ -31,7 +33,8 @@ export const FormerTribeHighlightProvider = ({ children }) => {
     <FormerTribeHighlightContext.Provider
       value={{
         highlightedFormerTribe,
-        updateTribeHighlight: tribeName => setFormerTribeHighlight(tribeName),
+        // @ts-ignore
+        updateTribeHighlight: (tribeName: string) => setFormerTribeHighlight(tribeName),
       }}
     >
       {children}
@@ -39,15 +42,24 @@ export const FormerTribeHighlightProvider = ({ children }) => {
   );
 };
 
+interface TribeBoardProps {
+  tribeData: TribeType;
+  activeSeasonData: ActiveSeasonData;
+  episodeId: string;
+  seasonNum: number;
+}
+
 const TribeBoard = ({
   tribeData, activeSeasonData, episodeId, seasonNum,
-}) => {
-  const episodeData = activeSeasonData && activeSeasonData.episodes
-    ? activeSeasonData.episodes.find(episode => episode.id === episodeId)
-    : {};
+}: TribeBoardProps) => {
+  let episodeData: Episode | undefined;
+  if (activeSeasonData && activeSeasonData.episodes && activeSeasonData.episodes.find(episode => episode.id === episodeId)) {
+    episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId)
+  }
 
-  const activeTribes = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
-    ? activeSeasonData.tribes.filter(tribe => episodeData.castaways
+  const activeTribes: TribeType[] = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
+  // @ts-ignore episodeData object is possibly 'undefined'
+  ? activeSeasonData.tribes.filter(tribe => episodeData.castaways
     // Don't show current boots (to be removed in future)
       .filter(castaway => castaway.currentBoot === false)
       .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name))
@@ -57,11 +69,13 @@ const TribeBoard = ({
     <FormerTribeHighlightProvider>
       <article>
         <GlobalStyle />
+        {/*
+        // @ts-ignore */}
         <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
           {activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name !== `Extinction Island`)
-              .map(tribe => (
+              .map((tribe: TribeType) => (
                 <Tribe
                   key={tribe.name}
                   tribe={tribe}
@@ -84,6 +98,8 @@ const TribeBoard = ({
               ))}
           {activeTribes.length === 0 && `loading...`}
         </ActiveTribes>
+        {/*
+        // @ts-ignore */}
         <VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={seasonNum} />
       </article>
     </FormerTribeHighlightProvider>
@@ -96,12 +112,15 @@ const ActiveTribes = styled.div`
   flex: 1 1 auto;
 
   ${(props) => {
+    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 2) {
       return `@media only screen and (max-width: 700px) {flex-direction: column;}`;
     }
+    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 3) {
       return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
     }
+    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 4) {
       return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
     }

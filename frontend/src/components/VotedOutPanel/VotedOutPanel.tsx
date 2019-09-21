@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Headshot from "../Headshot/Headshot";
+import {Episode} from '../../types'
 
-const VotedOutPanel = ({ episodeData, seasonNum }) => {
+interface VotedOutPanelProps {
+  episodeData: Episode;
+  seasonNum: number;
+}
+const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
   const { castaways } = episodeData;
   const juryStarted = !!(castaways && castaways.some(castaway => castaway.juryMember));
 

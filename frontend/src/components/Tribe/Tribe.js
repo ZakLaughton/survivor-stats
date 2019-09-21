@@ -7,9 +7,9 @@ const Tribe = ({
   tribe,
   episodeData,
   tribeData,
-  formerTribeHighlight,
-  setFormerTribeHighlight,
-  removeFormerTribeHighlight,
+  formerTribeHighlight = ``,
+  setFormerTribeHighlight = {},
+  removeFormerTribeHighlight = {},
   seasonNum,
 }) => {
   const { castaways } = episodeData;
