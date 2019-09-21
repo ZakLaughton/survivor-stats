@@ -25,7 +25,7 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
 
   return (
     <TribeCircle
-      className="tribe-circle"
+      className="tribe-circle tooltip"
       style={{ backgroundColor: circleColor }}
       onMouseEnter={handleHoverOn}
       onMouseLeave={handleHoverOff}
