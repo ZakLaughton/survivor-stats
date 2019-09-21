@@ -100,7 +100,8 @@ const StyledCastawayCard = styled.div`
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 3px;
-  width: 200px;
+  max-width: 200px;
+  width: 47%;
   height: 90px;
   margin: 5px;
   background: ${props => backgroundGradients[props.tribeColor]};

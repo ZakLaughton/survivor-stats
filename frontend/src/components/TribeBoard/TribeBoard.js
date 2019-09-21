@@ -97,7 +97,7 @@ const ActiveTribes = styled.div`
 
   ${(props) => {
     if (props.activeTribes.length === 2) {
-      return `@media only screen and (max-width: 515px) {flex-direction: column;}`;
+      return `@media only screen and (max-width: 700px) {flex-direction: column;}`;
     }
     if (props.activeTribes.length === 3) {
       return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
