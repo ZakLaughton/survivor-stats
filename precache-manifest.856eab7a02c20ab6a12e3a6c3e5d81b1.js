@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d3217f32696f6f649708",
+    "revision": "5ab6a9cd69df7eb49162",
     "url": "/static/css/main.3111708e.chunk.css"
   },
   {
-    "revision": "d3217f32696f6f649708",
-    "url": "/static/js/main.ff58e4ad.chunk.js"
+    "revision": "5ab6a9cd69df7eb49162",
+    "url": "/static/js/main.e708b706.chunk.js"
   },
   {
     "revision": "59dbea536f40a669b4c4",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/half_immunity_idol.956c90e5.png"
   },
   {
-    "revision": "7fe10c2031db6175137fbc8aea05690b",
+    "revision": "49f3894b34a6c65d2a05b97d564520aa",
     "url": "/index.html"
   }
 ];
