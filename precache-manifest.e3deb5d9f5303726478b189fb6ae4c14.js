@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5eb1506490da44cf78a4",
+    "revision": "37e133c1df74805ad803",
     "url": "/static/css/main.3111708e.chunk.css"
   },
   {
-    "revision": "5eb1506490da44cf78a4",
-    "url": "/static/js/main.f7f13b03.chunk.js"
+    "revision": "37e133c1df74805ad803",
+    "url": "/static/js/main.0b6b3577.chunk.js"
   },
   {
     "revision": "59dbea536f40a669b4c4",
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/static/js/3.8b22036d.chunk.js"
   },
   {
-    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
-    "url": "/static/media/survivorfont.9ba24af1.ttf"
-  },
-  {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
     "url": "/static/media/survivant.b1dda199.ttf"
+  },
+  {
+    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
+    "url": "/static/media/survivorfont.9ba24af1.ttf"
   },
   {
     "revision": "b698c1f81515ae867f1e22bc340806ba",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/half_immunity_idol.956c90e5.png"
   },
   {
-    "revision": "9872d5003641e40c47fad5f16a50a238",
+    "revision": "2265539e7cafbd8047bd803fd802c35a",
     "url": "/index.html"
   }
 ];
