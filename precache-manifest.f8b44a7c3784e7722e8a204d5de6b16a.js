@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "117cbeebc06e9d2aa919",
+    "revision": "d3217f32696f6f649708",
     "url": "/static/css/main.3111708e.chunk.css"
   },
   {
-    "revision": "117cbeebc06e9d2aa919",
-    "url": "/static/js/main.b7052f02.chunk.js"
+    "revision": "d3217f32696f6f649708",
+    "url": "/static/js/main.ff58e4ad.chunk.js"
   },
   {
     "revision": "59dbea536f40a669b4c4",
     "url": "/static/js/runtime~main.dfcc5368.js"
   },
   {
-    "revision": "ca38e5a90053f539e722",
+    "revision": "2acc65222bd89be21d6f",
     "url": "/static/css/2.a6c69525.chunk.css"
   },
   {
-    "revision": "ca38e5a90053f539e722",
-    "url": "/static/js/2.023d6b70.chunk.js"
+    "revision": "2acc65222bd89be21d6f",
+    "url": "/static/js/2.a35db4e8.chunk.js"
   },
   {
     "revision": "6642b252fc3962683768",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/media/half_immunity_idol.956c90e5.png"
   },
   {
-    "revision": "c47c4707242b5cb0b48d646dc2b02d24",
+    "revision": "7fe10c2031db6175137fbc8aea05690b",
     "url": "/index.html"
   }
 ];
