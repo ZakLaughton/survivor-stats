@@ -118,7 +118,7 @@ const ActiveTribes = styled.div`
     }
     // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 3) {
-      return `@media only screen and (max-width: 766px) {flex-direction: column;}`;
+      return `@media only screen and (max-width: 1150px) {flex-direction: column;}`;
     }
     // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 4) {
