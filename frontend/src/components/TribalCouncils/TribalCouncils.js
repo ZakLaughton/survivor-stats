@@ -1,14 +1,14 @@
-import React from 'react';
-import './TribalCouncils.css';
-import TribalVotes from '../TribalVotes/TribalVotes';
+import React from "react";
+import "./TribalCouncils.css";
+import TribalVotes from "../TribalVotes/TribalVotes";
 
 const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
   const multipleTribals = tribalCouncils.length > 1;
-  const tribalHeader = multipleTribals ? 'Tribal Councils' : 'Tribal Council';
+  const tribalHeader = multipleTribals ? `Tribal Councils` : `Tribal Council`;
 
   return (
     <section className="tribal-councils">
-      <h1>{!multipleTribals && tribalCouncils[0].finalTribal ? 'Final Tribal' : tribalHeader}</h1>
+      <h1>{!multipleTribals && tribalCouncils[0].finalTribal ? `Final Tribal` : tribalHeader}</h1>
       <div className="tribal-councils-container">
         {tribalCouncils
           .sort((a, b) => a.tribal_number - b.tribal_number)
