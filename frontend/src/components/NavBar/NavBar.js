@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = ({
@@ -11,7 +12,9 @@ const NavBar = ({
   activeSeasonData,
   atEarliestEpisode,
   atLatestEpisode,
+  history,
 }) => {
+  console.log(`HIST>>>`, history);
   const episodeNumber = Number(episodeId.slice(-2));
   const seasonTitle = activeSeasonData && seasonDirectory && seasonNum
     ? seasonDirectory.find(season => seasonNum === season.season_no).title
@@ -26,7 +29,7 @@ const NavBar = ({
   const openDropdown = () => {
     document.querySelector(`.dropdown`).classList.add(`active`);
   };
-
+  console.log('!>>', seasonDirectory)
   return (
     <header className="navbar" id="myTopnav">
       {
@@ -46,16 +49,17 @@ const NavBar = ({
           )}
           <div className="dropdown-content">
             {seasonDirectory.map(season => (
-              <div
-                onClick={() => selectSeasonOption(season.season_no)}
-                key={season.season_no}
-                value={season.season_no}
-                className={`season-option ${season.season_no === seasonNum && `selected`}`}
-              >
-                {season.season_no.toString()}
-                {`: `}
-                {season.title}
-              </div>
+              <Link to={`/${season.season_no}`}>
+                <div
+                  key={season.season_no}
+                  value={season.season_no}
+                  className={`season-option ${season.season_no === seasonNum && `selected`}`}
+                >
+                  {season.season_no.toString()}
+                  {`: `}
+                  {season.title}
+                </div>
+              </Link>
             ))}
           </div>
         </div>

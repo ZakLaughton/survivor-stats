@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/sort-comp */
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import ReactGA from "react-ga";
-import { Route } from "react-router-dom";
 import { CloudinaryContext } from "cloudinary-react";
 import NavBar from "./components/NavBar/NavBar";
-import TribeBoard from "./components/TribeBoard/TribeBoard";
+import { PROD_BACKEND_URL } from "./constants";
+// eslint-disable-next-line import/no-unresolved
+import { TribeBoard } from "./components/TribeBoard/TribeBoard";
 import SeasonInfoMessage from "./components/SeasonInfoMessage/SeasonInfoMessage";
 import PreseasonStats from "./components/PreseasonStats/PreseasonStats";
 import ArrowButtons from "./components/ArrowButtons/ArrowButtons";
@@ -20,75 +21,60 @@ function initializeReactGA() {
   }
 }
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      seasonDirectory: [],
-      season: null,
-      episodeId: ``,
-      activeSeasonData: {},
-      infoMessage: `Loading...`,
-    };
-  }
+export const App = ({ match }) => {
+  const { activeSeasonNumber } = match.params;
+  const [episodeId, setEpisodeId] = useState(``);
+  const [activeSeasonData, setActiveSeasonData] = useState({});
+  const [infoMessage, setInfoMessage] = useState(`Loading...`);
+  const [seasonDirectory, setSeasonDirectory] = useState([]);
 
-  fetchUrl = `https://visual-survivor.herokuapp.com`;
-  // Swap line above for below TEST case
-  // fetchUrl = `http://localhost:5000`;
+  useEffect(() => {
+    initializeReactGA();
+  }, []);
 
-  setSeason = async (season) => {
-    const { seasonDirectory } = this.state;
-    const url = `${this.fetchUrl}/?season=${season}`;
-    const response = await fetch(url);
-    const activeSeasonData = await response.json();
-    activeSeasonData.episodes = activeSeasonData.episodes.filter(
-      episode => episode.active === true,
-    );
-    // Swap line above for below TEST case
-    // activeSeasonData.episodes = activeSeasonData.episodes.filter(episode => episode);
-    const formattedSeasonNum = `0${season}`.slice(-2);
-    this.setState({
-      season,
-      activeSeasonData,
-      episodeId: `s${formattedSeasonNum}e00`,
-    });
-    const infoMessage = seasonDirectory.find(seasonData => seasonData.season_no === Number(season))
-      .info_message;
-    this.setState({
-      infoMessage,
-    });
-  };
-
-  initializeSeasons = async () => {
-    const response = await fetch(`${this.fetchUrl}/seasons`);
-    const seasonDirectory = await response.json();
-    const sortedActiveSeasons = seasonDirectory
-      // Comment out below line to TEST new seasons
+  useEffect(async () => {
+    const response = await fetch(`${PROD_BACKEND_URL}/seasons`);
+    const newSeasonDirectory = await response.json();
+    const sortedActiveSeasons = newSeasonDirectory
       .filter(season => season.active === true)
       .sort((a, b) => b.season_no - a.season_no);
-    const lastSeasonNum = sortedActiveSeasons[0].season_no;
-    this.setState({
-      seasonDirectory: sortedActiveSeasons,
-    });
-    await this.setSeason(lastSeasonNum);
+    setSeasonDirectory(sortedActiveSeasons);
 
-    // Set to latest episode
-    this.setState({
-      episodeId: this.state.activeSeasonData.episodes.slice(-1)[0].id,
-    });
+    // this.setState({
+    //   episodeId: this.state.,
+    // });
+  }, []);
+
+  const isEpisodeActive = episode => episode.active === true;
+
+  useEffect(async () => {
+    const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
+    const response = await fetch(url);
+    const newActiveSeasonData = await response.json();
+    newActiveSeasonData.episodes = newActiveSeasonData.episodes.filter(isEpisodeActive);
+    console.log(`>>>`, newActiveSeasonData);
+    // setActiveSeasonData(newActiveSeasonData);
+    // setEpisodeId(`s${activeSeasonNumber}e00`);
+    // setInfoMessage(
+    //   seasonDirectory.find(seasonData => seasonData.season_no === Number(activeSeasonNumber))
+    //     .info_message,
+    // );
+    // Set to latest episode:
+    // setEpisodeId(activeSeasonData.episodes.slice(-1)[0].id);
+  }, [activeSeasonNumber]);
+
+  const currentEpisodeHasTribalCouncils = () => {
+    if (activeSeasonData.episodes) {
+      const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
+      if (episodeData && episodeData.tribalCouncils) {
+        return episodeData.tribalCouncils.length > 0;
+      }
+    }
+
+    return false;
   };
 
-  setEpisode = (episodeNum) => {
-    const { season } = this.state;
-    const formattedEpisodeNum = `0${episodeNum}`.slice(-2);
-    const episodeId = `s${season}e${formattedEpisodeNum}`;
-    this.setState({
-      episodeId,
-    });
-  };
-
-  atLatestEpisode = () => {
-    const { activeSeasonData, episodeId } = this.state;
+  const atLatestEpisode = () => {
     if (activeSeasonData.episodes) {
       const numberOfEpisodes = activeSeasonData.episodes.length;
       const currentEpisode = Number(episodeId.slice(-2));
@@ -98,151 +84,118 @@ class App extends Component {
     return false;
   };
 
-  atEarliestEpisode = () => {
-    const { episodeId } = this.state;
+  const atEarliestEpisode = () => {
     const currentEpisode = Number(episodeId.slice(-2));
     return currentEpisode === 0;
   };
 
-  incrementEpisode = () => {
-    const { season, episodeId } = this.state;
-    if (!this.atLatestEpisode()) {
-      const formattedSeasonNum = `0${season}`.slice(-2);
+  const incrementEpisode = () => {
+    if (!atLatestEpisode()) {
+      const formattedSeasonNum = `0${activeSeasonNumber}`.slice(-2);
       const newEpisode = Number(episodeId.slice(-2)) + 1;
       const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
-      document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      this.setState({
-        episodeId: newEpisodeId,
-      });
+      // document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
+      setEpisodeId(newEpisodeId);
     }
   };
 
-  decrementEpisode = () => {
-    const { season, episodeId } = this.state;
-    if (!this.atEarliestEpisode()) {
-      const formattedSeasonNum = `0${season}`.slice(-2);
+  const decrementEpisode = () => {
+    if (!atEarliestEpisode()) {
+      const formattedSeasonNum = `0${activeSeasonNumber}`.slice(-2);
       const newEpisode = Number(episodeId.slice(-2)) - 1;
       const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
       const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
-      document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      this.setState({
-        episodeId: newEpisodeId,
-      });
+      // document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
+      setEpisodeId(newEpisodeId);
     }
   };
 
-  scrollToNextSection = () => {
-    const preseasonStats = document.querySelector(`.preseason-stats`);
-    const episodeEvents = document.querySelector(`.episode-events`);
-
-    const nextSection = episodeEvents || preseasonStats;
-
-    if (nextSection) {
-      nextSection.scrollIntoView({
-        behavior: `smooth`,
-        block: `start`,
-      });
-    }
-  };
-
-  currentEpisodeHasTribalCouncils = () => {
-    const { episodeId, activeSeasonData } = this.state;
-    if (activeSeasonData.episodes) {
-      const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
-      return episodeData.tribalCouncils.length > 0;
-    }
-
-    return false;
-  };
-
-  onKeyPressed = (e) => {
+  const onKeyPressed = (e) => {
     switch (e.keyCode) {
       case 37:
-        this.decrementEpisode();
+        decrementEpisode();
         break;
       case 39:
-        this.incrementEpisode();
+        incrementEpisode();
         break;
       default:
         break;
     }
   };
 
-  componentDidMount() {
-    initializeReactGA();
-    this.initializeSeasons();
-  }
-
-  render() {
-    const {
-      seasonDirectory, episodeId, season, activeSeasonData, infoMessage,
-    } = this.state;
-    const {
-      setSeason,
-      setEpisode,
-      currentEpisodeHasTribalCouncils,
-      incrementEpisode,
-      decrementEpisode,
-      scrollToNextSection,
-      atEarliestEpisode,
-      atLatestEpisode,
-    } = this;
-    return (
-      <CloudinaryContext cloudName="survivorstats">
-        <div className="App" onKeyDown={this.onKeyPressed} tabIndex="0">
+  return (
+    <CloudinaryContext cloudName="survivorstats">
+      <div className="App" onKeyDown={onKeyPressed} tabIndex="0">
+        {seasonDirectory.length > 0 && (
           <NavBar
             seasonDirectory={seasonDirectory}
             activeSeasonData={activeSeasonData}
-            seasonNum={season}
+            seasonNum={Number(activeSeasonNumber)}
             episodeId={episodeId}
-            setSeason={setSeason}
-            setEpisode={setEpisode}
             atEarliestEpisode={atEarliestEpisode}
             atLatestEpisode={atLatestEpisode}
             incrementEpisode={incrementEpisode}
             decrementEpisode={decrementEpisode}
           />
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <div>
-                <SeasonInfoMessage message={infoMessage} />
-                <main>
-                  {activeSeasonData.episodes && (
-                    <TribeBoard
-                      activeSeasonData={activeSeasonData}
-                      episodeId={episodeId}
-                      tribeData={activeSeasonData.tribes}
-                      seasonNum={season}
-                    />
-                  )}
-                  {activeSeasonData.preseasonStats
-                    && activeSeasonData.preseasonStats.length > 0
-                    && episodeId === `s38e00` && (
-                      <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
-                  )}
-                  {this.currentEpisodeHasTribalCouncils() && (
-                    <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
-                  )}
-                </main>
-                <ArrowButtons
-                  incrementEpisode={incrementEpisode}
-                  decrementEpisode={decrementEpisode}
-                  downArrowAction={scrollToNextSection}
-                  currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
-                  atEarliestEpisode={atEarliestEpisode}
-                  atLatestEpisode={atLatestEpisode}
-                  episodeId={episodeId}
-                />
-              </div>
+        )}
+        <div>
+          <SeasonInfoMessage message={infoMessage} />
+          <main>
+            {activeSeasonData.episodes && (
+              <TribeBoard
+                activeSeasonData={activeSeasonData}
+                episodeId={episodeId}
+                tribeData={activeSeasonData.tribes}
+                seasonNum={activeSeasonNumber}
+              />
             )}
-          />
+            {activeSeasonData.preseasonStats
+              && activeSeasonData.preseasonStats.length > 0
+              && episodeId === `s38e00` && (
+                <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
+            )}
+            {currentEpisodeHasTribalCouncils() && (
+              <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
+            )}
+          </main>
+          {/* <ArrowButtons
+            incrementEpisode={incrementEpisode}
+            decrementEpisode={decrementEpisode}
+            downArrowAction={scrollToNextSection}
+            currentEpisodeHasTribalCouncils={currentEpisodeHasTribalCouncils}
+            atEarliestEpisode={atEarliestEpisode}
+            atLatestEpisode={atLatestEpisode}
+            episodeId={episodeId}
+          /> */}
         </div>
-      </CloudinaryContext>
-    );
-  }
-}
+      </div>
+    </CloudinaryContext>
+  );
+};
 
-export default App;
+//   setEpisode = episodeNum => {
+//     const formattedEpisodeNum = `0${episodeNum}`.slice(-2);
+//     const episodeId = `s${activeSeasonNumber}e${formattedEpisodeNum}`;
+//     this.setState({
+//       episodeId,
+//     });
+//   };
+
+//
+
+//   scrollToNextSection = () => {
+//     const preseasonStats = document.querySelector(`.preseason-stats`);
+//     const episodeEvents = document.querySelector(`.episode-events`);
+
+//     const nextSection = episodeEvents || preseasonStats;
+
+//     if (nextSection) {
+//       nextSection.scrollIntoView({
+//         behavior: `smooth`,
+//         block: `start`,
+//       });
+//     }
+//   };
+
+// }
