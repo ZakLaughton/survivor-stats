@@ -1,35 +1,50 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { PROD_BACKEND_URL } from "../../constants";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = ({
   incrementEpisode,
   decrementEpisode,
-  seasonDirectory,
-  setSeason,
-  seasonNum,
-  episodeId,
-  activeSeasonData,
+  seasonNumber,
+  episodeNumber,
   atEarliestEpisode,
   atLatestEpisode,
   history,
 }) => {
+  const [seasonDirectory, setSeasonDirectory] = useState([])
   console.log(`HIST>>>`, history);
-  const episodeNumber = Number(episodeId.slice(-2));
-  const seasonTitle = activeSeasonData && seasonDirectory && seasonNum
-    ? seasonDirectory.find(season => seasonNum === season.season_no).title
-    : `Season`;
+  console.log('SD>>>', seasonDirectory);
+  let seasonTitle = `Loading...`;
+  
+    seasonTitle = seasonNumber && seasonDirectory.length > 0
+    ? seasonDirectory.find(season => seasonNumber === season.season_no).title
+    : `Loading...`;
+
   const closeDropdown = () => {
     document.querySelector(`.dropdown`).classList.remove(`active`);
   };
-  const selectSeasonOption = (season) => {
-    setSeason(season);
-    closeDropdown();
+
+const updateSeasonDirectory = async () => {
+    const response = await fetch(`${PROD_BACKEND_URL}/seasons`);
+    const newSeasonDirectory = await response.json();
+    const sortedActiveSeasons = newSeasonDirectory
+      .filter(season => season.active === true)
+      .sort((a, b) => b.season_no - a.season_no);
+    setSeasonDirectory(sortedActiveSeasons);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      await updateSeasonDirectory()
+    };
+    fetchData();
+  } , [])
+
   const openDropdown = () => {
     document.querySelector(`.dropdown`).classList.add(`active`);
   };
-  console.log('!>>', seasonDirectory)
+  console.log('!>>', seasonDirectory);
   return (
     <header className="navbar" id="myTopnav">
       {
@@ -39,9 +54,9 @@ const NavBar = ({
           onMouseLeave={closeDropdown}
           onTouchEnd={openDropdown}
         >
-          {seasonTitle && (
+          {(
             <div className="dropbtn" onMouseEnter={openDropdown}>
-              <div className="season-title">{`${seasonTitle} `}</div>
+              <div className="season-title">{seasonTitle}</div>
               <div className="season-title-icon">
                 <i className="fas fa-caret-down" />
               </div>
@@ -49,11 +64,11 @@ const NavBar = ({
           )}
           <div className="dropdown-content">
             {seasonDirectory.map(season => (
-              <Link to={`/${season.season_no}`}>
+              <Link to={`/${season.season_no}`} key={season.season_no}>
                 <div
                   key={season.season_no}
                   value={season.season_no}
-                  className={`season-option ${season.season_no === seasonNum && `selected`}`}
+                  className={`season-option ${season.season_no === seasonNumber && `selected`}`}
                 >
                   {season.season_no.toString()}
                   {`: `}

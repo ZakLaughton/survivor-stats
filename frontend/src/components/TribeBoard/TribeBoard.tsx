@@ -1,10 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { withRouter } from "react-router-dom";
 import React, { useState } from "react";
 import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
 import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
-import { ActiveSeasonData, Tribe as TribeType, Episode } from "../../types";
-import Tribe from "../Tribe/Tribe";
+import {ActiveSeasonData, Tribe as TribeType, Episode} from "../../types";
+import Tribe from "../Tribe/Tribe"
 
 const castawayCardSizeSm = `110px`;
 
@@ -44,34 +43,24 @@ export const FormerTribeHighlightProvider = ({ children }) => {
 };
 
 interface TribeBoardProps {
-  tribeData: TribeType;
   activeSeasonData: ActiveSeasonData;
-  episodeId: string;
-  seasonNum: number;
-  match: any;
+  activeEpisodeNumber: number;
 }
 
 export const TribeBoard = ({
-  tribeData,
-  activeSeasonData,
-  seasonNum,
-  episodeId,
-  match,
+  activeSeasonData, activeEpisodeNumber,
 }: TribeBoardProps) => {
-  console.log(`TBPROPS>>>`, match);
+  const tribeData = activeSeasonData.tribes;
   let episodeData: Episode | undefined;
-  if (
-    activeSeasonData
-    && activeSeasonData.episodes
-    && activeSeasonData.episodes.find(episode => episode.id === episodeId)
-  ) {
-    episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
+    // @ts-ignore
+  if (activeSeasonData && activeSeasonData.episodes && activeSeasonData.episodes.find(episode => episode.id === episodeId)) {
+    // @ts-ignore
+    episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId)
   }
 
   const activeTribes: TribeType[] = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
-    ?
-    // @ts-ignore episodeData object is possibly 'undefined'
-    activeSeasonData.tribes.filter(tribe => episodeData.castaways
+  // @ts-ignore episodeData object is possibly 'undefined'
+  ? activeSeasonData.tribes.filter(tribe => episodeData.castaways
     // Don't show current boots (to be removed in future)
       .filter(castaway => castaway.currentBoot === false)
       .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name))
@@ -84,7 +73,7 @@ export const TribeBoard = ({
         {/*
         // @ts-ignore */}
         <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
-          {activeTribes.length > 0
+          {/* activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name !== `Extinction Island`)
               .map((tribe: TribeType) => (
@@ -93,10 +82,10 @@ export const TribeBoard = ({
                   tribe={tribe}
                   episodeData={episodeData}
                   tribeData={tribeData}
-                  seasonNum={seasonNum}
+                  seasonNumber={activeSeasonData.season}
                 />
-              ))}
-          {activeTribes.length > 0
+              )) */}
+          {/* activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name === `Extinction Island`)
               .map(tribe => (
@@ -105,14 +94,14 @@ export const TribeBoard = ({
                   tribe={tribe}
                   episodeData={episodeData}
                   tribeData={tribeData}
-                  seasonNum={seasonNum}
+                  seasonNumber={activeSeasonData.season}
                 />
-              ))}
+              )) */}
           {activeTribes.length === 0 && `loading...`}
         </ActiveTribes>
         {/*
         // @ts-ignore */}
-        <VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={seasonNum} />
+        {/* <VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={seasonNum} /> */}
       </article>
     </FormerTribeHighlightProvider>
   );

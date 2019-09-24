@@ -8,7 +8,7 @@ import { CloudinaryContext } from "cloudinary-react";
 import NavBar from "./components/NavBar/NavBar";
 import { PROD_BACKEND_URL } from "./constants";
 // eslint-disable-next-line import/no-unresolved
-import { TribeBoard } from "./components/TribeBoard/TribeBoard";
+// import { TribeBoard } from "./components/TribeBoard/TribeBoard";
 import SeasonInfoMessage from "./components/SeasonInfoMessage/SeasonInfoMessage";
 import PreseasonStats from "./components/PreseasonStats/PreseasonStats";
 import ArrowButtons from "./components/ArrowButtons/ArrowButtons";
@@ -23,49 +23,31 @@ function initializeReactGA() {
 
 export const App = ({ match }) => {
   const { activeSeasonNumber } = match.params;
-  const [episodeId, setEpisodeId] = useState(``);
+  console.log('ASN>>>', activeSeasonNumber)
+  const [activeEpisodeNumber, setEpisodeNumber] = useState(0);
   const [activeSeasonData, setActiveSeasonData] = useState({});
   const [infoMessage, setInfoMessage] = useState(`Loading...`);
-  const [seasonDirectory, setSeasonDirectory] = useState([]);
-
+  console.log('IM>>>', infoMessage)
+  console.log('EN>>>', activeEpisodeNumber);
   useEffect(() => {
     initializeReactGA();
   }, []);
 
-  useEffect(async () => {
-    const response = await fetch(`${PROD_BACKEND_URL}/seasons`);
-    const newSeasonDirectory = await response.json();
-    const sortedActiveSeasons = newSeasonDirectory
-      .filter(season => season.active === true)
-      .sort((a, b) => b.season_no - a.season_no);
-    setSeasonDirectory(sortedActiveSeasons);
-
-    // this.setState({
-    //   episodeId: this.state.,
-    // });
-  }, []);
-
   const isEpisodeActive = episode => episode.active === true;
 
-  useEffect(async () => {
+  useEffect(() => {
     const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
-    const response = await fetch(url);
-    const newActiveSeasonData = await response.json();
-    newActiveSeasonData.episodes = newActiveSeasonData.episodes.filter(isEpisodeActive);
-    console.log(`>>>`, newActiveSeasonData);
-    // setActiveSeasonData(newActiveSeasonData);
-    // setEpisodeId(`s${activeSeasonNumber}e00`);
-    // setInfoMessage(
-    //   seasonDirectory.find(seasonData => seasonData.season_no === Number(activeSeasonNumber))
-    //     .info_message,
-    // );
-    // Set to latest episode:
-    // setEpisodeId(activeSeasonData.episodes.slice(-1)[0].id);
+    async function fetchData() {const response = await fetch(url);
+      const newActiveSeasonData = await response.json();
+      newActiveSeasonData.episodes = newActiveSeasonData.episodes.filter(isEpisodeActive);
+      console.log(`>>>`, newActiveSeasonData);
+      setActiveSeasonData(newActiveSeasonData);}
+      fetchData();
   }, [activeSeasonNumber]);
 
   const currentEpisodeHasTribalCouncils = () => {
     if (activeSeasonData.episodes) {
-      const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
+      const episodeData = activeSeasonData.episodes.find(episode => episode.id === activeEpisodeNumber);
       if (episodeData && episodeData.tribalCouncils) {
         return episodeData.tribalCouncils.length > 0;
       }
@@ -77,38 +59,19 @@ export const App = ({ match }) => {
   const atLatestEpisode = () => {
     if (activeSeasonData.episodes) {
       const numberOfEpisodes = activeSeasonData.episodes.length;
-      const currentEpisode = Number(episodeId.slice(-2));
+      const currentEpisode = Number(activeEpisodeNumber);
       return currentEpisode === numberOfEpisodes - 1;
     }
 
     return false;
   };
 
+  const decrementEpisode = () => { setEpisodeNumber(activeEpisodeNumber - 1); };
+  const incrementEpisode = () => { setEpisodeNumber(activeEpisodeNumber + 1); };
+
   const atEarliestEpisode = () => {
-    const currentEpisode = Number(episodeId.slice(-2));
+    const currentEpisode = Number(activeEpisodeNumber);
     return currentEpisode === 0;
-  };
-
-  const incrementEpisode = () => {
-    if (!atLatestEpisode()) {
-      const formattedSeasonNum = `0${activeSeasonNumber}`.slice(-2);
-      const newEpisode = Number(episodeId.slice(-2)) + 1;
-      const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
-      const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
-      // document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      setEpisodeId(newEpisodeId);
-    }
-  };
-
-  const decrementEpisode = () => {
-    if (!atEarliestEpisode()) {
-      const formattedSeasonNum = `0${activeSeasonNumber}`.slice(-2);
-      const newEpisode = Number(episodeId.slice(-2)) - 1;
-      const formattedEpisodeNum = `0${newEpisode}`.slice(-2);
-      const newEpisodeId = `s${formattedSeasonNum}e${formattedEpisodeNum}`;
-      // document.body.scrollTop = document.documentElement.scrollTop = 0; // scroll to top
-      setEpisodeId(newEpisodeId);
-    }
   };
 
   const onKeyPressed = (e) => {
@@ -127,38 +90,32 @@ export const App = ({ match }) => {
   return (
     <CloudinaryContext cloudName="survivorstats">
       <div className="App" onKeyDown={onKeyPressed} tabIndex="0">
-        {seasonDirectory.length > 0 && (
-          <NavBar
-            seasonDirectory={seasonDirectory}
-            activeSeasonData={activeSeasonData}
-            seasonNum={Number(activeSeasonNumber)}
-            episodeId={episodeId}
-            atEarliestEpisode={atEarliestEpisode}
-            atLatestEpisode={atLatestEpisode}
-            incrementEpisode={incrementEpisode}
-            decrementEpisode={decrementEpisode}
-          />
-        )}
+        <NavBar
+          seasonNumber={Number(activeSeasonNumber)}
+          episodeNumber={activeEpisodeNumber}
+          atEarliestEpisode={atEarliestEpisode}
+          atLatestEpisode={atLatestEpisode}
+          incrementEpisode={incrementEpisode}
+          decrementEpisode={decrementEpisode}
+        />
         <div>
           <SeasonInfoMessage message={infoMessage} />
-          <main>
-            {activeSeasonData.episodes && (
+          { <main>
+            {/* activeSeasonData.episodes && (
               <TribeBoard
                 activeSeasonData={activeSeasonData}
-                episodeId={episodeId}
-                tribeData={activeSeasonData.tribes}
-                seasonNum={activeSeasonNumber}
+                activeEpisodeNumber={activeEpisodeNumber}
               />
-            )}
-            {activeSeasonData.preseasonStats
+            ) */}
+            {/* activeSeasonData.preseasonStats
               && activeSeasonData.preseasonStats.length > 0
               && episodeId === `s38e00` && (
                 <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
-            )}
-            {currentEpisodeHasTribalCouncils() && (
+              ) */}
+            {/* currentEpisodeHasTribalCouncils() && (
               <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
-            )}
-          </main>
+            ) */}
+            </main> }
           {/* <ArrowButtons
             incrementEpisode={incrementEpisode}
             decrementEpisode={decrementEpisode}
