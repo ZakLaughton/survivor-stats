@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/js/3.50bb18fe.chunk.js"
   },
   {
-    "revision": "c67684e1dd647a88f0b7",
+    "revision": "c18b5eaa85611fefe4ab",
     "url": "/static/css/main.97fd828c.chunk.css"
   },
   {
@@ -24,16 +24,16 @@ self.__precacheManifest = [
     "url": "/static/media/bg-episode-events.b698c1f8.png"
   },
   {
-    "revision": "c67684e1dd647a88f0b7",
-    "url": "/static/js/main.e3635758.chunk.js"
-  },
-  {
-    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
-    "url": "/static/media/survivorfont.9ba24af1.ttf"
+    "revision": "c18b5eaa85611fefe4ab",
+    "url": "/static/js/main.7276b1fb.chunk.js"
   },
   {
     "revision": "b1dda1997655a57084faa604a3e83ed7",
     "url": "/static/media/survivant.b1dda199.ttf"
+  },
+  {
+    "revision": "9ba24af1c09bdd5ef02388c1fa5c6002",
+    "url": "/static/media/survivorfont.9ba24af1.ttf"
   },
   {
     "revision": "032349201860e7e6013d",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/static/css/2.930bff36.chunk.css"
   },
   {
-    "revision": "13984e3fc62f67ef8d0069ba0f2a9732",
+    "revision": "83800e8c2349e43c4ef17ae0744d9b80",
     "url": "/index.html"
   }
 ];
