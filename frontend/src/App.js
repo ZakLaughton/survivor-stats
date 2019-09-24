@@ -23,12 +23,9 @@ function initializeReactGA() {
 
 export const App = ({ match }) => {
   const { activeSeasonNumber } = match.params;
-  console.log('ASN>>>', activeSeasonNumber)
   const [activeEpisodeNumber, setActiveEpisodeNumber] = useState(0);
   const [activeSeasonData, setActiveSeasonData] = useState({});
   const [infoMessage, setInfoMessage] = useState(`Loading...`);
-  console.log('IM>>>', infoMessage)
-  console.log('EN>>>', activeEpisodeNumber);
   useEffect(() => {
     initializeReactGA();
   }, []);
@@ -45,7 +42,6 @@ export const App = ({ match }) => {
         .filter(isEpisodeActive)
         .sort((a, b) => a.id > b.id ? 1 : -1);
       console.dir(newActiveSeasonData);
-      console.log(`>>>`, newActiveSeasonData);
       setActiveSeasonData(newActiveSeasonData);
       setActiveEpisodeNumber(0)
       setInfoMessage('')
@@ -65,17 +61,12 @@ export const App = ({ match }) => {
   };
 
   const atLatestEpisode = () => {
-    console.log('ale...>>>')
-    console.log('ASD>>>', activeSeasonData)
     if (activeSeasonData.episodes) {
       const numberOfEpisodes = activeSeasonData.episodes.length;
-      console.log('numberOfEpisodes>>>', numberOfEpisodes);
       const currentEpisode = Number(activeEpisodeNumber);
-      console.log('currentEpisode>>>', currentEpisode);
       
       return currentEpisode === numberOfEpisodes - 1;
     }
-    console.log('Not At Latest>>>')
     return false;
   };
 
