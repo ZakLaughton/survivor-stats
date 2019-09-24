@@ -31,7 +31,7 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
                   castaway={voter}
                   key={voter + index}
                   seasonNumber={seasonNumber}
-                  size={70}
+                  sizePx={70}
                 />
               ))}
             </div>
@@ -40,7 +40,7 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
               <Headshot
                 castaway={votesForCastaway.votedFor}
                 seasonNumber={seasonNumber}
-                size={70}
+                sizePx={70}
               />
             </div>
           </React.Fragment>

@@ -8,7 +8,7 @@ import { CloudinaryContext } from "cloudinary-react";
 import NavBar from "./components/NavBar/NavBar";
 import { PROD_BACKEND_URL } from "./constants";
 // eslint-disable-next-line import/no-unresolved
-// import { TribeBoard } from "./components/TribeBoard/TribeBoard";
+import { TribeBoard } from "./components/TribeBoard/TribeBoard";
 import SeasonInfoMessage from "./components/SeasonInfoMessage/SeasonInfoMessage";
 import PreseasonStats from "./components/PreseasonStats/PreseasonStats";
 import ArrowButtons from "./components/ArrowButtons/ArrowButtons";
@@ -37,12 +37,17 @@ export const App = ({ match }) => {
 
   useEffect(() => {
     const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
-    async function fetchData() {const response = await fetch(url);
+    async function fetchData() {
+      const response = await fetch(url);
       setInfoMessage('Loading...')
       const newActiveSeasonData = await response.json();
-      newActiveSeasonData.episodes = newActiveSeasonData.episodes.filter(isEpisodeActive);
+      newActiveSeasonData.episodes = newActiveSeasonData.episodes
+        .filter(isEpisodeActive)
+        .sort((a, b) => a.id > b.id ? 1 : -1);
+      console.dir(newActiveSeasonData);
       console.log(`>>>`, newActiveSeasonData);
       setActiveSeasonData(newActiveSeasonData);
+      setActiveEpisodeNumber(0)
       setInfoMessage('')
     }
       fetchData();
@@ -107,12 +112,12 @@ export const App = ({ match }) => {
         <div>
           <SeasonInfoMessage message={infoMessage} />
           { <main>
-            {/* activeSeasonData.episodes && (
+            { activeSeasonData.episodes && (
               <TribeBoard
                 activeSeasonData={activeSeasonData}
                 activeEpisodeNumber={activeEpisodeNumber}
               />
-            ) */}
+            ) }
             {/* activeSeasonData.preseasonStats
               && activeSeasonData.preseasonStats.length > 0
               && episodeId === `s38e00` && (

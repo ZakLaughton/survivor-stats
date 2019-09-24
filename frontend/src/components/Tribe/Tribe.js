@@ -10,7 +10,7 @@ const Tribe = ({
   formerTribeHighlight = ``,
   setFormerTribeHighlight = {},
   removeFormerTribeHighlight = {},
-  seasonNum,
+  seasonNumber,
 }) => {
   const { castaways } = episodeData;
 
@@ -56,7 +56,7 @@ const Tribe = ({
               <Headshot
                 key={castaway.name}
                 castaway={castaway.name}
-                seasonNumber={seasonNum}
+                seasonNumber={seasonNumber}
                 size={90}
                 padding={5}
               />

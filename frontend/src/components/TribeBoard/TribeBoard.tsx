@@ -53,9 +53,9 @@ export const TribeBoard = ({
   const tribeData = activeSeasonData.tribes;
   let episodeData: Episode | undefined;
     // @ts-ignore
-  if (activeSeasonData && activeSeasonData.episodes && activeSeasonData.episodes.find(episode => episode.id === episodeId)) {
+  if (activeSeasonData && activeSeasonData.episodes && activeSeasonData.episodes[activeEpisodeNumber]) {
     // @ts-ignore
-    episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId)
+    episodeData = activeSeasonData.episodes[activeEpisodeNumber];
   }
 
   const activeTribes: TribeType[] = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
@@ -73,10 +73,11 @@ export const TribeBoard = ({
         {/*
         // @ts-ignore */}
         <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
-          {/* activeTribes.length > 0
+          {activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name !== `Extinction Island`)
               .map((tribe: TribeType) => (
+                // @ts-ignore
                 <Tribe
                   key={tribe.name}
                   tribe={tribe}
@@ -84,11 +85,12 @@ export const TribeBoard = ({
                   tribeData={tribeData}
                   seasonNumber={activeSeasonData.season}
                 />
-              )) */}
-          {/* activeTribes.length > 0
+              ))}
+          {activeTribes.length > 0
             && activeTribes
               .filter(tribe => tribe.name === `Extinction Island`)
               .map(tribe => (
+                // @ts-ignore
                 <Tribe
                   key={tribe.name}
                   tribe={tribe}
@@ -96,7 +98,7 @@ export const TribeBoard = ({
                   tribeData={tribeData}
                   seasonNumber={activeSeasonData.season}
                 />
-              )) */}
+              )) }
           {activeTribes.length === 0 && `loading...`}
         </ActiveTribes>
         {/*
