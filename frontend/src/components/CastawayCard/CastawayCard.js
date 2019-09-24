@@ -1,25 +1,23 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-import React from "react";
-import styled from "styled-components";
-import { FormerTribeShadow } from "./FormerTribeShadow";
-import AdvantageIcons from "../AdvantageIcons/AdvantageIcons";
-import FormerTribeIndicator from "../FormerTribeIndicator/FormerTribeIndicator";
-import Headshot from "../Headshot/Headshot";
+import React from 'react';
+import styled from 'styled-components';
+import { FormerTribeShadow } from './FormerTribeShadow';
+import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
+import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
+import Headshot from '../Headshot/Headshot';
 
-const CastawayCard = ({
-  castaway, classNames, tribeData, episodeId, tribeColor,
-}) => {
+const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
    * swaps, this takes a list of plain tribes (e.g. "Malolo", "Malolo 2",
    * "Malolo 3") and returns a dictionary of their semantic names (e.g.
    * "Original Malolo", "Malolo (1st swap)", "Malolo (2nd Swap)')
    */
-  const getSemanticTribeNames = (formerTribeList) => {
+  const getSemanticTribeNames = formerTribeList => {
     const semanticDictionary = {};
 
-    formerTribeList.forEach((tribe) => {
+    formerTribeList.forEach(tribe => {
       const newName = tribe.replace(/2$/, `(1st swap)`).replace(/3$/, `(2nd swap)`);
       semanticDictionary[tribe] = newName;
     });
@@ -46,7 +44,7 @@ const CastawayCard = ({
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}
       </HeadshotContainer>
-      <CardNameplate className="card-nameplate">
+      <CardNameplate className='card-nameplate'>
         {castaway.nickname
           ? castaway.nickname
           : castaway.name.substr(0, castaway.name.indexOf(` `))}
@@ -58,13 +56,13 @@ const CastawayCard = ({
           {castaway.currentResidence}
         </Bio>
       ) : (
-        <TribeCircleContainer className="tribe-circle-container">
+        <TribeCircleContainer className='tribe-circle-container'>
           {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
-          {tribeData && castaway.formerTribes.length > 0 && <i className="fas fa-history" />}
-          {tribeData
-            && castaway.formerTribes
-            && castaway.formerTribes.map((formerTribe) => {
+          {tribeData && castaway.formerTribes.length > 0 && <i className='fas fa-history' />}
+          {tribeData &&
+            castaway.formerTribes &&
+            castaway.formerTribes.map(formerTribe => {
               const circleColor = tribeData.find(
                 tribe => formerTribe.replace(/ \d/g, ``) === tribe.name,
               );
@@ -103,9 +101,9 @@ const StyledCastawayCard = styled.div`
   border-radius: 20px;
   display: grid;
   grid-template-areas:
-    "headshot nameplate"
-    "headshot data-line-2"
-    "headshot data-line-3";
+    'headshot nameplate'
+    'headshot data-line-2'
+    'headshot data-line-3';
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 3px;
@@ -115,7 +113,7 @@ const StyledCastawayCard = styled.div`
   height: 90px;
   margin: 5px;
   background: ${props => backgroundGradients[props.tribeColor]};
-  ${(props) => {
+  ${props => {
     const { tribeName } = props;
     if (tribeName === `Extinction Island`) {
       return `max-width: 100px; max-height: 100px;`;
@@ -140,7 +138,7 @@ const CardNameplate = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
   color: rgb(255, 255, 255, 0.9);
-  font-family: "Londrina Solid", sans-serif;
+  font-family: 'Londrina Solid', sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
   text-shadow: 3px 3px 5px black, -1px -1px 8px black;
@@ -158,7 +156,7 @@ const Bio = styled.div`
   grid-row: 2 / 4;
   align-self: start;
   text-align: left;
-  font-family: "Londrina Solid", sans-serif;
+  font-family: 'Londrina Solid', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { FormerTribeHighlightContext } from "../TribeBoard/FormerTribeHighlightContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
 
 export const FormerTribeShadow = ({ formerTribes }) => {
   const { highlightedFormerTribe } = useContext(FormerTribeHighlightContext);

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-import React from "react";
-import styled from "styled-components";
-import { Image, Transformation } from "cloudinary-react";
+import React from 'react';
+import styled from 'styled-components';
+import { Image, Transformation } from 'cloudinary-react';
 
 const Headshot = ({
   seasonNumber,
@@ -21,7 +21,7 @@ const Headshot = ({
     <StyledHeadshot size={size} padding={padding} grayScale={grayScale}>
       <StyledImage publicId={`castaways/${imageFileName}`} borderRadius={borderRadius}>
         {/* Keep height and width constant to minimize network calls and Cloudinary usage */}
-        <Transformation gravity="face" height="120" width="120" crop="thumb" />
+        <Transformation gravity='face' height='120' width='120' crop='thumb' />
       </StyledImage>
     </StyledHeadshot>
   );

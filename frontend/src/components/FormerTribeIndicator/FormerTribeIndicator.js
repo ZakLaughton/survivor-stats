@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { FormerTribeHighlightContext } from "../TribeBoard/FormerTribeHighlightContext";
-import "./FormerTribeIndicator.css";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
+import './FormerTribeIndicator.css';
 
 const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
   const { updateTribeHighlight } = useContext(FormerTribeHighlightContext);
@@ -14,7 +14,7 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
     updateTribeHighlight({ tribeName: ``, color: `` });
   };
 
-  const getSemanticTribeName = (tribeName) => {
+  const getSemanticTribeName = tribeName => {
     if (Object.keys(semanticTribes).indexOf(tribeName) > -1) {
       return semanticTribes[tribeName];
     }
@@ -25,12 +25,12 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
 
   return (
     <TribeCircle
-      className="tribe-circle tooltip"
+      className='tribe-circle tooltip'
       style={{ backgroundColor: circleColor }}
       onMouseEnter={handleHoverOn}
       onMouseLeave={handleHoverOff}
     >
-      <span className="tooltiptext">{`Former ${semanticTribeName}`}</span>
+      <span className='tooltiptext'>{`Former ${semanticTribeName}`}</span>
     </TribeCircle>
   );
 };

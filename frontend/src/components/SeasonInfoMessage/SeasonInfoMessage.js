@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 
 import('./SeasonInfoMessage.css');
@@ -5,10 +6,8 @@ import('./SeasonInfoMessage.css');
 const SeasonInfoMessage = ({ message }) => {
   if (message) {
     return (
-      <div className="info-message animated slideInDown">
-        <i className="fas fa-info-circle" />
-        {' '}
-        {message}
+      <div className='info-message animated slideInDown'>
+        <i className='fas fa-info-circle' /> {message}
       </div>
     );
   }

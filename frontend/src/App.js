@@ -118,9 +118,7 @@ export const App = ({ match }) => {
                 activeSeasonData.preseasonStats.length > 0 &&
                 Number(activeSeasonNumber) === 38 &&
                 activeEpisodeNumber === 0 && (
-                  <PreseasonStats
-                    preseasonStats={activeSeasonData.preseasonStats}
-                  />
+                  <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
                 )}
               {currentEpisodeHasTribalCouncils() && (
                 <EpisodeEvents

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import CastawayCard from "../CastawayCard/CastawayCard";
-import Headshot from "../Headshot/Headshot";
+import React from 'react';
+import styled from 'styled-components';
+import CastawayCard from '../CastawayCard/CastawayCard';
+import Headshot from '../Headshot/Headshot';
 
 const Tribe = ({
   tribe,
@@ -14,24 +14,26 @@ const Tribe = ({
 }) => {
   const { castaways } = episodeData;
 
-  const getTribeTitle = (tribeName) => {
+  const getTribeTitle = tribeName => {
     if (tribeName === `Extinction Island`) {
-      return <i className="fas fa-skull-crossbones" />;
+      return <i className='fas fa-skull-crossbones' />;
     }
     return tribeName;
   };
 
-  const tribeClass = tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
+  const tribeClass =
+    tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
 
   return (
     <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`}>
       <h1>{getTribeTitle(tribe.name)}</h1>
       <CastawayList tribeName={tribe.name}>
-        {castaways
-          && tribe.name !== `Extinction Island`
-          && castaways
+        {castaways &&
+          tribe.name !== `Extinction Island` &&
+          castaways
             .filter(
-              castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
+              castaway =>
+                castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
             )
             .map(castaway => (
               <CastawayCard
@@ -46,11 +48,12 @@ const Tribe = ({
                 episodeId={episodeData.id}
               />
             ))}
-        {castaways
-          && tribe.name === `Extinction Island`
-          && castaways
+        {castaways &&
+          tribe.name === `Extinction Island` &&
+          castaways
             .filter(
-              castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
+              castaway =>
+                castaway.tribe.replace(/ \d/g, ``) === tribe.name && castaway.currentBoot === false,
             )
             .map(castaway => (
               <Headshot

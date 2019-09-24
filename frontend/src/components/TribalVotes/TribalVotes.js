@@ -1,10 +1,10 @@
-import React from "react";
-import "./TribalVotes.css";
-import Headshot from "../Headshot/Headshot";
+import React from 'react';
+import './TribalVotes.css';
+import Headshot from '../Headshot/Headshot';
 
 const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
   const castawaysVotedFor = [...new Set(voteData.votes.map(vote => vote.playedOn))];
-  const votesByVotedFor = castawaysVotedFor.map((castawayVotedFor) => {
+  const votesByVotedFor = castawaysVotedFor.map(castawayVotedFor => {
     const returnObject = { votedFor: castawayVotedFor };
     returnObject.voters = voteData.votes
       .filter(vote => vote.playedOn === castawayVotedFor && vote.playedBy)
@@ -12,20 +12,22 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
     return returnObject;
   });
 
-  const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) => (a.voters.length > b.voters.length ? -1 : 1));
+  const sortedVotesByVotedFor = votesByVotedFor.sort((a, b) =>
+    a.voters.length > b.voters.length ? -1 : 1,
+  );
 
   const voteTitle = roundNo ? `Vote ${roundNo}` : `Votes`;
 
   return (
     <>
-      <div className="vote-container">
-        <div className="grid-title">
+      <div className='vote-container'>
+        <div className='grid-title'>
           <h3>{voteTitle}</h3>
           <hr />
         </div>
         {sortedVotesByVotedFor.map(votesForCastaway => (
           <React.Fragment key={votesForCastaway.votedFor}>
-            <div className="voters">
+            <div className='voters'>
               {votesForCastaway.voters.map((voter, index) => (
                 <Headshot
                   castaway={voter}
@@ -35,8 +37,8 @@ const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
                 />
               ))}
             </div>
-            <i className="fas fa-arrow-right" />
-            <div className="votee">
+            <i className='fas fa-arrow-right' />
+            <div className='votee'>
               <Headshot
                 castaway={votesForCastaway.votedFor}
                 seasonNumber={seasonNumber}

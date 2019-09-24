@@ -2,31 +2,31 @@ import React from 'react';
 import './PreseasonStats.css';
 
 const PreseasonStats = ({ preseasonStats }) => (
-  <article className="preseason-stats">
+  <article className='preseason-stats'>
     <h1>Preseason Stats</h1>
-    <div className="stats-list">
+    <div className='stats-list'>
       <p>
-        <Stat stat="Total castaways" preseasonStats={preseasonStats} />
+        <Stat stat='Total castaways' preseasonStats={preseasonStats} />
         <br />
-        <Stat stat="Men" preseasonStats={preseasonStats} />
-        <Stat stat="Women" preseasonStats={preseasonStats} />
+        <Stat stat='Men' preseasonStats={preseasonStats} />
+        <Stat stat='Women' preseasonStats={preseasonStats} />
         <br />
-        <Stat stat="Returning castaways" preseasonStats={preseasonStats} />
+        <Stat stat='Returning castaways' preseasonStats={preseasonStats} />
       </p>
       <p>
-        <Stat stat="Average age" preseasonStats={preseasonStats} />
+        <Stat stat='Average age' preseasonStats={preseasonStats} />
         <br />
-        <Stat stat="Youngest" preseasonStats={preseasonStats} />
+        <Stat stat='Youngest' preseasonStats={preseasonStats} />
         <br />
-        <Stat stat="Oldest" preseasonStats={preseasonStats} />
+        <Stat stat='Oldest' preseasonStats={preseasonStats} />
       </p>
       <p>
         <Stat
-          stat="Most names mentioned in a self-comparison to former castaways"
+          stat='Most names mentioned in a self-comparison to former castaways'
           preseasonStats={preseasonStats}
         />
       </p>
-      <p className="quote">
+      <p className='quote'>
         {'"The Wardog is his own blend – I’m not Tony'}
         <sup>1</sup>
         {', I’m not the Specialist'}
@@ -52,15 +52,15 @@ const PreseasonStats = ({ preseasonStats }) => (
 );
 
 const Stat = ({ stat, preseasonStats }) => {
-  const getStatValue = (statName) => {
+  const getStatValue = statName => {
     const returnStat = preseasonStats.find(currentStat => currentStat.stat === statName).value;
     return returnStat;
   };
 
   return (
-    <span className="stat-value-pair">
-      <span className="stat-name">{`${stat}: `}</span>
-      <span className="stat-value">{getStatValue(stat)}</span>
+    <span className='stat-value-pair'>
+      <span className='stat-name'>{`${stat}: `}</span>
+      <span className='stat-value'>{getStatValue(stat)}</span>
     </span>
   );
 };

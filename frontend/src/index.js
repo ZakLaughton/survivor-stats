@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {
-  BrowserRouter, Route, Redirect, Switch,
-} from "react-router-dom";
-import "./index.css";
-import { App } from "./App";
-import * as serviceWorker from "./serviceWorker";
-import "tachyons";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import './index.css';
+import { App } from './App';
+import * as serviceWorker from './serviceWorker';
+import 'tachyons';
 
 require(`es6-shim`);
 
 const AppRouter = () => (
   <Switch>
-    <Route exact path="/" render={() => <Redirect to="/39" />} />
-    <Route path="/:activeSeasonNumber" render={props => <App {...props} />} />
+    <Route exact path='/' render={() => <Redirect to='/39' />} />
+    <Route path='/:activeSeasonNumber' render={props => <App {...props} />} />
   </Switch>
 );
 

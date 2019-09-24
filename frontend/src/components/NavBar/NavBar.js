@@ -46,13 +46,9 @@ const NavBar = ({
   return (
     <StyledNavBar className='navbar'>
       {
-        <SeasonSelector
-          className="dropdown"
-          onMouseLeave={closeDropdown}
-          onTouchEnd={openDropdown}
-        >
+        <SeasonSelector className='dropdown' onMouseLeave={closeDropdown} onTouchEnd={openDropdown}>
           {
-            <div className="dropbtn" onMouseEnter={openDropdown}>
+            <div className='dropbtn' onMouseEnter={openDropdown}>
               <SeasonTitle>{seasonTitle}</SeasonTitle>
               <SeasonTitleIconContainer>
                 <i className='fas fa-caret-down' />
@@ -81,14 +77,14 @@ const NavBar = ({
         <EpisodeArrow
           left
           hidden={atEarliestEpisode()}
-          className="fas fa-caret-left"
+          className='fas fa-caret-left'
           onClick={decrementEpisode}
         />
         <EpisodeTitle>{episodeNumber === 0 ? `START` : `EPISODE ${episodeNumber}`}</EpisodeTitle>
         <EpisodeArrow
           right
           hidden={atLatestEpisode()}
-          className="fas fa-caret-right episode-arrow right"
+          className='fas fa-caret-right episode-arrow right'
           onClick={incrementEpisode}
         />
       </EpisodeSelector>
@@ -120,7 +116,7 @@ const SeasonTitle = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   display: inline-block;
-`
+`;
 
 const SeasonTitleIconContainer = styled.div`
   padding-left: 8px;
@@ -130,7 +126,7 @@ const SeasonTitleIconContainer = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-`
+`;
 
 const EpisodeSelector = styled.div`
   display: grid;

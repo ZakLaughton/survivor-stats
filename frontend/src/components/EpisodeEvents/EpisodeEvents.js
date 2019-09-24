@@ -1,6 +1,6 @@
-import React from "react";
-import "./EpisodeEvents.css";
-import TribalCouncils from "../TribalCouncils/TribalCouncils";
+import React from 'react';
+import './EpisodeEvents.css';
+import TribalCouncils from '../TribalCouncils/TribalCouncils';
 
 const EpisodeEvents = ({ activeSeasonData, activeEpisodeNumber }) => {
   let tribalCouncils = [];
@@ -11,7 +11,7 @@ const EpisodeEvents = ({ activeSeasonData, activeEpisodeNumber }) => {
   }
 
   return (
-    <article className="episode-events">
+    <article className='episode-events'>
       {tribalCouncils.length > 0 && (
         <TribalCouncils tribalCouncils={tribalCouncils} seasonNumber={activeSeasonData.season} />
       )}
