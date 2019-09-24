@@ -55,7 +55,7 @@ export const App = ({ match }) => {
 
   const currentEpisodeHasTribalCouncils = () => {
     if (activeSeasonData.episodes) {
-      const episodeData = activeSeasonData.episodes.find(episode => episode.id === activeEpisodeNumber);
+      const episodeData = activeSeasonData.episodes[activeEpisodeNumber];
       if (episodeData && episodeData.tribalCouncils) {
         return episodeData.tribalCouncils.length > 0;
       }
@@ -124,9 +124,9 @@ export const App = ({ match }) => {
               && activeEpisodeNumber === 0 && (
                 <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
               ) }
-            {/* currentEpisodeHasTribalCouncils() && (
-              <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
-            ) */}
+            {currentEpisodeHasTribalCouncils() && (
+              <EpisodeEvents activeSeasonData={activeSeasonData} activeEpisodeNumber={activeEpisodeNumber} />
+            ) }
             </main> }
           {/* <ArrowButtons
             incrementEpisode={incrementEpisode}

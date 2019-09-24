@@ -2,10 +2,10 @@ import React from "react";
 import "./EpisodeEvents.css";
 import TribalCouncils from "../TribalCouncils/TribalCouncils";
 
-const EpisodeEvents = ({ activeSeasonData, episodeId }) => {
+const EpisodeEvents = ({ activeSeasonData, activeEpisodeNumber }) => {
   let tribalCouncils = [];
   if (activeSeasonData.episodes) {
-    const episodeData = activeSeasonData.episodes.find(episode => episode.id === episodeId);
+    const episodeData = activeSeasonData.episodes[activeEpisodeNumber];
     // eslint-disable-next-line prefer-destructuring
     tribalCouncils = episodeData.tribalCouncils;
   }
