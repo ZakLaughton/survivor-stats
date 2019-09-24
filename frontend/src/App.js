@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/sort-comp */
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import ReactGA from "react-ga";
-import { CloudinaryContext } from "cloudinary-react";
-import NavBar from "./components/NavBar/NavBar";
-import { PROD_BACKEND_URL } from "./constants";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import ReactGA from 'react-ga';
+import { CloudinaryContext } from 'cloudinary-react';
+import NavBar from './components/NavBar/NavBar';
+import { PROD_BACKEND_URL } from './constants';
 // eslint-disable-next-line import/no-unresolved
-import { TribeBoard } from "./components/TribeBoard/TribeBoard";
-import SeasonInfoMessage from "./components/SeasonInfoMessage/SeasonInfoMessage";
-import PreseasonStats from "./components/PreseasonStats/PreseasonStats";
-import EpisodeEvents from "./components/EpisodeEvents/EpisodeEvents";
+import { TribeBoard } from './components/TribeBoard/TribeBoard';
+import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
+import PreseasonStats from './components/PreseasonStats/PreseasonStats';
+import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
 
 function initializeReactGA() {
   if (document.location.hostname.search(`survivorstats.com`) !== -1) {
@@ -71,13 +71,17 @@ export const App = ({ match }) => {
   };
 
   const decrementEpisode = () => {
-    if (!atEarliestEpisode()) { setActiveEpisodeNumber(activeEpisodeNumber - 1); }
+    if (!atEarliestEpisode()) {
+      setActiveEpisodeNumber(activeEpisodeNumber - 1);
+    }
   };
   const incrementEpisode = () => {
-    if (!atLatestEpisode()) { setActiveEpisodeNumber(activeEpisodeNumber + 1); }
+    if (!atLatestEpisode()) {
+      setActiveEpisodeNumber(activeEpisodeNumber + 1);
+    }
   };
 
-  const onKeyPressed = (e) => {
+  const onKeyPressed = e => {
     switch (e.keyCode) {
       case 37:
         decrementEpisode();
@@ -103,26 +107,30 @@ export const App = ({ match }) => {
         />
         <div>
           <SeasonInfoMessage message={infoMessage} />
-          {<main>
-            { activeSeasonData.episodes && (
-              <TribeBoard
-                activeSeasonData={activeSeasonData}
-                activeEpisodeNumber={activeEpisodeNumber}
-              />
-            ) }
-            { activeSeasonData.preseasonStats
-              && activeSeasonData.preseasonStats.length > 0
-              && Number(activeSeasonNumber) === 38
-              && activeEpisodeNumber === 0 && (
-                <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
-            ) }
-            {currentEpisodeHasTribalCouncils() && (
-              <EpisodeEvents
-                activeSeasonData={activeSeasonData}
-                activeEpisodeNumber={activeEpisodeNumber}
-              />
-            ) }
-          </main> }
+          {
+            <main>
+              {activeSeasonData.episodes && (
+                <TribeBoard
+                  activeSeasonData={activeSeasonData}
+                  activeEpisodeNumber={activeEpisodeNumber}
+                />
+              )}
+              {activeSeasonData.preseasonStats &&
+                activeSeasonData.preseasonStats.length > 0 &&
+                Number(activeSeasonNumber) === 38 &&
+                activeEpisodeNumber === 0 && (
+                  <PreseasonStats
+                    preseasonStats={activeSeasonData.preseasonStats}
+                  />
+                )}
+              {currentEpisodeHasTribalCouncils() && (
+                <EpisodeEvents
+                  activeSeasonData={activeSeasonData}
+                  activeEpisodeNumber={activeEpisodeNumber}
+                />
+              )}
+            </main>
+          }
         </div>
       </div>
     </CloudinaryContext>
