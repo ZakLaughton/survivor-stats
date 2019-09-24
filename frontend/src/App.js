@@ -24,7 +24,7 @@ function initializeReactGA() {
 export const App = ({ match }) => {
   const { activeSeasonNumber } = match.params;
   console.log('ASN>>>', activeSeasonNumber)
-  const [activeEpisodeNumber, setEpisodeNumber] = useState(0);
+  const [activeEpisodeNumber, setActiveEpisodeNumber] = useState(0);
   const [activeSeasonData, setActiveSeasonData] = useState({});
   const [infoMessage, setInfoMessage] = useState(`Loading...`);
   console.log('IM>>>', infoMessage)
@@ -38,10 +38,13 @@ export const App = ({ match }) => {
   useEffect(() => {
     const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
     async function fetchData() {const response = await fetch(url);
+      setInfoMessage('Loading...')
       const newActiveSeasonData = await response.json();
       newActiveSeasonData.episodes = newActiveSeasonData.episodes.filter(isEpisodeActive);
       console.log(`>>>`, newActiveSeasonData);
-      setActiveSeasonData(newActiveSeasonData);}
+      setActiveSeasonData(newActiveSeasonData);
+      setInfoMessage('')
+    }
       fetchData();
   }, [activeSeasonNumber]);
 
@@ -57,22 +60,25 @@ export const App = ({ match }) => {
   };
 
   const atLatestEpisode = () => {
+    console.log('ale...>>>')
+    console.log('ASD>>>', activeSeasonData)
     if (activeSeasonData.episodes) {
       const numberOfEpisodes = activeSeasonData.episodes.length;
+      console.log('numberOfEpisodes>>>', numberOfEpisodes);
       const currentEpisode = Number(activeEpisodeNumber);
+      console.log('currentEpisode>>>', currentEpisode);
+      
       return currentEpisode === numberOfEpisodes - 1;
     }
-
+    console.log('Not At Latest>>>')
     return false;
   };
 
-  const decrementEpisode = () => { setEpisodeNumber(activeEpisodeNumber - 1); };
-  const incrementEpisode = () => { setEpisodeNumber(activeEpisodeNumber + 1); };
+  const decrementEpisode = () => { if (!atEarliestEpisode()) {setActiveEpisodeNumber(activeEpisodeNumber - 1);}};
+  const incrementEpisode = () => { if (!atLatestEpisode()) {setActiveEpisodeNumber(activeEpisodeNumber + 1); }};
 
-  const atEarliestEpisode = () => {
-    const currentEpisode = Number(activeEpisodeNumber);
-    return currentEpisode === 0;
-  };
+  const atEarliestEpisode = () => activeEpisodeNumber === 0;
+
 
   const onKeyPressed = (e) => {
     switch (e.keyCode) {
