@@ -104,6 +104,13 @@ const StyledNavBar = styled.header`
   align-items: center;
   grid-template-areas: 'season episode title';
   font-family: Arial;
+
+  @media only screen and (max-width: 671px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'title title'
+      'season episode';
+  }
 `;
 
 const SeasonSelector = styled.div`
