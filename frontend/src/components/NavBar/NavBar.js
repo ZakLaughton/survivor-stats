@@ -53,7 +53,7 @@ const updateSeasonDirectory = async () => {
         >
           {(
             <div className="dropbtn" onMouseEnter={openDropdown}>
-              <div className="season-title">{seasonTitle}</div>
+              <SeasonTitle>{seasonTitle}</SeasonTitle>
               <SeasonTitleIconContainer>
                 <i className="fas fa-caret-down" />
               </SeasonTitleIconContainer>
@@ -61,7 +61,7 @@ const updateSeasonDirectory = async () => {
           )}
           <div className="dropdown-content">
             {seasonDirectory.map(season => (
-              <Link to={`/${season.season_no}`} key={season.season_no}>
+              <StyledLink to={`/${season.season_no}`} key={season.season_no}>
                 <div
                   key={season.season_no}
                   value={season.season_no}
@@ -71,7 +71,7 @@ const updateSeasonDirectory = async () => {
                   {`: `}
                   {season.title}
                 </div>
-              </Link>
+              </StyledLink>
             ))}
           </div>
         </SeasonSelector>
@@ -112,16 +112,20 @@ const SeasonSelector = styled.div`
 `
 
 const SeasonTitle = styled.div`
-overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
-display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
 `
 
 const SeasonTitleIconContainer = styled.div`
   padding-left: 8px;
   font-size: .8em;
   padding-right: 8px;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `
 
 const EpisodeSelector = styled.div`

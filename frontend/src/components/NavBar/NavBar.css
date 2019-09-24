@@ -51,16 +51,19 @@
   text-decoration: none;
   display: block;
   text-align: left;
+  text-decoration: none;
 }
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content div.season-option:hover:not(.selected) {
+  text-decoration: none;
   background-color: #ddd;
 }
 
 div.season-option.selected {
   background-color: #111;
   color: white;
+  text-decoration: none;
 }
 
 /* Show the dropdown menu on hover */
