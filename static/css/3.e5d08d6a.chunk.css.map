@@ -1,0 +1,1 @@
+{"version":3,"sources":["SeasonInfoMessage.css"],"names":[],"mappings":"AAAA,cACI,wBAA2B,CAC3B,UAAW,CACX,UAAW,CACX,iBAAkB,CAClB,cACJ","file":"3.e5d08d6a.chunk.css","sourcesContent":[".info-message {\r\n    background-color: lightblue;\r\n    width: 100%;\r\n    z-index: 99;\r\n    text-align: center;\r\n    position: fixed;\r\n}"]}
