@@ -1,8 +1,10 @@
 {
     "eslint.enable": true,
     "cSpell.words": [
+      "DROPDOWN",
       "Malolo",
       "cloudinary",
+      "survivant",
       "survivorstats"
     ],
     "cSpell.ignoreWords": [
