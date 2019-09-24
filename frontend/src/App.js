@@ -118,11 +118,12 @@ export const App = ({ match }) => {
                 activeEpisodeNumber={activeEpisodeNumber}
               />
             ) }
-            {/* activeSeasonData.preseasonStats
+            { activeSeasonData.preseasonStats
               && activeSeasonData.preseasonStats.length > 0
-              && episodeId === `s38e00` && (
+              && Number(activeSeasonNumber) === 38
+              && activeEpisodeNumber === 0 && (
                 <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
-              ) */}
+              ) }
             {/* currentEpisodeHasTribalCouncils() && (
               <EpisodeEvents activeSeasonData={activeSeasonData} episodeId={episodeId} />
             ) */}
