@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-/* eslint-disable react/sort-comp */
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import ReactGA from 'react-ga';
@@ -42,7 +41,7 @@ export const App = ({ match }) => {
         .sort((a, b) => (a.id > b.id ? 1 : -1));
       setActiveSeasonData(newActiveSeasonData);
       setActiveEpisodeNumber(0);
-      setInfoMessage(``);
+      setInfoMessage('');
     }
     fetchData();
   }, [activeSeasonNumber]);
@@ -95,8 +94,8 @@ export const App = ({ match }) => {
   };
 
   return (
-    <CloudinaryContext cloudName="survivorstats">
-      <div className="App" onKeyDown={onKeyPressed} tabIndex="0">
+    <CloudinaryContext cloudName='survivorstats'>
+      <div className='App' onKeyDown={onKeyPressed} tabIndex='0'>
         <NavBar
           seasonNumber={Number(activeSeasonNumber)}
           episodeNumber={activeEpisodeNumber}
