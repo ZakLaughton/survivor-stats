@@ -10,8 +10,11 @@ require(`es6-shim`);
 
 const AppRouter = () => (
   <Switch>
-    <Route exact path='/' render={() => <Redirect to='/39' />} />
-    <Route path='/:activeSeasonNumber' render={props => <App {...props} />} />
+    <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => <Redirect to='/39' />} />
+    <Route
+      path={`${process.env.PUBLIC_URL}/:activeSeasonNumber`}
+      render={props => <App {...props} />}
+    />
   </Switch>
 );
 
