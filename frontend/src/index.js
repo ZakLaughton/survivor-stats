@@ -16,7 +16,7 @@ const AppRouter = () => (
 );
 
 ReactDOM.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter>
     <AppRouter />
   </BrowserRouter>,
   document.getElementById(`root`),
