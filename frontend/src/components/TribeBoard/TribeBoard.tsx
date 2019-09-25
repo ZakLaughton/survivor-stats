@@ -103,7 +103,7 @@ export const TribeBoard = ({
         </ActiveTribes>
         {/*
         // @ts-ignore */}
-        {/* <VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={seasonNum} /> */}
+        {<VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={activeSeasonData.season} />}
       </article>
     </FormerTribeHighlightProvider>
   );
