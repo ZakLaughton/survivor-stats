@@ -39,7 +39,7 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
       tribeData={tribeData}
       tribeColor={tribeColor}
     >
-      <HeadshotContainer href={castaway.wikiUrl}>
+      <HeadshotContainer href={castaway.wikiUrl} target='_blank'>
         <Headshot seasonNumber={seasonNo} castaway={castaway.name} size={90} borderRadius={0} />
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}
