@@ -48,17 +48,17 @@ const NavBar = ({
       {
         <SeasonSelector className='dropdown' onMouseLeave={closeDropdown} onTouchEnd={openDropdown}>
           {
-            <div className='dropbtn' onMouseEnter={openDropdown}>
+            <DropdownButton onMouseEnter={openDropdown}>
               <SeasonTitle>{seasonTitle}</SeasonTitle>
               <SeasonTitleIconContainer>
                 <i className='fas fa-caret-down' />
               </SeasonTitleIconContainer>
-            </div>
+            </DropdownButton>
           }
           <div className='dropdown-content'>
             {seasonDirectory.map(season => (
               <StyledLink to={`/${season.season_no}`} key={season.season_no}>
-                <div
+                <SeasonOption
                   key={season.season_no}
                   value={season.season_no}
                   className={`season-option ${season.season_no === seasonNumber && `selected`}`}
@@ -66,7 +66,7 @@ const NavBar = ({
                   {season.season_no.toString()}
                   {`: `}
                   {season.title}
-                </div>
+                </SeasonOption>
               </StyledLink>
             ))}
           </div>
@@ -116,6 +116,25 @@ const StyledNavBar = styled.header`
 const SeasonSelector = styled.div`
   grid-area: season;
   height: 40px;
+  overflow: hidden;
+`;
+
+const DropdownButton = styled.div`
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255, 0.8);
+  height: 100%;
+  background-color: inherit;
+  font-family: 'Londrina Solid', sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin: 0; /* Important for vertical align on mobile phones */
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto auto;
+  align-items: center;
+  margin-left: 5px;
 `;
 
 const SeasonTitle = styled.div`
@@ -129,6 +148,17 @@ const SeasonTitleIconContainer = styled.div`
   padding-left: 8px;
   font-size: 0.8em;
   padding-right: 8px;
+`;
+
+const SeasonOption = styled.div`
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-decoration: none;
 `;
 
 const StyledLink = styled(Link)`
