@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router';
 import './App.css';
 import ReactGA from 'react-ga';
 import { CloudinaryContext } from 'cloudinary-react';
@@ -19,11 +20,11 @@ function initializeReactGA() {
   }
 }
 
-export const App = ({ match }) => {
-  const { activeSeasonNumber } = match.params;
-  const [activeEpisodeNumber, setActiveEpisodeNumber] = useState(0);
+const App = ({ match, history }) => {
+  const activeSeasonNumber = Number(match.params.activeSeasonNumber);
+  const activeEpisodeNumber = Number(match.params.activeEpisodeNumber);
   const [activeSeasonData, setActiveSeasonData] = useState({});
-  const [infoMessage, setInfoMessage] = useState(`Loading...`);
+  const [infoMessage, setInfoMessage] = useState(``);
   useEffect(() => {
     initializeReactGA();
   }, []);
@@ -40,11 +41,23 @@ export const App = ({ match }) => {
         .filter(isEpisodeActive)
         .sort((a, b) => (a.id > b.id ? 1 : -1));
       setActiveSeasonData(newActiveSeasonData);
-      setActiveEpisodeNumber(0);
       setInfoMessage('');
     }
     fetchData();
   }, [activeSeasonNumber]);
+
+  useEffect(() => {
+    const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
+    async function fetchData() {
+      const response = await fetch(url);
+      const newActiveSeasonData = await response.json();
+      newActiveSeasonData.episodes = newActiveSeasonData.episodes
+        .filter(isEpisodeActive)
+        .sort((a, b) => (a.id > b.id ? 1 : -1));
+      setActiveSeasonData(newActiveSeasonData);
+    }
+    fetchData();
+  }, [activeEpisodeNumber]);
 
   const currentEpisodeHasTribalCouncils = () => {
     if (activeSeasonData.episodes) {
@@ -71,12 +84,14 @@ export const App = ({ match }) => {
 
   const decrementEpisode = () => {
     if (!atEarliestEpisode()) {
-      setActiveEpisodeNumber(activeEpisodeNumber - 1);
+      const newEpisodeNumber = Number(activeEpisodeNumber) - 1;
+      history.push(`/${activeSeasonNumber}/${newEpisodeNumber}`);
     }
   };
   const incrementEpisode = () => {
     if (!atLatestEpisode()) {
-      setActiveEpisodeNumber(activeEpisodeNumber + 1);
+      const newEpisodeNumber = Number(activeEpisodeNumber) + 1;
+      history.push(`/${activeSeasonNumber}/${newEpisodeNumber}`);
     }
   };
 
@@ -133,3 +148,5 @@ export const App = ({ match }) => {
     </CloudinaryContext>
   );
 };
+
+export default withRouter(App);
