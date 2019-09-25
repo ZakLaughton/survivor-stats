@@ -46,19 +46,6 @@ const App = ({ match, history }) => {
     fetchData();
   }, [activeSeasonNumber]);
 
-  useEffect(() => {
-    const url = `${PROD_BACKEND_URL}/?season=${activeSeasonNumber}`;
-    async function fetchData() {
-      const response = await fetch(url);
-      const newActiveSeasonData = await response.json();
-      newActiveSeasonData.episodes = newActiveSeasonData.episodes
-        .filter(isEpisodeActive)
-        .sort((a, b) => (a.id > b.id ? 1 : -1));
-      setActiveSeasonData(newActiveSeasonData);
-    }
-    fetchData();
-  }, [activeEpisodeNumber]);
-
   const currentEpisodeHasTribalCouncils = () => {
     if (activeSeasonData.episodes) {
       const episodeData = activeSeasonData.episodes[activeEpisodeNumber];
