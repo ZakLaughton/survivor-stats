@@ -8,39 +8,25 @@
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color: black;
   color: #fff;
   text-align: center;
-  padding: 5px 0;
   border-radius: 6px;
-
-  /* Position the tooltip text - see examples below! */
-  top: -5px;
-  right: 105%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  padding: 5px 0;
+  
+  /* Position the tooltip */
   position: absolute;
   z-index: 1;
-  text-transform: capitalize;
-  font-family: 'Londrina Solid', sans-serif;
-  size: 1.3rem;
-  font-weight: 100;
+  top: -5px;
+  left: 105%;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
-}
-
-/* Add arrow below tooltip */
-.tooltip .tooltiptext::after {
-  content: ' ';
-  position: absolute;
-  top: 50%;
-  left: 100%; /* To the right of the tooltip */
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent black;
+  font-family: 'Londrina Solid', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
 }
 
 .advantage {
