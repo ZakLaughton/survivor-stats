@@ -16,7 +16,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
     && episodeData.castaways.some(castaway => castaway.tribe === `out` || castaway.currentBoot)
   ) {
     return (
-      <StyledVotedOutPanel className="voted-out-panel animated slideInUp">
+      <StyledVotedOutPanel className="voted-out-panel animated slideInUp" data-testid="votedOutPanel">
         <VotedOutList className="castawayList votedout">
           {castaways
             && castaways

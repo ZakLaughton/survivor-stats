@@ -1,0 +1,706 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders all subcomponents 1`] = `
+<div>
+  <article>
+    <div
+      class="sc-fjdhpX gWxpaj tribe-count-3"
+    >
+      <section
+        class="sc-VigVT keBfju tribe pa2 fl vuku"
+        data-testid="tribe"
+      >
+        <h1>
+          Vuku
+        </h1>
+        <div
+          class="sc-jTzLTM dnCgSd"
+        >
+          <div
+            class="sc-htoDjs jtgCUJ castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Alec_Merlino"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Alec
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Carl_Boudreaux"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Carl
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            >
+              <div>
+                <i
+                  class="sc-bZQynM cOceMf tooltip advantage fas fa-ban"
+                >
+                  <span
+                    class="animated fadeIn tooltiptext"
+                  >
+                    idol nullifier
+                  </span>
+                </i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Davie_Rickenbacker"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Davie
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            >
+              <div>
+                <div
+                  class="tooltip advantage"
+                >
+                  <img
+                    alt="Immunity Idol"
+                    src="immunity_idol.png"
+                  />
+                  <span
+                    class="animated fadeIn tooltiptext"
+                  >
+                    Immunity Idol
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Elizabeth_Olson"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Elizabeth
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs jtgCUJ castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Kara_Kay"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Kara
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+        </div>
+      </section>
+      <section
+        class="sc-VigVT keBfju tribe pa2 fl jabeni"
+        data-testid="tribe"
+      >
+        <h1>
+          Jabeni
+        </h1>
+        <div
+          class="sc-jTzLTM dnCgSd"
+        >
+          <div
+            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Angelina_Keeley"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Angelina
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs ilhOEi castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Lyrsa_Torres"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Lyrsa
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Mike_White"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Mike
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Natalie_Cole"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Natalie
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs ilhOEi castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Nick_Wilson"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Nick
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+        </div>
+      </section>
+      <section
+        class="sc-VigVT keBfju tribe pa2 fl tiva"
+        data-testid="tribe"
+      >
+        <h1>
+          Tiva
+        </h1>
+        <div
+          class="sc-jTzLTM dnCgSd"
+        >
+          <div
+            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Alison_Raybould"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Alison
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs kwPHk castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Christian_Hubicki"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Christian
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Dan_Rengering"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Dan
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            >
+              <div>
+                <div
+                  class="tooltip advantage"
+                >
+                  <img
+                    alt="Immunity Idol"
+                    src="immunity_idol.png"
+                  />
+                  <span
+                    class="animated fadeIn tooltiptext"
+                  >
+                    Immunity Idol
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-htoDjs kwPHk castaway-card grow relative former-david undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/Gabby_Pascuzzi"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              Gabby
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: orange;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former David
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+          <div
+            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+          >
+            <a
+              class="sc-dnqmqq bkdDXC"
+              href="https://survivor.fandom.com/wiki/John_Hennigan"
+              target="_blank"
+            >
+              <div
+                class="sc-bdVaJa gGgnIT"
+                size="90"
+              />
+            </a>
+            <div
+              class="sc-iwsKbI jjDvrn card-nameplate"
+            >
+              John
+            </div>
+            <div
+              class="sc-gZMcBi iDmjew tribe-circle-container"
+            >
+              <i
+                class="fas fa-history"
+              />
+              <div
+                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                style="background-color: purple;"
+              >
+                <span
+                  class="tooltiptext"
+                >
+                  Former Goliath
+                </span>
+              </div>
+            </div>
+            <div
+              class="tribe-advantage-container"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+    <section
+      class="sc-htpNat iTJtwB voted-out-panel animated slideInUp"
+      data-testid="votedOutPanel"
+    >
+      <div
+        class="sc-bxivhb kNCCeq castawayList votedout"
+      >
+        <div
+          class="sc-bdVaJa izZoEU"
+          size="64"
+        />
+        <div
+          class="sc-bdVaJa izZoEU"
+          size="64"
+        />
+        <div
+          class="sc-bdVaJa izZoEU"
+          size="64"
+        />
+        <div
+          class="sc-bdVaJa izZoEU"
+          size="64"
+        />
+        <div
+          class="sc-bdVaJa izZoEU"
+          size="64"
+        />
+      </div>
+    </section>
+  </article>
+</div>
+`;

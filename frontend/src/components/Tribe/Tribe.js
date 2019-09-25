@@ -25,7 +25,7 @@ const Tribe = ({
     tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
 
   return (
-    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`}>
+    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`} data-testid='tribe'>
       <h1>{getTribeTitle(tribe.name)}</h1>
       <CastawayList tribeName={tribe.name}>
         {castaways &&
