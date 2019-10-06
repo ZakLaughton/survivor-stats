@@ -2,25 +2,34 @@
 
 exports[`renders all subcomponents 1`] = `
 <div>
-  <article>
+  <section
+    class="sc-bZQynM jbYBQB"
+  >
+    <h1
+      class="sc-gzVnrw ckkwht"
+    >
+      Standings
+    </h1>
     <div
-      class="sc-fjdhpX gWxpaj tribe-count-3"
+      class="sc-chPdSV aaTih tribe-count-3"
     >
       <section
-        class="sc-VigVT keBfju tribe pa2 fl vuku"
+        class="sc-jzJRlG faDmHW tribe pa2 fl vuku"
         data-testid="tribe"
       >
-        <h1>
+        <h2
+          class="sc-cSHVUG fKkrPJ"
+        >
           Vuku
-        </h1>
+        </h2>
         <div
-          class="sc-jTzLTM dnCgSd"
+          class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-htoDjs jtgCUJ castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Alec_Merlino"
               target="_blank"
             >
@@ -30,18 +39,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Alec
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -56,10 +65,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Carl_Boudreaux"
               target="_blank"
             >
@@ -69,18 +78,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Carl
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -95,7 +104,7 @@ exports[`renders all subcomponents 1`] = `
             >
               <div>
                 <i
-                  class="sc-bZQynM cOceMf tooltip advantage fas fa-ban"
+                  class="sc-dnqmqq eWsBgn tooltip advantage fas fa-ban"
                 >
                   <span
                     class="animated fadeIn tooltiptext"
@@ -107,10 +116,10 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Davie_Rickenbacker"
               target="_blank"
             >
@@ -120,18 +129,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Davie
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -162,10 +171,10 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-htoDjs jtgCUJ castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Elizabeth_Olson"
               target="_blank"
             >
@@ -175,18 +184,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Elizabeth
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -201,10 +210,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs jtgCUJ castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Kara_Kay"
               target="_blank"
             >
@@ -214,18 +223,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Kara
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -242,20 +251,22 @@ exports[`renders all subcomponents 1`] = `
         </div>
       </section>
       <section
-        class="sc-VigVT keBfju tribe pa2 fl jabeni"
+        class="sc-jzJRlG faDmHW tribe pa2 fl jabeni"
         data-testid="tribe"
       >
-        <h1>
+        <h2
+          class="sc-cSHVUG fKkrPJ"
+        >
           Jabeni
-        </h1>
+        </h2>
         <div
-          class="sc-jTzLTM dnCgSd"
+          class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Angelina_Keeley"
               target="_blank"
             >
@@ -265,18 +276,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Angelina
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -291,10 +302,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs ilhOEi castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Lyrsa_Torres"
               target="_blank"
             >
@@ -304,18 +315,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Lyrsa
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -330,10 +341,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Mike_White"
               target="_blank"
             >
@@ -343,18 +354,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Mike
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -369,10 +380,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs ilhOEi castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Natalie_Cole"
               target="_blank"
             >
@@ -382,18 +393,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Natalie
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -408,10 +419,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs ilhOEi castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Nick_Wilson"
               target="_blank"
             >
@@ -421,18 +432,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Nick
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -449,20 +460,22 @@ exports[`renders all subcomponents 1`] = `
         </div>
       </section>
       <section
-        class="sc-VigVT keBfju tribe pa2 fl tiva"
+        class="sc-jzJRlG faDmHW tribe pa2 fl tiva"
         data-testid="tribe"
       >
-        <h1>
+        <h2
+          class="sc-cSHVUG fKkrPJ"
+        >
           Tiva
-        </h1>
+        </h2>
         <div
-          class="sc-jTzLTM dnCgSd"
+          class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Alison_Raybould"
               target="_blank"
             >
@@ -472,18 +485,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Alison
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -498,10 +511,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs kwPHk castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Christian_Hubicki"
               target="_blank"
             >
@@ -511,18 +524,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Christian
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -537,10 +550,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Dan_Rengering"
               target="_blank"
             >
@@ -550,18 +563,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Dan
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -592,10 +605,10 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-htoDjs kwPHk castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/Gabby_Pascuzzi"
               target="_blank"
             >
@@ -605,18 +618,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               Gabby
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: orange;"
               >
                 <span
@@ -631,10 +644,10 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-htoDjs kwPHk castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
           >
             <a
-              class="sc-dnqmqq bkdDXC"
+              class="sc-gqjmRU fwhydA"
               href="https://survivor.fandom.com/wiki/John_Hennigan"
               target="_blank"
             >
@@ -644,18 +657,18 @@ exports[`renders all subcomponents 1`] = `
               />
             </a>
             <div
-              class="sc-iwsKbI jjDvrn card-nameplate"
+              class="sc-VigVT fVBOYd card-nameplate"
             >
               John
             </div>
             <div
-              class="sc-gZMcBi iDmjew tribe-circle-container"
+              class="sc-jTzLTM krOZGW tribe-circle-container"
             >
               <i
                 class="fas fa-history"
               />
               <div
-                class="sc-gzVnrw keZiza tribe-circle tooltip"
+                class="sc-iwsKbI dKkpcS tribe-circle tooltip"
                 style="background-color: purple;"
               >
                 <span
@@ -673,12 +686,17 @@ exports[`renders all subcomponents 1`] = `
       </section>
     </div>
     <section
-      class="sc-htpNat iTJtwB voted-out-panel animated slideInUp"
+      class="sc-htpNat kyFgmI voted-out-panel animated slideInUp"
       data-testid="votedOutPanel"
     >
       <div
-        class="sc-bxivhb kNCCeq castawayList votedout"
+        class="sc-ifAKCX eiYjAL"
       >
+        <span
+          class="sc-EHOje itjQSb"
+        >
+          OUT
+        </span>
         <div
           class="sc-bdVaJa izZoEU"
           size="64"
@@ -701,6 +719,6 @@ exports[`renders all subcomponents 1`] = `
         />
       </div>
     </section>
-  </article>
+  </section>
 </div>
 `;
