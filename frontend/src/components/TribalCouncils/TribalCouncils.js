@@ -1,5 +1,7 @@
 import React from 'react';
 import './TribalCouncils.css';
+// TODO: Remove this eslint ignore once TribalCouncils is converted to TS
+// eslint-disable-next-line import/no-unresolved
 import { SectionWrapper } from '../SectionWrapper/SectionWrapper';
 import TribalVotes from '../TribalVotes/TribalVotes';
 

@@ -6,16 +6,26 @@ import './App.css';
 import ReactGA from 'react-ga';
 import { CloudinaryContext } from 'cloudinary-react';
 import NavBar from './components/NavBar/NavBar';
+// TODO: Set up better prod/dev environment variable strategy
+// eslint-disable-next-line no-unused-vars
 import { PROD_BACKEND_URL, DEV_BACKEND_URL } from './constants';
 // eslint-disable-next-line import/no-unresolved
 import { TribeBoard } from './components/TribeBoard/TribeBoard';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
-import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
 import TribalCouncils from './components/TribalCouncils/TribalCouncils';
 
+const ARRAY_SEARCH_RESULT_NOT_FOUND = -1;
+const ARRAY_SORT_KEEP_ORDER = -1;
+const ARRAY_SORT_SWAP_ORDER = 1;
+const DEFAULT_EPISODE_NUMBER = 0;
+const LEFT_ARROW_KEY_CODE = 37;
+const RIGHT_ARROW_KEY_CODE = 39;
+const SEASON_NUMBER_WITH_PRESEASON_STATS = 38;
+const EPISODE_NUMBER_TO_SHOW_PRESEASON_STATS = 0;
+
 function initializeReactGA() {
-  if (document.location.hostname.search(`survivorstats.com`) !== -1) {
+  if (document.location.hostname.search(`survivorstats.com`) !== ARRAY_SEARCH_RESULT_NOT_FOUND) {
     ReactGA.initialize(`UA-67511792-3`);
     ReactGA.pageview(`/`);
   }
@@ -40,7 +50,7 @@ const App = ({ match, history }) => {
       const newActiveSeasonData = await response.json();
       newActiveSeasonData.episodes = newActiveSeasonData.episodes
         .filter(isEpisodeActive)
-        .sort((a, b) => (a.id > b.id ? 1 : -1));
+        .sort((a, b) => (a.id > b.id ? ARRAY_SORT_SWAP_ORDER : ARRAY_SORT_KEEP_ORDER));
       setActiveSeasonData(newActiveSeasonData);
       setInfoMessage('');
     }
@@ -51,14 +61,14 @@ const App = ({ match, history }) => {
     if (activeSeasonData.episodes) {
       const episodeData = activeSeasonData.episodes[activeEpisodeNumber];
       if (episodeData && episodeData.tribalCouncils) {
-        return episodeData.tribalCouncils.length > 0;
+        return !!episodeData.tribalCouncils.length;
       }
     }
 
     return false;
   };
 
-  const atEarliestEpisode = () => activeEpisodeNumber === 0;
+  const atEarliestEpisode = () => activeEpisodeNumber === DEFAULT_EPISODE_NUMBER;
 
   const atLatestEpisode = () => {
     if (activeSeasonData.episodes) {
@@ -85,10 +95,10 @@ const App = ({ match, history }) => {
 
   const onKeyPressed = e => {
     switch (e.keyCode) {
-      case 37:
+      case LEFT_ARROW_KEY_CODE:
         decrementEpisode();
         break;
-      case 39:
+      case RIGHT_ARROW_KEY_CODE:
         incrementEpisode();
         break;
       default:
@@ -124,9 +134,9 @@ const App = ({ match, history }) => {
                 />
               )}
               {activeSeasonData.preseasonStats &&
-                activeSeasonData.preseasonStats.length > 0 &&
-                Number(activeSeasonNumber) === 38 &&
-                activeEpisodeNumber === 0 && (
+                !!activeSeasonData.preseasonStats.length &&
+                Number(activeSeasonNumber) === SEASON_NUMBER_WITH_PRESEASON_STATS &&
+                Number(activeEpisodeNumber) === EPISODE_NUMBER_TO_SHOW_PRESEASON_STATS && (
                   <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
                 )}
               {currentEpisodeHasTribalCouncils() && (

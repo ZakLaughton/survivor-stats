@@ -25,7 +25,6 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
   };
 
   const seasonNo = `${episodeId.substring(1, 3)}`;
-  const episodeNo = Number(episodeId.slice(-2));
   const formerTribeClassNames = castaway.formerTribes
     .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
     .join(` `);
