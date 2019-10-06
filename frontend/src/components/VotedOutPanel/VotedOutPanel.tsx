@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Headshot from "../Headshot/Headshot";
-import {Episode} from '../../types'
+import React from 'react';
+import styled from 'styled-components';
+import Headshot from '../Headshot/Headshot';
+import { Episode } from '../../types';
 
 interface VotedOutPanelProps {
   episodeData: Episode;
@@ -12,16 +12,21 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
   const juryStarted = !!(castaways && castaways.some(castaway => castaway.juryMember));
 
   if (
-    episodeData.castaways
-    && episodeData.castaways.some(castaway => castaway.tribe === `out` || castaway.currentBoot)
+    episodeData.castaways &&
+    episodeData.castaways.some(castaway => castaway.tribe === `out` || castaway.currentBoot)
   ) {
     return (
-      <StyledVotedOutPanel className="voted-out-panel animated slideInUp" data-testid="votedOutPanel">
-        <VotedOutList className="castawayList votedout">
-          {castaways
-            && castaways
+      <StyledVotedOutPanel
+        className='voted-out-panel animated slideInUp'
+        data-testid='votedOutPanel'
+      >
+        <VotedOutList className='castawayList votedout'>
+          <JuryTitle>OUT</JuryTitle>
+          {castaways &&
+            castaways
               .filter(
-                castaway => (castaway.tribe === `out` || castaway.currentBoot) && !castaway.juryMember,
+                castaway =>
+                  (castaway.tribe === `out` || castaway.currentBoot) && !castaway.juryMember,
               )
               .sort((a, b) => a.bootOrder - b.bootOrder)
               .map(castaway => (
@@ -35,8 +40,8 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
                 />
               ))}
           {juryStarted && <JuryTitle>JURY</JuryTitle>}
-          {juryStarted
-            && castaways
+          {juryStarted &&
+            castaways
               .filter(castaway => castaway.juryMember)
               .sort((a, b) => a.bootOrder - b.bootOrder)
               .map(castaway => (
@@ -56,18 +61,27 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
 };
 
 const StyledVotedOutPanel = styled.section`
-  background-color: #333;
+  padding: 5px;
+  width: auto;
+  background: #666;
+  margin: auto;
+  border-radius: 6px;
+  margin-bottom: 5px;
   position: sticky;
-  bottom: 0;
-  width: 100%;
+  bottom: 6px;
+  max-width: 95%;
   z-index: 1;
-  height: 80px;
+  height: auto;
+`;
+
+const Title = styled.h2`
+  margin: 0;
 `;
 
 const VotedOutList = styled.div`
   display: flex;
   height: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   flex-flow: row;
   overflow-x: auto;
   overflow-y: hidden;
@@ -77,7 +91,7 @@ const VotedOutList = styled.div`
 const JuryTitle = styled.span`
   writing-mode: tb-rl;
   transform: rotate(-180deg);
-  font-family: "Londrina Solid", sans-serif;
+  font-family: 'Londrina Solid', sans-serif;
   font-weight: 350;
   color: white;
 `;
