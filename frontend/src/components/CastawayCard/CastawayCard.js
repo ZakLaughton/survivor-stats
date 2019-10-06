@@ -49,11 +49,11 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
           ? castaway.nickname
           : castaway.name.substr(0, castaway.name.indexOf(` `))}
       </CardNameplate>
-      {episodeNo === 0 && castaway.age ? (
+      {castaway.formerTribes.length < 1 && castaway.age ? (
         <Bio>
-          {`Age: ${castaway.age}`}
-          <br />
-          {castaway.currentResidence}
+          <li>{`Age: ${castaway.age}`}</li>
+          {castaway.occupation && <li>{castaway.occupation}</li>}
+          <li>{castaway.currentResidence}</li>
         </Bio>
       ) : (
         <TribeCircleContainer className='tribe-circle-container'>
@@ -151,7 +151,7 @@ const TribeCircleContainer = styled.div`
   color: rgba(41, 41, 41, 0.9);
 `;
 
-const Bio = styled.div`
+const Bio = styled.ul`
   grid-column: 2 / 3;
   grid-row: 2 / 4;
   align-self: start;
@@ -161,6 +161,15 @@ const Bio = styled.div`
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
   overflow: hidden;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 
 // const BlurredImageEdge = styled.div`

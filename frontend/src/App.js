@@ -6,7 +6,7 @@ import './App.css';
 import ReactGA from 'react-ga';
 import { CloudinaryContext } from 'cloudinary-react';
 import NavBar from './components/NavBar/NavBar';
-import { PROD_BACKEND_URL } from './constants';
+import { PROD_BACKEND_URL, DEV_BACKEND_URL } from './constants';
 // eslint-disable-next-line import/no-unresolved
 import { TribeBoard } from './components/TribeBoard/TribeBoard';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
