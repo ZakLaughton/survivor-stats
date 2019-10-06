@@ -1,14 +1,24 @@
 import React from 'react';
 import './TribalCouncils.css';
+import { SectionWrapper } from '../SectionWrapper/SectionWrapper';
 import TribalVotes from '../TribalVotes/TribalVotes';
 
+const MINIMUM_COUNT_FOR_MULTIPLE_TRIBALS = 2;
+const MINIMUM_COUNT_FOR_MULTIPLE_VOTE_ROUNDS = 2;
+
 const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
-  const multipleTribals = tribalCouncils.length > 1;
-  const tribalHeader = multipleTribals ? `Tribal Councils` : `Tribal Council`;
+  const multipleTribals = tribalCouncils.length >= MINIMUM_COUNT_FOR_MULTIPLE_TRIBALS;
+  let tribalHeader = `Tribal Council`;
+
+  if (multipleTribals) {
+    tribalHeader = `Tribal Councils`;
+  }
+  if (tribalCouncils[0].finalTribal) {
+    tribalHeader = `Final Tribal`;
+  }
 
   return (
-    <section className='tribal-councils'>
-      <h1>{!multipleTribals && tribalCouncils[0].finalTribal ? `Final Tribal` : tribalHeader}</h1>
+    <SectionWrapper sectionTitle={tribalHeader}>
       <div className='tribal-councils-container'>
         {tribalCouncils
           .sort((a, b) => a.tribal_number - b.tribal_number)
@@ -18,7 +28,10 @@ const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
               <p className='tribal-notes'>{tribalCouncil.notes}</p>
               {!tribalCouncil.fireMakingTribal &&
                 tribalCouncil.vote_rounds.map(voteRound => {
-                  const roundNo = tribalCouncil.vote_rounds.length > 1 ? voteRound.round_no : null;
+                  const roundNo =
+                    tribalCouncil.vote_rounds.length > MINIMUM_COUNT_FOR_MULTIPLE_VOTE_ROUNDS
+                      ? voteRound.round_no
+                      : null;
                   return (
                     <TribalVotes
                       key={roundNo}
@@ -32,7 +45,7 @@ const TribalCouncils = ({ tribalCouncils, seasonNumber }) => {
             </div>
           ))}
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 

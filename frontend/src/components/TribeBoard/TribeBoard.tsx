@@ -1,9 +1,11 @@
-import styled, { createGlobalStyle } from "styled-components";
-import React, { useState } from "react";
-import VotedOutPanel from "../VotedOutPanel/VotedOutPanel";
-import { FormerTribeHighlightContext } from "./FormerTribeHighlightContext";
-import {ActiveSeasonData, Tribe as TribeType, Episode} from "../../types";
-import Tribe from "../Tribe/Tribe"
+import styled, { createGlobalStyle } from 'styled-components';
+import React, { useState } from 'react';
+import VotedOutPanel from '../VotedOutPanel/VotedOutPanel';
+import { FormerTribeHighlightContext } from './FormerTribeHighlightContext';
+import { SectionWrapper } from '../SectionWrapper/SectionWrapper';
+import { ActiveSeasonData, Tribe as TribeType, Episode } from '../../types';
+
+import Tribe from '../Tribe/Tribe';
 
 const castawayCardSizeSm = `110px`;
 
@@ -47,80 +49,92 @@ interface TribeBoardProps {
   activeEpisodeNumber: number;
 }
 
-export const TribeBoard = ({
-  activeSeasonData, activeEpisodeNumber,
-}: TribeBoardProps) => {
+export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoardProps) => {
   const tribeData = activeSeasonData.tribes;
   let episodeData: Episode | undefined;
-    // @ts-ignore
-  if (activeSeasonData && activeSeasonData.episodes && activeSeasonData.episodes[activeEpisodeNumber]) {
+  // @ts-ignore
+  if (
+    activeSeasonData &&
+    activeSeasonData.episodes &&
+    activeSeasonData.episodes[activeEpisodeNumber]
+  ) {
     // @ts-ignore
     episodeData = activeSeasonData.episodes[activeEpisodeNumber];
   }
 
-  const activeTribes: TribeType[] = activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
-  // @ts-ignore episodeData object is possibly 'undefined'
-  ? activeSeasonData.tribes.filter(tribe => episodeData.castaways
-    // Don't show current boots (to be removed in future)
-      .filter(castaway => castaway.currentBoot === false)
-      .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name))
-    : [];
+  const activeTribes: TribeType[] =
+    activeSeasonData && activeSeasonData.tribes && episodeData && episodeData.castaways
+      ? activeSeasonData.tribes.filter(tribe =>
+          // @ts-ignore episodeData object is possibly 'undefined'
+          episodeData.castaways
+            // Don't show current boots (to be removed in future)
+            .filter(castaway => castaway.currentBoot === false)
+            .some(castaway => castaway.tribe.replace(/ \d/g, ``) === tribe.name),
+        )
+      : [];
 
   return (
-    <FormerTribeHighlightProvider>
-      <article>
-        <GlobalStyle />
-        <SectionTitle>Standings</SectionTitle>
-        {/*
+    <SectionWrapper sectionTitle='Standings'>
+      <FormerTribeHighlightProvider>
+        {/* TODO: Change this to a non-semantic wrapper. Pretty sure it's just here as a flexbox */}
+        <article>
+          <GlobalStyle />
+          {/*
         // @ts-ignore */}
-        <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
-          {activeTribes.length > 0
-            && activeTribes
-              .filter(tribe => tribe.name !== `Extinction Island`)
-              .map((tribe: TribeType) => (
-                // @ts-ignore
-                <Tribe
-                  key={tribe.name}
-                  tribe={tribe}
-                  episodeData={episodeData}
-                  tribeData={tribeData}
-                  seasonNumber={activeSeasonData.season}
-                />
-              ))}
-          {activeTribes.length > 0
-            && activeTribes
-              .filter(tribe => tribe.name === `Extinction Island`)
-              .map(tribe => (
-                // @ts-ignore
-                <Tribe
-                  key={tribe.name}
-                  tribe={tribe}
-                  episodeData={episodeData}
-                  tribeData={tribeData}
-                  seasonNumber={activeSeasonData.season}
-                />
-              )) }
-          {activeTribes.length === 0 && `loading...`}
-        </ActiveTribes>
-        {/*
+          <ActiveTribes
+            activeTribes={activeTribes}
+            className={`tribe-count-${activeTribes.length}`}
+          >
+            {activeTribes.length > 0 &&
+              activeTribes
+                .filter(tribe => tribe.name !== `Extinction Island`)
+                .map((tribe: TribeType) => (
+                  // @ts-ignore
+                  <Tribe
+                    key={tribe.name}
+                    tribe={tribe}
+                    episodeData={episodeData}
+                    tribeData={tribeData}
+                    seasonNumber={activeSeasonData.season}
+                  />
+                ))}
+            {activeTribes.length > 0 &&
+              activeTribes
+                .filter(tribe => tribe.name === `Extinction Island`)
+                .map(tribe => (
+                  // @ts-ignore
+                  <Tribe
+                    key={tribe.name}
+                    tribe={tribe}
+                    episodeData={episodeData}
+                    tribeData={tribeData}
+                    seasonNumber={activeSeasonData.season}
+                  />
+                ))}
+            {activeTribes.length === 0 && `loading...`}
+          </ActiveTribes>
+          {/*
         // @ts-ignore */}
-        {<VotedOutPanel episodeData={episodeData} tribeData={tribeData} seasonNum={activeSeasonData.season} />}
-      </article>
-    </FormerTribeHighlightProvider>
+          {
+            <VotedOutPanel
+              // @ts-ignore episodeData object is possibly 'undefined'
+              episodeData={episodeData}
+              tribeData={tribeData}
+              seasonNum={activeSeasonData.season}
+            />
+          }
+        </article>
+      </FormerTribeHighlightProvider>
+    </SectionWrapper>
   );
 };
-
-const SectionTitle = styled.h1`
-  border-bottom: white solid 2px;
-    margin: 0px 30px;
-`
 
 const ActiveTribes = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
 
-  ${(props) => {
+  ${props => {
     // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 2) {
       return `@media only screen and (max-width: 750px) {flex-direction: column;}`;
