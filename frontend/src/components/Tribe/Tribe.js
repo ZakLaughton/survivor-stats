@@ -26,7 +26,7 @@ const Tribe = ({
 
   return (
     <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`} data-testid='tribe'>
-      <h1>{getTribeTitle(tribe.name)}</h1>
+      <TribeName>{getTribeTitle(tribe.name)}</TribeName>
       <CastawayList tribeName={tribe.name}>
         {castaways &&
           tribe.name !== `Extinction Island` &&
@@ -71,6 +71,12 @@ const Tribe = ({
 
 const StyledTribe = styled.section`
   flex: ${props => (props.tribe === `Extinction Island` ? `0.1` : `1 1`)};
+`;
+
+const TribeName = styled.h2`
+  margin: 0px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.8rem;
 `;
 
 const CastawayList = styled.div`

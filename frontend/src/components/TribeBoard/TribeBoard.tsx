@@ -70,6 +70,7 @@ export const TribeBoard = ({
     <FormerTribeHighlightProvider>
       <article>
         <GlobalStyle />
+        <SectionTitle>Standings</SectionTitle>
         {/*
         // @ts-ignore */}
         <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
@@ -108,6 +109,11 @@ export const TribeBoard = ({
     </FormerTribeHighlightProvider>
   );
 };
+
+const SectionTitle = styled.h1`
+  border-bottom: white solid 2px;
+    margin: 0px 30px;
+`
 
 const ActiveTribes = styled.div`
   display: flex;
