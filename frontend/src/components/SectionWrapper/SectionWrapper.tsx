@@ -10,14 +10,21 @@ export const SectionWrapper: FunctionComponent<SectionWrapperProps> = ({
   children,
 }) => {
   return (
-    <section>
+    <StyledSectionWrapper>
       <SectionTitle>{sectionTitle}</SectionTitle>
       {children}
-    </section>
+    </StyledSectionWrapper>
   );
 };
 
+const StyledSectionWrapper = styled.section`
+  margin: 20px auto;
+  border-radius: 10px;
+  background: #666;
+  max-width: 900px;
+  padding: 5px;
+`;
+
 const SectionTitle = styled.h1`
-  border-bottom: white solid 2px;
   margin: 0px 30px;
 `;

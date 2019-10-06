@@ -61,6 +61,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
 };
 
 const StyledVotedOutPanel = styled.section`
+  border: #444343 1px solid;
   padding: 5px;
   width: auto;
   background: #666;
@@ -72,6 +73,7 @@ const StyledVotedOutPanel = styled.section`
   max-width: 95%;
   z-index: 1;
   height: auto;
+  display: inline-block;
 `;
 
 const Title = styled.h2`

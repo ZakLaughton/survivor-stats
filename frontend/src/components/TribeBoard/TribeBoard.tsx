@@ -76,8 +76,6 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
   return (
     <SectionWrapper sectionTitle='Standings'>
       <FormerTribeHighlightProvider>
-        {/* TODO: Change this to a non-semantic wrapper. Pretty sure it's just here as a flexbox */}
-        <article>
           <GlobalStyle />
           {/*
         // @ts-ignore */}
@@ -123,7 +121,6 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
               seasonNum={activeSeasonData.season}
             />
           }
-        </article>
       </FormerTribeHighlightProvider>
     </SectionWrapper>
   );

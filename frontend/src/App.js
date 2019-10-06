@@ -12,6 +12,7 @@ import { TribeBoard } from './components/TribeBoard/TribeBoard';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import EpisodeEvents from './components/EpisodeEvents/EpisodeEvents';
+import TribalCouncils from './components/TribalCouncils/TribalCouncils';
 
 function initializeReactGA() {
   if (document.location.hostname.search(`survivorstats.com`) !== -1) {
@@ -95,6 +96,12 @@ const App = ({ match, history }) => {
     }
   };
 
+  let tribalCouncils = [];
+  if (activeSeasonData.episodes) {
+    const episodeData = activeSeasonData.episodes[activeEpisodeNumber];
+    // eslint-disable-next-line prefer-destructuring
+    tribalCouncils = episodeData.tribalCouncils;
+  }
   return (
     <CloudinaryContext cloudName='survivorstats'>
       <div className='App' onKeyDown={onKeyPressed} tabIndex='0'>
@@ -123,10 +130,7 @@ const App = ({ match, history }) => {
                   <PreseasonStats preseasonStats={activeSeasonData.preseasonStats} />
                 )}
               {currentEpisodeHasTribalCouncils() && (
-                <EpisodeEvents
-                  activeSeasonData={activeSeasonData}
-                  activeEpisodeNumber={activeEpisodeNumber}
-                />
+                <TribalCouncils seasonNumber={activeSeasonNumber} tribalCouncils={tribalCouncils} />
               )}
             </main>
           }
