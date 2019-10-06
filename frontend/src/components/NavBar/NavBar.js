@@ -13,10 +13,11 @@ const NavBar = ({
   atLatestEpisode,
 }) => {
   const [seasonDirectory, setSeasonDirectory] = useState([]);
+  const STARTING_EPISODE_NUMBER = 0;
   let seasonTitle = `Loading...`;
 
   seasonTitle =
-    seasonNumber && seasonDirectory.length > 0
+    seasonNumber && !!seasonDirectory.length
       ? seasonDirectory.find(season => seasonNumber === season.season_no).title
       : `Loading...`;
 
@@ -80,7 +81,9 @@ const NavBar = ({
           className='fas fa-caret-left'
           onClick={decrementEpisode}
         />
-        <EpisodeTitle>{episodeNumber === 0 ? `START` : `EPISODE ${episodeNumber}`}</EpisodeTitle>
+        <EpisodeTitle>
+          {episodeNumber === STARTING_EPISODE_NUMBER ? `START` : `EPISODE ${episodeNumber}`}
+        </EpisodeTitle>
         <EpisodeArrow
           right
           hidden={atLatestEpisode()}

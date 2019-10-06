@@ -20,7 +20,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
         className='voted-out-panel animated slideInUp'
         data-testid='votedOutPanel'
       >
-        <VotedOutList className='castawayList votedout'>
+        <VotedOutList>
           <JuryTitle>OUT</JuryTitle>
           {castaways &&
             castaways
