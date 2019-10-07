@@ -47,7 +47,7 @@ export interface TribalCouncil {
   notes: string | null;
   tribalNumber: number | null;
   tribe: string;
-  voteRounds: VoteRound[]
+  vote_rounds: VoteRound[]
 }
 
 export interface Advantage {
