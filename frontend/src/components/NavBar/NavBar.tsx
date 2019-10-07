@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  FunctionComponent,
+  Component,
+  ReactElement,
+  ReactComponentElement,
+} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PROD_BACKEND_URL } from '../../constants';
 import './NavBar.css';
 
-const NavBar = ({
+interface NavBarProps {
+  incrementEpisode: () => void;
+  decrementEpisode: () => void;
+  seasonNumber: number;
+  episodeNumber: number;
+  atEarliestEpisode: () => boolean;
+  atLatestEpisode: () => boolean;
+}
+
+interface SeasonDirectoryEntry {
+  season_no: number;
+  title: string;
+  info_message?: string | null;
+  active: boolean;
+}
+
+const NavBar: FunctionComponent<NavBarProps> = ({
   incrementEpisode,
   decrementEpisode,
   seasonNumber,
@@ -12,22 +35,23 @@ const NavBar = ({
   atEarliestEpisode,
   atLatestEpisode,
 }) => {
-  const [seasonDirectory, setSeasonDirectory] = useState([]);
+  const [seasonDirectory, setSeasonDirectory] = useState<SeasonDirectoryEntry[]>([]);
   const STARTING_EPISODE_NUMBER = 0;
   let seasonTitle = `Loading...`;
 
   seasonTitle =
     seasonNumber && !!seasonDirectory.length
-      ? seasonDirectory.find(season => seasonNumber === season.season_no).title
+      ? seasonDirectory.find(season => seasonNumber === season.season_no)!.title
       : `Loading...`;
 
+  // TODO: Set this with an isDropdownOpen component in state
   const closeDropdown = () => {
-    document.querySelector(`.dropdown`).classList.remove(`active`);
+    document.querySelector(`.dropdown`)!.classList.remove(`active`);
   };
 
   const updateSeasonDirectory = async () => {
     const response = await fetch(`${PROD_BACKEND_URL}/seasons`);
-    const newSeasonDirectory = await response.json();
+    const newSeasonDirectory: SeasonDirectoryEntry[] = await response.json();
     const sortedActiveSeasons = newSeasonDirectory
       .filter(season => season.active === true)
       .sort((a, b) => b.season_no - a.season_no);
@@ -42,7 +66,7 @@ const NavBar = ({
   }, []);
 
   const openDropdown = () => {
-    document.querySelector(`.dropdown`).classList.add(`active`);
+    document.querySelector(`.dropdown`)!.classList.add(`active`);
   };
   return (
     <StyledNavBar className='navbar'>
@@ -61,7 +85,6 @@ const NavBar = ({
               <StyledLink to={`/${season.season_no}`} key={season.season_no}>
                 <SeasonOption
                   key={season.season_no}
-                  value={season.season_no}
                   className={`season-option ${season.season_no === seasonNumber && `selected`}`}
                 >
                   {season.season_no.toString()}
@@ -84,6 +107,8 @@ const NavBar = ({
         <EpisodeTitle>
           {episodeNumber === STARTING_EPISODE_NUMBER ? `START` : `EPISODE ${episodeNumber}`}
         </EpisodeTitle>
+        {/*
+        // @ts-ignore - Weird click event issues I'm not going to figure out right now*/}
         <EpisodeArrow
           right
           hidden={atLatestEpisode()}
@@ -195,13 +220,18 @@ const EpisodeTitle = styled.h2`
   grid-area: episode;
 `;
 
+interface EpisodeArrowProps {
+  left: boolean;
+  hidden: boolean;
+}
+
 const EpisodeArrow = styled.i`
   display: inline-block;
   padding: 0px 9px;
   font-size: 2rem;
-  justify-self: ${props => (props.left ? `end` : `start`)};
-  visibility: ${props => (props.hidden ? `hidden` : `default`)};
-  grid-area: ${props => (props.left ? `left-arrow` : `right-arrow`)};
+  justify-self: ${(props: EpisodeArrowProps) => (props.left ? `end` : `start`)};
+  visibility: ${(props: EpisodeArrowProps) => (props.hidden ? `hidden` : `default`)};
+  grid-area: ${(props: EpisodeArrowProps) => (props.left ? `left-arrow` : `right-arrow`)};
 `;
 
 const SiteTitle = styled.h1`
