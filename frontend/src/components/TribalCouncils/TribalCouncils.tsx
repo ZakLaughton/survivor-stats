@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import './TribalCouncils.css';
-// TODO: Remove this eslint ignore once TribalCouncils is converted to TS
-// eslint-disable-next-line import/no-unresolved
 import { SectionWrapper } from '../SectionWrapper/SectionWrapper';
 import TribalVotes from '../TribalVotes/TribalVotes';
 import { TribalCouncil } from '../../types';
+import styled from 'styled-components';
 
 const MINIMUM_COUNT_FOR_MULTIPLE_TRIBALS = 2;
 const MINIMUM_COUNT_FOR_MULTIPLE_VOTE_ROUNDS = 2;
@@ -30,11 +28,11 @@ const TribalCouncils: FunctionComponent<TribalCouncilsProps> = ({
 
   return (
     <SectionWrapper sectionTitle={tribalHeader}>
-      <div className='tribal-councils-container'>
+      <TribalCouncilsContainer>
         {tribalCouncils
           .sort((a, b) => (a.tribalNumber || 0) - (b.tribalNumber || 0))
           .map(tribalCouncil => (
-            <div className='tribal-council' key={tribalCouncil.tribalNumber || 0}>
+            <StyledTribalCouncil key={tribalCouncil.tribalNumber || 0}>
               {!tribalCouncil.finalTribal && <h2>{`Day ${tribalCouncil.day}`}</h2>}
               <p className='tribal-notes'>{tribalCouncil.notes}</p>
               {!tribalCouncil.fireMakingTribal &&
@@ -52,11 +50,28 @@ const TribalCouncils: FunctionComponent<TribalCouncilsProps> = ({
                     />
                   );
                 })}
-            </div>
+            </StyledTribalCouncil>
           ))}
-      </div>
+      </TribalCouncilsContainer>
     </SectionWrapper>
   );
 };
+
+const TribalCouncilsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const StyledTribalCouncil = styled.div`
+  margin: 10px 20px;
+
+  h2 {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-size: 2rem;
+    margin: 0px;
+  }
+`;
 
 export default TribalCouncils;
