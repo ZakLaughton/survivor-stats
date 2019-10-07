@@ -38,7 +38,7 @@ const TribalCouncils: FunctionComponent<TribalCouncilsProps> = ({
               {!tribalCouncil.fireMakingTribal &&
                 tribalCouncil.vote_rounds.map(voteRound => {
                   const roundNo =
-                    tribalCouncil.vote_rounds.length > MINIMUM_COUNT_FOR_MULTIPLE_VOTE_ROUNDS
+                    voteRound.round_no && tribalCouncil.vote_rounds.length > MINIMUM_COUNT_FOR_MULTIPLE_VOTE_ROUNDS
                       ? voteRound.round_no
                       : 0;
                   return (

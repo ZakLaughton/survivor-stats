@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import './TribalVotes.css';
 import Headshot from '../Headshot/Headshot';
+import { VoteRound } from '../../types';
 
-const TribalVotes = ({ roundNo, voteData, seasonNumber }) => {
+interface VotesForContestant {
+  votedFor: string;
+  voters: string[];
+}
+
+interface TribalVotesProps {
+  roundNo: number;
+  voteData: VoteRound;
+  seasonNumber: number;
+}
+
+const TribalVotes: FunctionComponent<TribalVotesProps> = ({ roundNo, voteData, seasonNumber }) => {
   const castawaysVotedFor = [...new Set(voteData.votes.map(vote => vote.playedOn))];
   const votesByVotedFor = castawaysVotedFor.map(castawayVotedFor => {
-    const returnObject = { votedFor: castawayVotedFor };
+    const returnObject: VotesForContestant = { votedFor: castawayVotedFor, voters: [] };
     returnObject.voters = voteData.votes
       .filter(vote => vote.playedOn === castawayVotedFor && vote.playedBy)
       .map(vote => vote.playedBy);
