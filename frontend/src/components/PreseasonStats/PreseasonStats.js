@@ -1,5 +1,30 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import './PreseasonStats.css';
+
+const Superscript = ({ text }) => <sup>{text}</sup>;
+const renderWardogQuote = () => (
+  <p className='quote'>
+    &quot;The Wardog is his own blend – I’m not Tony
+    <Superscript text='1' />
+    , I’m not the Specialist
+    <Superscript text='2' />
+    , I’m not Boston Rob
+    <Superscript text='3' />
+    . Whose game did I respect the most? That’s a better question. I thought Yul
+    <Superscript text='4' />
+    played great, I thought Mike
+    <sup>5</sup>
+    was a great winner, I loved Parvati’s
+    <sup>6</sup>
+    game, Earl
+    <sup>7</sup>
+    dominated, 3rd version of Tyson
+    <sup>8</sup>, 1st version of County Bumpkin (J.T)
+    <sup>9</sup>
+    .&quot;
+  </p>
+);
 
 const PreseasonStats = ({ preseasonStats }) => (
   <article className='preseason-stats'>
@@ -26,27 +51,7 @@ const PreseasonStats = ({ preseasonStats }) => (
           preseasonStats={preseasonStats}
         />
       </p>
-      <p className='quote'>
-        {'"The Wardog is his own blend – I’m not Tony'}
-        <sup>1</sup>
-        {', I’m not the Specialist'}
-        <sup>2</sup>
-        {', I’m not Boston Rob'}
-        <sup>3</sup>
-        {'. Whose game did I respect the most? That’s a better question. I thought Yul'}
-        <sup>4</sup>
-        {' played great, I thought Mike'}
-        <sup>5</sup>
-        {' was a great winner, I loved Parvati’s'}
-        <sup>6</sup>
-        {' game, Earl'}
-        <sup>7</sup>
-        {' dominated, 3rd version of Tyson'}
-        <sup>8</sup>
-        {', 1st version of County Bumpkin (J.T)'}
-        <sup>9</sup>
-        {'."'}
-      </p>
+      {renderWardogQuote()}
     </div>
   </article>
 );
