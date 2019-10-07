@@ -94,7 +94,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
         </TribeCircleContainer>
       )}
       {castaway.advantages && <AdvantageIcons advantages={castaway.advantages} />}
-      <FormerTribeShadow formerTribes={castaway.formerTribes} />
+      {castaway.formerTribes && <FormerTribeShadow formerTribes={castaway.formerTribes} />}
     </StyledCastawayCard>
   );
 };

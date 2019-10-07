@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
 
-export const FormerTribeShadow = ({ formerTribes }) => {
+interface FormerTribeShadowProps {
+  formerTribes: string[];
+} 
+
+export const FormerTribeShadow: FunctionComponent<FormerTribeShadowProps> = ({ formerTribes }) => {
   const { highlightedFormerTribe } = useContext(FormerTribeHighlightContext);
   let shadowColor = ``;
   if (formerTribes.some(tribe => tribe === highlightedFormerTribe.tribeName)) {
@@ -16,9 +20,13 @@ export const FormerTribeShadow = ({ formerTribes }) => {
   return null;
 };
 
+interface StyledFormerTribeShadowProps {
+  shadowColor: string;
+}
+
 const StyledFormerTribeShadow = styled.div`
-  display: ${props => (props.shadowColor ? `block` : `none`)}
-  box-shadow: inset 0px 0px 20px 10px ${props => props.shadowColor}
+  display: ${(props: StyledFormerTribeShadowProps) => (props.shadowColor ? `block` : `none`)};
+  box-shadow: inset 0px 0px 20px 10px ${props => props.shadowColor};
   position: absolute;
   width: 100%;
   height: 100%;
