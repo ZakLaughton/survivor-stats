@@ -1,8 +1,13 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import './PreseasonStats.css';
 
-const Superscript = ({ text }) => <sup>{text}</sup>;
+interface SuperscriptProps {
+  text: string;
+}
+
+const Superscript: FunctionComponent<SuperscriptProps> = ({ text }) => <sup>{text}</sup>;
+
 const renderWardogQuote = () => (
   <p className='quote'>
     &quot;The Wardog is his own blend – I’m not Tony
@@ -26,7 +31,11 @@ const renderWardogQuote = () => (
   </p>
 );
 
-const PreseasonStats = ({ preseasonStats }) => (
+interface PreseasonStatsProps {
+  preseasonStats: any;
+}
+
+const PreseasonStats: FunctionComponent<PreseasonStatsProps> = ({ preseasonStats }) => (
   <article className='preseason-stats'>
     <h1>Preseason Stats</h1>
     <div className='stats-list'>
@@ -56,9 +65,14 @@ const PreseasonStats = ({ preseasonStats }) => (
   </article>
 );
 
-const Stat = ({ stat, preseasonStats }) => {
-  const getStatValue = statName => {
-    const returnStat = preseasonStats.find(currentStat => currentStat.stat === statName).value;
+interface StatProps {
+  stat: string;
+  preseasonStats: any;
+}
+
+const Stat: FunctionComponent<StatProps> = ({ stat, preseasonStats }) => {
+  const getStatValue = (statName: string) => {
+    const returnStat = preseasonStats.find((currentStat: any) => currentStat.stat === statName).value;
     return returnStat;
   };
 
