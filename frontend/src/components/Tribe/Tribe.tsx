@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import CastawayCard from '../CastawayCard/CastawayCard';
 import Headshot from '../Headshot/Headshot';
+import { Tribe as TribeType, Episode } from '../../types';
 
-const Tribe = ({
+interface TribeProps {
+  tribe: TribeType;
+  episodeData: Episode;
+  tribeData: TribeType[];
+  formerTribeHighlight: string;
+  setFormerTribeHighlight: any;
+  removeFormerTribeHighlight: any;
+  seasonNumber: number;
+}
+const Tribe: FunctionComponent<TribeProps> = ({
   tribe,
   episodeData,
   tribeData,
@@ -14,7 +24,7 @@ const Tribe = ({
 }) => {
   const { castaways } = episodeData;
 
-  const getTribeTitle = tribeName => {
+  const getTribeTitle = (tribeName: string) => {
     if (tribeName === `Extinction Island`) {
       return <i className='fas fa-skull-crossbones' />;
     }
@@ -37,14 +47,10 @@ const Tribe = ({
             )
             .map(castaway => (
               <CastawayCard
-                tribeName={tribe.name}
                 tribeColor={tribe.tribe_color}
                 key={castaway.name}
                 castaway={castaway}
                 tribeData={tribeData}
-                formerTribeHighlight={formerTribeHighlight}
-                setFormerTribeHighlight={setFormerTribeHighlight}
-                removeFormerTribeHighlight={removeFormerTribeHighlight}
                 episodeId={episodeData.id}
               />
             ))}
@@ -69,8 +75,12 @@ const Tribe = ({
   );
 };
 
+interface StyledTribeProps {
+  tribe: string;
+}
+
 const StyledTribe = styled.section`
-  flex: ${props => (props.tribe === `Extinction Island` ? `0.1` : `1 1`)};
+  flex: ${(props: StyledTribeProps) => (props.tribe === `Extinction Island` ? `0.1` : `1 1`)};
 `;
 
 const TribeName = styled.h2`
@@ -79,13 +89,17 @@ const TribeName = styled.h2`
   font-size: 1.8rem;
 `;
 
+interface CastawayListProps {
+  tribeName: string;
+}
+
 const CastawayList = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   max-width: 800px;
   /* Give padding to Extinction Island, center single tribes */
-  margin: ${props => (props.tribeName === `Extinction Island` ? `5px` : `auto`)};
+  margin: ${(props: CastawayListProps) => (props.tribeName === `Extinction Island` ? `5px` : `auto`)};
 `;
 
 export default Tribe;

@@ -8,7 +8,6 @@ import { Castaway, Tribe } from '../../types';
 
 interface CastawayCardProps {
   castaway: Castaway;
-  classNames: string[];
   tribeData: Tribe[];
   episodeId: string;
   tribeColor: string;
@@ -16,7 +15,6 @@ interface CastawayCardProps {
 
 const CastawayCard: FunctionComponent<CastawayCardProps> = ({
   castaway,
-  classNames,
   tribeData,
   episodeId,
   tribeColor,
@@ -47,7 +45,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
   return (
     // @ts-ignore - issues with styled-components
     <StyledCastawayCard
-      className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
+      className={`castaway-card grow relative ${formerTribeClassNames}`}
       tribeName={castaway.tribe}
       tribeData={tribeData}
       tribeColor={tribeColor}

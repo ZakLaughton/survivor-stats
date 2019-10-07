@@ -91,7 +91,7 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
                   <Tribe
                     key={tribe.name}
                     tribe={tribe}
-                    episodeData={episodeData}
+                    episodeData={episodeData!}
                     tribeData={tribeData}
                     seasonNumber={activeSeasonData.season}
                   />
@@ -104,7 +104,7 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
                   <Tribe
                     key={tribe.name}
                     tribe={tribe}
-                    episodeData={episodeData}
+                    episodeData={episodeData!}
                     tribeData={tribeData}
                     seasonNumber={activeSeasonData.season}
                   />
