@@ -1,9 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { FormerTribeHighlightContext } from '../TribeBoard/FormerTribeHighlightContext';
 import './FormerTribeIndicator.css';
 
-const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
+interface FormerTribeIndicatorProps {
+  circleColor: string;
+  formerTribe: string;
+  semanticTribes: { [key: string]: string };
+}
+
+const FormerTribeIndicator: FunctionComponent<FormerTribeIndicatorProps> = ({ circleColor, formerTribe, semanticTribes }) => {
   const { updateTribeHighlight } = useContext(FormerTribeHighlightContext);
 
   const handleHoverOn = () => {
@@ -14,7 +20,7 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
     updateTribeHighlight({ tribeName: ``, color: `` });
   };
 
-  const getSemanticTribeName = tribeName => {
+  const getSemanticTribeName = (tribeName: string) => {
     if (Object.keys(semanticTribes).indexOf(tribeName) > -1) {
       return semanticTribes[tribeName];
     }
