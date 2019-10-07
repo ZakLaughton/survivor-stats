@@ -53,7 +53,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
       tribeColor={tribeColor}
     >
       <HeadshotContainer href={castaway.wikiUrl} target='_blank'>
-        <Headshot seasonNumber={seasonNo} castaway={castaway.name} size={90} borderRadius={0} />
+        <Headshot seasonNumber={Number(seasonNo)} castaway={castaway.name} size={90} borderRadius={0} />
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}
       </HeadshotContainer>

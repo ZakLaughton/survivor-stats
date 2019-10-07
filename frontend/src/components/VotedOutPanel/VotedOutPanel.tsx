@@ -36,7 +36,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
                   key={castaway.name}
                   size={64}
                   padding={5}
-                  grayScale
+                  grayscale
                 />
               ))}
           {juryStarted && <JuryTitle>JURY</JuryTitle>}
@@ -51,6 +51,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
                   key={castaway.name}
                   size={64}
                   padding={5}
+                  borderRadius={5}
                 />
               ))}
         </VotedOutList>
