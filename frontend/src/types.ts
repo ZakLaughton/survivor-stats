@@ -27,7 +27,7 @@ export interface Castaway {
   advantages?: Advantage[];
   bootOrder?: number;
   currentBoot?: boolean;
-  formerTribes?: Tribe[];
+  formerTribes?: string[];
   juryMember?: boolean;
   name: string;
   nickname?: string | null;
@@ -35,6 +35,7 @@ export interface Castaway {
   wikiUrl: string;
   age: number;
   currentResidence: string;
+  occupation?: string;
 }
 
 export interface TribalCouncil {

@@ -1,22 +1,34 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { FormerTribeShadow } from './FormerTribeShadow';
-// eslint-disable-next-line import/no-unresolved
-import AdvantageIcons from '../AdvantageIcons/AdvantageIcons.tsx';
+import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
 import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 import Headshot from '../Headshot/Headshot';
+import { Castaway, Tribe } from '../../types';
 
-const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }) => {
+interface CastawayCardProps {
+  castaway: Castaway;
+  classNames: string[];
+  tribeData: Tribe[];
+  episodeId: string;
+  tribeColor: string;
+}
+
+const CastawayCard: FunctionComponent<CastawayCardProps> = ({
+  castaway,
+  classNames,
+  tribeData,
+  episodeId,
+  tribeColor,
+}) => {
   /**
    * For seasons in which a tribe keeps the same name throughout multiple
    * swaps, this takes a list of plain tribes (e.g. "Malolo", "Malolo 2",
    * "Malolo 3") and returns a dictionary of their semantic names (e.g.
    * "Original Malolo", "Malolo (1st swap)", "Malolo (2nd Swap)')
    */
-  const getSemanticTribeNames = formerTribeList => {
-    const semanticDictionary = {};
+  const getSemanticTribeNames = (formerTribeList: string[]) => {
+    const semanticDictionary: { [key: string]: string } = {};
 
     formerTribeList.forEach(tribe => {
       const newName = tribe.replace(/2$/, `(1st swap)`).replace(/3$/, `(2nd swap)`);
@@ -26,13 +38,14 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
   };
 
   const seasonNo = `${episodeId.substring(1, 3)}`;
-  const formerTribeClassNames = castaway.formerTribes
-    .map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
+  const formerTribeClassNames = castaway
+    .formerTribes!.map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
     .join(` `);
 
-  const semanticTribes = getSemanticTribeNames(castaway.formerTribes);
+  const semanticTribes = getSemanticTribeNames(castaway.formerTribes!);
 
   return (
+    // @ts-ignore - issues with styled-components
     <StyledCastawayCard
       className={`castaway-card grow relative ${formerTribeClassNames} ${classNames}`}
       tribeName={castaway.tribe}
@@ -49,7 +62,7 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
           ? castaway.nickname
           : castaway.name.substr(0, castaway.name.indexOf(` `))}
       </CardNameplate>
-      {castaway.formerTribes.length < 1 && castaway.age ? (
+      {castaway.formerTribes!.length < 1 && castaway.age ? (
         <Bio>
           <li>{`Age: ${castaway.age}`}</li>
           {castaway.occupation && <li>{castaway.occupation}</li>}
@@ -59,7 +72,7 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
         <TribeCircleContainer className='tribe-circle-container'>
           {/* TODO: This is a messy way to get the tribe data to circumvent a rendering error.
             Fix it */}
-          {tribeData && castaway.formerTribes.length > 0 && <i className='fas fa-history' />}
+          {tribeData && castaway.formerTribes!.length > 0 && <i className='fas fa-history' />}
           {tribeData &&
             castaway.formerTribes &&
             castaway.formerTribes.map(formerTribe => {
@@ -80,19 +93,20 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
             })}
         </TribeCircleContainer>
       )}
-      <AdvantageIcons advantages={castaway.advantages} />
+      {castaway.advantages && <AdvantageIcons advantages={castaway.advantages} />}
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
     </StyledCastawayCard>
   );
 };
+
 const backgroundGradients = {
-  orange: `linear-gradient(to bottom, #df940a, #a36f12)`,
-  purple: `linear-gradient(to right bottom, #740274, #850385, #960396, #a704a7, #b905b9);`,
-  green: `linear-gradient(to bottom, #007100, #328e24, #53ac41, #72ca5e, #91ea7b)`,
-  blue: `linear-gradient(to bottom, #0055f1, #004dce, #0044ab, #003a88, #0c3066);`,
-  black: `linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)`,
-  red: `linear-gradient(to bottom, #ff0000, #dd0003, #bd0004, #9d0003, #7e0000)`,
-  yellow: `linear-gradient(to bottom, #ffff00, #e2e201, #c6c601, #abab01, #909001);`,
+  orange: 'linear-gradient(to bottom, #df940a, #a36f12)',
+  purple: 'linear-gradient(to right bottom, #740274, #850385, #960396, #a704a7, #b905b9);',
+  green: 'linear-gradient(to bottom, #007100, #328e24, #53ac41, #72ca5e, #91ea7b)',
+  blue: 'linear-gradient(to bottom, #0055f1, #004dce, #0044ab, #003a88, #0c3066);',
+  black: 'linear-gradient(to bottom, #363636, #575757, #7b7b7b, #a1a1a1, #c8c8c8)',
+  red: 'linear-gradient(to bottom, #ff0000, #dd0003, #bd0004, #9d0003, #7e0000)',
+  yellow: 'linear-gradient(to bottom, #ffff00, #e2e201, #c6c601, #abab01, #909001);',
 };
 
 const StyledCastawayCard = styled.div`
@@ -112,8 +126,11 @@ const StyledCastawayCard = styled.div`
   width: 47%;
   height: 90px;
   margin: 5px;
-  background: ${props => backgroundGradients[props.tribeColor]};
+  background: ${props =>
+    // @ts-ignore
+    backgroundGradients[props.tribeColor]};
   ${props => {
+    // @ts-ignore
     const { tribeName } = props;
     if (tribeName === `Extinction Island`) {
       return `max-width: 100px; max-height: 100px;`;
