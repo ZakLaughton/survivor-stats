@@ -1,11 +1,22 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import './AdvantageIcons.css';
 import styled from 'styled-components';
+import { Advantage } from '../../types';
 
-const AdvantageIcons = ({ castaway }) => {
-  const iconLibrary = {
+export interface AdvantageIconsProps {
+  advantages: Advantage[];
+}
+
+interface AdvantagePng {
+  alt: string;
+  fileName: string;
+}
+
+interface PngLibrary {[key: string]: AdvantagePng}
+interface IconLibrary {[key: string]: string}
+
+const AdvantageIcons: FunctionComponent<AdvantageIconsProps> = ({ advantages }) => {
+  const iconLibrary: IconLibrary = {
     'immunity idol': `fas fa-shield-alt`,
     'idol nullifier': `fas fa-ban`,
     'vote steal': `fas fa-user-minus`,
@@ -15,22 +26,22 @@ const AdvantageIcons = ({ castaway }) => {
     'multi-choice advantage': `fas fa-arrows-alt`,
   };
 
-  const pngLibrary = {
+  const pngLibrary: PngLibrary = {
     'immunity idol': {
       alt: `Immunity Idol`,
-      filename: `immunity_idol.png`,
+      fileName: `immunity_idol.png`,
     },
     'fake immunity idol': {
       alt: `Fake Immunity Idol`,
-      filename: `fake_immunity_idol.png`,
+      fileName: `fake_immunity_idol.png`,
     },
     'half immunity idol 1': {
       alt: `Half Immunity Idol`,
-      filename: `half_immunity_idol_1.png`,
+      fileName: `half_immunity_idol_1.png`,
     },
     'half immunity idol 2': {
       alt: `Half Immunity Idol`,
-      filename: `half_immunity_idol_2.png`,
+      fileName: `half_immunity_idol_2.png`,
     },
   };
 
@@ -40,27 +51,27 @@ const AdvantageIcons = ({ castaway }) => {
    * @param {string} advantageName
    * @return {element}
    */
-  const getAdvantageIconElement = advantageName => {
+  const getAdvantageIconElement = (advantageName: string) => {
     if (pngLibrary[advantageName]) {
       const advantage = pngLibrary[advantageName];
       return (
         <div className='tooltip advantage'>
-          <img alt={advantage.alt} src={require(`../../img/${advantage.filename}`)} />
-          <span className='animated fadeIn tooltiptext'>{advantage.alt}</span>
+          <img alt={advantage.alt} src={require(`../../img/${advantage.fileName}`)} />
+          <span className='animated fadeIn tooltip-text'>{advantage.alt}</span>
         </div>
       );
     }
     return (
       <StyledFontAwesome className={`tooltip advantage ${iconLibrary[advantageName]}`}>
-        <span className='animated fadeIn tooltiptext'>{advantageName}</span>
+        <span className='animated fadeIn tooltip-text'>{advantageName}</span>
       </StyledFontAwesome>
     );
   };
 
   return (
     <div className='tribe-advantage-container'>
-      {castaway.advantages &&
-        castaway.advantages.map((advantage, index) => (
+      {advantages &&
+        advantages.map((advantage, index) => (
           <div key={index}>{getAdvantageIconElement(advantage.item)}</div>
         ))}
     </div>

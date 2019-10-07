@@ -3,7 +3,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormerTribeShadow } from './FormerTribeShadow';
-import AdvantageIcons from '../AdvantageIcons/AdvantageIcons';
+// eslint-disable-next-line import/no-unresolved
+import AdvantageIcons from '../AdvantageIcons/AdvantageIcons.tsx';
 import FormerTribeIndicator from '../FormerTribeIndicator/FormerTribeIndicator';
 import Headshot from '../Headshot/Headshot';
 
@@ -79,7 +80,7 @@ const CastawayCard = ({ castaway, classNames, tribeData, episodeId, tribeColor }
             })}
         </TribeCircleContainer>
       )}
-      <AdvantageIcons castaway={castaway} />
+      <AdvantageIcons advantages={castaway.advantages} />
       <FormerTribeShadow formerTribes={castaway.formerTribes} />
     </StyledCastawayCard>
   );

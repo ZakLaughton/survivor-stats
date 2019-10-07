@@ -28,7 +28,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
                 castaway =>
                   (castaway.tribe === `out` || castaway.currentBoot) && !castaway.juryMember,
               )
-              .sort((a, b) => a.bootOrder - b.bootOrder)
+              .sort((a, b) => a.bootOrder! - b.bootOrder!)
               .map(castaway => (
                 <Headshot
                   seasonNumber={seasonNum}
@@ -43,7 +43,7 @@ const VotedOutPanel = ({ episodeData, seasonNum }: VotedOutPanelProps) => {
           {juryStarted &&
             castaways
               .filter(castaway => castaway.juryMember)
-              .sort((a, b) => a.bootOrder - b.bootOrder)
+              .sort((a, b) => a.bootOrder! - b.bootOrder!)
               .map(castaway => (
                 <Headshot
                   seasonNumber={seasonNum}

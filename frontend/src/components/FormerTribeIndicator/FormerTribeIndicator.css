@@ -1,5 +1,5 @@
 /* Tooltip text */
-  .tribe-circle .tooltiptext {
+  .tribe-circle .tooltip-text {
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -15,6 +15,6 @@
   }
   
   /* Show the tooltip text when you mouse over the tooltip container */
-  .tribe-circle:hover .tooltiptext {
+  .tribe-circle:hover .tooltip-text {
     visibility: visible;
   }

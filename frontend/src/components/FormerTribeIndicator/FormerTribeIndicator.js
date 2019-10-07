@@ -30,7 +30,7 @@ const FormerTribeIndicator = ({ circleColor, formerTribe, semanticTribes }) => {
       onMouseEnter={handleHoverOn}
       onMouseLeave={handleHoverOff}
     >
-      <span className='tooltiptext'>{`Former ${semanticTribeName}`}</span>
+      <span className='tooltip-text'>{`Former ${semanticTribeName}`}</span>
     </TribeCircle>
   );
 };

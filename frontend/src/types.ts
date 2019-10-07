@@ -24,13 +24,13 @@ export interface Episode {
 }
 
 export interface Castaway {
-  advantages: Advantage[];
-  bootOrder: number;
-  currentBoot: boolean;
-  formerTribes: Tribe[];
-  juryMember: boolean;
+  advantages?: Advantage[];
+  bootOrder?: number;
+  currentBoot?: boolean;
+  formerTribes?: Tribe[];
+  juryMember?: boolean;
   name: string;
-  nickname: string | null;
+  nickname?: string | null;
   tribe: string;
   wikiUrl: string;
   age: number;
@@ -50,7 +50,7 @@ export interface TribalCouncil {
 }
 
 export interface Advantage {
-  details: string;
+  details?: string;
   item: string;
 }
 
