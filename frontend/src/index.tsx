@@ -4,12 +4,18 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import * as Sentry from '@sentry/browser'
 import 'tachyons';
 
 require(`es6-shim`);
 
+Sentry.init({dsn: "https://2baafd9a281f4bbc9a9ea878fe2fcb30@sentry.io/1773582"});
+
 const AppRouter = () => (
   <Switch>
+    {/*
+    // @ts-ignore - Cannot find name 'methodDoesNotExist'. */}
+    <Route exact path='/sentrytest' render={() => <button onClick={methodDoesNotExist}>Break the world</button>} />
     <Route exact path='/' render={() => <Redirect to='/39' />} />
     <Route
       exact
