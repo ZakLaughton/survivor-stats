@@ -26,7 +26,7 @@ exports[`renders all subcomponents 1`] = `
           class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -34,7 +34,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -54,7 +54,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -65,7 +65,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -73,7 +73,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -93,7 +93,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -107,7 +107,7 @@ exports[`renders all subcomponents 1`] = `
                   class="sc-dnqmqq eWsBgn tooltip advantage fas fa-ban"
                 >
                   <span
-                    class="animated fadeIn tooltiptext"
+                    class="animated fadeIn tooltip-text"
                   >
                     idol nullifier
                   </span>
@@ -116,7 +116,7 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -124,7 +124,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -144,7 +144,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -162,7 +162,7 @@ exports[`renders all subcomponents 1`] = `
                     src="immunity_idol.png"
                   />
                   <span
-                    class="animated fadeIn tooltiptext"
+                    class="animated fadeIn tooltip-text"
                   >
                     Immunity Idol
                   </span>
@@ -171,7 +171,7 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -179,7 +179,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -199,7 +199,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -210,7 +210,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi kyBWZI castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -218,7 +218,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -238,7 +238,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -263,7 +263,7 @@ exports[`renders all subcomponents 1`] = `
           class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -271,7 +271,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -291,7 +291,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -302,7 +302,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi iQHPme castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -310,7 +310,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -330,7 +330,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -341,7 +341,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -349,7 +349,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -369,7 +369,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -380,7 +380,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -388,7 +388,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -408,7 +408,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -419,7 +419,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi iQHPme castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi iQHPme castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -427,7 +427,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -447,7 +447,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -472,7 +472,7 @@ exports[`renders all subcomponents 1`] = `
           class="sc-kAzzGY cxGlqK"
         >
           <div
-            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -480,7 +480,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -500,7 +500,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -511,7 +511,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -519,7 +519,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -539,7 +539,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -550,7 +550,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -558,7 +558,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -578,7 +578,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -596,7 +596,7 @@ exports[`renders all subcomponents 1`] = `
                     src="immunity_idol.png"
                   />
                   <span
-                    class="animated fadeIn tooltiptext"
+                    class="animated fadeIn tooltip-text"
                   >
                     Immunity Idol
                   </span>
@@ -605,7 +605,7 @@ exports[`renders all subcomponents 1`] = `
             </div>
           </div>
           <div
-            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-david"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -613,7 +613,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -633,7 +633,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: orange;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former David
                 </span>
@@ -644,7 +644,7 @@ exports[`renders all subcomponents 1`] = `
             />
           </div>
           <div
-            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath undefined"
+            class="sc-gZMcBi fFFTWl castaway-card grow relative former-goliath"
           >
             <a
               class="sc-gqjmRU fwhydA"
@@ -652,7 +652,7 @@ exports[`renders all subcomponents 1`] = `
               target="_blank"
             >
               <div
-                class="sc-bdVaJa gGgnIT"
+                class="sc-bdVaJa dllXJH"
                 size="90"
               />
             </a>
@@ -672,7 +672,7 @@ exports[`renders all subcomponents 1`] = `
                 style="background-color: purple;"
               >
                 <span
-                  class="tooltiptext"
+                  class="tooltip-text"
                 >
                   Former Goliath
                 </span>
@@ -698,23 +698,23 @@ exports[`renders all subcomponents 1`] = `
           OUT
         </span>
         <div
-          class="sc-bdVaJa izZoEU"
+          class="sc-bdVaJa SitNr"
           size="64"
         />
         <div
-          class="sc-bdVaJa izZoEU"
+          class="sc-bdVaJa SitNr"
           size="64"
         />
         <div
-          class="sc-bdVaJa izZoEU"
+          class="sc-bdVaJa SitNr"
           size="64"
         />
         <div
-          class="sc-bdVaJa izZoEU"
+          class="sc-bdVaJa SitNr"
           size="64"
         />
         <div
-          class="sc-bdVaJa izZoEU"
+          class="sc-bdVaJa SitNr"
           size="64"
         />
       </div>
