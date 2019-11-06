@@ -35,6 +35,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
     return semanticDictionary;
   };
 
+  // eslint-disable-next-line no-magic-numbers
   const seasonNo = `${episodeId.substring(1, 3)}`;
   const formerTribeClassNames = castaway
     .formerTribes!.map(formerTribe => `former-${formerTribe.replace(/\s/g, `-`).toLowerCase()}`)
@@ -54,7 +55,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
           seasonNumber={Number(seasonNo)}
           castaway={castaway.name}
           size={90}
-          borderRadius={0}
+          borderradius={0}
         />
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}

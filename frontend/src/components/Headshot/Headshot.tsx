@@ -7,7 +7,7 @@ interface HeadshotProps {
   castaway: string;
   size?: number;
   padding?: number;
-  borderRadius?: number;
+  borderradius?: number;
   grayscale?: boolean;
 }
 
@@ -20,7 +20,7 @@ const Headshot: FunctionComponent<HeadshotProps> = ({
   castaway,
   size = DEFAULT_HEADSHOT_SIZE,
   padding = DEFAULT_PADDING,
-  borderRadius = DEFAULT_BORDER_RADIUS,
+  borderradius = DEFAULT_BORDER_RADIUS,
   grayscale = false,
 }) => {
   const imageFileName = `s${seasonNumber}_${castaway
@@ -29,8 +29,8 @@ const Headshot: FunctionComponent<HeadshotProps> = ({
     .toLowerCase()}`;
 
   return (
-    <StyledHeadshot size={size} padding={padding} grayscale={grayscale} borderRadius={borderRadius}>
-      <StyledImage publicId={`castaways/${imageFileName}`} borderRadius={borderRadius}>
+    <StyledHeadshot size={size} padding={padding} grayscale={grayscale} borderradius={borderradius}>
+      <StyledImage publicId={`castaways/${imageFileName}`} borderradius={borderradius}>
         {/* Keep height and width constant to minimize network calls and Cloudinary usage */}
         <Transformation gravity='face' height='120' width='120' crop='thumb' />
       </StyledImage>
@@ -41,7 +41,7 @@ const Headshot: FunctionComponent<HeadshotProps> = ({
 interface StyledHeadshotProps {
   size: number;
   padding: number;
-  borderRadius: number;
+  borderradius: number;
   grayscale: boolean;
 }
 
@@ -50,12 +50,12 @@ const StyledHeadshot = styled.div`
   width: ${(props: StyledHeadshotProps) => `${props.size}px`};
   height: ${(props: StyledHeadshotProps) => `${props.size}px`};
   padding: ${(props: StyledHeadshotProps) => `${props.padding}px`};
-  border-radius: ${(props: StyledHeadshotProps) => `${props.borderRadius}px`};
+  border-radius: ${(props: StyledHeadshotProps) => `${props.borderradius}px`};
   filter: ${(props: StyledHeadshotProps) => (props.grayscale ? `grayscale(100%)` : `default`)};
 `;
 
 const StyledImage = styled(Image)`
-  border-radius: ${props => `${props.borderRadius}px`};
+  border-radius: ${props => `${props.borderradius}px`};
   object-fit: cover;
   object-position: 50% 0;
   width: 100%;
