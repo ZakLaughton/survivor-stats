@@ -1,10 +1,6 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
-// @ts-ignore - Cloudinary TS support issues
-import { Image, Transformation } from 'cloudinary-react';
-import { Castaway } from '../../types';
+const { Image, Transformation } = require('cloudinary-react');
 
 interface HeadshotProps {
   seasonNumber: number;
@@ -15,12 +11,16 @@ interface HeadshotProps {
   grayscale?: boolean;
 }
 
+const DEFAULT_HEADSHOT_SIZE = 120;
+const DEFAULT_PADDING = 0;
+const DEFAULT_BORDER_RADIUS = 0;
+
 const Headshot: FunctionComponent<HeadshotProps> = ({
   seasonNumber,
   castaway,
-  size = 120,
-  padding = 0,
-  borderRadius = 0,
+  size = DEFAULT_HEADSHOT_SIZE,
+  padding = DEFAULT_PADDING,
+  borderRadius = DEFAULT_BORDER_RADIUS,
   grayscale = false,
 }) => {
   const imageFileName = `s${seasonNumber}_${castaway

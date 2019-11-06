@@ -77,10 +77,6 @@ const StyledVotedOutPanel = styled.section`
   display: inline-block;
 `;
 
-const Title = styled.h2`
-  margin: 0;
-`;
-
 const VotedOutList = styled.div`
   display: flex;
   height: 100%;

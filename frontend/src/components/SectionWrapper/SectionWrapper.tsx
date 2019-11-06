@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import React, { useState, FunctionComponent } from 'react';
+import styled from 'styled-components';
+import React, { FunctionComponent } from 'react';
 
 interface SectionWrapperProps {
   sectionTitle: string;

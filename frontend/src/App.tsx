@@ -8,7 +8,7 @@ import ReactGA from 'react-ga';
 import { CloudinaryContext } from 'cloudinary-react';
 import NavBar from './components/NavBar/NavBar';
 // TODO: Set up better prod/dev environment variable strategy
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { PROD_BACKEND_URL, DEV_BACKEND_URL } from './constants';
 // eslint-disable-next-line import/no-unresolved
 import { TribeBoard } from './components/TribeBoard/TribeBoard';
@@ -82,6 +82,7 @@ const App: FunctionComponent<RouteComponentProps<MatchParams>> = ({ match, histo
       const numberOfEpisodes = activeSeasonData.episodes.length;
       const currentEpisode = Number(activeEpisodeNumber);
 
+      // eslint-disable-next-line no-magic-numbers
       return currentEpisode === numberOfEpisodes - 1;
     }
     return false;
@@ -89,12 +90,14 @@ const App: FunctionComponent<RouteComponentProps<MatchParams>> = ({ match, histo
 
   const decrementEpisode = () => {
     if (!atEarliestEpisode()) {
+      // eslint-disable-next-line no-magic-numbers
       const newEpisodeNumber = Number(activeEpisodeNumber) - 1;
       history.push(`/${activeSeasonNumber}/${newEpisodeNumber}`);
     }
   };
   const incrementEpisode = () => {
     if (!atLatestEpisode()) {
+      // eslint-disable-next-line no-magic-numbers
       const newEpisodeNumber = Number(activeEpisodeNumber) + 1;
       history.push(`/${activeSeasonNumber}/${newEpisodeNumber}`);
     }

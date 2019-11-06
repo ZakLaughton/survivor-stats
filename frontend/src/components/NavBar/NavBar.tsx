@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  FunctionComponent,
-  Component,
-  ReactElement,
-  ReactComponentElement,
-} from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PROD_BACKEND_URL } from '../../constants';
