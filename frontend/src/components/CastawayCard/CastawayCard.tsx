@@ -47,11 +47,15 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
     <StyledCastawayCard
       className={`castaway-card grow relative ${formerTribeClassNames}`}
       tribeName={castaway.tribe}
-      tribeData={tribeData}
       tribeColor={tribeColor}
     >
       <HeadshotContainer href={castaway.wikiUrl} target='_blank'>
-        <Headshot seasonNumber={Number(seasonNo)} castaway={castaway.name} size={90} borderRadius={0} />
+        <Headshot
+          seasonNumber={Number(seasonNo)}
+          castaway={castaway.name}
+          size={90}
+          borderRadius={0}
+        />
         {/* TODO: Set up blurred edge between face and castaway cards */}
         {/* <BlurredImageEdge /> */}
       </HeadshotContainer>
@@ -107,7 +111,12 @@ const backgroundGradients = {
   yellow: 'linear-gradient(to bottom, #ffff00, #e2e201, #c6c601, #abab01, #909001);',
 };
 
-const StyledCastawayCard = styled.div`
+interface StyledCastawayCardProps {
+  tribeColor: string;
+  tribeName: string;
+}
+
+const StyledCastawayCard = styled.div<StyledCastawayCardProps>`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 20px;

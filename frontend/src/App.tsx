@@ -16,7 +16,6 @@ import { Episode, ActiveSeasonData, TribalCouncil } from './types';
 import SeasonInfoMessage from './components/SeasonInfoMessage/SeasonInfoMessage';
 import PreseasonStats from './components/PreseasonStats/PreseasonStats';
 import TribalCouncils from './components/TribalCouncils/TribalCouncils';
-import { KeyboardEvent } from 'react-native';
 
 const ARRAY_SEARCH_RESULT_NOT_FOUND = -1;
 const ARRAY_SORT_KEEP_ORDER = -1;

@@ -107,8 +107,6 @@ const NavBar: FunctionComponent<NavBarProps> = ({
         <EpisodeTitle>
           {episodeNumber === STARTING_EPISODE_NUMBER ? `START` : `EPISODE ${episodeNumber}`}
         </EpisodeTitle>
-        {/*
-        // @ts-ignore - Weird click event issues I'm not going to figure out right now*/}
         <EpisodeArrow
           right
           hidden={atLatestEpisode()}
@@ -221,8 +219,9 @@ const EpisodeTitle = styled.h2`
 `;
 
 interface EpisodeArrowProps {
-  left: boolean;
+  left?: boolean;
   hidden: boolean;
+  right?: boolean;
 }
 
 const EpisodeArrow = styled.i`

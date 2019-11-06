@@ -1,11 +1,17 @@
 {
-    "cSpell.words": [
-      "Malolo",
-      "Survivant",
-      "Wardog",
-      "cloudinary",
-      "pagelines",
-      "survivorstats",
-      "votee"
-    ]
+  "cSpell.words": [
+    "Malolo",
+    "Survivant",
+    "Wardog",
+    "cloudinary",
+    "pagelines",
+    "survivorstats",
+    "votee"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ]
 }

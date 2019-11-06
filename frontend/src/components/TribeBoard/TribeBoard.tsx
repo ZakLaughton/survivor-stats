@@ -76,71 +76,67 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
   return (
     <SectionWrapper sectionTitle='Standings'>
       <FormerTribeHighlightProvider>
-          <GlobalStyle />
-          {/*
+        <GlobalStyle />
+        <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
+          {activeTribes.length > 0 &&
+            activeTribes
+              .filter(tribe => tribe.name !== `Extinction Island`)
+              .map((tribe: TribeType) => (
+                // @ts-ignore
+                <Tribe
+                  key={tribe.name}
+                  tribe={tribe}
+                  episodeData={episodeData!}
+                  tribeData={tribeData}
+                  seasonNumber={activeSeasonData.season}
+                />
+              ))}
+          {activeTribes.length > 0 &&
+            activeTribes
+              .filter(tribe => tribe.name === `Extinction Island`)
+              .map(tribe => (
+                // @ts-ignore
+                <Tribe
+                  key={tribe.name}
+                  tribe={tribe}
+                  episodeData={episodeData!}
+                  tribeData={tribeData}
+                  seasonNumber={activeSeasonData.season}
+                />
+              ))}
+          {activeTribes.length === 0 && `loading...`}
+        </ActiveTribes>
+        {/*
         // @ts-ignore */}
-          <ActiveTribes
-            activeTribes={activeTribes}
-            className={`tribe-count-${activeTribes.length}`}
-          >
-            {activeTribes.length > 0 &&
-              activeTribes
-                .filter(tribe => tribe.name !== `Extinction Island`)
-                .map((tribe: TribeType) => (
-                  // @ts-ignore
-                  <Tribe
-                    key={tribe.name}
-                    tribe={tribe}
-                    episodeData={episodeData!}
-                    tribeData={tribeData}
-                    seasonNumber={activeSeasonData.season}
-                  />
-                ))}
-            {activeTribes.length > 0 &&
-              activeTribes
-                .filter(tribe => tribe.name === `Extinction Island`)
-                .map(tribe => (
-                  // @ts-ignore
-                  <Tribe
-                    key={tribe.name}
-                    tribe={tribe}
-                    episodeData={episodeData!}
-                    tribeData={tribeData}
-                    seasonNumber={activeSeasonData.season}
-                  />
-                ))}
-            {activeTribes.length === 0 && `loading...`}
-          </ActiveTribes>
-          {/*
-        // @ts-ignore */}
-          {
-            <VotedOutPanel
-              // @ts-ignore episodeData object is possibly 'undefined'
-              episodeData={episodeData}
-              tribeData={tribeData}
-              seasonNum={activeSeasonData.season}
-            />
-          }
+        {
+          <VotedOutPanel
+            // @ts-ignore episodeData object is possibly 'undefined'
+            episodeData={episodeData}
+            tribeData={tribeData}
+            seasonNum={activeSeasonData.season}
+          />
+        }
       </FormerTribeHighlightProvider>
     </SectionWrapper>
   );
 };
 
-const ActiveTribes = styled.div`
+interface ActiveTribesProps {
+  activeTribes: TribeType[];
+}
+
+const ActiveTribes = styled.div<ActiveTribesProps>`
   display: flex;
   flex-direction: row;
   flex: 1 1 auto;
 
   ${props => {
-    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 2) {
       return `@media only screen and (max-width: 750px) {flex-direction: column;}`;
     }
-    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 3) {
       return `@media only screen and (max-width: 1150px) {flex-direction: column;}`;
     }
-    // @ts-ignore - Property 'activeTribes' does not exist on type 'ThemedStyledProps...
     if (props.activeTribes.length === 4) {
       return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
     }
