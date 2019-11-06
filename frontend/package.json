@@ -6,6 +6,8 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@sentry/browser": "^5.7.1",
+    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.2",
     "@types/jest": "^24.0.22",
     "@types/node": "^12.12.6",
     "@types/react": "^16.9.11",
