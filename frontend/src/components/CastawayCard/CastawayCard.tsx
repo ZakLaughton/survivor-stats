@@ -46,7 +46,7 @@ const CastawayCard: FunctionComponent<CastawayCardProps> = ({
   return (
     // @ts-ignore - issues with styled-components
     <StyledCastawayCard
-      className={`castaway-card grow relative ${formerTribeClassNames}`}
+      className={`castaway-card ${formerTribeClassNames}`}
       tribeName={castaway.tribe}
       tribeColor={tribeColor}
     >
@@ -118,6 +118,7 @@ interface StyledCastawayCardProps {
 }
 
 const StyledCastawayCard = styled.div<StyledCastawayCardProps>`
+  position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 20px;
@@ -149,6 +150,20 @@ const StyledCastawayCard = styled.div<StyledCastawayCardProps>`
 
     return null;
   }};
+
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const HeadshotContainer = styled.a`

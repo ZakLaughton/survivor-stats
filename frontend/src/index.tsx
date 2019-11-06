@@ -5,7 +5,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import * as Sentry from '@sentry/browser';
-import 'tachyons';
 
 Sentry.init({ dsn: 'https://2baafd9a281f4bbc9a9ea878fe2fcb30@sentry.io/1773582' });
 

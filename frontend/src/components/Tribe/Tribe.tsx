@@ -35,7 +35,7 @@ const Tribe: FunctionComponent<TribeProps> = ({
     tribe.name === `Extinction Island` ? `extinction-island` : tribe.name.toLowerCase();
 
   return (
-    <StyledTribe tribe={tribe.name} className={`tribe pa2 fl ${tribeClass}`} data-testid='tribe'>
+    <StyledTribe tribe={tribe.name} className={`tribe ${tribeClass}`} data-testid='tribe'>
       <TribeName>{getTribeTitle(tribe.name)}</TribeName>
       <CastawayList tribeName={tribe.name}>
         {castaways &&
@@ -81,6 +81,8 @@ interface StyledTribeProps {
 
 const StyledTribe = styled.section`
   flex: ${(props: StyledTribeProps) => (props.tribe === `Extinction Island` ? `0.1` : `1 1`)};
+  padding: 0.5rem;
+  float: left;
 `;
 
 const TribeName = styled.h2`
@@ -99,7 +101,8 @@ const CastawayList = styled.div`
   justify-content: center;
   max-width: 800px;
   /* Give padding to Extinction Island, center single tribes */
-  margin: ${(props: CastawayListProps) => (props.tribeName === `Extinction Island` ? `5px` : `auto`)};
+  margin: ${(props: CastawayListProps) =>
+    props.tribeName === `Extinction Island` ? `5px` : `auto`};
 `;
 
 export default Tribe;
