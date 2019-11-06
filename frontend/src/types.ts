@@ -33,8 +33,8 @@ export interface Castaway {
   nickname?: string | null;
   tribe: string;
   wikiUrl: string;
-  age: number;
-  currentResidence: string;
+  age?: number;
+  currentResidence?: string;
   occupation?: string;
 }
 
@@ -47,7 +47,7 @@ export interface TribalCouncil {
   notes: string | null;
   tribalNumber: number | null;
   tribe: string;
-  vote_rounds: VoteRound[]
+  vote_rounds: VoteRound[];
 }
 
 export interface Advantage {
@@ -59,7 +59,6 @@ export interface VoteRound {
   advantages: AdvantagePlays[];
   round_no: number | undefined;
   votes: Vote[];
-
 }
 
 export interface AdvantagePlays {

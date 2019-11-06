@@ -4,9 +4,15 @@
     "Survivant",
     "Wardog",
     "cloudinary",
+    "jabeni",
+    "kalokalo",
+    "merlino",
     "pagelines",
+    "raybould",
     "survivorstats",
-    "votee"
+    "tiva",
+    "votee",
+    "vuku"
   ],
   "eslint.validate": [
     "javascript",

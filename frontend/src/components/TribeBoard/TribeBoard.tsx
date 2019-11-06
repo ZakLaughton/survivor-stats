@@ -42,7 +42,7 @@ export const FormerTribeHighlightProvider = ({ children }) => {
   );
 };
 
-interface TribeBoardProps {
+export interface TribeBoardProps {
   activeSeasonData: ActiveSeasonData;
   activeEpisodeNumber: number;
 }
