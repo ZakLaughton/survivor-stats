@@ -7,8 +7,6 @@ import { ActiveSeasonData, Tribe as TribeType, Episode } from '../../types';
 
 import Tribe from '../Tribe/Tribe';
 
-const castawayCardSizeSm = `110px`;
-
 const GlobalStyle = createGlobalStyle`
   @media only screen and (min-width: 761px) and (max-width: 900px) {
     .tribe-count-4.active-tribes {
@@ -73,12 +71,14 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
         )
       : [];
 
+  const MINIMUM_ACTIVE_TRIBES = 1;
+
   return (
     <SectionWrapper sectionTitle='Standings'>
       <FormerTribeHighlightProvider>
         <GlobalStyle />
         <ActiveTribes activeTribes={activeTribes} className={`tribe-count-${activeTribes.length}`}>
-          {activeTribes.length > 0 &&
+          {activeTribes.length >= MINIMUM_ACTIVE_TRIBES &&
             activeTribes
               .filter(tribe => tribe.name !== `Extinction Island`)
               .map((tribe: TribeType) => (
@@ -91,7 +91,7 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
                   seasonNumber={activeSeasonData.season}
                 />
               ))}
-          {activeTribes.length > 0 &&
+          {activeTribes.length >= MINIMUM_ACTIVE_TRIBES &&
             activeTribes
               .filter(tribe => tribe.name === `Extinction Island`)
               .map(tribe => (
@@ -104,7 +104,7 @@ export const TribeBoard = ({ activeSeasonData, activeEpisodeNumber }: TribeBoard
                   seasonNumber={activeSeasonData.season}
                 />
               ))}
-          {activeTribes.length === 0 && `loading...`}
+          {activeTribes.length < MINIMUM_ACTIVE_TRIBES && `loading...`}
         </ActiveTribes>
         {/*
         // @ts-ignore */}
@@ -131,12 +131,15 @@ const ActiveTribes = styled.div<ActiveTribesProps>`
   flex: 1 1 auto;
 
   ${props => {
+    // eslint-disable-next-line no-magic-numbers
     if (props.activeTribes.length === 2) {
       return `@media only screen and (max-width: 750px) {flex-direction: column;}`;
     }
+    // eslint-disable-next-line no-magic-numbers
     if (props.activeTribes.length === 3) {
       return `@media only screen and (max-width: 1150px) {flex-direction: column;}`;
     }
+    // eslint-disable-next-line no-magic-numbers
     if (props.activeTribes.length === 4) {
       return `@media only screen and (max-width: 761px) {flex-direction: column;}`;
     }
