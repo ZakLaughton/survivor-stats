@@ -1,4 +1,8 @@
 /* Dropdown content (hidden by default) */
+#selection {
+  cursor: pointer;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
