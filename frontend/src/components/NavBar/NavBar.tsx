@@ -64,7 +64,7 @@ const NavBar: FunctionComponent<NavBarProps> = ({
   return (
     <StyledNavBar className='navbar'>
       {
-        <SeasonSelector className='dropdown' onMouseLeave={closeDropdown} onTouchEnd={openDropdown}>
+        <SeasonSelector id='selection' className='dropdown' onMouseLeave={closeDropdown} onTouchEnd={openDropdown}>
           {
             <DropdownButton onMouseEnter={openDropdown}>
               <SeasonTitle>{seasonTitle}</SeasonTitle>
@@ -92,6 +92,7 @@ const NavBar: FunctionComponent<NavBarProps> = ({
 
       <EpisodeSelector>
         <EpisodeArrow
+          id='selection'
           left
           hidden={atEarliestEpisode()}
           className='fas fa-caret-left'
@@ -101,6 +102,7 @@ const NavBar: FunctionComponent<NavBarProps> = ({
           {episodeNumber === STARTING_EPISODE_NUMBER ? `START` : `EPISODE ${episodeNumber}`}
         </EpisodeTitle>
         <EpisodeArrow
+          id='selection'
           right
           hidden={atLatestEpisode()}
           className='fas fa-caret-right episode-arrow right'
